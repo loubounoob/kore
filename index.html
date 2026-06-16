@@ -3979,9 +3979,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 }
 
 /* Hero image */
-.hero { background-image: url(''); background-size: cover; background-position: center; }
-
-/* Hero image */
 .hero { background-image: url('img/hero.jpg'); background-size: cover; background-position: center; }
 </style>
 
@@ -4042,7 +4039,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 <!-- HERO, full bleed image, text overlay -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="" data-k-img="1" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Kore produit">
+    <img src="img/hero.jpg" data-k-img="1" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Kore produit">
   </div>
   <div class="hero-gradient"></div>
   <div class="hero-content">
@@ -5993,13 +5990,7 @@ window.doCopy = function(){
   });
 };
 
-/* ── IMAGE INJECT (performance) ── */
-(function(){
-  var src = document.getElementById('k-img-src');
-  if(!src) return;
-  var s = src.src;
-  document.querySelectorAll('img[data-k-img]').forEach(function(el){ el.src = s; });
-})();
+/* ── IMAGE INJECT removed: images set individually via src ── */
 
 /* ── SUCCESS BANNER ── */
 (function(){
