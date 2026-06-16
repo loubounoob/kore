@@ -3213,6 +3213,32 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 .prc-title em { font-style: italic; color: var(--teal); }
 .prc-sub { font-size: 14px; color: var(--ink-3); line-height: 1.7; }
 
+/* Trust strip above prices */
+.prc-trust {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 6px 12px; margin-top: 20px;
+  padding: 12px 18px; background: var(--white); border: 1px solid var(--border);
+  border-radius: 40px; max-width: 520px; margin-left: auto; margin-right: auto;
+}
+.prc-trust-stars { color: #F59E0B; font-size: 14px; letter-spacing: 2px; }
+.prc-trust-txt { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+.prc-trust-txt strong { color: var(--ink); font-weight: 600; }
+.prc-trust-quote { font-size: 12.5px; font-style: italic; color: var(--ink-3); }
+
+/* Product image on each plan card */
+.prc-card-img {
+  display: block; width: calc(100% + 44px); height: 158px;
+  object-fit: cover; margin: -24px -22px 18px;
+}
+.prc-card-featured .prc-card-img { margin-top: -24px; }
+
+/* Plan category tag (gradation) */
+.prc-cat {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  letter-spacing: .02em; color: var(--teal); background: var(--teal-pale);
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 14px;
+}
+
 /* Grid: plans left, diagnostic right */
 .prc-grid {
   display: flex; flex-direction: column; gap: 20px;
@@ -4381,6 +4407,11 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     <span class="prc-ey">Trois façons d’être accompagné·e</span>
     <h2 class="prc-title">Choisis ton<br><em>accompagnement.</em></h2>
     <p class="prc-sub">Commence par un plan directement. Ou laisse le diagnostic choisir pour toi.</p>
+    <div class="prc-trust">
+      <span class="prc-trust-stars">★★★★★</span>
+      <span class="prc-trust-txt"><strong>4,8/5</strong> · acheteurs vérifiés</span>
+      <span class="prc-trust-quote">« Le protocole correspondait à ce que je vivais vraiment. » — Marc B.</span>
+    </div>
   </div>
 
   <div class="prc-grid">
@@ -4390,6 +4421,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
       <!-- L'Essentiel -->
       <div class="prc-card prc-card-featured">
+        <img class="prc-card-img" src="img/02.jpg" alt="La box Kore avec tes compléments personnalisés">
         <div class="prc-badge">★ Point de départ recommandé</div>
         <div class="prc-card-top">
           <div>
@@ -4397,6 +4429,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
             <div class="prc-price">89<span class="prc-price-mo">€/mois</span></div>
           </div>
         </div>
+        <span class="prc-cat">Les compléments</span>
         <p class="prc-desc">Le protocole sur-mesure. Ce dont ton corps a besoin, rien de plus, livré chaque mois.</p>
         <ul class="prc-feats">
           <li>3 flacons personnalisés pour ton profil exact, réévalués chaque mois</li>
@@ -4409,12 +4442,14 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
       <!-- L'Accompagné -->
       <div class="prc-card">
+        <img class="prc-card-img" src="img/03.jpg" alt="Suivi de ton évolution dans l'app Kore">
         <div class="prc-card-top">
           <div>
             <span class="prc-name">L’Accompagné</span>
             <div class="prc-price">139<span class="prc-price-mo">€/mois</span></div>
           </div>
         </div>
+        <span class="prc-cat">+ Le suivi sanguin</span>
         <p class="prc-desc">Ton protocole plus un bilan sanguin trimestriel. Ce que ton corps dit vraiment.</p>
         <ul class="prc-feats">
           <li>Tout de L’Essentiel, plus</li>
@@ -4427,12 +4462,14 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
       <!-- L'Encadré -->
       <div class="prc-card">
+        <img class="prc-card-img" src="img/ben04.jpg" alt="Un accompagnement humain et expert">
         <div class="prc-card-top">
           <div>
             <span class="prc-name">L’Encadré</span>
             <div class="prc-price">199<span class="prc-price-mo">€/mois</span></div>
           </div>
         </div>
+        <span class="prc-cat">+ L’accompagnement humain</span>
         <p class="prc-desc">Un conseiller dédié, toujours le même. Un bilan mensuel. Une présence constante.</p>
         <ul class="prc-feats">
           <li>Tout de L’Accompagné, plus</li>
