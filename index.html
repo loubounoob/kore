@@ -3497,6 +3497,21 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 .sq-circ.sq-sel:nth-child(5),.sq-circ.sq-sel:nth-child(6),.sq-circ.sq-sel:nth-child(7) {
   background: var(--ink-2); border-color: var(--ink-2);
 }
+/* ── Mobile scale: stack labels above, spread circles full width ── */
+@media (max-width: 599px) {
+  .sq-row { flex-wrap: wrap; justify-content: space-between; gap: 0; }
+  .sq-lbl { min-width: 0; font-size: 10.5px; flex: 0 0 auto; }
+  .sq-lbl-yes { order: 1; text-align: left; }
+  .sq-lbl-no  { order: 2; text-align: right; }
+  .sq-circles { order: 3; width: 100%; justify-content: space-between; gap: 0; margin-top: 10px; }
+  .sq-circ:nth-child(1) { width: 32px; height: 32px; }
+  .sq-circ:nth-child(2) { width: 29px; height: 29px; }
+  .sq-circ:nth-child(3) { width: 26px; height: 26px; }
+  .sq-circ:nth-child(4) { width: 24px; height: 24px; }
+  .sq-circ:nth-child(5) { width: 26px; height: 26px; }
+  .sq-circ:nth-child(6) { width: 29px; height: 29px; }
+  .sq-circ:nth-child(7) { width: 32px; height: 32px; }
+}
 .ds-scale-footer {
   position: sticky; bottom: 0; background: var(--bg);
   padding: 16px var(--px) 28px; border-top: 1px solid var(--border);
