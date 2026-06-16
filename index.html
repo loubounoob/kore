@@ -3227,10 +3227,18 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
 /* Product image on each plan card */
 .prc-card-img {
-  display: block; width: calc(100% + 44px); height: 158px;
-  object-fit: cover; margin: -24px -22px 18px;
+  display: block; width: calc(100% + 44px); aspect-ratio: 16 / 10;
+  object-fit: cover; margin: -24px -22px 18px; background: var(--parch);
 }
 .prc-card-featured .prc-card-img { margin-top: -24px; }
+/* Empty placeholder (waiting for final image) */
+.prc-card-ph {
+  display: flex; align-items: center; justify-content: center;
+}
+.prc-card-ph span {
+  font-size: 10.5px; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ph-t);
+}
 
 /* Plan category tag (gradation) */
 .prc-cat {
@@ -4421,7 +4429,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
       <!-- L'Essentiel -->
       <div class="prc-card prc-card-featured">
-        <img class="prc-card-img" src="img/02.jpg" alt="La box Kore avec tes compléments personnalisés">
+        <div class="prc-card-img prc-card-ph"><span>Visuel à venir</span></div>
         <div class="prc-badge">★ Point de départ recommandé</div>
         <div class="prc-card-top">
           <div>
@@ -4442,7 +4450,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
       <!-- L'Accompagné -->
       <div class="prc-card">
-        <img class="prc-card-img" src="img/03.jpg" alt="Suivi de ton évolution dans l'app Kore">
+        <div class="prc-card-img prc-card-ph"><span>Visuel à venir</span></div>
         <div class="prc-card-top">
           <div>
             <span class="prc-name">L’Accompagné</span>
@@ -4462,7 +4470,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
       <!-- L'Encadré -->
       <div class="prc-card">
-        <img class="prc-card-img" src="img/ben04.jpg" alt="Un accompagnement humain et expert">
+        <div class="prc-card-img prc-card-ph"><span>Visuel à venir</span></div>
         <div class="prc-card-top">
           <div>
             <span class="prc-name">L’Encadré</span>
