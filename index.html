@@ -4546,12 +4546,12 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     <div class="avis-card-v2">
       <div class="avis-quote-mark">&ldquo;</div>
       <div class="avis-stars">★★★★★</div>
-      <p class="avis-text-v2">Trois semaines. Je me suis réveillé un matin et <strong>j’ai réalisé que j’avais pas pensé à ma fatigue</strong>. Pas juste &ldquo;plus longtemps dormis&rdquo;. La qualité du sommeil elle-même.</p>
+      <p class="avis-text-v2">Trois semaines. Je me suis réveillée un matin et <strong>j’ai réalisé que je n’avais pas pensé à ma fatigue</strong>. Pas juste &ldquo;dormir plus longtemps&rdquo;. La qualité du sommeil elle-même.</p>
       <div class="avis-author">
-        <div class="avis-avatar"><svg width="42" height="42" xmlns="http://www.w3.org/2000/svg"><circle cx="21" cy="21" r="21" fill="#0C5449"/><text x="21" y="26" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="14" font-weight="600">TL</text></svg></div>
+        <div class="avis-avatar"><svg width="42" height="42" xmlns="http://www.w3.org/2000/svg"><circle cx="21" cy="21" r="21" fill="#0C5449"/><text x="21" y="26" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="14" font-weight="600">ER</text></svg></div>
         <div>
-          <div class="avis-name">Thomas L., 38 ans</div>
-          <div class="avis-meta">Entrepreneur · Paris · Kore depuis 4 mois</div>
+          <div class="avis-name">Élodie R., 38 ans</div>
+          <div class="avis-meta">Entrepreneure · Paris · Kore depuis 4 mois</div>
         </div>
         <span class="avis-verified">✓ Vérifié</span>
       </div>
@@ -4576,10 +4576,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
       <div class="avis-stars">★★★★★</div>
       <p class="avis-text-v2">6 semaines. <strong>Mes genoux ne me faisaient plus mal au padel.</strong> J’avais arrêté le sport depuis 4 mois à cause de ça. Je l’ai repris. C’est tout ce que j’avais besoin de savoir.</p>
       <div class="avis-author">
-        <div class="avis-avatar"><svg width="42" height="42" xmlns="http://www.w3.org/2000/svg"><circle cx="21" cy="21" r="21" fill="#5C3D8C"/><text x="21" y="26" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="14" font-weight="600">KR</text></svg></div>
+        <div class="avis-avatar"><svg width="42" height="42" xmlns="http://www.w3.org/2000/svg"><circle cx="21" cy="21" r="21" fill="#5C3D8C"/><text x="21" y="26" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="14" font-weight="600">CD</text></svg></div>
         <div>
-          <div class="avis-name">Kevin R., 41 ans</div>
-          <div class="avis-meta">Ingénieur · Bordeaux · Kore depuis 5 mois</div>
+          <div class="avis-name">Claire D., 41 ans</div>
+          <div class="avis-meta">Kinésithérapeute · Bordeaux · Kore depuis 5 mois</div>
         </div>
         <span class="avis-verified">✓ Vérifié</span>
       </div>
@@ -5969,9 +5969,13 @@ function buildPersonalizedFeatures(){
 
 function renderSalesPage(sd){
   var p = LEAD.profile;
-  var kooreImg = (document.querySelector('img[src^="data:image"]') || {}).src || '';
-  ['sp3-img-essentiel','sp3-img-accompagne','sp3-img-encadre'].forEach(function(id){
-    var el=document.getElementById(id); if(el&&kooreImg) el.src=kooreImg;
+  var planImgs = {
+    'sp3-img-essentiel':  'img/price-essentiel.jpg',
+    'sp3-img-accompagne': 'img/price-accompagne.jpg',
+    'sp3-img-encadre':    'img/price-encadre.jpg'
+  };
+  Object.keys(planImgs).forEach(function(id){
+    var el=document.getElementById(id); if(el) el.src=planImgs[id];
   });
   function set(id,v){ var el=document.getElementById(id); if(el) el.textContent=v||''; }
   set('sp3-tagline', p.tagline||'');
