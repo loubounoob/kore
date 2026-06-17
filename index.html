@@ -2965,14 +2965,15 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   display: flex; flex-direction: column;
 }
 .spv-feat-list li {
-  padding: 16px 0; border-bottom: 1px solid var(--border);
-  font-size: 14px; color: var(--ink-2); line-height: 1.5;
-  display: flex; align-items: baseline; gap: 12px;
+  position: relative;
+  padding: 16px 0 16px 26px; border-bottom: 1px solid var(--border);
+  font-size: 14px; color: var(--ink-2); line-height: 1.55;
 }
 .spv-feat-list li:first-of-type { border-top: 1px solid var(--border); }
 .spv-feat-list li::before {
   content: '\2713'; color: var(--teal);
-  font-size: 12px; font-weight: 700; flex-shrink: 0;
+  font-size: 12px; font-weight: 700;
+  position: absolute; left: 0; top: 17px;
 }
 .spv-feat-cta-zone { display: flex; flex-direction: column; }
 .spv-feat-cta {
@@ -3005,27 +3006,22 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   -webkit-tap-highlight-color: transparent; transition: transform .2s;
 }
 .spv-other:active { transform: scale(.99); }
-.spv-other-vis { position: relative; height: 180px; overflow: hidden; }
-.spv-other-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.spv-other-img[id="sp3-img-accompagne"] { object-position: center 50%; }
-.spv-other-img[id="sp3-img-encadre"]   { object-position: right 65%; }
-.spv-other-tint { position: absolute; inset: 0; }
-.spv-tint-acc { background: linear-gradient(to bottom, rgba(8,55,48,.05) 0%, rgba(8,55,48,.65) 55%, rgba(8,55,48,.97) 100%); }
-.spv-tint-enc { background: linear-gradient(to bottom, rgba(4,25,25,.08) 0%, rgba(4,25,25,.7) 55%, rgba(4,25,25,.98) 100%); }
-.spv-other-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px 14px; z-index: 2; }
+.spv-other-vis { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--parch); }
+.spv-other-img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center center; }
+.spv-other-info { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
 .spv-other-tier {
-  font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(255,255,255,.48); display: block; margin-bottom: 3px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--teal); display: block; margin-bottom: 6px;
 }
 .spv-other-price {
   font-family: var(--serif); font-size: 36px; font-weight: 400;
-  color: white; line-height: 1; letter-spacing: -.025em;
+  color: var(--ink); line-height: 1; letter-spacing: -.025em;
 }
-.spv-other-mo { font-size: 13px; color: rgba(255,255,255,.45); margin-left: 2px; }
-.spv-other-body { padding: 14px 16px 18px; }
+.spv-other-mo { font-size: 13px; color: var(--ink-3); margin-left: 2px; }
+.spv-other-body { padding: 18px 18px 20px; }
 .spv-other-hook {
   font-size: 13px; font-style: italic; color: var(--ink-2);
-  margin-bottom: 12px; line-height: 1.65; min-height: 1em;
+  margin: 8px 0 14px; line-height: 1.65; min-height: 1em;
 }
 .spv-other-cta {
   display: block; width: 100%; padding: 13px; border-radius: 40px; box-sizing: border-box;
@@ -3074,7 +3070,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   /* Others side by side */
   .spv-others { flex-direction: row; }
   .spv-other { flex: 1; }
-  .spv-other-vis { height: 220px; }
 
   .spv-meaning-text { font-size: 30px; }
 }
@@ -3832,10 +3827,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 .spv-features { padding: 28px var(--px) 36px !important; }
 .spv-feat-list { margin: 0 0 22px !important; }
 .spv-feat-list li {
-  padding: 13px 0 !important; font-size: 13.5px !important;
-  align-items: flex-start !important; line-height: 1.55 !important;
+  padding: 13px 0 13px 26px !important; font-size: 13.5px !important;
+  line-height: 1.55 !important;
 }
-.spv-feat-list li::before { margin-top: 2px; }
+.spv-feat-list li::before { top: 14px; }
 .spv-feat-eyebrow { margin-bottom: 4px !important; }
 
 /* ═══════════════════════════════
@@ -4695,7 +4690,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
           <p class="spv-product-hook" id="sp3-hook-essentiel"></p>
         </div>
-        <button class="spv-product-cta" onclick="selectPlan('essentiel')">Commencer, c’est gratuit →</button>
       </div>
     </div>
 
@@ -4787,13 +4781,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
         <div class="spv-other pvr" onclick="selectPlan('accompagne')">
           <div class="spv-other-vis">
             <img class="spv-other-img" id="sp3-img-accompagne" alt="L’Accompagné">
-            <div class="spv-other-tint spv-tint-acc"></div>
-            <div class="spv-other-info">
-              <span class="spv-other-tier">L’Accompagné</span>
-              <div class="spv-other-price">139<span class="spv-other-mo">€/mois</span></div>
-            </div>
           </div>
           <div class="spv-other-body">
+            <span class="spv-other-tier">L’Accompagné</span>
+            <div class="spv-other-price">139<span class="spv-other-mo">€/mois</span></div>
             <p class="spv-other-hook" id="sp3-hook-accompagne"></p>
             <button class="spv-other-cta">Choisir L’Accompagné →</button>
           </div>
@@ -4801,13 +4792,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
         <div class="spv-other pvr" onclick="selectPlan('encadre')">
           <div class="spv-other-vis">
             <img class="spv-other-img" id="sp3-img-encadre" alt="L’Encadré">
-            <div class="spv-other-tint spv-tint-enc"></div>
-            <div class="spv-other-info">
-              <span class="spv-other-tier">L’Encadré</span>
-              <div class="spv-other-price">199<span class="spv-other-mo">€/mois</span></div>
-            </div>
           </div>
           <div class="spv-other-body">
+            <span class="spv-other-tier">L’Encadré</span>
+            <div class="spv-other-price">199<span class="spv-other-mo">€/mois</span></div>
             <p class="spv-other-hook" id="sp3-hook-encadre"></p>
             <button class="spv-other-cta">Choisir L’Encadré →</button>
           </div>
