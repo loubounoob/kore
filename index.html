@@ -26,6 +26,23 @@
 <meta name="twitter:image" content="https://korecare.fr/img/price-essentiel.jpg">
 
 <meta name="theme-color" content="#0C5449">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1675298753694461');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1675298753694461&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -5836,7 +5853,9 @@ function showResultsFromAnalysis(){
 window.submitEmail = function(){
   var val = document.getElementById('em-input');
   if(val && val.value.indexOf('@') !== -1){ LEAD.email = val.value.trim(); }
-  saveLead(); runDiag();
+  saveLead();
+  if(window.fbq){ fbq('track', 'Lead'); }
+  runDiag();
 };
 window.skipEmail = function(){ runDiag(); };
 
@@ -6049,8 +6068,12 @@ function buildInsightText(p){
 }
 
 /* ── PAYMENT ── */
+var PLAN_PRICES = { essentiel: 89, accompagne: 139, encadre: 199 };
 window.selectPlan = async function(key){
   LEAD.planSelected = key; saveLead(); logEvent('plan_selected', {plan: key});
+  var price = PLAN_PRICES[key] || 0;
+  try { localStorage.setItem('kore_pending_value', price); } catch(e) {}
+  if(window.fbq){ fbq('track', 'InitiateCheckout', {value: price, currency: 'EUR', content_name: key}); }
   var url = PAYMENT_LINKS[key]; if(!url) return;
   if(LEAD.email) url += '?prefilled_email=' + encodeURIComponent(LEAD.email);
   window.location.href = url;
@@ -6076,6 +6099,11 @@ window.doCopy = function(){
 (function(){
   var params = new URLSearchParams(window.location.search);
   if(params.get('success') === '1'){
+    if(window.fbq){
+      var pv = 0; try { pv = parseFloat(localStorage.getItem('kore_pending_value')) || 0; } catch(e) {}
+      fbq('track', 'Purchase', {value: pv, currency: 'EUR'});
+      try { localStorage.removeItem('kore_pending_value'); } catch(e) {}
+    }
     var banner = document.createElement('div');
     banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#0C5449;color:white;text-align:center;padding:16px;font-family:var(--sans);font-size:15px;z-index:99999;';
     banner.innerHTML = 'Bienvenue dans Kore ! Votre protocole sera pr\u00eat sous 48h. <button onclick="this.parentNode.remove()" style="margin-left:12px;background:rgba(255,255,255,.2);border:none;color:white;padding:4px 12px;border-radius:20px;cursor:pointer;font-size:13px;">Fermer</button>';
