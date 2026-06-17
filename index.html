@@ -3031,6 +3031,65 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 }
 .spv-other-cta:active { background: var(--teal-pale); }
 
+/* ══════════════════════════════
+   OFFRE L'ESSENTIEL — carte unifiée
+══════════════════════════════ */
+.ess-section { background: var(--bg); padding: 22px var(--px) 40px; }
+.ess-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 16px 48px rgba(12,84,73,.10);
+  display: flex; flex-direction: column;
+}
+.ess-visual { width: 100%; aspect-ratio: 16 / 10; background: var(--parch); }
+.ess-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ess-content { padding: 26px 22px 26px; display: flex; flex-direction: column; }
+.ess-tier {
+  font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 8px;
+}
+.ess-price { display: flex; align-items: baseline; line-height: .9; }
+.ess-price-n { font-family: var(--serif); font-size: 72px; font-weight: 400; color: var(--ink); letter-spacing: -.045em; }
+.ess-price-cur { font-family: var(--serif); font-size: 30px; color: var(--ink); margin-left: 3px; align-self: flex-start; margin-top: 8px; }
+.ess-price-mo { font-size: 14px; color: var(--ink-3); margin-left: 7px; align-self: flex-end; margin-bottom: 10px; letter-spacing: .01em; }
+.ess-hook { font-size: 14.5px; font-style: italic; color: var(--ink-2); line-height: 1.6; margin-top: 14px; max-width: 460px; min-height: 1em; }
+.ess-rule { height: 1px; background: var(--border); margin: 22px 0 18px; }
+.ess-inc-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 2px;
+}
+.ess-feats { list-style: none; padding: 0; margin: 8px 0 24px; }
+.ess-feats li {
+  position: relative; padding: 13px 0 13px 26px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px; color: var(--ink-2); line-height: 1.55;
+}
+.ess-feats li:last-child { border-bottom: none; }
+.ess-feats li::before {
+  content: '\2713'; color: var(--teal); font-weight: 700; font-size: 12px;
+  position: absolute; left: 0; top: 14px;
+}
+.ess-feats li strong { color: var(--ink); font-weight: 600; font-style: normal; }
+.ess-cta {
+  display: block; width: 100%; padding: 17px; border: none; border-radius: 40px;
+  background: var(--teal); color: white; box-sizing: border-box;
+  font-family: var(--sans); font-size: 15.5px; font-weight: 600;
+  text-align: center; cursor: pointer; -webkit-tap-highlight-color: transparent;
+  transition: background .15s;
+}
+.ess-cta:hover, .ess-cta:active { background: var(--teal-mid); }
+.ess-note { font-size: 12px; color: var(--ink-3); text-align: center; line-height: 1.6; margin-top: 13px; }
+.ess-urgency { font-size: 13px; font-style: italic; color: var(--teal-mid); text-align: center; margin-top: 12px; line-height: 1.6; min-height: 0; }
+
+@media (min-width: 900px) {
+  .ess-section { padding: 36px var(--px) 56px; }
+  .ess-card { flex-direction: row; align-items: stretch; max-width: 1040px; margin: 0 auto; }
+  .ess-visual { width: 45%; aspect-ratio: auto; min-height: 480px; }
+  .ess-content { width: 55%; padding: 46px 50px; justify-content: center; }
+  .ess-price-n { font-size: 90px; }
+  .ess-price-cur { font-size: 40px; }
+}
+
 /* ────────────────────────
    6. TRUST
 ──────────────────────── */
@@ -4678,34 +4737,28 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
       <p class="spv-meaning-text" id="sp3-insight"></p>
     </div>
 
-    <!-- 3. HERO PRODUIT — Photo plein écran, prix géant -->
-    <div class="spv-product-hero">
-      <img class="spv-product-img" id="sp3-img-essentiel" alt="Kore">
-      <div class="spv-product-overlay"></div>
-      <div class="spv-product-content">
-        <div class="spv-product-left">
-          <span class="spv-product-tier">L'Essentiel</span>
-          <div class="spv-product-price">
-            <span class="spv-price-n">89</span><span class="spv-price-e">€</span><span class="spv-price-m">/mois</span>
-          </div>
-          <p class="spv-product-hook" id="sp3-hook-essentiel"></p>
+    <!-- 3. OFFRE L'ESSENTIEL — carte unifiée -->
+    <div class="ess-section">
+      <div class="ess-card pvr">
+        <div class="ess-visual">
+          <img id="sp3-img-essentiel" alt="Le protocole Kore L’Essentiel">
         </div>
-      </div>
-    </div>
-
-    <!-- 4. FEATURES — White, liste propre -->
-    <div class="spv-features">
-      <span class="spv-sect-label pvr">Inclus dans ton protocole</span>
-      <ul class="spv-feat-list" id="sp3-feat-list">
-        <li class="pvr" style="transition-delay:.05s">3 formules personnalisées pour ton profil, réévaluées chaque mois</li>
-        <li class="pvr" style="transition-delay:.13s">App Kore · suivi quotidien et ajustement continu</li>
-        <li class="pvr" style="transition-delay:.21s">Flacons verre ambré, sans plastique · Certifié GMP · Formulé en Europe</li>
-        <li class="pvr" style="transition-delay:.29s">Résiliable à tout moment sans justification</li>
-      </ul>
-      <div class="spv-feat-cta-zone pvr" style="transition-delay:.36s">
-        <button class="spv-feat-cta" onclick="selectPlan('essentiel')">Commencer pour 89€/mois →</button>
-        <p class="spv-feat-note">Résiliable · Livraison incluse · Sans engagement</p>
-        <p class="spv-urgency" id="sp3-urgency"></p>
+        <div class="ess-content">
+          <span class="ess-tier">L’Essentiel</span>
+          <div class="ess-price"><span class="ess-price-n">89</span><span class="ess-price-cur">€</span><span class="ess-price-mo">/mois</span></div>
+          <p class="ess-hook" id="sp3-hook-essentiel"></p>
+          <div class="ess-rule"></div>
+          <span class="ess-inc-label">Inclus dans ton protocole</span>
+          <ul class="ess-feats" id="sp3-feat-list">
+            <li>3 formules personnalisées pour ton profil, réévaluées chaque mois</li>
+            <li>App Kore · suivi quotidien et ajustement continu</li>
+            <li>Flacons verre ambré, sans plastique · Certifié GMP · Formulé en Europe</li>
+            <li>Résiliable à tout moment sans justification</li>
+          </ul>
+          <button class="ess-cta" onclick="selectPlan('essentiel')">Commencer pour 89€/mois →</button>
+          <p class="ess-note">Résiliable · Livraison incluse · Sans engagement</p>
+          <p class="ess-urgency" id="sp3-urgency"></p>
+        </div>
       </div>
     </div>
 
