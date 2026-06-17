@@ -4983,7 +4983,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     <p class="ds-scale-intro">Ces quelques affirmations nous aident à comprendre votre quotidien.</p>
     
 <div class="sq-item" data-q="0" style="animation-delay:0.00s">
-  <p class="sq-stmt">Je passe beaucoup de temps devant des écrans chaque jour.</p>
+  <p class="sq-stmt">Ma digestion est parfois inconfortable : ballonnements ou transit irrégulier.</p>
   <div class="sq-row">
     <span class="sq-lbl sq-lbl-yes">D'accord</span>
     <div class="sq-circles"><div class="sq-circ" data-q="0" data-val="7" onclick="pickScale2(0,7,this)"></div><div class="sq-circ" data-q="0" data-val="6" onclick="pickScale2(0,6,this)"></div><div class="sq-circ" data-q="0" data-val="5" onclick="pickScale2(0,5,this)"></div><div class="sq-circ" data-q="0" data-val="4" onclick="pickScale2(0,4,this)"></div><div class="sq-circ" data-q="0" data-val="3" onclick="pickScale2(0,3,this)"></div><div class="sq-circ" data-q="0" data-val="2" onclick="pickScale2(0,2,this)"></div><div class="sq-circ" data-q="0" data-val="1" onclick="pickScale2(0,1,this)"></div></div>
@@ -5007,7 +5007,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   </div>
 </div>
 <div class="sq-item" data-q="3" style="animation-delay:0.24s">
-  <p class="sq-stmt">J’ai déjà essayé des compléments sans ressentir de réelle différence.</p>
+  <p class="sq-stmt">Le stress ou la charge mentale pèsent souvent sur mes journées.</p>
   <div class="sq-row">
     <span class="sq-lbl sq-lbl-yes">D'accord</span>
     <div class="sq-circles"><div class="sq-circ" data-q="3" data-val="7" onclick="pickScale2(3,7,this)"></div><div class="sq-circ" data-q="3" data-val="6" onclick="pickScale2(3,6,this)"></div><div class="sq-circ" data-q="3" data-val="5" onclick="pickScale2(3,5,this)"></div><div class="sq-circ" data-q="3" data-val="4" onclick="pickScale2(3,4,this)"></div><div class="sq-circ" data-q="3" data-val="3" onclick="pickScale2(3,3,this)"></div><div class="sq-circ" data-q="3" data-val="2" onclick="pickScale2(3,2,this)"></div><div class="sq-circ" data-q="3" data-val="1" onclick="pickScale2(3,1,this)"></div></div>
@@ -5517,10 +5517,10 @@ function buildAnalysisPrompt(){
     'A8. "J\'ai des inconforts articulaires/osseux" = ' + s[7],
     '',
     'PARTIE B \u2014 Mode de vie et \u00e9tat d\'esprit :',
-    'B1. "Je veux prendre ma sant\u00e9 en main activement" = ' + s2[0],
+    'B1. "Ma digestion est parfois inconfortable (ballonnements, transit irr\u00e9gulier)" = ' + s2[0],
     'B2. "Mon alimentation couvre tous mes besoins" = ' + s2[1],
     'B3. "Je pratique une activit\u00e9 physique r\u00e9guli\u00e8re" = ' + s2[2],
-    'B4. "Je ressens du stress/charge mentale" = ' + s2[3],
+    'B4. "Le stress / la charge mentale pèsent sur mes journées" = ' + s2[3],
     'B5. "Je bois assez d\'eau" = ' + s2[4],
     'B6. "J\'accorde de l\'importance \u00e0 la qualit\u00e9 de ce que je consomme" = ' + s2[5],
     'B7. "Je connais les besoins de mon corps" = ' + s2[6],
@@ -5539,7 +5539,7 @@ function buildAnalysisPrompt(){
     '- "recuperation" (sommeil) : si A1 et A5 sont \u00c9LEV\u00c9S (sympt\u00f4mes forts), le score est BAS. Si bas, score HAUT.',
     '- "vitalite" (\u00e9nergie) : sympt\u00f4mes A2, A7 \u00e9lev\u00e9s => score bas. Tiens compte de B3, B5.',
     '- "clarte" (mental) : sympt\u00f4mes A4, A5, B4 \u00e9lev\u00e9s => score bas.',
-    '- "confort" (corps) : sympt\u00f4mes A3, A6, A8 \u00e9lev\u00e9s => score bas.',
+    '- "confort" (corps) : sympt\u00f4mes A3, A6, A8, B1 (digestion) \u00e9lev\u00e9s => score bas.',
     '',
     'Le "global_score" (0-100) = la MOYENNE SIMPLE des 4 scores d\'axes.',
     'Calcule : global_score = (recuperation + vitalite + clarte + confort) / 4, arrondi.',
@@ -5611,8 +5611,8 @@ function buildCoherentFallback(){
   // "potentiel d'amelioration" brut : score eleve = bcp de symptomes
   var pRecup = (norm(s[0])*0.6 + norm(s[4])*0.4);
   var pVital = (norm(s[1])*0.45 + norm(s[6])*0.3 + norm(s2[4])*0.25);
-  var pClarte = (norm(s[3])*0.5 + norm(s[4])*0.25 + norm(s2[5])*0.25);
-  var pConfort = (norm(s[2])*0.4 + norm(s[5])*0.3 + norm(s[7])*0.3);
+  var pClarte = (norm(s[3])*0.45 + norm(s[4])*0.25 + norm(s2[3])*0.30); // s2[3] = stress / charge mentale
+  var pConfort = (norm(s[2])*0.3 + norm(s[5])*0.2 + norm(s[7])*0.25 + norm(s2[0])*0.25); // s2[0] = digestion
 
   // SCORE = BIEN-ETRE (inverse) : haut = on va bien, bas = a ameliorer
   var recup = Math.round((1 - pRecup) * 88 + 8);
