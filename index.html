@@ -3417,6 +3417,22 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 .prc-feats li::before {
   content: '\2713'; color: var(--teal); font-weight: 700; font-size: 11px; flex-shrink: 0;
 }
+
+/* ── Offre empilée (value stack) ── */
+.prc-stack { margin: 2px 0 14px; border-top: 1px solid var(--border); padding-top: 14px; }
+.prc-stack-h { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+.prc-stack-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.prc-stack-row:last-child { border-bottom: none; padding-bottom: 0; }
+.prc-stack-l { display: flex; flex-direction: column; gap: 2px; }
+.prc-stack-name { font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.prc-stack-d { font-size: 11px; color: var(--ink-3); line-height: 1.35; }
+.prc-stack-v { font-size: 12.5px; font-weight: 700; color: var(--teal); white-space: nowrap; flex-shrink: 0; }
+.prc-stack-v s { color: var(--ink-3); font-weight: 400; font-size: 11.5px; opacity: .65; margin-right: 2px; }
+.prc-value { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; padding: 12px 14px; background: var(--teal-pale); border: 1px solid var(--teal-lt); border-radius: 14px; }
+.prc-value-tag { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--teal); white-space: nowrap; letter-spacing: -.01em; }
+.prc-value-txt { font-size: 11.5px; color: var(--ink-2); line-height: 1.4; }
+.prc-reassure { font-size: 11px; color: var(--ink-3); text-align: center; margin: 12px 0 0; line-height: 1.5; }
+
 .prc-btn {
   display: block; width: 100%; padding: 13px; border-radius: 40px; border: none;
   font-family: var(--sans); font-size: 14px; font-weight: 500;
@@ -4265,15 +4281,19 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
             <div class="prc-price">89<span class="prc-price-mo">€/mois</span></div>
           </div>
         </div>
-        <span class="prc-cat">Les compléments</span>
-        <p class="prc-desc">Le protocole sur-mesure. Ce dont ton corps a besoin, rien de plus, livré chaque mois.</p>
-        <ul class="prc-feats">
-          <li>3 flacons personnalisés pour ton profil exact, réévalués chaque mois</li>
-          <li>App Kore · suivi quotidien et ajustement continu</li>
-          <li>Certifié GMP · Formulé en Europe · Verre ambré</li>
-          <li>Résiliable · Premier mois satisfait ou remboursé</li>
-        </ul>
-        <button class="prc-btn prc-btn-solid" onclick="selectPlan('essentiel')">Commencer avec L’Essentiel →</button>
+        <span class="prc-cat">Ton point de départ</span>
+        <p class="prc-desc">Tout pour bien démarrer, offert. Ton protocole sur-mesure, livré chez toi chaque mois.</p>
+        <div class="prc-stack">
+          <p class="prc-stack-h">Inclus dans ta box, chaque mois</p>
+          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">3 compléments personnalisés · 30 jours</span><span class="prc-stack-d">Formulés pour ton profil exact</span></div><span class="prc-stack-v">Inclus</span></div>
+          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-d">L’objet rituel de ta routine</span></div><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
+          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">Diagnostic + protocole sur-mesure</span><span class="prc-stack-d">Ton bilan complet par l’IA Kore</span></div><span class="prc-stack-v"><s>29€</s>Offert</span></div>
+          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">App Kore · suivi &amp; ajustements</span><span class="prc-stack-d">Ta routine qui évolue avec toi</span></div><span class="prc-stack-v"><s>9€</s>Incluse</span></div>
+          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">Réévaluation de ton protocole à J+30</span><span class="prc-stack-d">On ajuste à ce qui a changé en toi</span></div><span class="prc-stack-v"><s>19€</s>Offerte</span></div>
+        </div>
+        <div class="prc-value"><span class="prc-value-tag">+81€ offerts</span><span class="prc-value-txt">Bouteille, diagnostic, app &amp; suivi — tout inclus dans ta box.</span></div>
+        <button class="prc-btn prc-btn-solid" onclick="selectPlan('essentiel')">Je démarre — bouteille offerte →</button>
+        <p class="prc-reassure">Bouteille offerte · 1ᵉʳ mois satisfait ou remboursé · Sans engagement</p>
       </div>
 
       <!-- L'Accompagné -->
