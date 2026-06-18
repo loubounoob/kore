@@ -94,6 +94,10 @@
   .spin { width: 32px; height: 32px; border: 2px solid var(--border); border-top-color: var(--teal); border-radius: 50%; animation: spin 1s linear infinite; }
   @keyframes spin { to{transform:rotate(360deg)} }
   .last-updated { font-size: 11px; color: var(--ink-3); text-align: right; margin-top: 12px; }
+  .gran-bar { display: flex; gap: 6px; }
+  .gran-btn { background: var(--white); border: 1.5px solid var(--border); color: var(--ink-2); padding: 6px 14px; border-radius: 40px; font-family: var(--sans); font-size: 12px; font-weight: 500; cursor: pointer; transition: all .15s; }
+  .gran-btn:hover { border-color: var(--teal-mid); }
+  .gran-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
   .empty-state { text-align: center; padding: 28px; font-size: 13px; color: var(--ink-3); font-style: italic; }
 </style>
 </head>
@@ -137,6 +141,8 @@ var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 var ADMIN_PIN = 'kore2025';
 var db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 var CURRENT_DAYS = 30;
+var GRANULARITY = 'day';
+var LAST_DATA = null;
 
 function checkPin() {
   var pin = document.getElementById('pinInput').value.trim();
@@ -162,6 +168,18 @@ function setPeriod(days, btn) {
   btn.classList.add('active');
   loadData();
 }
+
+function setGran(g) {
+  GRANULARITY = g;
+  document.querySelectorAll('.gran-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.gran-btn').forEach(function(b){
+    if ((g==='day' && b.textContent==='Par jour') || (g==='hour' && b.textContent==='Par heure')) b.classList.add('active');
+  });
+  if (LAST_DATA) {
+    var series = g === 'hour' ? (LAST_DATA.hourly||[]) : (LAST_DATA.daily||[]);
+    document.getElementById('chartArea').innerHTML = renderChart(series, g);
+  }
+}
 function fmt(n) { return (n || 0).toLocaleString('fr-FR'); }
 function pct(a, b) { if (!b || b === 0) return '0%'; return Math.round((a / b) * 100) + '%'; }
 function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -183,12 +201,14 @@ async function loadData() {
 }
 
 function renderDashboard(d) {
+  LAST_DATA = d;
   var v=d.visitors||0, ds=d.diag_starts||0, dc=d.diag_done||0, sv=d.sales_views||0;
   var sel=d.plan_selections||0, buy=d.real_purchases||0, leads=d.leads_count||0;
   var html = '';
 
   html += '<div class="kpi-grid">';
   html += kpiCard('Visiteurs', v, 'Arrivés sur le site', '');
+  html += kpiCard('Diag. démarrés', ds, pct(ds, v) + ' des visiteurs', '');
   html += kpiCard('Diag. complétés', dc, pct(dc, ds) + ' des démarrés', '');
   html += kpiCard('Pages de vente', sv, pct(sv, dc) + ' post-diagnostic', '');
   html += kpiCard('Passages paiement', sel, 'Redirigés vers Stripe', 'kpi-passage');
@@ -200,8 +220,19 @@ function renderDashboard(d) {
   html += '<strong style="color:var(--green)">Achats réels</strong> = paiements réellement aboutis (retour confirmé de Stripe).';
   html += '</div>';
 
-  html += '<div class="section"><div class="section-title">Évolution dans le temps</div>';
-  html += renderChart(d.daily || []);
+  html += '<div class="section">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:18px">';
+  html += '<div class="section-title" style="margin:0">Évolution dans le temps</div>';
+  html += '<div class="gran-bar">';
+  html += '<button class="gran-btn ' + (GRANULARITY==="day"?"active":"") + '" onclick="setGran(\'day\')">Par jour</button>';
+  html += '<button class="gran-btn ' + (GRANULARITY==="hour"?"active":"") + '" onclick="setGran(\'hour\')">Par heure</button>';
+  html += '</div></div>';
+  html += '<div id="chartArea">' + renderChart(GRANULARITY==="hour" ? (d.hourly||[]) : (d.daily||[]), GRANULARITY) + '</div>';
+  html += '</div>';
+
+  // Profil par heure de la journée
+  html += '<div class="section"><div class="section-title">Activité par heure de la journée <span class="hint">(quand tes visiteurs sont actifs, 0h-23h)</span></div>';
+  html += renderHourOfDay(d.by_hour_of_day || []);
   html += '</div>';
 
   html += '<div class="section"><div class="section-title">Entonnoir de conversion</div>';
@@ -284,20 +315,22 @@ function renderBars(obj, names, green, emptyMsg) {
   });
   return html + '</div>';
 }
-function renderChart(daily) {
-  if (!Array.isArray(daily) || daily.length === 0)
+function renderChart(series, gran) {
+  gran = gran || 'day';
+  if (!Array.isArray(series) || series.length === 0)
     return '<div class="empty-state">Pas encore de données pour tracer une courbe</div>';
-  var data = daily.slice(-30);
-  var W = 880, H = 220, padL = 36, padR = 12, padT = 14, padB = 28;
+  var data = series.slice(-(gran === 'hour' ? 48 : 30));
+  var keyX = gran === 'hour' ? 'h' : 'd';
+  var W = 880, H = 240, padL = 36, padR = 12, padT = 14, padB = 30;
   var iw = W - padL - padR, ih = H - padT - padB;
   var maxVal = 1;
-  data.forEach(function(p){ maxVal = Math.max(maxVal, p.visitors||0, p.diags||0, p.selections||0, p.purchases||0); });
+  data.forEach(function(p){ maxVal = Math.max(maxVal, p.visitors||0, p.diag_starts||0, p.diags||0, p.selections||0, p.purchases||0); });
   function x(i){ return padL + (data.length<=1 ? iw/2 : (i/(data.length-1))*iw); }
   function y(val){ return padT + ih - (val/maxVal)*ih; }
   function line(key, color){
     var pts = data.map(function(p,i){ return x(i)+','+y(p[key]||0); }).join(' ');
-    return '<polyline fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="'+pts+'"/>'
-      + data.map(function(p,i){ return '<circle cx="'+x(i)+'" cy="'+y(p[key]||0)+'" r="3" fill="'+color+'"/>'; }).join('');
+    return '<polyline fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" points="'+pts+'"/>'
+      + data.map(function(p,i){ return '<circle cx="'+x(i)+'" cy="'+y(p[key]||0)+'" r="2.5" fill="'+color+'"/>'; }).join('');
   }
   var grid = '';
   for (var g=0; g<=4; g++){
@@ -307,21 +340,51 @@ function renderChart(daily) {
     grid += '<text x="'+(padL-8)+'" y="'+(gy+4)+'" text-anchor="end" font-size="10" fill="#8A8A84">'+gv+'</text>';
   }
   var xlab = '';
-  var step = Math.max(1, Math.floor(data.length/6));
+  var step = Math.max(1, Math.floor(data.length/(gran==='hour'?8:6)));
   data.forEach(function(p,i){
     if (i % step === 0 || i === data.length-1) {
-      var dd = (p.d||'').slice(5);
-      xlab += '<text x="'+x(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="#8A8A84">'+dd+'</text>';
+      var raw = p[keyX] || '';
+      var dd = gran === 'hour' ? raw.slice(5) : raw.slice(5); // MM-DD HH:00 or MM-DD
+      xlab += '<text x="'+x(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="9.5" fill="#8A8A84">'+dd+'</text>';
     }
   });
   var legend = '<div class="chart-legend">'
-    + leg('#0C5449','Visiteurs') + leg('#187A6A','Diagnostics')
+    + leg('#0C5449','Visiteurs') + leg('#9A8C2E','Diag. démarrés') + leg('#187A6A','Diag. complétés')
     + leg('#D97706','Passages') + leg('#16A34A','Achats réels') + '</div>';
   var svg = '<div class="chart-wrap"><svg viewBox="0 0 '+W+' '+H+'" width="100%" preserveAspectRatio="xMidYMid meet">'
-    + grid + line('visitors','#0C5449') + line('diags','#187A6A')
+    + grid + line('visitors','#0C5449') + line('diag_starts','#9A8C2E') + line('diags','#187A6A')
     + line('selections','#D97706') + line('purchases','#16A34A') + xlab + '</svg></div>';
   return legend + svg;
 }
+
+function renderHourOfDay(rows) {
+  if (!Array.isArray(rows) || rows.length === 0)
+    return '<div class="empty-state">Pas encore de données horaires</div>';
+  // Build a full 0-23 map
+  var map = {};
+  rows.forEach(function(r){ map[r.hod] = r; });
+  var W = 880, H = 200, padL = 30, padR = 12, padT = 12, padB = 26;
+  var iw = W - padL - padR, ih = H - padT - padB;
+  var maxVal = 1;
+  for (var hh=0; hh<24; hh++){ var r = map[hh]||{}; maxVal = Math.max(maxVal, r.visitors||0); }
+  var barW = iw/24 * 0.62;
+  var bars = '', labels = '';
+  for (var h=0; h<24; h++){
+    var r = map[h] || {};
+    var val = r.visitors || 0;
+    var bx = padL + (h/24)*iw + (iw/24 - barW)/2;
+    var bh = (val/maxVal)*ih;
+    var by = padT + ih - bh;
+    var isPeak = val === maxVal && val > 0;
+    bars += '<rect x="'+bx+'" y="'+by+'" width="'+barW+'" height="'+bh+'" rx="2" fill="'+(isPeak?'#0C5449':'#BDE8E0')+'"><title>'+h+'h : '+val+' visiteurs, '+(r.diag_starts||0)+' diag. démarrés, '+(r.diags||0)+' complétés</title></rect>';
+    if (val>0) bars += '<text x="'+(bx+barW/2)+'" y="'+(by-4)+'" text-anchor="middle" font-size="9" fill="#4A4A46">'+val+'</text>';
+    if (h % 2 === 0) labels += '<text x="'+(padL+(h/24)*iw+(iw/24)/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="9.5" fill="#8A8A84">'+h+'h</text>';
+  }
+  return '<div class="chart-wrap"><svg viewBox="0 0 '+W+' '+H+'" width="100%" preserveAspectRatio="xMidYMid meet">'
+    + bars + labels + '</svg></div>'
+    + '<div style="font-size:11.5px;color:var(--ink-3);margin-top:8px">Survole une barre pour le détail (visiteurs, diagnostics démarrés et complétés). La barre la plus haute = ton heure de pointe.</div>';
+}
+
 function leg(color, label){
   return '<div class="leg"><div class="leg-dot" style="background:'+color+'"></div>'+label+'</div>';
 }
