@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kore · Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root {
+    --teal: #0C5449; --teal-mid: #187A6A; --teal-lt: #BDE8E0; --teal-pale: #EBF5F3;
+    --ink: #1C1C1A; --ink-2: #4A4A46; --ink-3: #8A8A84;
+    --bg: #F8F5F0; --white: #FFFFFF; --border: #E8E4DC;
+    --green: #16A34A; --red: #DC2626; --amber: #D97706;
+    --serif: 'Newsreader', Georgia, serif; --sans: 'Inter', system-ui, sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; }
+  .auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 40px 20px; }
+  .auth-logo { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--teal); margin-bottom: 8px; }
+  .auth-sub { font-size: 13px; color: var(--ink-3); margin-bottom: 40px; }
+  .auth-input { width: 280px; padding: 14px 18px; border: 1.5px solid var(--border); border-radius: 12px; font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--white); outline: none; text-align: center; letter-spacing: .12em; margin-bottom: 12px; display: block; transition: border-color .15s; }
+  .auth-input:focus { border-color: var(--teal); }
+  .auth-btn { width: 280px; padding: 14px; background: var(--teal); color: white; border: none; border-radius: 40px; font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer; transition: background .15s; }
+  .auth-btn:hover { background: var(--teal-mid); }
+  .auth-err { font-size: 13px; color: var(--red); margin-top: 10px; }
+  .dash { display: none; }
+  .dash.visible { display: block; }
+  .dash-header { background: var(--teal); color: white; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 20; flex-wrap: wrap; gap: 12px; }
+  .dash-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+  .dash-sub { font-size: 12px; opacity: .55; margin-top: 2px; }
+  .dash-actions { display: flex; gap: 10px; align-items: center; }
+  .btn-refresh { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); color: white; padding: 8px 18px; border-radius: 40px; font-family: var(--sans); font-size: 13px; cursor: pointer; transition: background .15s; }
+  .btn-refresh:hover { background: rgba(255,255,255,.25); }
+  .btn-logout { background: none; border: none; color: rgba(255,255,255,.5); font-family: var(--sans); font-size: 13px; cursor: pointer; }
+  .dash-body { max-width: 1160px; margin: 0 auto; padding: 28px 24px 60px; }
+  .period-bar { display: flex; gap: 8px; margin-bottom: 26px; flex-wrap: wrap; align-items: center; }
+  .period-label { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); margin-right: 6px; }
+  .period-btn { background: var(--white); border: 1.5px solid var(--border); color: var(--ink-2); padding: 8px 18px; border-radius: 40px; font-family: var(--sans); font-size: 13px; font-weight: 500; cursor: pointer; transition: all .15s; }
+  .period-btn:hover { border-color: var(--teal-mid); }
+  .period-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 16px; }
+  .kpi { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 18px 16px; position: relative; overflow: hidden; }
+  .kpi.kpi-primary { border-color: var(--teal); background: var(--teal); color: white; }
+  .kpi.kpi-purchase { border-color: var(--green); background: linear-gradient(135deg, #14532D, #16A34A); color: white; }
+  .kpi.kpi-passage { border-color: var(--amber); }
+  .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; display: block; }
+  .kpi.kpi-primary .kpi-label, .kpi.kpi-purchase .kpi-label { color: rgba(255,255,255,.6); }
+  .kpi.kpi-passage .kpi-label { color: var(--amber); }
+  .kpi-value { font-family: var(--serif); font-size: 38px; font-weight: 400; color: var(--ink); line-height: 1; letter-spacing: -.03em; }
+  .kpi.kpi-primary .kpi-value, .kpi.kpi-purchase .kpi-value { color: white; }
+  .kpi-sub { font-size: 12px; color: var(--ink-3); margin-top: 5px; }
+  .kpi.kpi-primary .kpi-sub, .kpi.kpi-purchase .kpi-sub { color: rgba(255,255,255,.55); }
+  .section { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px 20px; margin-bottom: 18px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 18px; }
+  .section-title .hint { font-weight: 500; letter-spacing: .02em; text-transform: none; color: var(--ink-3); font-size: 11px; }
+  .chart-wrap { width: 100%; }
+  .chart-legend { display: flex; gap: 18px; margin-bottom: 14px; flex-wrap: wrap; }
+  .leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 3px; }
+  .funnel-step { display: flex; align-items: center; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .funnel-step:last-child { border-bottom: none; }
+  .funnel-icon { width: 34px; height: 34px; border-radius: 50%; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .funnel-step.step-passage .funnel-icon { background: #FEF3C7; }
+  .funnel-step.step-purchase .funnel-icon { background: var(--green); }
+  .funnel-info { flex: 1; min-width: 130px; }
+  .funnel-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+  .funnel-count { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--teal); line-height: 1.1; }
+  .funnel-bar-wrap { flex: 2; }
+  .funnel-bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .funnel-bar-fill { height: 100%; background: var(--teal); border-radius: 3px; transition: width .8s cubic-bezier(.16,1,.3,1); }
+  .funnel-step.step-passage .funnel-bar-fill { background: var(--amber); }
+  .funnel-step.step-purchase .funnel-bar-fill { background: var(--green); }
+  .funnel-rate { font-size: 11.5px; color: var(--ink-3); margin-top: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+  @media(max-width:768px){ .grid-2 { grid-template-columns:1fr; } }
+  .bar-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .bar-item { display: flex; align-items: center; gap: 10px; }
+  .bar-label { font-size: 13px; color: var(--ink-2); min-width: 90px; }
+  .bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--teal); border-radius: 4px; transition: width .6s; }
+  .bar-fill.green { background: var(--green); }
+  .bar-val { font-size: 13px; font-weight: 600; color: var(--ink); min-width: 30px; text-align: right; }
+  .leads-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .leads-table th { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 8px 10px; border-bottom: 2px solid var(--border); }
+  .leads-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); color: var(--ink-2); }
+  .leads-table tr:last-child td { border-bottom: none; }
+  .leads-table tr:hover td { background: var(--teal-pale); }
+  .status-badge { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 40px; display: inline-block; }
+  .status-lead { background: #F1F5F9; color: var(--ink-3); }
+  .status-prospect { background: #FEF3C7; color: #92400E; }
+  .status-customer { background: #DCFCE7; color: var(--green); }
+  .loading { display: flex; align-items: center; justify-content: center; padding: 60px; }
+  .spin { width: 32px; height: 32px; border: 2px solid var(--border); border-top-color: var(--teal); border-radius: 50%; animation: spin 1s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+  .last-updated { font-size: 11px; color: var(--ink-3); text-align: right; margin-top: 12px; }
+  .empty-state { text-align: center; padding: 28px; font-size: 13px; color: var(--ink-3); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="auth-screen" id="authScreen">
+  <div class="auth-logo">Kore</div>
+  <p class="auth-sub">Dashboard Analytics · Accès privé</p>
+  <input class="auth-input" type="password" id="pinInput" placeholder="Code d'accès" maxlength="8">
+  <button class="auth-btn" onclick="checkPin()">Accéder</button>
+  <p class="auth-err" id="authErr" style="display:none">Code incorrect.</p>
+</div>
+
+<div class="dash" id="dashboard">
+  <div class="dash-header">
+    <div>
+      <div class="dash-logo">Kore · Analytics</div>
+      <div class="dash-sub" id="lastUpdated">Chargement...</div>
+    </div>
+    <div class="dash-actions">
+      <button class="btn-refresh" onclick="loadData()">Actualiser</button>
+      <button class="btn-logout" onclick="logout()">Déconnexion</button>
+    </div>
+  </div>
+  <div class="dash-body">
+    <div class="period-bar">
+      <span class="period-label">Période</span>
+      <button class="period-btn" data-days="1"  onclick="setPeriod(1, this)">Aujourd'hui</button>
+      <button class="period-btn" data-days="7"  onclick="setPeriod(7, this)">7 jours</button>
+      <button class="period-btn active" data-days="30" onclick="setPeriod(30, this)">30 jours</button>
+      <button class="period-btn" data-days="90" onclick="setPeriod(90, this)">90 jours</button>
+      <button class="period-btn" data-days="0"  onclick="setPeriod(0, this)">Tout</button>
+    </div>
+    <div id="dashContent"><div class="loading"><div class="spin"></div></div></div>
+  </div>
+</div>
+
+<script>
+var SUPABASE_URL  = 'https://hwtzyptxkbatcbnmcjbh.supabase.co';
+var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3dHp5cHR4a2JhdGNibm1jamJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNTU1ODgsImV4cCI6MjA5NjgzMTU4OH0.T-29GQ6PEDemDnyXI_XnRPigbOH-hBcRPI8KF-fqcJ8';
+var ADMIN_PIN = 'kore2025';
+var db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+var CURRENT_DAYS = 30;
+
+function checkPin() {
+  var pin = document.getElementById('pinInput').value.trim();
+  if (pin === ADMIN_PIN) {
+    document.getElementById('authScreen').style.display = 'none';
+    document.getElementById('dashboard').classList.add('visible');
+    loadData();
+  } else {
+    document.getElementById('authErr').style.display = 'block';
+    document.getElementById('pinInput').value = '';
+    document.getElementById('pinInput').focus();
+  }
+}
+document.getElementById('pinInput').addEventListener('keypress', function(e){ if (e.key === 'Enter') checkPin(); });
+function logout() {
+  document.getElementById('authScreen').style.display = 'flex';
+  document.getElementById('dashboard').classList.remove('visible');
+  document.getElementById('pinInput').value = '';
+}
+function setPeriod(days, btn) {
+  CURRENT_DAYS = days;
+  document.querySelectorAll('.period-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  loadData();
+}
+function fmt(n) { return (n || 0).toLocaleString('fr-FR'); }
+function pct(a, b) { if (!b || b === 0) return '0%'; return Math.round((a / b) * 100) + '%'; }
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+async function loadData() {
+  document.getElementById('dashContent').innerHTML = '<div class="loading"><div class="spin"></div></div>';
+  try {
+    var param = CURRENT_DAYS === 0 ? null : CURRENT_DAYS;
+    var res = await db.rpc('kore_analytics', { p_days: param });
+    if (res.error) throw new Error(res.error.message);
+    renderDashboard(res.data);
+    var lbl = CURRENT_DAYS === 0 ? "tout l'historique" : (CURRENT_DAYS === 1 ? "aujourd'hui" : CURRENT_DAYS + ' derniers jours');
+    document.getElementById('lastUpdated').textContent = 'Période : ' + lbl + ' · ' + new Date().toLocaleTimeString('fr-FR');
+  } catch(e) {
+    document.getElementById('dashContent').innerHTML =
+      '<div style="padding:40px;text-align:center;color:#DC2626">Erreur : ' + escHtml(e.message) +
+      '<br><br><span style="color:#8A8A84;font-size:13px">As-tu bien exécuté le SQL de mise à jour dans Supabase ?</span></div>';
+  }
+}
+
+function renderDashboard(d) {
+  var v=d.visitors||0, ds=d.diag_starts||0, dc=d.diag_done||0, sv=d.sales_views||0;
+  var sel=d.plan_selections||0, buy=d.real_purchases||0, leads=d.leads_count||0;
+  var html = '';
+
+  html += '<div class="kpi-grid">';
+  html += kpiCard('Visiteurs', v, 'Arrivés sur le site', '');
+  html += kpiCard('Diag. complétés', dc, pct(dc, ds) + ' des démarrés', '');
+  html += kpiCard('Pages de vente', sv, pct(sv, dc) + ' post-diagnostic', '');
+  html += kpiCard('Passages paiement', sel, 'Redirigés vers Stripe', 'kpi-passage');
+  html += kpiCard('Achats réels', buy, 'Paiements confirmés', 'kpi-purchase');
+  html += '</div>';
+
+  html += '<div style="font-size:12px;color:var(--ink-3);margin:-4px 2px 22px;line-height:1.5">';
+  html += '<strong style="color:var(--amber)">Passages paiement</strong> = clics vers Stripe/Apple Pay (pas forcément payés). ';
+  html += '<strong style="color:var(--green)">Achats réels</strong> = paiements réellement aboutis (retour confirmé de Stripe).';
+  html += '</div>';
+
+  html += '<div class="section"><div class="section-title">Évolution dans le temps</div>';
+  html += renderChart(d.daily || []);
+  html += '</div>';
+
+  html += '<div class="section"><div class="section-title">Entonnoir de conversion</div>';
+  var steps = [
+    { icon:'\uD83D\uDC41', name:'Visiteurs', count:v, base:v },
+    { icon:'\uD83D\uDD2C', name:'Diagnostic démarré', count:ds, base:v },
+    { icon:'\u2705', name:'Diagnostic complété', count:dc, base:ds },
+    { icon:'\uD83D\uDCC4', name:'Page de vente vue', count:sv, base:dc },
+    { icon:'\uD83D\uDCB3', name:'Passage paiement', count:sel, base:sv, cls:'step-passage' },
+    { icon:'\uD83C\uDF89', name:'Achat confirmé', count:buy, base:sel, cls:'step-purchase' }
+  ];
+  steps.forEach(function(s, i) {
+    var pctBar = v > 0 ? Math.round((s.count / v) * 100) : 0;
+    var convRate = i === 0 ? '100%' : pct(s.count, s.base);
+    html += '<div class="funnel-step ' + (s.cls || '') + '">';
+    html += '<div class="funnel-icon">' + s.icon + '</div>';
+    html += '<div class="funnel-info"><div class="funnel-name">' + s.name + '</div>';
+    html += '<div class="funnel-count">' + fmt(s.count) + '</div></div>';
+    html += '<div class="funnel-bar-wrap">';
+    html += '<div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:' + pctBar + '%"></div></div>';
+    html += '<div class="funnel-rate">' + convRate + (i > 0 ? " de l'étape précédente" : '') + '</div>';
+    html += '</div></div>';
+  });
+  html += '</div>';
+
+  html += '<div class="grid-2">';
+  html += '<div class="section"><div class="section-title">Appareils</div>';
+  html += renderBars(d.device_breakdown, { mobile:'\uD83D\uDCF1 Mobile', desktop:'\uD83D\uDCBB Desktop', inconnu:'\u2753 Inconnu' }, false, 'Pas encore de données');
+  html += '</div>';
+  html += '<div class="section"><div class="section-title">Plans · passages <span class="hint">(clics Stripe)</span></div>';
+  html += renderBars(d.plan_selected_breakdown, planNames(), false, 'Aucun passage paiement');
+  html += '</div></div>';
+
+  html += '<div class="section"><div class="section-title">Achats réels par plan <span class="hint">(paiements confirmés)</span></div>';
+  html += renderBars(d.purchase_breakdown, planNames(), true, 'Aucun achat confirmé pour cette période');
+  html += '</div>';
+
+  html += '<div class="section"><div class="section-title">Derniers leads (' + fmt(leads) + ' au total)</div>';
+  var recent = d.recent_leads || [];
+  if (!Array.isArray(recent) || recent.length === 0) {
+    html += '<div class="empty-state">Aucun lead pour cette période</div>';
+  } else {
+    html += '<div style="overflow-x:auto"><table class="leads-table">';
+    html += '<tr><th>Date</th><th>Email</th><th>Profil</th><th>Statut</th><th>Plan</th></tr>';
+    recent.forEach(function(l) {
+      html += '<tr>';
+      html += '<td style="white-space:nowrap">' + escHtml(l.date || '') + '</td>';
+      html += '<td>' + escHtml(l.email || 'anonyme') + '</td>';
+      html += '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + escHtml(l.profile || '') + '</td>';
+      html += '<td><span class="status-badge status-' + (l.status || 'lead') + '">' + escHtml(l.status || 'lead') + '</span></td>';
+      html += '<td>' + (l.plan ? '\u2713 ' + escHtml(l.plan) : '\u2014') + '</td>';
+      html += '</tr>';
+    });
+    html += '</table></div>';
+  }
+  html += '</div>';
+
+  html += '<div class="last-updated">Données temps réel · Supabase (RGPD \u2713)</div>';
+  document.getElementById('dashContent').innerHTML = html;
+}
+
+function planNames() {
+  return { essentiel:"L'Essentiel 89\u20AC", accompagne:"L'Accompagn\u00E9 139\u20AC", encadre:"L'Encadr\u00E9 199\u20AC" };
+}
+function kpiCard(label, value, sub, cls) {
+  return '<div class="kpi ' + (cls || '') + '"><span class="kpi-label">' + label + '</span>'
+    + '<div class="kpi-value">' + fmt(value) + '</div><div class="kpi-sub">' + sub + '</div></div>';
+}
+function renderBars(obj, names, green, emptyMsg) {
+  obj = obj || {};
+  var keys = Object.keys(obj);
+  if (keys.length === 0) return '<div class="empty-state">' + emptyMsg + '</div>';
+  var max = Math.max.apply(null, keys.map(function(k){ return Number(obj[k]); }));
+  var html = '<div class="bar-list">';
+  keys.forEach(function(k) {
+    var w = max > 0 ? Math.round((obj[k]/max)*100) : 0;
+    html += '<div class="bar-item"><div class="bar-label" style="min-width:130px">' + (names[k] || k) + '</div>';
+    html += '<div class="bar-track"><div class="bar-fill ' + (green?'green':'') + '" style="width:' + w + '%"></div></div>';
+    html += '<div class="bar-val">' + fmt(obj[k]) + '</div></div>';
+  });
+  return html + '</div>';
+}
+function renderChart(daily) {
+  if (!Array.isArray(daily) || daily.length === 0)
+    return '<div class="empty-state">Pas encore de données pour tracer une courbe</div>';
+  var data = daily.slice(-30);
+  var W = 880, H = 220, padL = 36, padR = 12, padT = 14, padB = 28;
+  var iw = W - padL - padR, ih = H - padT - padB;
+  var maxVal = 1;
+  data.forEach(function(p){ maxVal = Math.max(maxVal, p.visitors||0, p.diags||0, p.selections||0, p.purchases||0); });
+  function x(i){ return padL + (data.length<=1 ? iw/2 : (i/(data.length-1))*iw); }
+  function y(val){ return padT + ih - (val/maxVal)*ih; }
+  function line(key, color){
+    var pts = data.map(function(p,i){ return x(i)+','+y(p[key]||0); }).join(' ');
+    return '<polyline fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="'+pts+'"/>'
+      + data.map(function(p,i){ return '<circle cx="'+x(i)+'" cy="'+y(p[key]||0)+'" r="3" fill="'+color+'"/>'; }).join('');
+  }
+  var grid = '';
+  for (var g=0; g<=4; g++){
+    var gy = padT + (g/4)*ih;
+    var gv = Math.round(maxVal*(1-g/4));
+    grid += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#E8E4DC" stroke-width="1"/>';
+    grid += '<text x="'+(padL-8)+'" y="'+(gy+4)+'" text-anchor="end" font-size="10" fill="#8A8A84">'+gv+'</text>';
+  }
+  var xlab = '';
+  var step = Math.max(1, Math.floor(data.length/6));
+  data.forEach(function(p,i){
+    if (i % step === 0 || i === data.length-1) {
+      var dd = (p.d||'').slice(5);
+      xlab += '<text x="'+x(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="#8A8A84">'+dd+'</text>';
+    }
+  });
+  var legend = '<div class="chart-legend">'
+    + leg('#0C5449','Visiteurs') + leg('#187A6A','Diagnostics')
+    + leg('#D97706','Passages') + leg('#16A34A','Achats réels') + '</div>';
+  var svg = '<div class="chart-wrap"><svg viewBox="0 0 '+W+' '+H+'" width="100%" preserveAspectRatio="xMidYMid meet">'
+    + grid + line('visitors','#0C5449') + line('diags','#187A6A')
+    + line('selections','#D97706') + line('purchases','#16A34A') + xlab + '</svg></div>';
+  return legend + svg;
+}
+function leg(color, label){
+  return '<div class="leg"><div class="leg-dot" style="background:'+color+'"></div>'+label+'</div>';
+}
+</script>
+</body>
+</html>
