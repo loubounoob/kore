@@ -4730,7 +4730,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     </div>
     <div class="faq-item anim" data-d="4">
       <button class="faq-btn"><span class="faq-q">Et si ça ne me convient pas ?</span><span class="faq-ico">+</span></button>
-      <p class="faq-ans">Tu peux arrêter à tout moment, sans condition, sans justification. Par email à contact@kore.fr ou directement via le portail Stripe (lien dans ton email de confirmation). Réponse dans les 24h, résiliation effective immédiatement. On préfère mériter ta fidélité chaque mois plutôt que la contraindre.</p>
+      <p class="faq-ans">Tu peux arrêter à tout moment, sans condition, sans justification. Par email à contact@korecare.fr ou directement via le portail Stripe (lien dans ton email de confirmation). Réponse dans les 24h, résiliation effective immédiatement. On préfère mériter ta fidélité chaque mois plutôt que la contraindre.</p>
     </div>
     <div class="faq-item anim" data-d="5">
       <button class="faq-btn"><span class="faq-q">C'est quoi le diagnostic exactement ?</span><span class="faq-ico">+</span></button>
@@ -6040,13 +6040,13 @@ window.selectPlan = async function(key){
 /* ── SHARE / COPY ── */
 window.doShare = function(){
   var t = document.getElementById('rv-tagline');
-  var text = 'Mon profil Kore : "' + (t ? t.textContent : '') + '"\n\nD\u00e9couvrez le v\u00f4tre : kore.fr/diagnostic';
+  var text = 'Mon profil Kore : "' + (t ? t.textContent : '') + '"\n\nD\u00e9couvrez le v\u00f4tre : korecare.fr';
   if(navigator.share) navigator.share({title:'Mon profil Kore',text:text}).catch(function(){});
   else if(navigator.clipboard) navigator.clipboard.writeText(text).then(function(){ alert('Copi\u00e9 !'); });
 };
 window.doCopy = function(){
   var btn = document.getElementById('copy-btn');
-  if(navigator.clipboard) navigator.clipboard.writeText('https://kore.fr/diagnostic').then(function(){
+  if(navigator.clipboard) navigator.clipboard.writeText('https://korecare.fr').then(function(){
     if(btn){ btn.textContent='Copi\u00e9 \u2713'; setTimeout(function(){ btn.textContent='Copier le lien'; },2000); }
   });
 };
