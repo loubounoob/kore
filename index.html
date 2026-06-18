@@ -4232,6 +4232,112 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   </div>
 </section>
 
+<!-- PRODUCT moved up (after benefits) for conversion -->
+<!-- PRODUCT VISUAL PRICING -->
+
+<!-- ══ SIMPLIFIED PRICING (Point 5) ══ -->
+
+<!-- ══ DUAL-PATH PRICING (prc-*) ══ -->
+<section class="prc-section" id="product">
+  <div class="prc-header">
+    <span class="prc-ey">Trois façons d’être accompagné·e</span>
+    <h2 class="prc-title">Choisis ton<br><em>accompagnement.</em></h2>
+    <p class="prc-sub">Commence par un plan directement. Ou laisse le diagnostic choisir pour toi.</p>
+    <div class="prc-trust">
+      <span class="prc-trust-stars">★★★★★</span>
+      <span class="prc-trust-txt"><strong>4,8/5</strong> · acheteurs vérifiés</span>
+      <span class="prc-trust-quote">« Le protocole correspondait à ce que je vivais vraiment. » — Marc B.</span>
+    </div>
+  </div>
+
+  <div class="prc-grid">
+
+    <!-- ─ PLANS ─ -->
+    <div class="prc-plans">
+
+      <!-- L'Essentiel -->
+      <div class="prc-card prc-card-featured">
+        <img class="prc-card-img" src="img/price-essentiel.jpg" alt="La gamme Kore : box, flacon et sachet">
+        <div class="prc-badge">★ Point de départ recommandé</div>
+        <div class="prc-card-top">
+          <div>
+            <span class="prc-name">L’Essentiel</span>
+            <div class="prc-price">89<span class="prc-price-mo">€/mois</span></div>
+          </div>
+        </div>
+        <span class="prc-cat">Les compléments</span>
+        <p class="prc-desc">Le protocole sur-mesure. Ce dont ton corps a besoin, rien de plus, livré chaque mois.</p>
+        <ul class="prc-feats">
+          <li>3 flacons personnalisés pour ton profil exact, réévalués chaque mois</li>
+          <li>App Kore · suivi quotidien et ajustement continu</li>
+          <li>Certifié GMP · Formulé en Europe · Verre ambré</li>
+          <li>Résiliable · Premier mois satisfait ou remboursé</li>
+        </ul>
+        <button class="prc-btn prc-btn-solid" onclick="selectPlan('essentiel')">Commencer avec L’Essentiel →</button>
+      </div>
+
+      <!-- L'Accompagné -->
+      <div class="prc-card">
+        <img class="prc-card-img" src="img/price-accompagne.jpg" alt="La gamme Kore avec le kit de prélèvement à domicile">
+        <div class="prc-card-top">
+          <div>
+            <span class="prc-name">L’Accompagné</span>
+            <div class="prc-price">139<span class="prc-price-mo">€/mois</span></div>
+          </div>
+        </div>
+        <span class="prc-cat">+ Le suivi sanguin</span>
+        <p class="prc-desc">Ton protocole plus un bilan sanguin trimestriel. Ce que ton corps dit vraiment.</p>
+        <ul class="prc-feats">
+          <li>Tout de L’Essentiel, plus</li>
+          <li>Bilan sanguin à domicile tous les 3 mois</li>
+          <li>Protocole ajusté selon tes résultats biologiques</li>
+          <li>Rapport d’évolution mensuel personnalisé</li>
+        </ul>
+        <button class="prc-btn prc-btn-ghost" onclick="selectPlan('accompagne')">Commencer avec L’Accompagné →</button>
+      </div>
+
+      <!-- L'Encadré -->
+      <div class="prc-card">
+        <img class="prc-card-img" src="img/price-encadre.jpg" alt="La gamme Kore avec ton conseiller personnel dédié">
+        <div class="prc-card-top">
+          <div>
+            <span class="prc-name">L’Encadré</span>
+            <div class="prc-price">199<span class="prc-price-mo">€/mois</span></div>
+          </div>
+        </div>
+        <span class="prc-cat">+ L’accompagnement humain</span>
+        <p class="prc-desc">Un conseiller dédié, toujours le même. Un bilan mensuel. Une présence constante.</p>
+        <ul class="prc-feats">
+          <li>Tout de L’Accompagné, plus</li>
+          <li>Conseiller personnel dédié · toujours le même</li>
+          <li>Suivi mensuel · appel ou messagerie</li>
+          <li>Bilan sanguin mensuel à domicile</li>
+        </ul>
+        <button class="prc-btn prc-btn-ghost" onclick="selectPlan('encadre')">Commencer avec L’Encadré →</button>
+      </div>
+
+      <p class="prc-guarantee-note">Premier mois satisfait ou remboursé · Résiliable à tout moment · Sans justification</p>
+    </div>
+
+    <!-- ─ DIAGNOSTIC PANEL ─ -->
+    <div class="prc-diag-panel">
+      <span class="prc-diag-ey">Option 2 · Diagnostic gratuit</span>
+      <h3 class="prc-diag-q">Pas encore sûr de<br>ce qu’il te<br><em>faut vraiment ?</em></h3>
+      <p class="prc-diag-body">Le diagnostic analyse ton quotidien en 3 minutes. L’IA génère ton protocole exact et te recommande le plan adapté, et tu choisis ensuite, sans engagement.</p>
+      <div class="prc-diag-dots">
+        <span class="prc-dot">3 minutes</span>
+        <span class="prc-dot">Gratuit</span>
+        <span class="prc-dot">Sans CB</span>
+      </div>
+      <button class="prc-diag-cta" onclick="openDiag()">Analyser mes besoins nutritionnels →</button>
+      <p class="prc-diag-note">Découvre ton profil · Vois ton protocole personnalisé · Tu choisis après</p>
+    </div>
+
+  </div>
+</section>
+
+
+
 <!-- HOW IT WORKS, image cards with overlay -->
 <section class="sec alt" id="how">
   <span class="s-lbl anim">Comment ça fonctionne</span>
@@ -4478,108 +4584,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   </div>
 </section>
 
-<!-- PRODUCT VISUAL PRICING -->
 
-<!-- ══ SIMPLIFIED PRICING (Point 5) ══ -->
-
-<!-- ══ DUAL-PATH PRICING (prc-*) ══ -->
-<section class="prc-section" id="product">
-  <div class="prc-header">
-    <span class="prc-ey">Trois façons d’être accompagné·e</span>
-    <h2 class="prc-title">Choisis ton<br><em>accompagnement.</em></h2>
-    <p class="prc-sub">Commence par un plan directement. Ou laisse le diagnostic choisir pour toi.</p>
-    <div class="prc-trust">
-      <span class="prc-trust-stars">★★★★★</span>
-      <span class="prc-trust-txt"><strong>4,8/5</strong> · acheteurs vérifiés</span>
-      <span class="prc-trust-quote">« Le protocole correspondait à ce que je vivais vraiment. » — Marc B.</span>
-    </div>
-  </div>
-
-  <div class="prc-grid">
-
-    <!-- ─ PLANS ─ -->
-    <div class="prc-plans">
-
-      <!-- L'Essentiel -->
-      <div class="prc-card prc-card-featured">
-        <img class="prc-card-img" src="img/price-essentiel.jpg" alt="La gamme Kore : box, flacon et sachet">
-        <div class="prc-badge">★ Point de départ recommandé</div>
-        <div class="prc-card-top">
-          <div>
-            <span class="prc-name">L’Essentiel</span>
-            <div class="prc-price">89<span class="prc-price-mo">€/mois</span></div>
-          </div>
-        </div>
-        <span class="prc-cat">Les compléments</span>
-        <p class="prc-desc">Le protocole sur-mesure. Ce dont ton corps a besoin, rien de plus, livré chaque mois.</p>
-        <ul class="prc-feats">
-          <li>3 flacons personnalisés pour ton profil exact, réévalués chaque mois</li>
-          <li>App Kore · suivi quotidien et ajustement continu</li>
-          <li>Certifié GMP · Formulé en Europe · Verre ambré</li>
-          <li>Résiliable · Premier mois satisfait ou remboursé</li>
-        </ul>
-        <button class="prc-btn prc-btn-solid" onclick="selectPlan('essentiel')">Commencer avec L’Essentiel →</button>
-      </div>
-
-      <!-- L'Accompagné -->
-      <div class="prc-card">
-        <img class="prc-card-img" src="img/price-accompagne.jpg" alt="La gamme Kore avec le kit de prélèvement à domicile">
-        <div class="prc-card-top">
-          <div>
-            <span class="prc-name">L’Accompagné</span>
-            <div class="prc-price">139<span class="prc-price-mo">€/mois</span></div>
-          </div>
-        </div>
-        <span class="prc-cat">+ Le suivi sanguin</span>
-        <p class="prc-desc">Ton protocole plus un bilan sanguin trimestriel. Ce que ton corps dit vraiment.</p>
-        <ul class="prc-feats">
-          <li>Tout de L’Essentiel, plus</li>
-          <li>Bilan sanguin à domicile tous les 3 mois</li>
-          <li>Protocole ajusté selon tes résultats biologiques</li>
-          <li>Rapport d’évolution mensuel personnalisé</li>
-        </ul>
-        <button class="prc-btn prc-btn-ghost" onclick="selectPlan('accompagne')">Commencer avec L’Accompagné →</button>
-      </div>
-
-      <!-- L'Encadré -->
-      <div class="prc-card">
-        <img class="prc-card-img" src="img/price-encadre.jpg" alt="La gamme Kore avec ton conseiller personnel dédié">
-        <div class="prc-card-top">
-          <div>
-            <span class="prc-name">L’Encadré</span>
-            <div class="prc-price">199<span class="prc-price-mo">€/mois</span></div>
-          </div>
-        </div>
-        <span class="prc-cat">+ L’accompagnement humain</span>
-        <p class="prc-desc">Un conseiller dédié, toujours le même. Un bilan mensuel. Une présence constante.</p>
-        <ul class="prc-feats">
-          <li>Tout de L’Accompagné, plus</li>
-          <li>Conseiller personnel dédié · toujours le même</li>
-          <li>Suivi mensuel · appel ou messagerie</li>
-          <li>Bilan sanguin mensuel à domicile</li>
-        </ul>
-        <button class="prc-btn prc-btn-ghost" onclick="selectPlan('encadre')">Commencer avec L’Encadré →</button>
-      </div>
-
-      <p class="prc-guarantee-note">Premier mois satisfait ou remboursé · Résiliable à tout moment · Sans justification</p>
-    </div>
-
-    <!-- ─ DIAGNOSTIC PANEL ─ -->
-    <div class="prc-diag-panel">
-      <span class="prc-diag-ey">Option 2 · Diagnostic gratuit</span>
-      <h3 class="prc-diag-q">Pas encore sûr de<br>ce qu’il te<br><em>faut vraiment ?</em></h3>
-      <p class="prc-diag-body">Le diagnostic analyse ton quotidien en 3 minutes. L’IA génère ton protocole exact et te recommande le plan adapté, et tu choisis ensuite, sans engagement.</p>
-      <div class="prc-diag-dots">
-        <span class="prc-dot">3 minutes</span>
-        <span class="prc-dot">Gratuit</span>
-        <span class="prc-dot">Sans CB</span>
-      </div>
-      <button class="prc-diag-cta" onclick="openDiag()">Analyser mes besoins nutritionnels →</button>
-      <p class="prc-diag-note">Découvre ton profil · Vois ton protocole personnalisé · Tu choisis après</p>
-    </div>
-
-  </div>
-</section>
 
 
 
