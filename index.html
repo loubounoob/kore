@@ -4272,7 +4272,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     <div class="prc-plans">
 
       <!-- L'Essentiel -->
-      <div class="prc-card prc-card-featured">
+      <div class="prc-card prc-card-featured" onclick="selectPlan('essentiel')">
         <img class="prc-card-img" src="img/price-essentiel.jpg" alt="La gamme Kore : box, flacon et sachet">
         <div class="prc-badge">★ Point de départ recommandé</div>
         <div class="prc-card-top">
@@ -4282,22 +4282,20 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
         </div>
         <span class="prc-cat">Ton point de départ</span>
-        <p class="prc-desc">Tout pour bien démarrer, offert. Ton protocole sur-mesure, livré chez toi chaque mois.</p>
+        <p class="prc-desc">Ton protocole sur-mesure, livré chaque mois. Et tout pour bien démarrer, offert.</p>
         <div class="prc-stack">
-          <p class="prc-stack-h">Inclus dans ta box, chaque mois</p>
-          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">3 compléments personnalisés · 30 jours</span><span class="prc-stack-d">Formulés pour ton profil exact</span></div><span class="prc-stack-v">Inclus</span></div>
-          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-d">L’objet rituel de ta routine</span></div><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
-          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">Diagnostic + protocole sur-mesure</span><span class="prc-stack-d">Ton bilan complet par l’IA Kore</span></div><span class="prc-stack-v"><s>29€</s>Offert</span></div>
-          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">App Kore · suivi &amp; ajustements</span><span class="prc-stack-d">Ta routine qui évolue avec toi</span></div><span class="prc-stack-v"><s>9€</s>Incluse</span></div>
-          <div class="prc-stack-row"><div class="prc-stack-l"><span class="prc-stack-name">Réévaluation de ton protocole à J+30</span><span class="prc-stack-d">On ajuste à ce qui a changé en toi</span></div><span class="prc-stack-v"><s>19€</s>Offerte</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Diagnostic + protocole sur-mesure</span><span class="prc-stack-v"><s>29€</s>Offert</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">App Kore · suivi &amp; ajustements</span><span class="prc-stack-v"><s>9€</s>Incluse</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Réévaluation mensuelle du protocole</span><span class="prc-stack-v"><s>19€</s>Offerte</span></div>
         </div>
-        <div class="prc-value"><span class="prc-value-tag">+81€ offerts</span><span class="prc-value-txt">Bouteille, diagnostic, app &amp; suivi — tout inclus dans ta box.</span></div>
-        <button class="prc-btn prc-btn-solid" onclick="selectPlan('essentiel')">Je démarre — bouteille offerte →</button>
-        <p class="prc-reassure">Bouteille offerte · 1ᵉʳ mois satisfait ou remboursé · Sans engagement</p>
+        <div class="prc-value"><span class="prc-value-tag">+81€ offerts</span><span class="prc-value-txt">tout inclus dans ta box</span></div>
+        <button class="prc-btn prc-btn-solid">Recevoir ma première box →</button>
+        <p class="prc-reassure">Bouteille offerte · Satisfait ou remboursé · Sans engagement</p>
       </div>
 
       <!-- L'Accompagné -->
-      <div class="prc-card">
+      <div class="prc-card" onclick="selectPlan('accompagne')">
         <img class="prc-card-img" src="img/price-accompagne.jpg" alt="La gamme Kore avec le kit de prélèvement à domicile">
         <div class="prc-card-top">
           <div>
@@ -4306,18 +4304,19 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
         </div>
         <span class="prc-cat">+ Le suivi sanguin</span>
-        <p class="prc-desc">Ton protocole plus un bilan sanguin trimestriel. Ce que ton corps dit vraiment.</p>
-        <ul class="prc-feats">
-          <li>Tout de L’Essentiel, plus</li>
-          <li>Bilan sanguin à domicile tous les 3 mois</li>
-          <li>Protocole ajusté selon tes résultats biologiques</li>
-          <li>Rapport d’évolution mensuel personnalisé</li>
-        </ul>
-        <button class="prc-btn prc-btn-ghost" onclick="selectPlan('accompagne')">Commencer avec L’Accompagné →</button>
+        <p class="prc-desc">Tout L’Essentiel, plus la science : ton protocole guidé par tes analyses.</p>
+        <div class="prc-stack">
+          <div class="prc-stack-row"><span class="prc-stack-name">Tout de L’Essentiel</span><span class="prc-stack-v">Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin à domicile · tous les 3 mois</span><span class="prc-stack-v"><s>75€</s>Offert</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Protocole ajusté à ta biologie</span><span class="prc-stack-v">Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Rapport d’évolution mensuel</span><span class="prc-stack-v">Inclus</span></div>
+        </div>
+        <div class="prc-value"><span class="prc-value-tag">Bilan offert</span><span class="prc-value-txt">ta 1ʳᵉ prise de sang à domicile, incluse</span></div>
+        <button class="prc-btn prc-btn-ghost">Recevoir ma box + bilan →</button>
       </div>
 
       <!-- L'Encadré -->
-      <div class="prc-card">
+      <div class="prc-card" onclick="selectPlan('encadre')">
         <img class="prc-card-img" src="img/price-encadre.jpg" alt="La gamme Kore avec ton conseiller personnel dédié">
         <div class="prc-card-top">
           <div>
@@ -4326,14 +4325,15 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
         </div>
         <span class="prc-cat">+ L’accompagnement humain</span>
-        <p class="prc-desc">Un conseiller dédié, toujours le même. Un bilan mensuel. Une présence constante.</p>
-        <ul class="prc-feats">
-          <li>Tout de L’Accompagné, plus</li>
-          <li>Conseiller personnel dédié · toujours le même</li>
-          <li>Suivi mensuel · appel ou messagerie</li>
-          <li>Bilan sanguin mensuel à domicile</li>
-        </ul>
-        <button class="prc-btn prc-btn-ghost" onclick="selectPlan('encadre')">Commencer avec L’Encadré →</button>
+        <p class="prc-desc">Tout L’Accompagné, plus un conseiller dédié, toujours le même.</p>
+        <div class="prc-stack">
+          <div class="prc-stack-row"><span class="prc-stack-name">Tout de L’Accompagné</span><span class="prc-stack-v">Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Conseiller personnel dédié</span><span class="prc-stack-v">Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Suivi mensuel · appel ou messagerie</span><span class="prc-stack-v">Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin mensuel à domicile</span><span class="prc-stack-v">Inclus</span></div>
+        </div>
+        <div class="prc-value"><span class="prc-value-tag">1:1 dédié</span><span class="prc-value-txt">un expert Kore rien que pour toi</span></div>
+        <button class="prc-btn prc-btn-ghost">Être accompagné·e →</button>
       </div>
 
       <p class="prc-guarantee-note">Premier mois satisfait ou remboursé · Résiliable à tout moment · Sans justification</p>
