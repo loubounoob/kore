@@ -57,6 +57,11 @@
   .chart-wrap { width: 100%; }
   .chart-legend { display: flex; gap: 18px; margin-bottom: 14px; flex-wrap: wrap; }
   .leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); }
+  .chart-legend { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+  .leg-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); background: var(--white); border: 1.5px solid var(--border); padding: 5px 12px; border-radius: 40px; cursor: pointer; font-family: var(--sans); transition: all .12s; user-select: none; }
+  .leg-btn:hover { border-color: var(--teal-mid); }
+  .leg-reset { color: var(--teal); font-weight: 600; border-color: var(--teal-lt); background: var(--teal-pale); }
+  .leg-hint { font-size: 10.5px; color: var(--ink-3); font-style: italic; margin-left: 4px; }
   .leg-dot { width: 10px; height: 10px; border-radius: 3px; }
   .funnel-step { display: flex; align-items: center; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--border); }
   .funnel-step:last-child { border-bottom: none; }
@@ -141,8 +146,15 @@ var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 var ADMIN_PIN = 'kore2025';
 var db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 var CURRENT_DAYS = 30;
-var GRANULARITY = 'day';
+var GRANULARITY = 'hour';
 var LAST_DATA = null;
+var METRICS = [
+  { key:'visitors',    label:'Visiteurs',       color:'#0C5449', on:true },
+  { key:'diag_starts', label:'Diag. démarrés',  color:'#9A8C2E', on:true },
+  { key:'diags',       label:'Diag. complétés', color:'#187A6A', on:true },
+  { key:'selections',  label:'Passages',        color:'#D97706', on:true },
+  { key:'purchases',   label:'Achats réels',    color:'#16A34A', on:true }
+];
 
 function checkPin() {
   var pin = document.getElementById('pinInput').value.trim();
@@ -175,10 +187,7 @@ function setGran(g) {
   document.querySelectorAll('.gran-btn').forEach(function(b){
     if ((g==='day' && b.textContent==='Par jour') || (g==='hour' && b.textContent==='Par heure')) b.classList.add('active');
   });
-  if (LAST_DATA) {
-    var series = g === 'hour' ? (LAST_DATA.hourly||[]) : (LAST_DATA.daily||[]);
-    document.getElementById('chartArea').innerHTML = renderChart(series, g);
-  }
+  redrawChart();
 }
 function fmt(n) { return (n || 0).toLocaleString('fr-FR'); }
 function pct(a, b) { if (!b || b === 0) return '0%'; return Math.round((a / b) * 100) + '%'; }
@@ -316,21 +325,22 @@ function renderBars(obj, names, green, emptyMsg) {
   return html + '</div>';
 }
 function renderChart(series, gran) {
-  gran = gran || 'day';
+  gran = gran || 'hour';
   if (!Array.isArray(series) || series.length === 0)
-    return '<div class="empty-state">Pas encore de données pour tracer une courbe</div>';
-  var data = series.slice(-(gran === 'hour' ? 48 : 30));
+    return chartLegend() + '<div class="empty-state">Pas encore de données pour cette période</div>';
+  var data = series.slice(-(gran === 'hour' ? 72 : 30));
   var keyX = gran === 'hour' ? 'h' : 'd';
-  var W = 880, H = 240, padL = 36, padR = 12, padT = 14, padB = 30;
+  var W = 880, H = 250, padL = 38, padR = 14, padT = 16, padB = 30;
   var iw = W - padL - padR, ih = H - padT - padB;
+  var active = METRICS.filter(function(m){ return m.on; });
   var maxVal = 1;
-  data.forEach(function(p){ maxVal = Math.max(maxVal, p.visitors||0, p.diag_starts||0, p.diags||0, p.selections||0, p.purchases||0); });
+  data.forEach(function(p){ active.forEach(function(m){ maxVal = Math.max(maxVal, p[m.key]||0); }); });
   function x(i){ return padL + (data.length<=1 ? iw/2 : (i/(data.length-1))*iw); }
   function y(val){ return padT + ih - (val/maxVal)*ih; }
   function line(key, color){
     var pts = data.map(function(p,i){ return x(i)+','+y(p[key]||0); }).join(' ');
-    return '<polyline fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" points="'+pts+'"/>'
-      + data.map(function(p,i){ return '<circle cx="'+x(i)+'" cy="'+y(p[key]||0)+'" r="2.5" fill="'+color+'"/>'; }).join('');
+    var dots = data.length <= 90 ? data.map(function(p,i){ return '<circle cx="'+x(i)+'" cy="'+y(p[key]||0)+'" r="2.4" fill="'+color+'"/>'; }).join('') : '';
+    return '<polyline fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" points="'+pts+'"/>' + dots;
   }
   var grid = '';
   for (var g=0; g<=4; g++){
@@ -340,21 +350,55 @@ function renderChart(series, gran) {
     grid += '<text x="'+(padL-8)+'" y="'+(gy+4)+'" text-anchor="end" font-size="10" fill="#8A8A84">'+gv+'</text>';
   }
   var xlab = '';
-  var step = Math.max(1, Math.floor(data.length/(gran==='hour'?8:6)));
+  var step = Math.max(1, Math.floor(data.length/(gran==='hour'?9:6)));
   data.forEach(function(p,i){
     if (i % step === 0 || i === data.length-1) {
       var raw = p[keyX] || '';
-      var dd = gran === 'hour' ? raw.slice(5) : raw.slice(5); // MM-DD HH:00 or MM-DD
+      var dd = raw.slice(5);
       xlab += '<text x="'+x(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="9.5" fill="#8A8A84">'+dd+'</text>';
     }
   });
-  var legend = '<div class="chart-legend">'
-    + leg('#0C5449','Visiteurs') + leg('#9A8C2E','Diag. démarrés') + leg('#187A6A','Diag. complétés')
-    + leg('#D97706','Passages') + leg('#16A34A','Achats réels') + '</div>';
+  var lines = active.map(function(m){ return line(m.key, m.color); }).join('');
   var svg = '<div class="chart-wrap"><svg viewBox="0 0 '+W+' '+H+'" width="100%" preserveAspectRatio="xMidYMid meet">'
-    + grid + line('visitors','#0C5449') + line('diag_starts','#9A8C2E') + line('diags','#187A6A')
-    + line('selections','#D97706') + line('purchases','#16A34A') + xlab + '</svg></div>';
-  return legend + svg;
+    + grid + lines + xlab + '</svg></div>';
+  return chartLegend() + svg;
+}
+
+function chartLegend() {
+  var anyOff = METRICS.some(function(m){ return !m.on; });
+  var items = METRICS.map(function(m, i){
+    var dim = m.on ? '' : 'opacity:.32;';
+    return '<button class="leg-btn" style="'+dim+'" onclick="toggleMetric('+i+')" ondblclick="isolateMetric('+i+')" title="Clic : afficher/masquer · Double-clic : isoler">'
+      + '<span class="leg-dot" style="background:'+m.color+'"></span>'+m.label+'</button>';
+  }).join('');
+  var reset = anyOff ? '<button class="leg-btn leg-reset" onclick="resetMetrics()">Tout afficher</button>' : '';
+  return '<div class="chart-legend">' + items + reset
+    + '<span class="leg-hint">clic = afficher/masquer · double-clic = isoler</span></div>';
+}
+
+function redrawChart() {
+  if (!LAST_DATA) return;
+  var series = GRANULARITY === 'hour' ? (LAST_DATA.hourly||[]) : (LAST_DATA.daily||[]);
+  document.getElementById('chartArea').innerHTML = renderChart(series, GRANULARITY);
+}
+function toggleMetric(i) {
+  // single click toggles; defer slightly so dblclick can override
+  clearTimeout(window.__legTimer);
+  window.__legTimer = setTimeout(function(){
+    METRICS[i].on = !METRICS[i].on;
+    if (!METRICS.some(function(m){return m.on;})) METRICS[i].on = true; // never all-off
+    redrawChart();
+  }, 220);
+}
+function isolateMetric(i) {
+  clearTimeout(window.__legTimer);
+  var alreadyIsolated = METRICS[i].on && METRICS.every(function(m,j){ return j===i ? m.on : !m.on; });
+  METRICS.forEach(function(m,j){ m.on = alreadyIsolated ? true : (j===i); });
+  redrawChart();
+}
+function resetMetrics() {
+  METRICS.forEach(function(m){ m.on = true; });
+  redrawChart();
 }
 
 function renderHourOfDay(rows) {
