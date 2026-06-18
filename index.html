@@ -3432,6 +3432,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 .prc-value-tag { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--teal); white-space: nowrap; letter-spacing: -.01em; }
 .prc-value-txt { font-size: 11.5px; color: var(--ink-2); line-height: 1.4; }
 .prc-reassure { font-size: 11px; color: var(--ink-3); text-align: center; margin: 12px 0 0; line-height: 1.5; }
+.prc-total { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 2px 0 14px; padding: 12px 14px; background: var(--teal-pale); border-radius: 12px; }
+.prc-total-l { font-size: 12.5px; color: var(--ink-3); }
+.prc-total-r { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--teal); line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.prc-total-mo { font-size: 12.5px; color: var(--ink-3); letter-spacing: 0; }
 
 .prc-btn {
   display: block; width: 100%; padding: 13px; border-radius: 40px; border: none;
@@ -4183,7 +4187,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   <div class="hero-content">
     <div class="hero-badge h-a1"><span class="badge-pulse"></span>Ton profil. Ta formule.</div>
     <h1 class="hero-h1 h-a2">Tes compléments<br>méritent de te<br><em>connaître.</em></h1>
-    <p class="hero-p h-a3">Un diagnostic en 3 minutes. Un protocole construit pour tes déséquilibres. Une box qui évolue avec toi.</p>
+    <p class="hero-p h-a3">Une box mensuelle de compléments, formulée pour ton profil. Diagnostic en 3 minutes · sans engagement.</p>
     <div class="h-a4">
       <button class="hero-btn" onclick="openDiag()">Analyser mes besoins nutritionnels →</button>
       <a href="#how" class="hero-link">Comment ça marche ↓</a>
@@ -4282,16 +4286,18 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
         </div>
         <span class="prc-cat">Ton point de départ</span>
-        <p class="prc-desc">Ton protocole sur-mesure, livré chaque mois. Et tout pour bien démarrer, offert.</p>
+        <p class="prc-desc">Ta box mensuelle de compléments, formulée pour ton corps. Livrée chez toi chaque mois.</p>
         <div class="prc-stack">
+          <p class="prc-stack-h">Ce que contient ta box, chaque mois</p>
+          <div class="prc-stack-row"><span class="prc-stack-name">3 compléments personnalisés · 30 jours</span><span class="prc-stack-v"><s>119€</s>89€</span></div>
           <div class="prc-stack-row"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
           <div class="prc-stack-row"><span class="prc-stack-name">Diagnostic + protocole sur-mesure</span><span class="prc-stack-v"><s>29€</s>Offert</span></div>
           <div class="prc-stack-row"><span class="prc-stack-name">App Kore · suivi &amp; ajustements</span><span class="prc-stack-v"><s>9€</s>Incluse</span></div>
           <div class="prc-stack-row"><span class="prc-stack-name">Réévaluation mensuelle du protocole</span><span class="prc-stack-v"><s>19€</s>Offerte</span></div>
         </div>
-        <div class="prc-value"><span class="prc-value-tag">+81€ offerts</span><span class="prc-value-txt">tout inclus dans ta box</span></div>
+        <div class="prc-total"><span class="prc-total-l">Valeur <s>200€</s></span><span class="prc-total-r">89€<span class="prc-total-mo">/mois</span></span></div>
         <button class="prc-btn prc-btn-solid">Recevoir ma première box →</button>
-        <p class="prc-reassure">Bouteille offerte · Satisfait ou remboursé · Sans engagement</p>
+        <p class="prc-reassure">+81€ offerts · Satisfait ou remboursé · Sans engagement</p>
       </div>
 
       <!-- L'Accompagné -->
@@ -4304,14 +4310,16 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
         </div>
         <span class="prc-cat">+ Le suivi sanguin</span>
-        <p class="prc-desc">Tout L’Essentiel, plus la science : ton protocole guidé par tes analyses.</p>
+        <p class="prc-desc">La box L’Essentiel, plus le suivi sanguin pour guider ton protocole.</p>
         <div class="prc-stack">
-          <div class="prc-stack-row"><span class="prc-stack-name">Tout de L’Essentiel</span><span class="prc-stack-v">Inclus</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin à domicile · tous les 3 mois</span><span class="prc-stack-v"><s>75€</s>Offert</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Protocole ajusté à ta biologie</span><span class="prc-stack-v">Inclus</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Rapport d’évolution mensuel</span><span class="prc-stack-v">Inclus</span></div>
+          <p class="prc-stack-h">Ce que contient ta box, chaque mois</p>
+          <div class="prc-stack-row"><span class="prc-stack-name">Toute la box L’Essentiel</span><span class="prc-stack-v"><s>200€</s>Incluse</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin à domicile</span><span class="prc-stack-v"><s>80€</s>Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Analyse de tes marqueurs clés</span><span class="prc-stack-v"><s>40€</s>Incluse</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Protocole ajusté à ta biologie</span><span class="prc-stack-v"><s>40€</s>Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Rapport d’évolution mensuel</span><span class="prc-stack-v"><s>20€</s>Inclus</span></div>
         </div>
-        <div class="prc-value"><span class="prc-value-tag">Bilan offert</span><span class="prc-value-txt">ta 1ʳᵉ prise de sang à domicile, incluse</span></div>
+        <div class="prc-total"><span class="prc-total-l">Valeur <s>380€</s></span><span class="prc-total-r">139€<span class="prc-total-mo">/mois</span></span></div>
         <button class="prc-btn prc-btn-ghost">Recevoir ma box + bilan →</button>
       </div>
 
@@ -4325,14 +4333,15 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           </div>
         </div>
         <span class="prc-cat">+ L’accompagnement humain</span>
-        <p class="prc-desc">Tout L’Accompagné, plus un conseiller dédié, toujours le même.</p>
+        <p class="prc-desc">La box L’Accompagné, plus un conseiller dédié, toujours le même.</p>
         <div class="prc-stack">
-          <div class="prc-stack-row"><span class="prc-stack-name">Tout de L’Accompagné</span><span class="prc-stack-v">Inclus</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Conseiller personnel dédié</span><span class="prc-stack-v">Inclus</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Suivi mensuel · appel ou messagerie</span><span class="prc-stack-v">Inclus</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin mensuel à domicile</span><span class="prc-stack-v">Inclus</span></div>
+          <p class="prc-stack-h">Ce que contient ta box, chaque mois</p>
+          <div class="prc-stack-row"><span class="prc-stack-name">Toute la box L’Accompagné</span><span class="prc-stack-v"><s>380€</s>Incluse</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Conseiller Kore dédié · 1:1</span><span class="prc-stack-v"><s>90€</s>Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Suivi mensuel · appel ou messagerie</span><span class="prc-stack-v"><s>50€</s>Inclus</span></div>
+          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin mensuel à domicile</span><span class="prc-stack-v"><s>80€</s>Inclus</span></div>
         </div>
-        <div class="prc-value"><span class="prc-value-tag">1:1 dédié</span><span class="prc-value-txt">un expert Kore rien que pour toi</span></div>
+        <div class="prc-total"><span class="prc-total-l">Valeur <s>600€</s></span><span class="prc-total-r">199€<span class="prc-total-mo">/mois</span></span></div>
         <button class="prc-btn prc-btn-ghost">Être accompagné·e →</button>
       </div>
 
