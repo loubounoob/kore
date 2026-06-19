@@ -5224,9 +5224,9 @@ document.addEventListener('DOMContentLoaded', function() {
 var SUPABASE_URL  = 'https://hwtzyptxkbatcbnmcjbh.supabase.co';
 var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3dHp5cHR4a2JhdGNibm1jamJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNTU1ODgsImV4cCI6MjA5NjgzMTU4OH0.T-29GQ6PEDemDnyXI_XnRPigbOH-hBcRPI8KF-fqcJ8';
 var PAYMENT_LINKS = {
-  essentiel:  'https://buy.stripe.com/dRm8wO4XY5761M2dAF9MY00',
-  accompagne: 'https://buy.stripe.com/00w3cu7665762Q6eEJ9MY01',
-  encadre:    'https://buy.stripe.com/00w14m7667fecqGdAF9MY02'
+  essentiel:  'https://q3knru-rj.myshopify.com/cart/53161758261584:1?selling_plan=690023596368',
+  accompagne: 'https://q3knru-rj.myshopify.com/cart/53161758425424:1?selling_plan=690023596368',
+  encadre:    'https://q3knru-rj.myshopify.com/cart/53161758589264:1?selling_plan=690023596368'
 };
 
 /* ── UTILITY FUNCTIONS ── */
@@ -6033,7 +6033,7 @@ window.selectPlan = async function(key){
   try { localStorage.setItem('kore_pending_value', price); } catch(e) {}
   if(window.fbq){ fbq('track', 'InitiateCheckout', {value: price, currency: 'EUR', content_name: key}); }
   var url = PAYMENT_LINKS[key]; if(!url) return;
-  if(LEAD.email) url += '?prefilled_email=' + encodeURIComponent(LEAD.email);
+  // checkout Shopify : pas de prefill email ici (l'URL contient déjà selling_plan)
   window.location.href = url;
 };
 
