@@ -3098,6 +3098,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 .ess-price-n { font-family: var(--serif); font-size: 64px; font-weight: 400; color: var(--ink); letter-spacing: -.045em; }
 .ess-price-cur { font-family: var(--serif); font-size: 28px; color: var(--ink); margin-left: 3px; align-self: flex-start; margin-top: 7px; }
 .ess-price-mo { font-size: 14px; color: var(--ink-3); margin-left: 7px; align-self: flex-end; margin-bottom: 9px; letter-spacing: .01em; }
+.ess-perportion { font-size: 13px; color: var(--ink-3); margin-top: 4px; letter-spacing: .02em; opacity: .85; }
 .ess-hook { font-size: 14.5px; font-style: italic; color: var(--ink-2); line-height: 1.55; margin-top: 12px; max-width: 460px; min-height: 1em; }
 .ess-rule { height: 1px; background: var(--border); margin: 18px 0 14px; }
 .ess-inc-label {
@@ -4187,8 +4188,8 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   <div class="hero-gradient"></div>
   <div class="hero-content">
     <div class="hero-badge h-a1"><span class="badge-pulse"></span>Une formule. La tienne.</div>
-    <h1 class="hero-h1 h-a2">Mieux dormir. Plus d’énergie.<br>L’esprit clair, <em>le corps libre.</em></h1>
-    <p class="hero-p h-a3">Une formule unique d’actifs rares, dosée pour toi seul·e. Diagnostic en 3 min · sans engagement.</p>
+    <h1 class="hero-h1 h-a2">Ton équilibre,<br><em>au quotidien.</em></h1>
+    <p class="hero-p h-a3">— pour ton sommeil, ton énergie, ta concentration et tes articulations. Une formule unique, dosée pour toi seul·e.</p>
     <div class="h-a4">
       <button class="hero-btn" onclick="openDiag()">Analyser mes besoins nutritionnels →</button>
       <a href="#how" class="hero-link">Comment ça marche ↓</a>
@@ -4830,13 +4831,16 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
           <span class="ess-badge">★ Recommandé pour toi</span>
           <span class="ess-tier">L’Essentiel</span>
           <div class="ess-price"><span class="ess-price-n">89</span><span class="ess-price-cur">€</span><span class="ess-price-mo">/mois</span></div>
+          <div class="ess-perportion">Soit 2,97 € / portion</div>
           <p class="ess-hook" id="sp3-hook-essentiel"></p>
           <div class="ess-rule"></div>
           <span class="ess-inc-label">Inclus dans ta formule</span>
           <ul class="ess-feats" id="sp3-feat-list">
             <li>3 formules personnalisées pour ton profil, réévaluées chaque mois</li>
-            <li>Flacons verre ambré, sans plastique · Certifié GMP · Formulé en Europe</li>
-            <li>Résiliable à tout moment sans justification</li>
+            <li>Ta bouteille Kore en verre ambré — <s>24€</s> offerte</li>
+            <li>Diagnostic + formule sur-mesure — <s>29€</s> offert</li>
+            <li>App Kore · suivi &amp; ajustements — <s>9€</s> incluse</li>
+            <li>Réévaluation mensuelle de la formule — <s>19€</s> offerte</li>
           </ul>
           <button class="ess-cta" onclick="selectPlan('essentiel')">Commencer pour 89€/mois →</button>
           <p class="ess-note">Résiliable · Livraison incluse · Sans engagement</p>
@@ -5976,8 +5980,10 @@ function buildPersonalizedFeatures(){
   // Liste finale : 2 benefices personnalises + 2 lignes fixes
   var items = [];
   personalized.forEach(function(l){ items.push(l); });
-  items.push('Flacons verre ambré, sans plastique · Certifié GMP · Formulé en Europe');
-  items.push('Résiliable à tout moment sans justification');
+  items.push('Ta bouteille Kore en verre ambré — <s>24€</s> offerte');
+  items.push('Diagnostic + formule sur-mesure — <s>29€</s> offert');
+  items.push('App Kore · suivi &amp; ajustements — <s>9€</s> incluse');
+  items.push('Réévaluation mensuelle de la formule — <s>19€</s> offerte');
 
   var listEl = document.getElementById('sp3-feat-list');
   if(listEl){
