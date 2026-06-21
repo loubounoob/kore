@@ -5024,7 +5024,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   </div>
 </div>
 <div class="sq-item" data-q="5" style="animation-delay:0.40s">
-  <p class="sq-stmt">Je suis peu exposé·e au soleil une grande partie de l’année.</p>
+  <p class="sq-stmt">J’ai du mal à m’endormir le soir.</p>
   <div class="sq-row">
     <span class="sq-lbl sq-lbl-yes">D'accord</span>
     <div class="sq-circles"><div class="sq-circ" data-q="5" data-val="7" onclick="pickScale(5,7,this)"></div><div class="sq-circ" data-q="5" data-val="6" onclick="pickScale(5,6,this)"></div><div class="sq-circ" data-q="5" data-val="5" onclick="pickScale(5,5,this)"></div><div class="sq-circ" data-q="5" data-val="4" onclick="pickScale(5,4,this)"></div><div class="sq-circ" data-q="5" data-val="3" onclick="pickScale(5,3,this)"></div><div class="sq-circ" data-q="5" data-val="2" onclick="pickScale(5,2,this)"></div><div class="sq-circ" data-q="5" data-val="1" onclick="pickScale(5,1,this)"></div></div>
@@ -5032,7 +5032,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   </div>
 </div>
 <div class="sq-item" data-q="6" style="animation-delay:0.48s">
-  <p class="sq-stmt">Mon alimentation manque parfois de poissons gras, légumes ou produits laitiers.</p>
+  <p class="sq-stmt">Je me réveille la nuit et peine à me rendormir.</p>
   <div class="sq-row">
     <span class="sq-lbl sq-lbl-yes">D'accord</span>
     <div class="sq-circles"><div class="sq-circ" data-q="6" data-val="7" onclick="pickScale(6,7,this)"></div><div class="sq-circ" data-q="6" data-val="6" onclick="pickScale(6,6,this)"></div><div class="sq-circ" data-q="6" data-val="5" onclick="pickScale(6,5,this)"></div><div class="sq-circ" data-q="6" data-val="4" onclick="pickScale(6,4,this)"></div><div class="sq-circ" data-q="6" data-val="3" onclick="pickScale(6,3,this)"></div><div class="sq-circ" data-q="6" data-val="2" onclick="pickScale(6,2,this)"></div><div class="sq-circ" data-q="6" data-val="1" onclick="pickScale(6,1,this)"></div></div>
@@ -5126,7 +5126,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
     <div class="rv-axes-intro">
       <div class="rv-axes-intro-title">Vos quatre axes</div>
-      <p class="rv-axes-intro-sub">Voici où vous en êtes aujourd’hui. Les axes les plus bas sont ceux où Kore agira en priorité.</p>
+      <p class="rv-axes-intro-sub">Le sommeil est notre point de départ. Les autres axes suivent, selon vos réponses.</p>
     </div>
 
     <!-- 4 axes with gauges -->
@@ -5515,8 +5515,8 @@ function buildAnalysisPrompt(){
     'A3. "Je ressens des tensions musculaires/crampes" = ' + s[2],
     'A4. "Ma concentration n\'est plus aussi vive" = ' + s[3],
     'A5. "Je suis irritable/anxieux sans raison" = ' + s[4],
-    'A6. "Je suis peu expos\u00e9 au soleil" = ' + s[5],
-    'A7. "Mon alimentation manque de poissons gras/l\u00e9gumes/laitiers" = ' + s[6],
+    'A6. "J’ai du mal à m’endormir le soir" = ' + s[5],
+    'A7. "Je me réveille la nuit et peine à me rendormir" = ' + s[6],
     'A8. "J\'ai des inconforts articulaires/osseux" = ' + s[7],
     '',
     'PARTIE B \u2014 Mode de vie et \u00e9tat d\'esprit :',
@@ -5612,10 +5612,10 @@ function buildCoherentFallback(){
   function norm(v){ return (v - 1) / 6; } // 0..1
 
   // "potentiel d'amelioration" brut : score eleve = bcp de symptomes
-  var pRecup = (norm(s[0])*0.6 + norm(s[4])*0.4);
-  var pVital = (norm(s[1])*0.45 + norm(s[6])*0.3 + norm(s2[4])*0.25);
+  var pRecup = (norm(s[0])*0.3 + norm(s[4])*0.2 + norm(s[5])*0.25 + norm(s[6])*0.25); // q0 réveil, q4 anxiété, q5 endormissement, q6 réveils nocturnes
+  var pVital = (norm(s[1])*0.7 + norm(s2[4])*0.3);
   var pClarte = (norm(s[3])*0.45 + norm(s[4])*0.25 + norm(s2[3])*0.30); // s2[3] = stress / charge mentale
-  var pConfort = (norm(s[2])*0.3 + norm(s[5])*0.2 + norm(s[7])*0.25 + norm(s2[0])*0.25); // s2[0] = digestion
+  var pConfort = (norm(s[2])*0.55 + norm(s[7])*0.45); // q2 tensions, q7 articulations
 
   // SCORE = BIEN-ETRE (inverse) : haut = on va bien, bas = a ameliorer
   var recup = Math.round((1 - pRecup) * 88 + 8);
@@ -5675,6 +5675,7 @@ function buildCoherentFallback(){
   ];
   // tri par score CROISSANT : les axes les plus bas (a ameliorer) en premier
   axesArr.sort(function(a,b){ return a.score - b.score; });
+  axesArr = axesArr.filter(function(a){return a.key==='recuperation';}).concat(axesArr.filter(function(a){return a.key!=='recuperation';}));
   var cards = axesArr.slice(0,3).map(function(a){
     return {tag:a.tag, molecule:a.molecule, icon_key:a.icon, text:a.text, link:a.link};
   });
@@ -5684,7 +5685,7 @@ function buildCoherentFallback(){
 
   return {
     tagline: 'Attentif·ve, à l’écoute de soi.',
-    headline: 'Un équilibre à construire, axe par axe.',
+    headline: 'On commence par le sommeil.',
     global_score: global, pct: 24, focus: focus,
     axes: {
       recuperation: {score: recup, insight: insightFor('recuperation', recup, s[0]+s[4])},
@@ -5751,7 +5752,7 @@ function enforceCoherence(a){
   if(!Array.isArray(a.focus) || a.focus.length === 0) a.focus = ['Énergie','Sommeil','Équilibre'];
   if(!Array.isArray(a.cards) || a.cards.length === 0){ a.cards = buildCoherentFallback().cards; }
   if(!a.tagline) a.tagline = 'Attentif·ve, à l’écoute de soi.';
-  if(!a.headline) a.headline = 'Un équilibre à construire, axe par axe.';
+  if(!a.headline) a.headline = 'On commence par le sommeil.';
   if(!a.did_you_know) a.did_you_know = 'Ton corps renouvelle des millions de cellules chaque jour.';
   return a;
 }
@@ -5809,8 +5810,8 @@ function renderLearn(data){
 
 /* Affiche les résultats à partir de l'analyse déjà calculée (pas de nouvel appel) */
 function showResultsFromAnalysis(){
-  // Email capture first, then results
-  showDiagScreen('ds-email');
+  // Mail demandé plus tard → résultats directs (zéro friction)
+  runDiag();
 }
 
 /* Email capture */
