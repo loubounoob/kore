@@ -504,5 +504,56 @@ function goCheckout(){
 
 loadSDK(initShop);
 </script>
+
+<!-- PERSONNALISATION PAR PERSONA (?p=) -->
+<script>
+(function(){
+  var P = {
+    "parent": {
+      h1: 'Te rendormir vite,<br><em>te réveiller humaine.</em>',
+      lead: 'Tu te relèves la nuit, tu dors en miettes, et le matin tu es déjà à cran. La Kore box t\'aide à te rendormir vite — et à ce que le peu que tu dors te répare enfin.',
+      tag: 'Pensée pour les nuits hachées des parents.',
+      revs: [
+        {t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je me rendors direct — et le matin je suis humaine.</strong>', i:'EL', n:'Élodie, 38 ans', m:'Maman de 2 · depuis 3 mois'},
+        {t:'<strong>J\'ai arrêté de hurler pour un verre renversé.</strong> Ça paraît bête, mais c\'est ça qui a tout changé.', i:'So', n:'Sophie, 35 ans', m:'Maman de 2 · depuis 4 mois'},
+        {t:'Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J\'avais oublié ce que c\'était.', i:'CA', n:'Carla, 41 ans', m:'Maman de 3 · depuis 5 mois'}
+      ]
+    },
+    "reveil-3h": {
+      h1: 'Passer la nuit<br><em>sans le réveil de 3h.</em>',
+      lead: 'Tu t\'endors bien, mais à 3h tu es là, les yeux ouverts, à attendre un sommeil qui ne revient pas. La Kore box calme le cortisol qui te réveille — pour une nuit d\'une seule traite.',
+      tag: 'Pensée pour ceux qui se réveillent en pleine nuit.',
+      revs: [
+        {t:'Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu\'à mon réveil.</strong>', i:'NA', n:'Nathalie, 49 ans', m:'Bordeaux · depuis 4 mois'},
+        {t:'Avant, réveillé = fini, je me levais. <strong>Maintenant je me rendors en quelques minutes.</strong>', i:'PH', n:'Philippe, 52 ans', m:'Toulouse · depuis 3 mois'},
+        {t:'Je ne ressentais rien de spécial, juste impossible de me rendormir. <strong>Ça, c\'est réglé.</strong>', i:'KA', n:'Karine, 44 ans', m:'Lille · depuis 5 mois'}
+      ]
+    },
+    "travail": {
+      h1: 'Éteindre ton cerveau,<br><em>récupérer pour de vrai.</em>',
+      lead: 'Le corps mort le soir, mais la tête qui refait la réunion de demain. La Kore box calme le système nerveux pour que tu décroches — et que tes nuits te réparent vraiment.',
+      tag: 'Pensée pour les cerveaux qui ne s\'éteignent jamais.',
+      revs: [
+        {t:'Je me couchais en repensant à mes mails. <strong>Maintenant je m\'endors vraiment, et je récupère.</strong>', i:'TH', n:'Thomas, 34 ans', m:'Cadre · depuis 3 mois'},
+        {t:'<strong>Le crash de l\'après-midi a disparu.</strong> Je suis plus net en réunion qu\'avant.', i:'JU', n:'Julien, 39 ans', m:'Manager · depuis 4 mois'},
+        {t:'Je pensais devoir dormir moins pour tenir. <strong>En fait il fallait mieux dormir.</strong>', i:'AN', n:'Anaïs, 31 ans', m:'Consultante · depuis 3 mois'}
+      ]
+    }
+  };
+  var key = new URLSearchParams(location.search).get('p');
+  var d = P[key];
+  if(!d) return;
+  var h1 = document.querySelector('.p-title'); if(h1) h1.innerHTML = d.h1;
+  var lead = document.querySelector('.p-lead'); if(lead) lead.innerHTML = d.lead;
+  var stars = document.querySelector('.p-stars');
+  if(stars && d.tag){ var t=document.createElement('div'); t.style.cssText='font-size:12.5px;color:var(--teal);font-weight:500;margin:-6px 0 16px'; t.textContent=d.tag; stars.insertAdjacentElement('afterend', t); }
+  var revEls = document.querySelectorAll('.rev');
+  d.revs.forEach(function(r, idx){
+    if(revEls[idx]){
+      revEls[idx].innerHTML = '<span class="stars">★★★★★</span><p>'+r.t+'</p><div class="rev-who"><div class="rev-av">'+r.i+'</div><div><div class="rev-nm">'+r.n+'</div><div class="rev-mt">'+r.m+'</div></div></div>';
+    }
+  });
+})();
+</script>
 </body>
 </html>
