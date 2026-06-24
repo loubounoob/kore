@@ -70,7 +70,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .hero-trust{margin-top:22px;font-size:13px;color:var(--brume);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .hero-trust .stars{color:var(--or);letter-spacing:1px}
 .hero-img{background:var(--surface)}
-.hero-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.hero-img img,.hero-img video{width:100%;height:100%;object-fit:cover;min-height:340px;display:block}
+@media(max-width:899px){.hero{min-height:auto}.hero-img{order:-1}.hero-img img,.hero-img video{min-height:auto;height:34vh}.hero-text{padding:18px var(--px) 30px}.hero .eyebrow{margin-bottom:11px}.hero h1{font-size:clamp(29px,8vw,44px);margin-bottom:12px}.hero .lead{margin-bottom:16px;font-size:14.5px;line-height:1.5}.hero .btn{padding:13px 26px}.hero-trust{margin-top:12px;font-size:12px}}
 
 /* PROBLEME (sombre) */
 .dark{background:var(--sombre);color:#EFEDE3}
@@ -166,6 +167,19 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 .sticky-price s{font-size:13px;color:var(--brume);font-weight:300;font-family:var(--sans);margin-right:5px}
 .sticky .btn{padding:13px 24px}
 @media(min-width:900px){.sticky{display:none}}
+.commu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+@media(min-width:760px){.commu{grid-template-columns:repeat(4,1fr)}}
+.commu-tile{border-radius:18px;overflow:hidden;aspect-ratio:3/4;background:var(--sombre)}
+.commu-tile img{width:100%;height:100%;object-fit:cover}
+@media(max-width:899px){.h2{font-size:clamp(26px,6.5vw,36px)}.offre-img img{aspect-ratio:auto;height:42vh}.life-card{aspect-ratio:1}.commu-tile{aspect-ratio:1}}
+.trustbar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+.trustbar-in{max-width:var(--maxw);margin:0 auto;padding:18px var(--px);display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px}
+.tb-item{display:flex;flex-direction:column;align-items:center;text-align:center;font-size:12px;color:var(--brume);line-height:1.35}
+.tb-item b{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--encre);margin-bottom:1px}
+.tb-stars{color:var(--or);font-size:14px;letter-spacing:1px;margin-bottom:2px}
+@media(max-width:560px){.trustbar-in{gap:14px 22px}.tb-item{font-size:10.5px}.tb-item b{font-size:14.5px}}
+.ingr-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:40px}@media(min-width:680px){.ingr-grid{grid-template-columns:1fr 1fr}}.ingr-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px}.ingr-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:9px}.ingr-name{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--encre)}.ingr-dose{font-size:12px;font-weight:600;color:var(--foret);background:var(--vert-pale);border-radius:999px;padding:5px 12px;white-space:nowrap}.ingr-role{font-size:14.5px;color:var(--encre-2);font-weight:300;line-height:1.6}.ingr-note{margin-top:26px;font-size:13px;color:var(--brume);text-align:center;max-width:560px;margin-left:auto;margin-right:auto}.compare{margin-top:40px;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:var(--surface)}.compare-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr}.compare-row+.compare-row{border-top:1px solid var(--border)}.compare-head>div{padding:16px 6px;font-size:12px;font-weight:600;text-align:center;color:var(--encre-2);line-height:1.2;display:flex;align-items:center;justify-content:center}.compare-head>div:first-child{justify-content:flex-start}.compare-head .col-kore{color:var(--foret);font-family:var(--serif);font-size:16px}.compare-crit{padding:14px 14px;font-size:13px;color:var(--encre);display:flex;align-items:center}.compare-cell{padding:14px 6px;text-align:center;font-size:16px;display:flex;align-items:center;justify-content:center}.compare-cell.kore,.col-kore.kore{background:var(--vert-pale)}.ic-yes{color:var(--foret);font-weight:700}.ic-soft{color:var(--brume)}.ic-no{color:#CBD3CC}@media(max-width:560px){.compare-head>div{font-size:9.5px;padding:11px 2px}.compare-head .col-kore{font-size:12px}.compare-crit{font-size:11px;padding:12px 8px}.compare-cell{padding:12px 2px;font-size:14px}}.rituel{display:grid;grid-template-columns:1fr;gap:22px;margin-top:40px}@media(min-width:680px){.rituel{grid-template-columns:repeat(3,1fr);gap:30px}}.rit-n{font-family:var(--serif);font-size:34px;color:var(--or);line-height:1;margin-bottom:12px}.rit-h{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:6px;color:var(--encre)}.rit-p{font-size:14.5px;color:var(--encre-2);font-weight:300;line-height:1.6}
+.split{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}@media(min-width:900px){.split{grid-template-columns:1fr 1fr;gap:64px}.split.rev{direction:rtl}.split.rev>*{direction:ltr}}.shot{position:relative;border-radius:24px;background:radial-gradient(130% 110% at 50% 0%,var(--vert-pale) 0%,var(--surface) 72%);border:1px dashed var(--or-lt);min-height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden}.shot.dark{background:radial-gradient(130% 110% at 50% 0%,rgba(216,189,146,.10) 0%,transparent 72%);border:1px dashed rgba(216,189,146,.42)}.shot-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brume);text-align:center;padding:24px;line-height:1.6}.shot.dark .shot-label{color:var(--or-lt)}.shot img{width:100%;height:100%;object-fit:contain;padding:24px}@media(max-width:899px){.shot{min-height:230px}}.ingr-list{margin-top:34px}.ingr-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:18px 0;border-top:1px solid var(--border)}.ingr-row:first-child{border-top:none}.ingr-row .ingr-name{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--encre);display:block;margin-bottom:3px}.ingr-row .ingr-role{font-size:14px;color:var(--encre-2);font-weight:300;line-height:1.55}.ingr-row .ingr-dose{flex-shrink:0;font-size:12px;font-weight:600;color:var(--foret);background:var(--vert-pale);border-radius:999px;padding:5px 12px;white-space:nowrap}.rituel-steps{margin-top:34px}.rituel-steps .rit-step{display:flex;gap:18px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--border)}.rituel-steps .rit-step:first-child{border-top:none}.rituel-steps .rit-n{font-family:var(--serif);font-size:26px;color:var(--or);line-height:1;flex-shrink:0;margin:0;width:34px}.rituel-steps .rit-h{font-family:var(--serif);font-size:18px;font-weight:500;margin-bottom:3px}.rituel-steps .rit-p{font-size:14px;color:var(--encre-2);font-weight:300;line-height:1.55}.compare-cell.kore,.col-kore.kore{background:var(--foret)}.col-kore.kore{color:#fff}.compare-cell.kore .ic-yes{color:#fff}.compare-row+.compare-row{border-top:none}.compare-head ~ .compare-row .compare-crit,.compare-head ~ .compare-row .compare-cell:not(.kore){border-top:1px solid var(--border)}.compare-head .col-kore.kore{border-radius:16px 16px 0 0}.compare-row:last-child .compare-cell.kore{border-radius:0 0 16px 16px}
 </style>
 </head>
 <body>
@@ -194,36 +208,130 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
     <a href="produit.html?p=travail" class="btn">Commander ma box →</a>
     <p class="hero-trust"><span class="stars">★★★★★</span> 4,8/5 · Satisfait ou remboursé · Livraison offerte</p>
   </div>
-  <div class="hero-img"><img src="img/price-essentiel.jpg" alt="La Kore box : coffret, flacon ambré et sachet"></div>
+  <div class="hero-img"><video autoplay muted loop playsinline poster="img/price-essentiel.jpg"><source src="img/hero.mp4" type="video/mp4"></video></div>
+</section>
+
+<!-- TRUSTBAR -->
+<div class="trustbar">
+  <div class="trustbar-in">
+    <div class="tb-item"><span class="tb-stars">★★★★★</span><span>4,8/5 · acheteurs vérifiés</span></div>
+    <div class="tb-item"><b>Sans accoutumance</b><span>ni effet groggy</span></div>
+    <div class="tb-item"><b>Formulé en Europe</b><span>· Certifié GMP</span></div>
+    <div class="tb-item"><b>30 jours</b><span>satisfait ou remboursé</span></div>
+  </div>
+</div>
+
+<!-- TEMOIGNAGES -->
+<section class="sec" style="background:var(--surface)">
+  <div class="wrap">
+    <span class="eyebrow reveal">Eux aussi ont repris leurs nuits</span>
+    <h2 class="h2 reveal">Des milliers de personnes<br><em>mieux dans leurs nuits.</em></h2>
+    <div class="commu reveal">
+      <div class="commu-tile"><img src="img/comm-wide1.jpg" alt="Un membre de la communauté Kore"></div>
+      <div class="commu-tile"><img src="img/comm-sq1.jpg" alt="Une membre de la communauté Kore"></div>
+      <div class="commu-tile"><img src="img/comm-sq2.jpg" alt="Une membre de la communauté Kore"></div>
+      <div class="commu-tile"><img src="img/comm-wide2.jpg" alt="Un membre de la communauté Kore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EN SITUATION -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ce que Kore change</span>
+    <h2 class="h2 reveal">Des nuits qui te réparent,<br><em>des journées qui suivent.</em></h2>
+    <div class="life">
+      <div class="life-card reveal"><img src="img/ben01.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
+      <div class="life-card reveal"><img src="img/ben02.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
+      <div class="life-card reveal"><img src="img/ben03.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
+      <div class="life-card reveal"><img src="img/ben04.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
+    </div>
+  </div>
 </section>
 
 <!-- PROBLEME -->
 <section class="sec dark" id="probleme">
-  <div class="wrap">
-    <span class="eyebrow reveal">Tu te reconnais ?</span>
-    <h2 class="h2 reveal">Si une seule de ces nuits<br><em style="color:var(--or-lt)">est la tienne.</em></h2>
-    <p class="prob-sub reveal">Kore est pensé pour ça — pas pour « mieux dormir » en général.</p>
-    <div class="prob-list">
-      <div class="prob-item lead-prob reveal"><span class="prob-n">01</span>Tu te réveilles à 3h et tu fixes le plafond jusqu'au matin, sans réussir à te rendormir.</div>
-      <div class="prob-item reveal"><span class="prob-n">02</span>Tu dors tes heures, mais tu te réveilles déjà vidé·e, comme si tu n'avais pas dormi.</div>
-      <div class="prob-item reveal"><span class="prob-n">03</span>Le soir, ton corps est mort mais ton cerveau continue de tourner : demain, les mails, la to-do.</div>
-      <div class="prob-item reveal"><span class="prob-n">04</span>Tes nuits hachées te rendent à cran, irritable dès le réveil.</div>
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow reveal">Tu te reconnais ?</span>
+      <h2 class="h2 reveal">Si une seule de ces nuits<br><em style="color:var(--or-lt)">est la tienne.</em></h2>
+      <p class="prob-sub reveal">Kore est pensé pour ça — pas pour « mieux dormir » en général.</p>
+      <div class="prob-list">
+        <div class="prob-item lead-prob reveal"><span class="prob-n">01</span>Tu te réveilles à 3h et tu fixes le plafond jusqu'au matin, sans réussir à te rendormir.</div>
+        <div class="prob-item reveal"><span class="prob-n">02</span>Tu dors tes heures, mais tu te réveilles déjà vidé·e, comme si tu n'avais pas dormi.</div>
+        <div class="prob-item reveal"><span class="prob-n">03</span>Le soir, ton corps est mort mais ton cerveau continue de tourner : demain, les mails, la to-do.</div>
+        <div class="prob-item reveal"><span class="prob-n">04</span>Tes nuits hachées te rendent à cran, irritable dès le réveil.</div>
+      </div>
     </div>
+    <div class="shot dark"><div class="shot-label">Visuel produit · détouré (sur fond sombre)</div></div>
   </div>
 </section>
 
 <!-- MECANISME -->
 <section class="sec">
-  <div class="wrap mech">
-    <span class="eyebrow reveal">Pourquoi ça t'arrive</span>
-    <h2 class="h2 reveal">Le coupable,<br>c'est le <em>cortisol.</em></h2>
-    <p class="reveal">La nuit, ton cortisol — l'hormone du stress — devrait être au plus bas. Chez beaucoup, il <strong>remonte vers 3h</strong> et te réveille, ou reste élevé et t'empêche de récupérer. Résultat : même 8 heures ne te réparent pas.</p>
-    <p class="reveal">Kore apporte les actifs qui calment ce système nerveux — pour que ta nuit redevienne réparatrice.</p>
-    <div class="actives reveal">
-      <span class="active-tag"><b>Magnésium</b> · sommeil profond</span>
-      <span class="active-tag"><b>Ashwagandha</b> · baisse le cortisol</span>
-      <span class="active-tag"><b>L-théanine</b> · calme le mental</span>
+  <div class="wrap split rev">
+    <div class="mech">
+      <span class="eyebrow reveal">Pourquoi ça t'arrive</span>
+      <h2 class="h2 reveal">Le coupable,<br>c'est le <em>cortisol.</em></h2>
+      <p class="reveal">La nuit, ton cortisol — l'hormone du stress — devrait être au plus bas. Chez beaucoup, il <strong>remonte vers 3h</strong> et te réveille, ou reste élevé et t'empêche de récupérer. Le <strong>magnésium, l'ashwagandha et la L-théanine</strong> de Kore calment ce système nerveux — pour que ta nuit te répare enfin.</p>
+      <div class="actives reveal">
+        <span class="active-tag"><b>Magnésium</b> · sommeil profond</span>
+        <span class="active-tag"><b>Ashwagandha</b> · baisse le cortisol</span>
+        <span class="active-tag"><b>L-théanine</b> · calme le mental</span>
+      </div>
     </div>
+    <div class="shot"><div class="shot-label">Visuel produit · détouré (le flacon)</div></div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="sec" style="background:var(--surface)">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow reveal">Ce qu'il y a dedans</span>
+      <h2 class="h2 reveal">Les bons actifs,<br><em>aux bonnes doses.</em></h2>
+      <div class="ingr-list reveal">
+        <div class="ingr-row"><div><span class="ingr-name">Magnésium bisglycinate</span><p class="ingr-role">Calme le système nerveux et favorise un sommeil profond et continu.</p></div><span class="ingr-dose">200 mg</span></div>
+        <div class="ingr-row"><div><span class="ingr-name">Ashwagandha KSM-66®</span><p class="ingr-role">Fait baisser le cortisol — l'hormone du stress qui te réveille la nuit.</p></div><span class="ingr-dose">300 mg</span></div>
+        <div class="ingr-row"><div><span class="ingr-name">L-théanine</span><p class="ingr-role">Apaise le mental et coupe les pensées qui tournent au moment de dormir.</p></div><span class="ingr-dose">200 mg</span></div>
+        <div class="ingr-row"><div><span class="ingr-name">Glycine</span><p class="ingr-role">Accélère l'endormissement et approfondit la qualité du sommeil.</p></div><span class="ingr-dose">3 g</span></div>
+      </div>
+      <p class="reveal" style="margin-top:22px;font-size:13px;color:var(--brume)">Dosé pour fonctionner vraiment — pas de « proprietary blend » qui cache des doses trop faibles. Formulé en Europe · Certifié GMP.</p>
+    </div>
+    <div class="shot"><div class="shot-label">Visuel produit · détouré (poudre / scoop)</div></div>
+  </div>
+</section>
+
+<!-- COMPARATIF -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow reveal">Pourquoi Kore</span>
+    <h2 class="h2 reveal">Là où les autres<br><em>s'arrêtent.</em></h2>
+    <div class="compare reveal">
+      <div class="compare-row compare-head"><div>&nbsp;</div><div class="col-kore kore">Kore</div><div>Somnifères</div><div>Mélatonine</div><div>Tisanes</div></div>
+      <div class="compare-row"><div class="compare-crit">Agit sur le cortisol (la cause)</div><div class="compare-cell kore"><span class="ic-yes">✓</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div></div>
+      <div class="compare-row"><div class="compare-crit">Sommeil profond & réparateur</div><div class="compare-cell kore"><span class="ic-yes">✓</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div></div>
+      <div class="compare-row"><div class="compare-crit">Sans accoutumance</div><div class="compare-cell kore"><span class="ic-yes">✓</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-soft">✓</span></div><div class="compare-cell"><span class="ic-soft">✓</span></div></div>
+      <div class="compare-row"><div class="compare-crit">Sans effet groggy au réveil</div><div class="compare-cell kore"><span class="ic-yes">✓</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-soft">✓</span></div></div>
+      <div class="compare-row"><div class="compare-crit">Actifs dosés & prouvés</div><div class="compare-cell kore"><span class="ic-yes">✓</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-no">✕</span></div></div>
+      <div class="compare-row"><div class="compare-crit">Pour un usage quotidien</div><div class="compare-cell kore"><span class="ic-yes">✓</span></div><div class="compare-cell"><span class="ic-no">✕</span></div><div class="compare-cell"><span class="ic-soft">✓</span></div><div class="compare-cell"><span class="ic-soft">✓</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUEL -->
+<section class="sec">
+  <div class="wrap split rev">
+    <div>
+      <span class="eyebrow reveal">Aussi simple que ça</span>
+      <h2 class="h2 reveal">Un verre, le soir.<br><em>C'est tout.</em></h2>
+      <div class="rituel-steps reveal">
+        <div class="rit-step"><div class="rit-n">01</div><div><p class="rit-h">Le soir</p><p class="rit-p">Verse une dose de Kore dans un verre d'eau.</p></div></div>
+        <div class="rit-step"><div class="rit-n">02</div><div><p class="rit-h">Tu bois</p><p class="rit-p">Un goût naturel, pas de gélules à avaler. En 30 secondes, c'est fait.</p></div></div>
+        <div class="rit-step"><div class="rit-n">03</div><div><p class="rit-h">Tu dors</p><p class="rit-p">Ton système nerveux se calme, et ta nuit te répare vraiment.</p></div></div>
+      </div>
+    </div>
+    <div class="shot"><div class="shot-label">Visuel produit · détouré (le verre)</div></div>
   </div>
 </section>
 
@@ -249,22 +357,8 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
   </div>
 </section>
 
-<!-- EN SITUATION -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow reveal">Ce que Kore change</span>
-    <h2 class="h2 reveal">Des nuits qui te réparent,<br><em>des journées qui suivent.</em></h2>
-    <div class="life">
-      <div class="life-card reveal"><img src="img/ben01.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
-      <div class="life-card reveal"><img src="img/ben02.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
-      <div class="life-card reveal"><img src="img/ben03.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
-      <div class="life-card reveal"><img src="img/ben04.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- AVIS -->
-<section class="sec" id="avis" style="background:var(--surface)">
+<section class="sec" id="avis">
   <div class="wrap">
     <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
     <h2 class="h2 reveal">Ce qu'en disent<br><em>les premières semaines.</em></h2>
