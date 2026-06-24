@@ -377,7 +377,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);margin-top:40px}
   </div>
   <div class="cart-foot" id="cartFoot" style="display:none">
     <div class="cart-sub"><span>Sous-total</span><span id="cartSub">—</span></div>
-    <p class="cart-note">Remise & livraison gratuite appliquées au paiement.</p>
+    <p class="cart-note">Livraison gratuite incluse · total final confirmé au paiement sécurisé.</p>
     <button class="cart-checkout" id="cartCheckout" onclick="goCheckout()">Commander · paiement sécurisé</button>
     <p class="cart-trust">Satisfait ou remboursé · 30 jours</p>
   </div>
@@ -470,9 +470,8 @@ function lineImg(li){
   try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){}
   return 'img/price-essentiel.jpg';
 }
-function linePrice(li){
-  var v=li.variant&&li.variant.price; if(v&&v.amount)return parseFloat(v.amount); if(typeof v==='string')return parseFloat(v); return 0;
-}
+var KORE_UNIT_PRICE=57; /* prix client reel : la remise Shopify ramene 89 -> 57 au paiement */
+function linePrice(li){ return KORE_UNIT_PRICE; }
 
 function renderCart(){
   var body=document.getElementById('cartBody');
