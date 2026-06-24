@@ -71,6 +71,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .hero-trust .stars{color:var(--or);letter-spacing:1px}
 .hero-img{background:var(--surface)}
 .hero-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+@media(max-width:899px){.hero{min-height:auto}.hero-img{order:-1}.hero-img img{min-height:auto;aspect-ratio:4/3}.hero-text{padding:34px var(--px) 50px}}
 
 /* PROBLEME (sombre) */
 .dark{background:var(--sombre);color:#EFEDE3}
@@ -197,6 +198,33 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
   <div class="hero-img"><img src="img/price-essentiel.jpg" alt="La Kore box : coffret, flacon ambré et sachet"></div>
 </section>
 
+<!-- AVIS -->
+<section class="sec" id="avis" style="background:var(--surface)">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
+    <h2 class="h2 reveal">Ce qu'en disent<br><em>les premières semaines.</em></h2>
+    <div class="rev-grid">
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Nathalie, 49 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 41 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 34 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EN SITUATION -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ce que Kore change</span>
+    <h2 class="h2 reveal">Des nuits qui te réparent,<br><em>des journées qui suivent.</em></h2>
+    <div class="life">
+      <div class="life-card reveal"><img src="img/ben01.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
+      <div class="life-card reveal"><img src="img/ben02.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
+      <div class="life-card reveal"><img src="img/ben03.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
+      <div class="life-card reveal"><img src="img/ben04.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- PROBLEME -->
 <section class="sec dark" id="probleme">
   <div class="wrap">
@@ -245,33 +273,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
       <p class="price-per reveal">Soit 1,90 € / Bonne nuit · valeur totale 129€</p>
       <a href="produit.html" class="btn reveal">Commander ma box →</a>
       <p class="offre-re reveal">Satisfait ou remboursé 30 jours · Livraison offerte</p>
-    </div>
-  </div>
-</section>
-
-<!-- EN SITUATION -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow reveal">Ce que Kore change</span>
-    <h2 class="h2 reveal">Des nuits qui te réparent,<br><em>des journées qui suivent.</em></h2>
-    <div class="life">
-      <div class="life-card reveal"><img src="img/ben01.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
-      <div class="life-card reveal"><img src="img/ben02.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
-      <div class="life-card reveal"><img src="img/ben03.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
-      <div class="life-card reveal"><img src="img/ben04.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- AVIS -->
-<section class="sec" id="avis" style="background:var(--surface)">
-  <div class="wrap">
-    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
-    <h2 class="h2 reveal">Ce qu'en disent<br><em>les premières semaines.</em></h2>
-    <div class="rev-grid">
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Nathalie, 49 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 41 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 34 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
     </div>
   </div>
 </section>
