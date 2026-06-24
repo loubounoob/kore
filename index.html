@@ -70,8 +70,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .hero-trust{margin-top:22px;font-size:13px;color:var(--brume);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .hero-trust .stars{color:var(--or);letter-spacing:1px}
 .hero-img{background:var(--surface)}
-.hero-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
-@media(max-width:899px){.hero{min-height:auto}.hero-img{order:-1}.hero-img img{min-height:auto;aspect-ratio:4/3}.hero-text{padding:34px var(--px) 50px}}
+.hero-img img,.hero-img video{width:100%;height:100%;object-fit:cover;min-height:340px;display:block}
+@media(max-width:899px){.hero{min-height:auto}.hero-img{order:-1}.hero-img img,.hero-img video{min-height:auto;height:34vh}.hero-text{padding:18px var(--px) 30px}.hero .eyebrow{margin-bottom:11px}.hero h1{font-size:clamp(29px,8vw,44px);margin-bottom:12px}.hero .lead{margin-bottom:16px;font-size:14.5px;line-height:1.5}.hero .btn{padding:13px 26px}.hero-trust{margin-top:12px;font-size:12px}}
 
 /* PROBLEME (sombre) */
 .dark{background:var(--sombre);color:#EFEDE3}
@@ -167,6 +167,10 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 .sticky-price s{font-size:13px;color:var(--brume);font-weight:300;font-family:var(--sans);margin-right:5px}
 .sticky .btn{padding:13px 24px}
 @media(min-width:900px){.sticky{display:none}}
+.commu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+@media(min-width:760px){.commu{grid-template-columns:repeat(4,1fr)}}
+.commu-tile{border-radius:18px;overflow:hidden;aspect-ratio:3/4;background:var(--sombre)}
+.commu-tile img{width:100%;height:100%;object-fit:cover}
 </style>
 </head>
 <body>
@@ -195,18 +199,19 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
     <a href="produit.html" class="btn">Commander ma box →</a>
     <p class="hero-trust"><span class="stars">★★★★★</span> 4,8/5 · Satisfait ou remboursé · Livraison offerte</p>
   </div>
-  <div class="hero-img"><img src="img/price-essentiel.jpg" alt="La Kore box : coffret, flacon ambré et sachet"></div>
+  <div class="hero-img"><video autoplay muted loop playsinline poster="img/price-essentiel.jpg"><source src="img/hero.mp4" type="video/mp4"></video></div>
 </section>
 
-<!-- AVIS -->
-<section class="sec" id="avis" style="background:var(--surface)">
+<!-- TEMOIGNAGES -->
+<section class="sec" style="background:var(--surface)">
   <div class="wrap">
-    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
-    <h2 class="h2 reveal">Ce qu'en disent<br><em>les premières semaines.</em></h2>
-    <div class="rev-grid">
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Nathalie, 49 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 41 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 34 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
+    <span class="eyebrow reveal">Eux aussi ont repris leurs nuits</span>
+    <h2 class="h2 reveal">Des milliers de personnes<br><em>mieux dans leurs nuits.</em></h2>
+    <div class="commu reveal">
+      <div class="commu-tile"><img src="img/comm-wide1.jpg" alt="Un membre de la communauté Kore"></div>
+      <div class="commu-tile"><img src="img/comm-sq1.jpg" alt="Une membre de la communauté Kore"></div>
+      <div class="commu-tile"><img src="img/comm-sq2.jpg" alt="Une membre de la communauté Kore"></div>
+      <div class="commu-tile"><img src="img/comm-wide2.jpg" alt="Un membre de la communauté Kore"></div>
     </div>
   </div>
 </section>
@@ -273,6 +278,19 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
       <p class="price-per reveal">Soit 1,90 € / Bonne nuit · valeur totale 129€</p>
       <a href="produit.html" class="btn reveal">Commander ma box →</a>
       <p class="offre-re reveal">Satisfait ou remboursé 30 jours · Livraison offerte</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="sec" id="avis">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
+    <h2 class="h2 reveal">Ce qu'en disent<br><em>les premières semaines.</em></h2>
+    <div class="rev-grid">
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Nathalie, 49 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 41 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 34 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
     </div>
   </div>
 </section>
