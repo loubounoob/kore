@@ -4130,6 +4130,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 
 /* Hero image */
 .hero { background-image: url('img/hero.jpg'); background-size: cover; background-position: center; }
+.spv-further{display:none !important}
 </style>
 
   <!-- Supabase -->
@@ -4183,7 +4184,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
   <a href="#profiles" onclick="closeMenu()">Les profils</a>
   <a href="#product" onclick="closeMenu()">La box & tarifs</a>
   <a href="#faq" onclick="closeMenu()">FAQ</a>
-  <button class="drawer-btn" onclick="closeMenu();document.getElementById('product').scrollIntoView({behavior:'smooth'})">Commander ma box</button>
+  <button class="drawer-btn" onclick="location.href='produit.html'">Commander ma box</button>
 </div>
 
 <!-- HERO, full bleed image, text overlay -->
@@ -4197,7 +4198,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     <h1 class="hero-h1 h-a2">Mieux dormir,<br><em>nuit après nuit.</em></h1>
     <p class="hero-p h-a3">La Kore box, pensée pour mieux dormir — et retrouver énergie, concentration et confort au quotidien.</p>
     <div class="h-a4">
-      <button class="hero-btn" onclick="document.getElementById('product').scrollIntoView({behavior:'smooth'})">Commander ma box →</button>
+      <button class="hero-btn" onclick="location.href='produit.html'">Commander ma box →</button>
       <a href="#" class="hero-link" onclick="event.preventDefault();openDiag()">Ou analyser mon sommeil ↓</a>
     </div>
     <div class="trust-row h-a5">
@@ -4268,9 +4269,9 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
 <!-- ══ DUAL-PATH PRICING (prc-*) ══ -->
 <section class="prc-section" id="product">
   <div class="prc-header">
-    <span class="prc-ey">Trois façons d’être accompagné·e</span>
-    <h2 class="prc-title">Choisis ton<br><em>accompagnement.</em></h2>
-    <p class="prc-sub">Commence par un plan directement. Ou laisse le diagnostic choisir pour toi.</p>
+    <span class="prc-ey">La Kore box</span>
+    <h2 class="prc-title">Ta box, pour<br><em>mieux dormir.</em></h2>
+    <p class="prc-sub">Une seule box, pensée pour tes nuits. Commande directement, ou fais le diagnostic si tu hésites.</p>
     <div class="prc-trust">
       <span class="prc-trust-stars">★★★★★</span>
       <span class="prc-trust-txt"><strong>4,8/5</strong> · acheteurs vérifiés</span>
@@ -4284,7 +4285,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
     <div class="prc-plans">
 
       <!-- L'Essentiel -->
-      <div class="prc-card prc-card-featured" onclick="selectPlan('essentiel')">
+      <div class="prc-card prc-card-featured" onclick="location.href='produit.html'">
         <img class="prc-card-img" src="img/price-essentiel.jpg" alt="La gamme Kore : box, flacon et sachet">
         <div class="prc-badge">★ Point de départ recommandé</div>
         <div class="prc-card-top">
@@ -4307,53 +4308,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
         </div>
         <button class="prc-btn prc-btn-solid">Commander ma box →</button>
         <p class="prc-reassure">+51€ offerts · Satisfait ou remboursé</p>
-      </div>
-
-      <!-- L'Accompagné -->
-      <div class="prc-card" onclick="selectPlan('accompagne')">
-        <img class="prc-card-img" src="img/price-accompagne.jpg" alt="La gamme Kore avec le kit de prélèvement à domicile">
-        <div class="prc-card-top">
-          <div>
-            <span class="prc-name">L’Accompagné</span>
-            <div class="prc-price">139<span class="prc-price-mo">€</span></div>
-          </div>
-        </div>
-        <span class="prc-cat">+ Le suivi sanguin</span>
-        <p class="prc-desc">La box L’Essentiel, plus le suivi sanguin pour aller plus loin.</p>
-        <div class="prc-stack">
-          <p class="prc-stack-h">Ce que contient ta box</p>
-          <div class="prc-stack-row"><span class="prc-stack-name">Pack Kore</span><span class="prc-stack-v">39€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Coffret Kore</span><span class="prc-stack-v"><s>39€</s>18€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Sachet Kore</span><span class="prc-stack-v"><s>27€</s>Offert</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin + analyse à domicile</span><span class="prc-stack-v"><s>120€</s>82€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">App Kore · suivi de ton sommeil (bientôt)</span><span class="prc-stack-v">Bientôt</span></div>
-        </div>
-        <button class="prc-btn prc-btn-ghost">Commander ma box + bilan →</button>
-      </div>
-
-      <!-- L'Encadré -->
-      <div class="prc-card" onclick="selectPlan('encadre')">
-        <img class="prc-card-img" src="img/price-encadre.jpg" alt="La gamme Kore avec ton conseiller personnel dédié">
-        <div class="prc-card-top">
-          <div>
-            <span class="prc-name">L’Encadré</span>
-            <div class="prc-price">199<span class="prc-price-mo">€</span></div>
-          </div>
-        </div>
-        <span class="prc-cat">+ L’accompagnement humain</span>
-        <p class="prc-desc">La box L’Accompagné, plus un conseiller dédié, toujours le même.</p>
-        <div class="prc-stack">
-          <p class="prc-stack-h">Ce que contient ta box</p>
-          <div class="prc-stack-row"><span class="prc-stack-name">Pack Kore</span><span class="prc-stack-v">39€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Coffret Kore</span><span class="prc-stack-v"><s>39€</s>18€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Sachet Kore</span><span class="prc-stack-v"><s>27€</s>Offert</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Bilan sanguin + analyse à domicile</span><span class="prc-stack-v"><s>120€</s>82€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Conseiller Kore dédié · suivi 1:1</span><span class="prc-stack-v"><s>120€</s>60€</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
-          <div class="prc-stack-row"><span class="prc-stack-name">App Kore · suivi de ton sommeil (bientôt)</span><span class="prc-stack-v">Bientôt</span></div>
-        </div>
-        <button class="prc-btn prc-btn-ghost">Être accompagné·e →</button>
       </div>
 
       <p class="prc-guarantee-note">Paiement 100% sécurisé · Satisfait ou remboursé</p>
@@ -4947,7 +4901,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); }
             <div class="prc-stack-row"><span class="prc-stack-name">Ta bouteille Kore en verre ambré</span><span class="prc-stack-v"><s>24€</s>Offerte</span></div>
             <div class="prc-stack-row"><span class="prc-stack-name">App Kore · suivi de ton sommeil (bientôt)</span><span class="prc-stack-v">Bientôt</span></div>
           </div>
-          <button class="ess-cta" onclick="selectPlan('essentiel')">Commencer pour 57€ →</button>
+          <button class="ess-cta" onclick="location.href='produit.html'">Commencer pour 57€ →</button>
           <p class="ess-note">Livraison incluse · Satisfait ou remboursé</p>
           <p class="ess-urgency" id="sp3-urgency"></p>
         </div>
