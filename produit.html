@@ -4,18 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>La Kore box — Mieux dormir, nuit après nuit | Kore</title>
-<meta name="description" content="La Kore box : un sommeil réparateur et l'énergie qui suit. Satisfait ou remboursé, livraison gratuite.">
+<meta name="description" content="Pour les nuits légères qui te réveillent à 3h, les réveils en sursaut, le cerveau qui ne s'éteint pas. La Kore box t'aide à dormir profond — et à le rester.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --teal:#0C5449; --teal-mid:#187A6A; --teal-lt:#BDE8E0; --teal-pale:#EBF7F4;
-  --gold:#B0894F; --gold-lt:#D8BC8A;
-  --bg:#FAF9F6; --surface:#FFFFFF;
-  --ink:#0F1A17; --ink-2:#4A5C54; --ink-3:#8BA098; --ink-4:#C8D8D2;
-  --border:#E8E6DF;
-  --serif:'Newsreader',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
-  --px:22px;
+  --gold:#B0894F; --bg:#FAF9F6; --surface:#FFFFFF;
+  --ink:#0F1A17; --ink-2:#4A5C54; --ink-3:#8BA098; --ink-4:#C8D8D2; --border:#E8E6DF;
+  --serif:'Newsreader',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --px:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -24,142 +21,140 @@ a{color:inherit;text-decoration:none}
 button,input{font-family:var(--sans)}
 img{max-width:100%;display:block}
 em{font-style:italic}
-.wrap{max-width:1180px;margin:0 auto;padding:0 var(--px)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 var(--px)}
+.sec{padding:46px 0}
+.sec-tight{padding:30px 0}
 
 /* TICKER */
-.ticker-bar{background:var(--teal);color:#fff;overflow:hidden;white-space:nowrap;font-size:11.5px;letter-spacing:.04em;padding:8px 0}
-.ticker-track{display:inline-flex;gap:48px;animation:tick 28s linear infinite}
-.ticker-item{opacity:.92}
+.ticker-bar{background:var(--teal);color:#fff;overflow:hidden;white-space:nowrap;font-size:11px;letter-spacing:.04em;padding:7px 0}
+.ticker-track{display:inline-flex;gap:40px;animation:tick 26s linear infinite}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:60;background:rgba(250,249,246,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:14px var(--px)}
-.logo{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--teal);letter-spacing:-.01em}
-.nav-links{display:none;gap:30px;list-style:none}
-.nav-links a{font-size:13.5px;color:var(--ink-2);font-weight:400}
-.nav-links a:hover{color:var(--teal)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.cart-btn{position:relative;background:none;border:none;cursor:pointer;color:var(--ink);display:flex;align-items:center;padding:6px}
+nav{position:sticky;top:0;z-index:60;background:rgba(250,249,246,.9);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:13px var(--px)}
+.logo{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.cart-btn{position:relative;background:none;border:none;cursor:pointer;color:var(--ink);display:flex;padding:5px}
 .cart-btn svg{width:22px;height:22px}
 .cart-count{position:absolute;top:-3px;right:-5px;background:var(--teal);color:#fff;font-size:10px;font-weight:600;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
-.nav-cta{background:var(--teal);color:#fff;border:none;border-radius:30px;padding:10px 18px;font-size:13px;font-weight:500;cursor:pointer;display:none}
-@media(min-width:900px){.nav-links{display:flex}.nav-cta{display:inline-block}}
+.nav-cta{background:var(--teal);color:#fff;border:none;border-radius:30px;padding:9px 17px;font-size:13px;font-weight:500;cursor:pointer}
 
-/* HERO PRODUCT */
-.product{padding:38px 0 20px}
-.product-grid{display:grid;grid-template-columns:1fr;gap:34px}
-@media(min-width:900px){.product-grid{grid-template-columns:1.05fr 1fr;gap:54px;align-items:start}}
+/* PRODUCT */
+.product-grid{display:grid;grid-template-columns:1fr;gap:26px;padding-top:24px}
+@media(min-width:900px){.product-grid{grid-template-columns:1.02fr 1fr;gap:46px;align-items:start}.gallery-col{position:sticky;top:84px}}
 
-/* GALLERY */
-.gallery-main{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;aspect-ratio:4/5}
-.gallery-main img{width:100%;height:100%;object-fit:cover}
-.gallery-thumbs{display:flex;gap:10px;margin-top:12px}
-.gallery-thumbs button{flex:1;border:1px solid var(--border);border-radius:11px;overflow:hidden;background:var(--surface);cursor:pointer;padding:0;aspect-ratio:1;transition:border-color .2s}
+/* GALLERY (swipeable) */
+.gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid var(--border);scrollbar-width:none;background:var(--surface)}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-track img{flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center;display:block}
+.gallery-dots{display:flex;justify-content:center;gap:7px;margin-top:11px}
+.gallery-dots button{width:7px;height:7px;border-radius:50%;background:var(--ink-4);border:none;padding:0;cursor:pointer;transition:.2s}
+.gallery-dots button.active{background:var(--teal);width:20px;border-radius:4px}
+.gallery-thumbs{display:flex;gap:8px;margin-top:11px}
+.gallery-thumbs button{flex:1;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;background:none;padding:0;aspect-ratio:1;cursor:pointer;transition:border-color .2s}
 .gallery-thumbs button.active{border-color:var(--teal)}
 .gallery-thumbs img{width:100%;height:100%;object-fit:cover}
-@media(min-width:900px){.gallery-col{position:sticky;top:90px}}
 
 /* BUY BOX */
-.badge{display:inline-flex;align-items:center;gap:7px;background:var(--teal-pale);color:var(--teal);font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:6px 13px;border-radius:30px}
-.p-title{font-family:var(--serif);font-size:39px;line-height:1.08;font-weight:500;margin:16px 0 10px;letter-spacing:-.015em}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--teal-pale);color:var(--teal);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:30px}
+.p-title{font-family:var(--serif);font-size:clamp(30px,7vw,40px);line-height:1.07;font-weight:500;margin:14px 0 9px;letter-spacing:-.015em}
 .p-title em{color:var(--teal)}
-.p-stars{display:flex;align-items:center;gap:9px;margin-bottom:16px;font-size:13px;color:var(--ink-2)}
+.p-stars{display:flex;align-items:center;gap:8px;margin-bottom:13px;font-size:13px;color:var(--ink-2)}
 .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
-.p-lead{font-size:15.5px;color:var(--ink-2);font-weight:300;line-height:1.7;margin-bottom:22px}
-
-/* VALUE STACK */
-.stack{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 20px 8px;margin-bottom:20px}
-.stack-h{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
-.stack-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+.p-lead{font-size:15px;color:var(--ink-2);font-weight:300;line-height:1.65;margin-bottom:20px}
+.stack{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:18px 18px 7px;margin-bottom:18px}
+.stack-h{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.stack-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);font-size:13.5px}
 .stack-row:last-child{border-bottom:none}
-.stack-name{color:var(--ink)}
 .stack-v{color:var(--ink-2);font-variant-numeric:tabular-nums}
-.stack-v s{color:var(--ink-3);margin-right:6px}
+.stack-v s{color:var(--ink-3);margin-right:5px}
 .stack-v .free{color:var(--teal);font-weight:500}
-
-/* PRICE */
-.price-box{display:flex;align-items:flex-end;gap:14px;margin-bottom:6px}
-.price-old{font-size:20px;color:var(--ink-3);text-decoration:line-through;font-weight:300}
-.price-now{font-family:var(--serif);font-size:46px;font-weight:500;line-height:1;color:var(--ink)}
-.price-now span{font-size:24px}
-.price-per{font-size:13.5px;color:var(--teal);font-weight:500;margin-bottom:18px}
-.price-value-line{font-size:13px;color:var(--ink-3);margin-bottom:18px}
+.price-box{display:flex;align-items:flex-end;gap:12px;margin-bottom:5px}
+.price-old{font-size:19px;color:var(--ink-3);text-decoration:line-through;font-weight:300}
+.price-now{font-family:var(--serif);font-size:44px;font-weight:500;line-height:1}
+.price-now span{font-size:23px}
+.price-per{font-size:13px;color:var(--teal);font-weight:500;margin-bottom:6px}
+.price-value-line{font-size:12.5px;color:var(--ink-3);margin-bottom:16px}
 .price-value-line strong{color:var(--ink-2);font-weight:500}
-
-/* OPTIONS */
-.options{margin-bottom:18px}
-.opt-label{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
-.opt-pills{display:flex;flex-wrap:wrap;gap:9px}
-.opt-pill{border:1.5px solid var(--border);background:var(--surface);border-radius:11px;padding:11px 16px;font-size:13.5px;cursor:pointer;transition:.18s;color:var(--ink-2)}
-.opt-pill.active{border-color:var(--teal);background:var(--teal-pale);color:var(--teal);font-weight:500}
-
-/* QTY + CTA */
-.buy-row{display:flex;gap:12px;margin-bottom:14px}
+.buy-row{display:flex;gap:11px;margin-bottom:12px}
 .qty{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:13px;overflow:hidden;background:var(--surface)}
-.qty button{background:none;border:none;width:42px;height:54px;font-size:19px;cursor:pointer;color:var(--ink-2)}
-.qty span{width:34px;text-align:center;font-size:15px;font-weight:500}
-.add-cart{flex:1;background:var(--teal);color:#fff;border:none;border-radius:13px;font-size:15.5px;font-weight:600;cursor:pointer;letter-spacing:.01em;transition:.2s;display:flex;align-items:center;justify-content:center;gap:9px}
+.qty button{background:none;border:none;width:40px;height:52px;font-size:18px;cursor:pointer;color:var(--ink-2)}
+.qty span{width:30px;text-align:center;font-size:15px;font-weight:500}
+.add-cart{flex:1;background:var(--teal);color:#fff;border:none;border-radius:13px;font-size:15.5px;font-weight:600;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
 .add-cart:hover{background:#0a463c}
-.add-cart:disabled{opacity:.6;cursor:default}
-.buy-trust{display:flex;flex-wrap:wrap;gap:7px 18px;font-size:12.5px;color:var(--ink-2);margin-top:14px}
-.buy-trust span{display:flex;align-items:center;gap:6px}
+.add-cart:disabled{opacity:.6}
+.buy-trust{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-2);margin-top:12px}
+.buy-trust span{display:flex;align-items:center;gap:5px}
 .buy-trust .dot{width:5px;height:5px;border-radius:50%;background:var(--teal-lt)}
 
-/* SECTIONS */
-.sec{padding:60px 0}
-.sec-label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
-.sec-h{font-family:var(--serif);font-size:32px;line-height:1.12;font-weight:500;letter-spacing:-.015em;margin-bottom:8px}
-.sec-h em{color:var(--teal)}
+/* SECTION HEADERS */
+.sh-ey{font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);margin-bottom:11px}
+.sh-h{font-family:var(--serif);font-size:clamp(25px,5.5vw,32px);line-height:1.12;font-weight:500;letter-spacing:-.015em}
+.sh-h em{color:var(--teal)}
 
-/* CONTENT CARDS */
-.box-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
-@media(min-width:760px){.box-cards{grid-template-columns:repeat(4,1fr)}}
-.box-card{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:22px 18px}
-.box-card-ic{width:36px;height:36px;border-radius:10px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--teal);font-family:var(--serif);font-weight:600}
-.box-card h4{font-size:15px;font-weight:600;margin-bottom:5px}
-.box-card p{font-size:13px;color:var(--ink-2);font-weight:300;line-height:1.6}
+/* PROBLEMES "tu te reconnais" */
+.prob{background:var(--ink);color:#fff;border-radius:22px;padding:34px 26px}
+.prob .sh-ey{color:var(--teal-lt)}
+.prob .sh-h{color:#fff;margin-bottom:6px}
+.prob-sub{font-size:14px;color:#B9C7C1;font-weight:300;margin-bottom:20px}
+.prob-item{display:flex;gap:13px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15.5px;line-height:1.45}
+.prob-item:last-child{border-bottom:none}
+.prob-item.hero-prob{font-weight:500}
+.prob-ic{flex-shrink:0;width:22px;height:22px;color:var(--teal-lt);margin-top:1px}
 
-/* BENEFITS */
-.ben-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
-@media(min-width:760px){.ben-grid{grid-template-columns:repeat(3,1fr)}}
-.ben{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--ink)}
-.ben img{width:100%;height:100%;object-fit:cover;opacity:.82}
-.ben-txt{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(transparent,rgba(8,18,15,.85));color:#fff}
-.ben-txt h4{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:5px}
-.ben-txt p{font-size:13px;font-weight:300;opacity:.9;line-height:1.5}
+/* LIFESTYLE EN SITUATION */
+.life{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:24px}
+.life-card{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--ink)}
+.life-card img{width:100%;height:100%;object-fit:cover;opacity:.86}
+.life-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 13px;background:linear-gradient(transparent,rgba(8,18,15,.88));color:#fff;font-size:12.5px;font-weight:500;line-height:1.3}
+@media(max-width:560px){.life-cap{font-size:11px;padding:11px 10px}}
+
+/* MECANISME callout */
+.mech{background:var(--teal-pale);border-radius:20px;padding:30px 26px;max-width:780px;margin:0 auto}
+.mech .sh-ey{color:var(--teal-mid)}
+.mech p{font-size:15px;color:var(--ink-2);line-height:1.7;margin-top:8px}
+.mech p strong{color:var(--ink);font-weight:500}
 
 /* REVIEWS */
-.rev-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
+.rev-grid{display:grid;grid-template-columns:1fr;gap:13px;margin-top:24px}
 @media(min-width:760px){.rev-grid{grid-template-columns:repeat(3,1fr)}}
-.rev{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:24px}
-.rev .stars{margin-bottom:10px;display:block}
-.rev p{font-size:14px;color:var(--ink);line-height:1.65;margin-bottom:16px}
+.rev{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:21px}
+.rev .stars{margin-bottom:9px;display:block}
+.rev p{font-size:13.5px;color:var(--ink);line-height:1.6;margin-bottom:14px}
 .rev p strong{color:var(--teal);font-weight:500}
-.rev-who{display:flex;align-items:center;gap:11px}
-.rev-av{width:38px;height:38px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
-.rev-nm{font-size:13px;font-weight:500}
-.rev-mt{font-size:11.5px;color:var(--ink-3)}
+.rev-who{display:flex;align-items:center;gap:10px}
+.rev-av{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.rev-nm{font-size:12.5px;font-weight:500}
+.rev-mt{font-size:11px;color:var(--ink-3)}
 
 /* GUARANTEE */
-.guar{background:var(--teal);color:#fff;border-radius:20px;padding:44px 30px;text-align:center;margin:0 auto;max-width:760px}
-.guar h3{font-family:var(--serif);font-size:27px;font-weight:500;margin-bottom:10px}
-.guar p{font-size:14.5px;opacity:.9;font-weight:300;line-height:1.7;max-width:520px;margin:0 auto}
+.guar{background:var(--teal);color:#fff;border-radius:20px;padding:36px 26px;text-align:center;max-width:720px;margin:0 auto}
+.guar h3{font-family:var(--serif);font-size:25px;font-weight:500;margin-bottom:9px}
+.guar p{font-size:14px;opacity:.9;font-weight:300;line-height:1.65;max-width:500px;margin:0 auto}
 
 /* FAQ */
-.faq{max-width:760px;margin:0 auto}
+.faq{max-width:720px;margin:0 auto}
 .faq-item{border-bottom:1px solid var(--border)}
-.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 0;font-size:16px;font-weight:500;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq-q span{color:var(--teal);font-size:22px;transition:.2s;flex-shrink:0}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:18px 0;font-size:15.5px;font-weight:500;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-q span{color:var(--teal);font-size:21px;transition:.2s;flex-shrink:0}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-a p{padding:0 0 20px;font-size:14px;color:var(--ink-2);font-weight:300;line-height:1.7}
+.faq-a p{padding:0 0 18px;font-size:13.5px;color:var(--ink-2);font-weight:300;line-height:1.65}
 .faq-item.open .faq-q span{transform:rotate(45deg)}
 
+/* STICKY BUY BAR (mobile) */
+.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:11px var(--px);display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(120%);transition:transform .3s}
+.sticky-buy.show{transform:translateY(0)}
+.sticky-buy-price{font-family:var(--serif);font-size:21px;font-weight:600}
+.sticky-buy-price s{font-size:13px;color:var(--ink-3);font-weight:300;margin-right:5px;font-family:var(--sans)}
+.sticky-buy button{background:var(--teal);color:#fff;border:none;border-radius:12px;padding:13px 24px;font-size:15px;font-weight:600;cursor:pointer;flex-shrink:0}
+@media(min-width:900px){.sticky-buy{display:none}}
+
 /* FOOTER */
-footer{background:var(--bg);border-top:1px solid var(--border);margin-top:40px}
-.footer-brand{padding:40px var(--px) 28px;border-bottom:1px solid var(--border);max-width:1180px;margin:0 auto}
-.footer-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--teal);margin-bottom:10px}
-.footer-desc{font-size:13.5px;font-weight:300;color:var(--ink-3);line-height:1.8;max-width:340px}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:20px var(--px);max-width:1180px;margin:0 auto}
+footer{background:var(--bg);border-top:1px solid var(--border);margin-top:36px;padding-bottom:80px}
+.footer-brand{padding:34px var(--px) 22px;border-bottom:1px solid var(--border);max-width:1140px;margin:0 auto}
+.footer-name{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--teal);margin-bottom:8px}
+.footer-desc{font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.7;max-width:340px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:16px var(--px);max-width:1140px;margin:0 auto}
 .footer-copy{font-size:12px;color:var(--ink-3)}
 .footer-eu{font-size:11px;color:var(--ink-3);background:var(--teal-pale);padding:5px 12px;border-radius:20px}
 
@@ -168,192 +163,175 @@ footer{background:var(--bg);border-top:1px solid var(--border);margin-top:40px}
 .cart-ov.open{opacity:1;visibility:visible}
 .cart{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:var(--bg);z-index:95;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.12)}
 .cart.open{transform:translateX(0)}
-.cart-top{display:flex;justify-content:space-between;align-items:center;padding:22px 22px 16px;border-bottom:1px solid var(--border)}
-.cart-top h3{font-family:var(--serif);font-size:21px;font-weight:500}
-.cart-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink-2);line-height:1}
-.cart-body{flex:1;overflow-y:auto;padding:8px 22px}
-.cart-empty{text-align:center;color:var(--ink-3);font-size:14px;padding:60px 20px;font-weight:300}
-.ci{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--border)}
-.ci img{width:62px;height:62px;border-radius:10px;object-fit:cover;background:var(--surface);border:1px solid var(--border)}
+.cart-top{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 15px;border-bottom:1px solid var(--border)}
+.cart-top h3{font-family:var(--serif);font-size:20px;font-weight:500}
+.cart-close{background:none;border:none;font-size:23px;cursor:pointer;color:var(--ink-2);line-height:1}
+.cart-body{flex:1;overflow-y:auto;padding:8px 20px}
+.cart-empty{text-align:center;color:var(--ink-3);font-size:14px;padding:54px 20px;font-weight:300}
+.ci{display:flex;gap:13px;padding:16px 0;border-bottom:1px solid var(--border)}
+.ci img{width:58px;height:58px;border-radius:9px;object-fit:cover;background:var(--surface);border:1px solid var(--border)}
 .ci-info{flex:1;min-width:0}
-.ci-nm{font-size:14px;font-weight:500;margin-bottom:3px}
-.ci-vr{font-size:12px;color:var(--ink-3);margin-bottom:8px}
+.ci-nm{font-size:13.5px;font-weight:500;margin-bottom:7px}
 .ci-bot{display:flex;justify-content:space-between;align-items:center}
 .ci-qty{display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;background:var(--surface)}
-.ci-qty button{background:none;border:none;width:28px;height:28px;cursor:pointer;font-size:15px;color:var(--ink-2)}
-.ci-qty span{width:24px;text-align:center;font-size:13px}
-.ci-pr{font-size:14px;font-weight:500;font-variant-numeric:tabular-nums}
-.ci-rm{font-size:11.5px;color:var(--ink-3);background:none;border:none;cursor:pointer;text-decoration:underline;margin-top:4px}
-.cart-foot{border-top:1px solid var(--border);padding:20px 22px;background:var(--surface)}
-.cart-sub{display:flex;justify-content:space-between;font-size:15px;font-weight:500;margin-bottom:4px}
-.cart-note{font-size:11.5px;color:var(--ink-3);margin-bottom:14px}
-.cart-checkout{display:block;width:100%;background:var(--teal);color:#fff;border:none;border-radius:13px;padding:16px;font-size:15.5px;font-weight:600;cursor:pointer;text-align:center}
-.cart-checkout:hover{background:#0a463c}
-.cart-trust{text-align:center;font-size:11.5px;color:var(--ink-3);margin-top:12px}
-
-/* toast */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:30px;font-size:13.5px;opacity:0;visibility:hidden;transition:.3s;z-index:100}
+.ci-qty button{background:none;border:none;width:27px;height:27px;cursor:pointer;font-size:14px;color:var(--ink-2)}
+.ci-qty span{width:22px;text-align:center;font-size:13px}
+.ci-pr{font-size:13.5px;font-weight:500}
+.ci-rm{font-size:11px;color:var(--ink-3);background:none;border:none;cursor:pointer;text-decoration:underline;margin-top:3px}
+.cart-foot{border-top:1px solid var(--border);padding:18px 20px;background:var(--surface)}
+.cart-sub{display:flex;justify-content:space-between;font-size:15px;font-weight:500;margin-bottom:3px}
+.cart-note{font-size:11px;color:var(--ink-3);margin-bottom:13px}
+.cart-checkout{display:block;width:100%;background:var(--teal);color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:600;cursor:pointer;text-align:center}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:30px;font-size:13px;opacity:0;visibility:hidden;transition:.3s;z-index:100}
 .toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker-bar"><div class="ticker-track">
-  <span class="ticker-item">Formulé en Europe · Certifié GMP</span><span class="ticker-item">Livraison gratuite</span><span class="ticker-item">Satisfait ou remboursé · 30 jours</span><span class="ticker-item">Paiement 100% sécurisé</span>
-  <span class="ticker-item">Formulé en Europe · Certifié GMP</span><span class="ticker-item">Livraison gratuite</span><span class="ticker-item">Satisfait ou remboursé · 30 jours</span><span class="ticker-item">Paiement 100% sécurisé</span>
+  <span>Satisfait ou remboursé · 30 jours</span><span>Livraison gratuite</span><span>Paiement 100% sécurisé</span><span>Formulé en Europe · GMP</span>
+  <span>Satisfait ou remboursé · 30 jours</span><span>Livraison gratuite</span><span>Paiement 100% sécurisé</span><span>Formulé en Europe · GMP</span>
 </div></div>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">Kore</a>
-  <ul class="nav-links">
-    <li><a href="index.html#how">Comment ça marche</a></li>
-    <li><a href="index.html#real-ingredients">Ingrédients</a></li>
-    <li><a href="#contenu">La box</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
   <div class="nav-right">
     <button class="cart-btn" onclick="openCart()" aria-label="Panier">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
       <span class="cart-count" id="cartCount" style="display:none">0</span>
     </button>
-    <button class="nav-cta" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth'})">Commander</button>
+    <button class="nav-cta" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth',block:'center'})">Commander</button>
   </div>
 </nav>
 
 <!-- PRODUCT -->
-<section class="product">
-  <div class="wrap product-grid">
-
-    <!-- GALLERY -->
-    <div class="gallery-col">
-      <div class="gallery-main"><img id="galMain" src="img/price-essentiel.jpg" alt="La Kore box"></div>
-      <div class="gallery-thumbs" id="galThumbs">
-        <button class="active" onclick="setGal(this,'img/price-essentiel.jpg')"><img src="img/price-essentiel.jpg" alt=""></button>
-        <button onclick="setGal(this,'img/ben01.jpg')"><img src="img/ben01.jpg" alt=""></button>
-        <button onclick="setGal(this,'img/ben02.jpg')"><img src="img/ben02.jpg" alt=""></button>
-        <button onclick="setGal(this,'img/ben03.jpg')"><img src="img/ben03.jpg" alt=""></button>
-        <button onclick="setGal(this,'img/ben04.jpg')"><img src="img/ben04.jpg" alt=""></button>
-      </div>
+<section class="wrap product-grid">
+  <div class="gallery-col">
+    <div class="gallery-track" id="galTrack">
+      <img src="img/price-essentiel.jpg" alt="La Kore box">
+      <img src="img/ben01.jpg" alt="S'endormir paisiblement">
+      <img src="img/ben02.jpg" alt="Une nuit profonde">
+      <img src="img/ben03.jpg" alt="Un réveil reposé">
+      <img src="img/ben04.jpg" alt="De l'énergie au quotidien">
     </div>
-
-    <!-- BUY BOX -->
-    <div class="buy-col">
-      <span class="badge">Offre exclusive · −36 %</span>
-      <h1 class="p-title">La Kore box,<br><em>mieux dormir.</em></h1>
-      <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
-      <p class="p-lead">Un sommeil réparateur — et l'énergie, la concentration et le calme qui suivent au quotidien. Tout ce qu'il faut pour tes nuits, réuni dans une box.</p>
-
-      <div class="stack">
-        <p class="stack-h">Ce que contient ta box</p>
-        <div class="stack-row"><span class="stack-name">Pack Kore</span><span class="stack-v">39€</span></div>
-        <div class="stack-row"><span class="stack-name">Coffret Kore</span><span class="stack-v"><s>39€</s>18€</span></div>
-        <div class="stack-row"><span class="stack-name">Sachet Kore</span><span class="stack-v"><s>27€</s><span class="free">Offert</span></span></div>
-        <div class="stack-row"><span class="stack-name">Ta bouteille Kore en verre ambré</span><span class="stack-v"><s>24€</s><span class="free">Offerte</span></span></div>
-        <div class="stack-row"><span class="stack-name">App Kore · suivi de ton sommeil</span><span class="stack-v">Bientôt</span></div>
-      </div>
-
-      <div class="price-box">
-        <span class="price-old">89€</span>
-        <span class="price-now">57<span>€</span></span>
-      </div>
-      <p class="price-per">Soit 1,90 € / Bonne nuit</p>
-      <p class="price-value-line"><strong>Valeur totale : 129€</strong> · tu paies <strong>57€</strong> — +72€ offerts.</p>
-
-      <div class="options" id="optWrap" style="display:none">
-        <p class="opt-label" id="optName">Option</p>
-        <div class="opt-pills" id="optPills"></div>
-      </div>
-
-      <div class="buy-row">
-        <div class="qty">
-          <button onclick="chgQty(-1)" aria-label="Moins">−</button>
-          <span id="qtyVal">1</span>
-          <button onclick="chgQty(1)" aria-label="Plus">+</button>
-        </div>
-        <button class="add-cart" id="addCart" onclick="addToCart()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
-          Ajouter au panier
-        </button>
-      </div>
-
-      <div class="buy-trust">
-        <span><span class="dot"></span>Satisfait ou remboursé · 30 j</span>
-        <span><span class="dot"></span>Livraison gratuite</span>
-        <span><span class="dot"></span>Paiement 100% sécurisé</span>
-      </div>
+    <div class="gallery-dots" id="galDots"></div>
+    <div class="gallery-thumbs" id="galThumbs">
+      <button class="active" onclick="galTo(0)"><img src="img/price-essentiel.jpg" alt=""></button>
+      <button onclick="galTo(1)"><img src="img/ben01.jpg" alt=""></button>
+      <button onclick="galTo(2)"><img src="img/ben02.jpg" alt=""></button>
+      <button onclick="galTo(3)"><img src="img/ben03.jpg" alt=""></button>
+      <button onclick="galTo(4)"><img src="img/ben04.jpg" alt=""></button>
     </div>
-
   </div>
-</section>
 
-<!-- CONTENU -->
-<section class="sec" id="contenu">
-  <div class="wrap">
-    <p class="sec-label">Dans ta box</p>
-    <h2 class="sec-h">Tout ce qu'il faut,<br><em>rien de superflu.</em></h2>
-    <div class="box-cards">
-      <div class="box-card"><div class="box-card-ic">P</div><h4>Pack Kore</h4><p>Le cœur de ta routine du soir, pour des nuits profondes.</p></div>
-      <div class="box-card"><div class="box-card-ic">C</div><h4>Coffret Kore</h4><p>Le complément qui prolonge l'action, jour après jour.</p></div>
-      <div class="box-card"><div class="box-card-ic">S</div><h4>Sachet Kore</h4><p>Le format nomade, pour ne jamais casser ton rythme.</p></div>
-      <div class="box-card"><div class="box-card-ic">◍</div><h4>Bouteille ambrée</h4><p>Ta bouteille Kore en verre ambré, offerte avec ta box.</p></div>
+  <div class="buy-col">
+    <span class="badge">Offre exclusive · −36 %</span>
+    <h1 class="p-title">La Kore box,<br><em>mieux dormir.</em></h1>
+    <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
+    <p class="p-lead">Pour les nuits légères qui te réveillent à 3h, les réveils en sursaut, le cerveau qui ne s'éteint pas le soir. Kore t'aide à dormir profond — et à le rester jusqu'au matin.</p>
+
+    <div class="stack">
+      <p class="stack-h">Ce que contient ta box</p>
+      <div class="stack-row"><span>Pack Kore</span><span class="stack-v">39€</span></div>
+      <div class="stack-row"><span>Coffret Kore</span><span class="stack-v"><s>39€</s>18€</span></div>
+      <div class="stack-row"><span>Sachet Kore</span><span class="stack-v"><s>27€</s><span class="free">Offert</span></span></div>
+      <div class="stack-row"><span>Ta bouteille Kore en verre ambré</span><span class="stack-v"><s>24€</s><span class="free">Offerte</span></span></div>
+      <div class="stack-row"><span>App Kore · suivi de ton sommeil</span><span class="stack-v">Bientôt</span></div>
+    </div>
+
+    <div class="price-box"><span class="price-old">89€</span><span class="price-now">57<span>€</span></span></div>
+    <p class="price-per">Soit 1,90 € / Bonne nuit</p>
+    <p class="price-value-line"><strong>Valeur totale : 129€</strong> · tu paies <strong>57€</strong> — +72€ offerts.</p>
+
+    <div class="buy-row">
+      <div class="qty"><button onclick="chgQty(-1)">−</button><span id="qtyVal">1</span><button onclick="chgQty(1)">+</button></div>
+      <button class="add-cart" id="addCart" onclick="addToCart()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+        Ajouter au panier
+      </button>
+    </div>
+    <div class="buy-trust">
+      <span><span class="dot"></span>Satisfait ou remboursé · 30 j</span>
+      <span><span class="dot"></span>Livraison gratuite</span>
+      <span><span class="dot"></span>Paiement sécurisé</span>
     </div>
   </div>
 </section>
 
-<!-- BENEFITS -->
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <p class="sec-label">Ce que Kore change</p>
-    <h2 class="sec-h">Un sommeil réparateur,<br>et l'énergie <em>qui suit.</em></h2>
-    <div class="ben-grid">
-      <div class="ben"><img src="img/ben01.jpg" alt=""><div class="ben-txt"><h4>Tu t'endors plus vite.</h4><p>Ton corps reçoit le signal de lâcher prise.</p></div></div>
-      <div class="ben"><img src="img/ben02.jpg" alt=""><div class="ben-txt"><h4>Des nuits plus profondes.</h4><p>Moins de réveils. Un sommeil qui répare vraiment.</p></div></div>
-      <div class="ben"><img src="img/ben03.jpg" alt=""><div class="ben-txt"><h4>Un réveil reposé.</h4><p>Tu ouvres les yeux avec de l'énergie.</p></div></div>
+<!-- EN SITUATION (clients) -->
+<section class="wrap sec-tight">
+  <div class="life">
+    <div class="life-card"><img src="img/ben01.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
+    <div class="life-card"><img src="img/ben03.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
+    <div class="life-card"><img src="img/ben04.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
+  </div>
+</section>
+
+<!-- TU TE RECONNAIS -->
+<section class="wrap sec">
+  <div class="prob">
+    <p class="sh-ey">Tu te reconnais ?</p>
+    <h2 class="sh-h">Si une seule de ces nuits<br><em>est la tienne.</em></h2>
+    <p class="prob-sub">Kore est pensé pour ça — pas pour « mieux dormir » en général.</p>
+    <div class="prob-item hero-prob">
+      <svg class="prob-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      Tu te réveilles à 3h et tu fixes le plafond jusqu'au matin, sans réussir à te rendormir.
     </div>
+    <div class="prob-item">
+      <svg class="prob-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9 7 7 0 0 1-9 9z"/></svg>
+      Tu dors tes heures, mais tu te réveilles déjà vidé·e, comme si tu n'avais pas dormi.
+    </div>
+    <div class="prob-item">
+      <svg class="prob-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 8v4M12 16h.01"/></svg>
+      Le soir, ton corps est mort mais ton cerveau continue de tourner : demain, les mails, la to-do.
+    </div>
+    <div class="prob-item">
+      <svg class="prob-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M4 12a8 8 0 0 1 8-8M20 12a8 8 0 0 1-8 8"/></svg>
+      Tes nuits hachées te rendent à cran, irritable dès le réveil.
+    </div>
+  </div>
+</section>
+
+<!-- MECANISME -->
+<section class="wrap sec-tight">
+  <div class="mech">
+    <p class="sh-ey">Pourquoi ça t'arrive</p>
+    <h2 class="sh-h">Le coupable, c'est le cortisol.</h2>
+    <p>La nuit, ton cortisol — l'hormone du stress — devrait être au plus bas. Chez beaucoup, il <strong>remonte vers 3h</strong> et te réveille, ou reste haut et t'empêche de récupérer. Le <strong>magnésium, l'ashwagandha et la L-théanine</strong> de Kore calment ce système nerveux — pour que ta nuit te répare enfin.</p>
   </div>
 </section>
 
 <!-- REVIEWS -->
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <p class="sec-label">Ils ont repris les choses en main</p>
-    <h2 class="sec-h">Ce qu'en disent<br><em>les premières nuits.</em></h2>
-    <div class="rev-grid">
-      <div class="rev"><span class="stars">★★★★★</span><p>Trois semaines. Je me suis réveillée un matin et <strong>j'ai réalisé que je n'avais pas pensé à ma fatigue.</strong> Pas juste « dormir plus ». La qualité elle-même.</p><div class="rev-who"><div class="rev-av">ER</div><div><div class="rev-nm">Élodie R., 38 ans</div><div class="rev-mt">Kore depuis 4 mois</div></div></div></div>
-      <div class="rev"><span class="stars">★★★★★</span><p>J'avais essayé 4 marques. <strong>Là, pour la première fois, mes nuits tiennent vraiment.</strong> Je me réveille moins la nuit et beaucoup plus reposé.</p><div class="rev-who"><div class="rev-av">MB</div><div><div class="rev-nm">Marc B., 41 ans</div><div class="rev-mt">Kore depuis 2 mois</div></div></div></div>
-      <div class="rev"><span class="stars">★★★★★</span><p>Le matin était mon pire moment. <strong>Aujourd'hui je me lève sans cette sensation de brouillard.</strong> Mes journées ont changé.</p><div class="rev-who"><div class="rev-av">SL</div><div><div class="rev-nm">Sophie L., 35 ans</div><div class="rev-mt">Kore depuis 3 mois</div></div></div></div>
-    </div>
+<section class="wrap sec">
+  <p class="sh-ey">Ils ont retrouvé leurs nuits</p>
+  <h2 class="sh-h">Ce qu'en disent<br><em>les premières semaines.</em></h2>
+  <div class="rev-grid">
+    <div class="rev"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Nathalie, 49 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
+    <div class="rev"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 41 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
+    <div class="rev"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 34 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
   </div>
 </section>
 
 <!-- GUARANTEE -->
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="guar">
-      <h3>Premier mois satisfait ou remboursé</h3>
-      <p>Essaie la Kore box pendant 30 jours. Si tes nuits ne changent pas, on te rembourse — sans question. Le risque est pour nous, pas pour toi.</p>
-    </div>
+<section class="wrap sec-tight">
+  <div class="guar">
+    <h3>Premier mois satisfait ou remboursé</h3>
+    <p>Essaie la Kore box pendant 30 jours. Si tes nuits ne changent pas, on te rembourse — sans question. Le risque est pour nous, pas pour toi.</p>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="sec" id="faq" style="padding-top:0">
-  <div class="wrap">
-    <p class="sec-label" style="text-align:center">Questions fréquentes</p>
-    <h2 class="sec-h" style="text-align:center;margin-bottom:30px">On répond <em>à tout.</em></h2>
-    <div class="faq">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">En combien de temps je vois une différence ?<span>+</span></button><div class="faq-a"><p>La plupart des personnes sentent un endormissement plus facile dès les premières nuits. La qualité du sommeil et l'énergie au réveil s'installent généralement sur 2 à 3 semaines, à mesure que ton corps retrouve un vrai repos.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Est-ce que ça crée une accoutumance ?<span>+</span></button><div class="faq-a"><p>Non. La Kore box n'est pas un somnifère. Elle aide ton système nerveux à se mettre au repos naturellement — sans dépendance ni effet groggy le lendemain.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Comment je la prends ?<span>+</span></button><div class="faq-a"><p>Une routine simple, le soir. Tout est expliqué dans ta box, et l'app Kore (bientôt) t'accompagnera pour suivre tes nuits.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Et si ça ne marche pas pour moi ?<span>+</span></button><div class="faq-a"><p>Tu es couvert·e par notre garantie « satisfait ou remboursé » de 30 jours. Tu testes sans risque.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">La livraison est-elle gratuite ?<span>+</span></button><div class="faq-a"><p>Oui, la livraison est offerte sur toutes les commandes, partout en France.</p></div></div>
-    </div>
+<section class="wrap sec" id="faq">
+  <p class="sh-ey" style="text-align:center">Questions fréquentes</p>
+  <h2 class="sh-h" style="text-align:center;margin-bottom:26px">On répond <em>à tout.</em></h2>
+  <div class="faq">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">En combien de temps je vois une différence ?<span>+</span></button><div class="faq-a"><p>L'endormissement s'améliore souvent dès les premières nuits. Les réveils nocturnes s'espacent et l'énergie au réveil s'installe généralement sur 2 à 3 semaines, à mesure que ton corps retrouve un vrai repos.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Est-ce que ça crée une accoutumance ?<span>+</span></button><div class="faq-a"><p>Non. Kore n'est pas un somnifère. Il aide ton système nerveux à se mettre au repos naturellement — sans dépendance ni effet groggy le lendemain.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Comment je la prends ?<span>+</span></button><div class="faq-a"><p>Un geste simple, le soir. Tout est expliqué dans ta box, et l'app Kore (bientôt) t'accompagnera pour suivre tes nuits.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Et si ça ne marche pas pour moi ?<span>+</span></button><div class="faq-a"><p>Tu es couvert·e par la garantie satisfait ou remboursé de 30 jours. Tu testes sans aucun risque.</p></div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">
     <p class="footer-name">Kore</p>
@@ -365,143 +343,100 @@ footer{background:var(--bg);border-top:1px solid var(--border);margin-top:40px}
   </div>
 </footer>
 
+<!-- STICKY BUY BAR -->
+<div class="sticky-buy" id="stickyBuy">
+  <div class="sticky-buy-price"><s>89€</s>57€</div>
+  <button onclick="addToCart()">Ajouter au panier</button>
+</div>
+
 <!-- CART DRAWER -->
 <div class="cart-ov" id="cartOv" onclick="closeCart()"></div>
-<aside class="cart" id="cartEl" aria-label="Panier">
-  <div class="cart-top">
-    <h3>Ton panier</h3>
-    <button class="cart-close" onclick="closeCart()" aria-label="Fermer">×</button>
-  </div>
-  <div class="cart-body" id="cartBody">
-    <p class="cart-empty">Ton panier est vide.</p>
-  </div>
+<aside class="cart" id="cartEl">
+  <div class="cart-top"><h3>Ton panier</h3><button class="cart-close" onclick="closeCart()">×</button></div>
+  <div class="cart-body" id="cartBody"><p class="cart-empty">Ton panier est vide.</p></div>
   <div class="cart-foot" id="cartFoot" style="display:none">
     <div class="cart-sub"><span>Sous-total</span><span id="cartSub">—</span></div>
     <p class="cart-note">Livraison gratuite incluse · total final confirmé au paiement sécurisé.</p>
-    <button class="cart-checkout" id="cartCheckout" onclick="goCheckout()">Commander · paiement sécurisé</button>
-    <p class="cart-trust">Satisfait ou remboursé · 30 jours</p>
+    <button class="cart-checkout" onclick="goCheckout()">Commander · paiement sécurisé</button>
   </div>
 </aside>
 
 <div class="toast" id="toast">Ajouté au panier ✓</div>
 
-<!-- SHOPIFY BUY SDK (moteur invisible) -->
 <script>
-/* ---------- UI helpers ---------- */
-function setGal(btn,src){document.getElementById('galMain').src=src;document.querySelectorAll('#galThumbs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+/* GALLERY swipe */
+var galTrack=document.getElementById('galTrack');
+function galTo(i){ galTrack.scrollTo({left:i*galTrack.clientWidth, behavior:'smooth'}); }
+(function(){
+  var dots=document.getElementById('galDots');
+  var n=galTrack.children.length;
+  for(var i=0;i<n;i++){ var b=document.createElement('button'); if(i===0)b.className='active'; b.onclick=(function(k){return function(){galTo(k);};})(i); dots.appendChild(b); }
+  var sync=function(){ var i=Math.round(galTrack.scrollLeft/galTrack.clientWidth);
+    dots.querySelectorAll('button').forEach(function(b,k){b.classList.toggle('active',k===i);});
+    document.querySelectorAll('#galThumbs button').forEach(function(b,k){b.classList.toggle('active',k===i);});
+  };
+  galTrack.addEventListener('scroll', function(){ window.requestAnimationFrame(sync); });
+})();
+
+/* UI */
 function toggleFaq(b){b.parentElement.classList.toggle('open');var a=b.nextElementSibling;a.style.maxHeight=b.parentElement.classList.contains('open')?a.scrollHeight+'px':null;}
 var QTY=1;
 function chgQty(d){QTY=Math.max(1,QTY+d);document.getElementById('qtyVal').textContent=QTY;}
 function openCart(){document.getElementById('cartEl').classList.add('open');document.getElementById('cartOv').classList.add('open');}
 function closeCart(){document.getElementById('cartEl').classList.remove('open');document.getElementById('cartOv').classList.remove('open');}
-function showToast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200);}
+function showToast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2200);}
 function eur(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €';}
 
-/* ---------- Shopify headless cart ---------- */
-var SHOP_DOMAIN='q3knru-rj.myshopify.com';
-var SF_TOKEN='e44e2d98ee4fa8726e022eee54c195e1';
-var PRODUCT_ID='10534418514256';
+/* Sticky buy bar visibility */
+(function(){
+  var sticky=document.getElementById('stickyBuy'), addBtn=document.getElementById('addCart');
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ sticky.classList.toggle('show', !e.isIntersecting); }); });
+  if(addBtn) io.observe(addBtn);
+})();
+
+/* SHOPIFY headless cart */
+var SHOP_DOMAIN='q3knru-rj.myshopify.com', SF_TOKEN='e44e2d98ee4fa8726e022eee54c195e1', PRODUCT_ID='10534418514256';
 var FALLBACK_CART='https://q3knru-rj.myshopify.com/cart/53161758261584:1';
+var KORE_UNIT_PRICE=57;
 var client=null, checkout=null, product=null, selVariant=null, sdkReady=false;
-
-function loadSDK(cb){
-  if(window.ShopifyBuy){cb();return;}
-  var s=document.createElement('script');
-  s.async=true;s.src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-  s.onload=cb;s.onerror=function(){console.warn('Shopify SDK failed');};
-  document.head.appendChild(s);
-}
-
-function gid(numeric){return btoa('gid://shopify/Product/'+numeric);}
-
+function loadSDK(cb){ if(window.ShopifyBuy){cb();return;} var s=document.createElement('script'); s.async=true; s.src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js'; s.onload=cb; s.onerror=function(){console.warn('SDK fail');}; document.head.appendChild(s); }
+function gid(num){return btoa('gid://shopify/Product/'+num);}
 async function initShop(){
   try{
     client=ShopifyBuy.buildClient({domain:SHOP_DOMAIN,storefrontAccessToken:SF_TOKEN});
-    // restore or create checkout
     var id=localStorage.getItem('kore_checkout_id');
     if(id){try{checkout=await client.checkout.fetch(id);}catch(e){checkout=null;}}
     if(!checkout||checkout.completedAt){checkout=await client.checkout.create();localStorage.setItem('kore_checkout_id',checkout.id);}
-    // load product
-    try{product=await client.product.fetch(gid(PRODUCT_ID));}
-    catch(e){try{product=await client.product.fetch(PRODUCT_ID);}catch(e2){product=null;}}
-    if(product&&product.variants&&product.variants.length){
-      selVariant=product.variants[0];
-      renderOptions();
-    }
-    sdkReady=true;
-    renderCart();
-  }catch(e){console.warn('initShop error',e);sdkReady=false;}
+    try{product=await client.product.fetch(gid(PRODUCT_ID));}catch(e){try{product=await client.product.fetch(PRODUCT_ID);}catch(e2){product=null;}}
+    if(product&&product.variants&&product.variants.length){selVariant=product.variants[0];}
+    sdkReady=true; renderCart();
+  }catch(e){console.warn('initShop',e);sdkReady=false;}
 }
-
-function renderOptions(){
-  if(!product||product.variants.length<2)return;
-  var wrap=document.getElementById('optWrap');
-  var pills=document.getElementById('optPills');
-  document.getElementById('optName').textContent=(product.options&&product.options[0]&&product.options[0].name)||'Option';
-  pills.innerHTML='';
-  product.variants.forEach(function(v,i){
-    var b=document.createElement('button');
-    b.className='opt-pill'+(i===0?' active':'');
-    b.textContent=v.title;
-    b.onclick=function(){selVariant=v;document.querySelectorAll('.opt-pill').forEach(p=>p.classList.remove('active'));b.classList.add('active');};
-    pills.appendChild(b);
-  });
-  wrap.style.display='block';
-}
-
 async function addToCart(){
-  var btn=document.getElementById('addCart');
-  btn.disabled=true;
+  var btn=document.getElementById('addCart'); if(btn)btn.disabled=true;
   try{
     if(!sdkReady||!checkout||!selVariant){window.location=FALLBACK_CART;return;}
     checkout=await client.checkout.addLineItems(checkout.id,[{variantId:selVariant.id,quantity:QTY}]);
     renderCart();openCart();showToast('Ajouté au panier ✓');
   }catch(e){console.warn(e);window.location=FALLBACK_CART;}
-  finally{btn.disabled=false;}
+  finally{if(btn)btn.disabled=false;}
 }
-
-async function changeLine(lineId,qty){
-  if(qty<1){checkout=await client.checkout.removeLineItems(checkout.id,[lineId]);}
-  else{checkout=await client.checkout.updateLineItems(checkout.id,[{id:lineId,quantity:qty}]);}
-  renderCart();
-}
-
-function lineImg(li){
-  try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){}
-  return 'img/price-essentiel.jpg';
-}
-var KORE_UNIT_PRICE=57; /* prix client reel : la remise Shopify ramene 89 -> 57 au paiement */
+async function changeLine(lineId,qty){ if(qty<1){checkout=await client.checkout.removeLineItems(checkout.id,[lineId]);}else{checkout=await client.checkout.updateLineItems(checkout.id,[{id:lineId,quantity:qty}]);} renderCart(); }
+function lineImg(li){ try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){} return 'img/price-essentiel.jpg'; }
 function linePrice(li){ return KORE_UNIT_PRICE; }
-
 function renderCart(){
-  var body=document.getElementById('cartBody');
-  var foot=document.getElementById('cartFoot');
-  var count=document.getElementById('cartCount');
+  var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount');
   var items=(checkout&&checkout.lineItems)||[];
-  var totalQty=items.reduce((s,li)=>s+li.quantity,0);
+  var totalQty=items.reduce(function(s,li){return s+li.quantity;},0);
   if(totalQty>0){count.style.display='flex';count.textContent=totalQty;}else{count.style.display='none';}
   if(!items.length){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';return;}
-  var html='';var sub=0;
-  items.forEach(function(li){
-    var pr=linePrice(li);sub+=pr*li.quantity;
-    html+='<div class="ci"><img src="'+lineImg(li)+'" alt=""><div class="ci-info">'
-      +'<div class="ci-nm">'+li.title+'</div>'
-      +(li.variant&&li.variant.title&&li.variant.title!=='Default Title'?'<div class="ci-vr">'+li.variant.title+'</div>':'')
-      +'<div class="ci-bot"><div class="ci-qty"><button onclick="changeLine(\''+li.id+'\','+(li.quantity-1)+')">−</button><span>'+li.quantity+'</span><button onclick="changeLine(\''+li.id+'\','+(li.quantity+1)+')">+</button></div>'
-      +'<div class="ci-pr">'+eur(pr*li.quantity)+'</div></div>'
-      +'<button class="ci-rm" onclick="changeLine(\''+li.id+'\',0)">Retirer</button>'
-      +'</div></div>';
+  var html='',sub=0;
+  items.forEach(function(li){var pr=linePrice(li);sub+=pr*li.quantity;
+    html+='<div class="ci"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'</div><div class="ci-bot"><div class="ci-qty"><button onclick="changeLine(\''+li.id+'\','+(li.quantity-1)+')">−</button><span>'+li.quantity+'</span><button onclick="changeLine(\''+li.id+'\','+(li.quantity+1)+')">+</button></div><div class="ci-pr">'+eur(pr*li.quantity)+'</div></div><button class="ci-rm" onclick="changeLine(\''+li.id+'\',0)">Retirer</button></div></div>';
   });
-  body.innerHTML=html;
-  document.getElementById('cartSub').textContent=eur(sub);
-  foot.style.display='block';
+  body.innerHTML=html; document.getElementById('cartSub').textContent=eur(sub); foot.style.display='block';
 }
-
-function goCheckout(){
-  if(checkout&&checkout.webUrl){window.location=checkout.webUrl;}
-  else{window.location=FALLBACK_CART;}
-}
-
+function goCheckout(){ if(checkout&&checkout.webUrl){window.location=checkout.webUrl;}else{window.location=FALLBACK_CART;} }
 loadSDK(initShop);
 </script>
 
@@ -510,49 +445,43 @@ loadSDK(initShop);
 (function(){
   var P = {
     "parent": {
-      h1: 'Te rendormir vite,<br><em>te réveiller humaine.</em>',
-      lead: 'Tu te relèves la nuit, tu dors en miettes, et le matin tu es déjà à cran. La Kore box t\'aide à te rendormir vite — et à ce que le peu que tu dors te répare enfin.',
-      tag: 'Pensée pour les nuits hachées des parents.',
-      revs: [
-        {t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je me rendors direct — et le matin je suis humaine.</strong>', i:'EL', n:'Élodie, 38 ans', m:'Maman de 2 · depuis 3 mois'},
-        {t:'<strong>J\'ai arrêté de hurler pour un verre renversé.</strong> Ça paraît bête, mais c\'est ça qui a tout changé.', i:'So', n:'Sophie, 35 ans', m:'Maman de 2 · depuis 4 mois'},
-        {t:'Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J\'avais oublié ce que c\'était.', i:'CA', n:'Carla, 41 ans', m:'Maman de 3 · depuis 5 mois'}
+      h1:'Te rendormir vite,<br><em>te réveiller humaine.</em>',
+      lead:'Tu te relèves la nuit, tu dors en miettes, et le matin tu es déjà à cran. La Kore box t\'aide à te rendormir vite — et à ce que le peu que tu dors te répare enfin.',
+      tag:'Pensée pour les nuits hachées des parents.',
+      revs:[
+        {t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je me rendors direct — et le matin je suis humaine.</strong>',i:'EL',n:'Élodie, 38 ans',m:'Maman de 2 · depuis 3 mois'},
+        {t:'<strong>J\'ai arrêté de hurler pour un verre renversé.</strong> Ça paraît bête, mais c\'est ça qui a tout changé.',i:'So',n:'Sophie, 35 ans',m:'Maman de 2 · depuis 4 mois'},
+        {t:'Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J\'avais oublié ce que c\'était.',i:'CA',n:'Carla, 41 ans',m:'Maman de 3 · depuis 5 mois'}
       ]
     },
     "reveil-3h": {
-      h1: 'Passer la nuit<br><em>sans le réveil de 3h.</em>',
-      lead: 'Tu t\'endors bien, mais à 3h tu es là, les yeux ouverts, à attendre un sommeil qui ne revient pas. La Kore box calme le cortisol qui te réveille — pour une nuit d\'une seule traite.',
-      tag: 'Pensée pour ceux qui se réveillent en pleine nuit.',
-      revs: [
-        {t:'Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu\'à mon réveil.</strong>', i:'NA', n:'Nathalie, 49 ans', m:'Bordeaux · depuis 4 mois'},
-        {t:'Avant, réveillé = fini, je me levais. <strong>Maintenant je me rendors en quelques minutes.</strong>', i:'PH', n:'Philippe, 52 ans', m:'Toulouse · depuis 3 mois'},
-        {t:'Je ne ressentais rien de spécial, juste impossible de me rendormir. <strong>Ça, c\'est réglé.</strong>', i:'KA', n:'Karine, 44 ans', m:'Lille · depuis 5 mois'}
+      h1:'Passer la nuit<br><em>sans le réveil de 3h.</em>',
+      lead:'Tu t\'endors bien, mais à 3h tu es là, les yeux ouverts, à attendre un sommeil qui ne revient pas. La Kore box calme le cortisol qui te réveille — pour une nuit d\'une seule traite.',
+      tag:'Pensée pour ceux qui se réveillent en pleine nuit.',
+      revs:[
+        {t:'Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu\'à mon réveil.</strong>',i:'NA',n:'Nathalie, 49 ans',m:'Bordeaux · depuis 4 mois'},
+        {t:'Avant, réveillé = fini, je me levais. <strong>Maintenant je me rendors en quelques minutes.</strong>',i:'PH',n:'Philippe, 52 ans',m:'Toulouse · depuis 3 mois'},
+        {t:'Je ne ressentais rien de spécial, juste impossible de me rendormir. <strong>Ça, c\'est réglé.</strong>',i:'KA',n:'Karine, 44 ans',m:'Lille · depuis 5 mois'}
       ]
     },
     "travail": {
-      h1: 'Éteindre ton cerveau,<br><em>récupérer pour de vrai.</em>',
-      lead: 'Le corps mort le soir, mais la tête qui refait la réunion de demain. La Kore box calme le système nerveux pour que tu décroches — et que tes nuits te réparent vraiment.',
-      tag: 'Pensée pour les cerveaux qui ne s\'éteignent jamais.',
-      revs: [
-        {t:'Je me couchais en repensant à mes mails. <strong>Maintenant je m\'endors vraiment, et je récupère.</strong>', i:'TH', n:'Thomas, 34 ans', m:'Cadre · depuis 3 mois'},
-        {t:'<strong>Le crash de l\'après-midi a disparu.</strong> Je suis plus net en réunion qu\'avant.', i:'JU', n:'Julien, 39 ans', m:'Manager · depuis 4 mois'},
-        {t:'Je pensais devoir dormir moins pour tenir. <strong>En fait il fallait mieux dormir.</strong>', i:'AN', n:'Anaïs, 31 ans', m:'Consultante · depuis 3 mois'}
+      h1:'Éteindre ton cerveau,<br><em>récupérer pour de vrai.</em>',
+      lead:'Le corps mort le soir, mais la tête qui refait la réunion de demain. La Kore box calme le système nerveux pour que tu décroches — et que tes nuits te réparent vraiment.',
+      tag:'Pensée pour les cerveaux qui ne s\'éteignent jamais.',
+      revs:[
+        {t:'Je me couchais en repensant à mes mails. <strong>Maintenant je m\'endors vraiment, et je récupère.</strong>',i:'TH',n:'Thomas, 34 ans',m:'Cadre · depuis 3 mois'},
+        {t:'<strong>Le crash de l\'après-midi a disparu.</strong> Je suis plus net en réunion qu\'avant.',i:'JU',n:'Julien, 39 ans',m:'Manager · depuis 4 mois'},
+        {t:'Je pensais devoir dormir moins pour tenir. <strong>En fait il fallait mieux dormir.</strong>',i:'AN',n:'Anaïs, 31 ans',m:'Consultante · depuis 3 mois'}
       ]
     }
   };
-  var key = new URLSearchParams(location.search).get('p');
-  var d = P[key];
-  if(!d) return;
-  var h1 = document.querySelector('.p-title'); if(h1) h1.innerHTML = d.h1;
-  var lead = document.querySelector('.p-lead'); if(lead) lead.innerHTML = d.lead;
-  var stars = document.querySelector('.p-stars');
-  if(stars && d.tag){ var t=document.createElement('div'); t.style.cssText='font-size:12.5px;color:var(--teal);font-weight:500;margin:-6px 0 16px'; t.textContent=d.tag; stars.insertAdjacentElement('afterend', t); }
-  var revEls = document.querySelectorAll('.rev');
-  d.revs.forEach(function(r, idx){
-    if(revEls[idx]){
-      revEls[idx].innerHTML = '<span class="stars">★★★★★</span><p>'+r.t+'</p><div class="rev-who"><div class="rev-av">'+r.i+'</div><div><div class="rev-nm">'+r.n+'</div><div class="rev-mt">'+r.m+'</div></div></div>';
-    }
-  });
+  var d=P[new URLSearchParams(location.search).get('p')]; if(!d) return;
+  var h1=document.querySelector('.p-title'); if(h1)h1.innerHTML=d.h1;
+  var lead=document.querySelector('.p-lead'); if(lead)lead.innerHTML=d.lead;
+  var stars=document.querySelector('.p-stars');
+  if(stars&&d.tag){var t=document.createElement('div');t.style.cssText='font-size:12.5px;color:var(--teal);font-weight:500;margin:-6px 0 16px';t.textContent=d.tag;stars.insertAdjacentElement('afterend',t);}
+  var revEls=document.querySelectorAll('.rev');
+  d.revs.forEach(function(r,idx){ if(revEls[idx]){revEls[idx].innerHTML='<span class="stars">★★★★★</span><p>'+r.t+'</p><div class="rev-who"><div class="rev-av">'+r.i+'</div><div><div class="rev-nm">'+r.n+'</div><div class="rev-mt">'+r.m+'</div></div></div>';} });
 })();
 </script>
 </body>
