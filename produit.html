@@ -100,6 +100,12 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .hero-rev p strong{font-style:normal;color:var(--foret);font-weight:600}
 .hero-rev-who{font-size:12.5px;color:var(--brume)}
 .hero-rev-who b{color:var(--encre-2);font-weight:600}
+.sec-auth{background:var(--surface);padding-top:clamp(40px,8vw,72px);padding-bottom:clamp(40px,8vw,72px)}
+.auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:760px){.auth-grid{grid-template-columns:repeat(4,1fr)}}
+.auth-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 15px;text-align:center}
+.auth-card b{display:block;font-family:var(--serif);font-size:18px;color:var(--foret);margin-bottom:5px}
+.auth-card span{font-size:12.5px;color:var(--encre-2);line-height:1.4}
 .p-res li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;display:flex;align-items:center;justify-content:center;background:var(--foret);color:#fff;border-radius:50%;font-size:11px;font-weight:700}
 .offer{background:var(--surface);border:1.5px solid var(--foret);border-radius:18px;padding:16px 18px;margin-bottom:18px;box-shadow:0 10px 30px rgba(12,84,73,.07)}
 .offer-per{display:flex;align-items:baseline;gap:8px}
@@ -293,42 +299,17 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 </section>
 
-<!-- TU TE RECONNAIS -->
-<section class="sec dark">
+<!-- AUTORITE -->
+<section class="sec sec-auth">
   <div class="wrap">
-    <span class="eyebrow reveal">Tu te reconnais ?</span>
-    <h2 class="h2 reveal">Si une seule de ces nuits<br><em style="color:var(--or-lt)">est la tienne.</em></h2>
-    <p class="prob-sub reveal">Kore est pensé pour ça — pas pour « mieux dormir » en général.</p>
-    <div class="prob-list">
-      <div class="prob-item lead-prob reveal"><span class="prob-n">01</span>Tu te réveilles plusieurs fois dans la nuit — ton sommeil reste léger, jamais vraiment profond.</div>
-      <div class="prob-item reveal"><span class="prob-n">02</span>Tu dors tes heures, mais tu te réveilles déjà vidé·e, comme si tu n'avais pas dormi.</div>
-      <div class="prob-item reveal"><span class="prob-n">03</span>Le soir, ton corps est mort mais ton cerveau continue de tourner : demain, les mails, la to-do.</div>
-      <div class="prob-item reveal"><span class="prob-n">04</span>Tes nuits hachées te rendent à cran, irritable dès le réveil.</div>
-    </div>
-  </div>
-</section>
-
-<!-- EN SITUATION -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow reveal">Ce que Kore change</span>
-    <h2 class="h2 reveal">Des nuits qui te réparent,<br><em>des journées qui suivent.</em></h2>
-    <div class="life">
-      <div class="life-card reveal"><img src="img/p1.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
-      <div class="life-card reveal"><img src="img/p2.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
-      <div class="life-card reveal"><img src="img/p3.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
-      <div class="life-card reveal"><img src="img/p4.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- MECANISME -->
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="mech reveal">
-      <span class="eyebrow">Pourquoi ça t'arrive</span>
-      <h2 class="h2">Le coupable, c'est le <em>cortisol.</em></h2>
-      <p>La nuit, ton cortisol — l'hormone du stress — devrait être au plus bas. Chez beaucoup, il <strong>remonte vers 3h</strong> et te réveille, ou reste élevé et t'empêche de récupérer. Le <strong>magnésium, l'ashwagandha et la L-théanine</strong> de Kore calment ce système nerveux — pour que ta nuit te répare enfin.</p>
+    <span class="eyebrow reveal" style="display:block;text-align:center">Pourquoi nous faire confiance</span>
+    <h2 class="h2 reveal" style="text-align:center;margin-bottom:8px">Une formule <em>sérieuse.</em></h2>
+    <p class="reveal" style="text-align:center;max-width:520px;margin:0 auto 26px;color:var(--encre-2);font-weight:300">Pas un effet de mode : des actifs brevetés, dosés à la hauteur des études, fabriqués en Europe.</p>
+    <div class="auth-grid reveal">
+      <div class="auth-card"><b>KSM-66®</b><span>Ashwagandha breveté, étudié cliniquement</span></div>
+      <div class="auth-card"><b>Doses des études</b><span>Pas de blend qui cache des doses trop faibles</span></div>
+      <div class="auth-card"><b>Europe · GMP</b><span>Formulé et certifié en Europe</span></div>
+      <div class="auth-card"><b>Sans accoutumance</b><span>Ni effet groggy au réveil</span></div>
     </div>
   </div>
 </section>
