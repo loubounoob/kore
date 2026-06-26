@@ -57,7 +57,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 @media(min-width:900px){.product-grid{grid-template-columns:1.05fr 1fr;gap:54px;align-items:start}.gallery-col{position:sticky;top:86px}}
 .gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid var(--border);scrollbar-width:none;background:var(--surface)}
 .gallery-track::-webkit-scrollbar{display:none}
-.gallery-track img{flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center}
+.gallery-track img{flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center}@media(max-width:899px){.gallery-track img{aspect-ratio:1/1}}
 .gallery-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
 .gallery-dots button{width:7px;height:7px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:.2s}
 .gallery-dots button.active{background:var(--foret);width:20px;border-radius:4px}
@@ -67,7 +67,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .gallery-thumbs img{width:100%;height:100%;object-fit:cover}
 
 .badge{display:inline-flex;align-items:center;gap:6px;background:var(--vert-pale);color:var(--foret);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px}
-.p-title{font-family:var(--serif);font-size:clamp(32px,7vw,52px);line-height:1.04;font-weight:500;margin:16px 0 11px;letter-spacing:-.02em}
+.p-title{font-family:var(--serif);font-size:clamp(26px,5.7vw,48px);line-height:1.05;font-weight:500;margin:14px 0 10px;letter-spacing:-.02em;white-space:nowrap}
+@media(max-width:430px){.p-title{font-size:24px}}
 .p-title em{color:var(--foret)}
 .p-stars{display:flex;align-items:center;gap:9px;margin-bottom:16px;font-size:13.5px;color:var(--encre-2)}
 .stars{color:var(--or);letter-spacing:2px;font-size:14px}
@@ -93,11 +94,17 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .guarantee{display:flex;align-items:center;gap:10px;background:var(--vert-pale);color:var(--foret);border-radius:13px;padding:12px 15px;margin-top:14px;font-size:13.5px;line-height:1.4}
 .guarantee svg{flex-shrink:0}
 .guarantee b{font-weight:600}
+.hero-rev{border-left:3px solid var(--or);background:var(--surface);border-radius:0 12px 12px 0;padding:11px 16px;margin:2px 0 20px}
+.hero-rev .stars{color:var(--or);font-size:13px;letter-spacing:2px;display:block}
+.hero-rev p{font-size:14.5px;font-style:italic;color:var(--encre);line-height:1.5;margin:5px 0 7px}
+.hero-rev p strong{font-style:normal;color:var(--foret);font-weight:600}
+.hero-rev-who{font-size:12.5px;color:var(--brume)}
+.hero-rev-who b{color:var(--encre-2);font-weight:600}
 .p-res li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;display:flex;align-items:center;justify-content:center;background:var(--foret);color:#fff;border-radius:50%;font-size:11px;font-weight:700}
 .offer{background:var(--surface);border:1.5px solid var(--foret);border-radius:18px;padding:16px 18px;margin-bottom:18px;box-shadow:0 10px 30px rgba(12,84,73,.07)}
 .offer-per{display:flex;align-items:baseline;gap:8px}
-.per-num{font-family:var(--serif);font-size:54px;font-weight:500;color:var(--encre);line-height:1}
-.per-unit{font-size:19px;color:var(--foret);font-weight:600}
+.per-num{font-family:var(--serif);font-size:38px;font-weight:500;color:var(--encre);line-height:1}
+.per-unit{font-size:16px;color:var(--foret);font-weight:600}
 .offer-line{display:flex;align-items:baseline;gap:10px;margin-top:9px;flex-wrap:wrap}
 .price-old2{font-size:23px;color:var(--brume);text-decoration:line-through}
 .price-now2{font-size:23px;font-weight:700;color:var(--foret)}
@@ -245,7 +252,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
   <div class="buy-col">
     <span class="badge">Pack Kore · −36 %</span>
-    <h1 class="p-title">Le sommeil<br><em>qui répare.</em></h1>
+    <h1 class="p-title">Le sommeil <em>qui répare.</em></h1>
     <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
 
     <ul class="p-res">
@@ -253,6 +260,12 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <li>Un <b>sommeil plus profond</b>, qui répare vraiment</li>
       <li>Un réveil <b>vraiment reposé</b>, sans coup de barre</li>
     </ul>
+
+    <div class="hero-rev">
+      <span class="stars">★★★★★</span>
+      <p>« Je me réveillais 3 ou 4 fois par nuit, sans raison. Là, je dors d'une traite — et je me lève <strong>vraiment reposée.</strong> »</p>
+      <span class="hero-rev-who"><b>Élodie, 38 ans</b> · acheteuse vérifiée</span>
+    </div>
 
     <div class="offer">
       <div class="offer-per"><span class="per-num">1,90€</span><span class="per-unit">/ nuit</span></div>
