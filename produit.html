@@ -362,29 +362,23 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .plan.selected{box-shadow:0 0 0 1.5px var(--foret),var(--shadow-lg)}
 /* la carte gagnante du comparatif ressort */
 .vs-us{box-shadow:var(--shadow-lg);border:1.5px solid var(--or-lt)}
-/* 4 piliers de la formule = 4 accents (lisibles sur fond sombre) */
-.fcard{border-top:3px solid transparent}
-.fcard:nth-child(1){border-top-color:#E3C48A}
-.fcard:nth-child(1) .fcard-n,.fcard:nth-child(1) .fcard-sub,.fcard:nth-child(1) li b{color:#E3C48A}
-.fcard:nth-child(2){border-top-color:#C7B5E8}
-.fcard:nth-child(2) .fcard-n,.fcard:nth-child(2) .fcard-sub,.fcard:nth-child(2) li b{color:#C7B5E8}
-.fcard:nth-child(3){border-top-color:#9FC2DE}
-.fcard:nth-child(3) .fcard-n,.fcard:nth-child(3) .fcard-sub,.fcard:nth-child(3) li b{color:#9FC2DE}
-.fcard:nth-child(4){border-top-color:#E8B68E}
-.fcard:nth-child(4) .fcard-n,.fcard:nth-child(4) .fcard-sub,.fcard:nth-child(4) li b{color:#E8B68E}
-/* les 4 stats de la formule prennent les 4 accents */
-.formula-stats div:nth-child(1) b{color:#E3C48A}
-.formula-stats div:nth-child(2) b{color:#C7B5E8}
-.formula-stats div:nth-child(3) b{color:#9FC2DE}
-.formula-stats div:nth-child(4) b{color:#E8B68E}
-/* avis : cartes teintees + relief + rythme couleur */
-.rev{box-shadow:var(--shadow);border-radius:16px;border:1px solid var(--border)}
-.rev:nth-child(3n+1){background:var(--lav-bg);border-color:var(--lav-bd)}
-.rev:nth-child(3n+2){background:var(--ambre-bg);border-color:var(--ambre-bd)}
-.rev:nth-child(3n+3){background:var(--indigo-bg);border-color:var(--indigo-bd)}
-.rev:nth-child(3n+1) .rev-av{background:var(--lav);color:#fff}
-.rev:nth-child(3n+2) .rev-av{background:var(--ambre);color:#fff}
-.rev:nth-child(3n+3) .rev-av{background:var(--indigo);color:#fff}
+/* FORMULE — design osé, palette or/crème uniforme */
+.fcard{border-top:3px solid rgba(216,189,146,.4)}
+.fcard-n{font-family:var(--serif);font-size:32px;letter-spacing:0;color:var(--or-lt);opacity:.85;line-height:1}
+.fcard h3{margin:6px 0 2px}
+.fcard h3:after{content:"";display:block;width:36px;height:2px;background:var(--or-lt);opacity:.55;margin-top:11px}
+.formula-stats b{color:var(--or-lt)}
+/* preuve clients dans la section formule */
+.formula-proof{max-width:780px;margin:46px auto 0;text-align:center;border-top:1px solid rgba(216,189,146,.22);padding-top:36px}
+.fp-rate{font-size:14px;color:rgba(246,243,234,.82);margin-bottom:26px}
+.fp-rate b{color:#fff}.fp-rate .stars{color:var(--or-lt)}
+.fp-quotes{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.fp-quotes blockquote{font-family:var(--serif);font-style:italic;font-size:18px;color:#F4EFE3;line-height:1.42;border:none;margin:0}
+.fp-quotes cite{display:block;font-family:var(--sans);font-style:normal;font-size:12.5px;color:var(--or-lt);margin-top:9px}
+@media(max-width:640px){.fp-quotes{grid-template-columns:1fr;gap:16px}}
+/* avis : cartes propres, relief, palette de marque */
+.rev{box-shadow:var(--shadow);border-radius:16px;border:1px solid var(--border);background:var(--surface)}
+.rev .rev-av{background:var(--foret);color:#fff}
 </style>
 </head>
 <body>
@@ -577,6 +571,13 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
           <li><span>Zinc bisglycinate</span><b>5 mg</b></li>
           <li><span>Vitamine B6 (P-5-P)</span><b>1,4 mg</b></li>
         </ul>
+      </div>
+    </div>
+    <div class="formula-proof reveal">
+      <div class="fp-rate"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés · 94&nbsp;% recommandent Kore</div>
+      <div class="fp-quotes">
+        <blockquote>« Trois semaines, et je dors enfin d'une seule traite. »<cite>Emma, 32 ans · acheteuse vérifiée</cite></blockquote>
+        <blockquote>« J'avais tout essayé — mélatonine, tisanes. C'est la seule chose qui a tenu. »<cite>Julien, 31 ans · acheteur vérifié</cite></blockquote>
       </div>
     </div>
     <p class="formula-foot reveal">Formulé en Europe · dosé aux études · sans accoutumance. Complément alimentaire, ne remplace pas un avis médical.</p>
