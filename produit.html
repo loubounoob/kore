@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>La Kore box — Le sommeil qui répare | Kore</title>
 <meta name="description" content="Réveils à 3h, cerveau qui ne s'éteint pas, matins en zombie malgré 8h. La Kore box calme le cortisol qui dérègle tes nuits. Satisfait ou remboursé.">
-<meta property="og:image" content="https://korecare.fr/img/price-essentiel.jpg">
+<meta property="og:image" content="https://korecare.fr/img/p0.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script>
@@ -209,19 +209,19 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 <section class="wrap product-grid">
   <div class="gallery-col">
     <div class="gallery-track" id="galTrack">
-      <img src="img/price-essentiel.jpg" alt="La Kore box">
-      <img src="img/ben01.jpg" alt="S'endormir paisiblement">
-      <img src="img/ben02.jpg" alt="Une nuit profonde">
-      <img src="img/ben03.jpg" alt="Un réveil reposé">
-      <img src="img/ben04.jpg" alt="De l'énergie au quotidien">
+      <img src="img/p0.jpg" alt="La Kore box">
+      <img src="img/p1.jpg" alt="S'endormir paisiblement">
+      <img src="img/p2.jpg" alt="Une nuit profonde">
+      <img src="img/p3.jpg" alt="Un réveil reposé">
+      <img src="img/p4.jpg" alt="De l'énergie au quotidien">
     </div>
     <div class="gallery-dots" id="galDots"></div>
     <div class="gallery-thumbs" id="galThumbs">
-      <button class="active" onclick="galTo(0)"><img src="img/price-essentiel.jpg" alt=""></button>
-      <button onclick="galTo(1)"><img src="img/ben01.jpg" alt=""></button>
-      <button onclick="galTo(2)"><img src="img/ben02.jpg" alt=""></button>
-      <button onclick="galTo(3)"><img src="img/ben03.jpg" alt=""></button>
-      <button onclick="galTo(4)"><img src="img/ben04.jpg" alt=""></button>
+      <button class="active" onclick="galTo(0)"><img src="img/p0.jpg" alt=""></button>
+      <button onclick="galTo(1)"><img src="img/p1.jpg" alt=""></button>
+      <button onclick="galTo(2)"><img src="img/p2.jpg" alt=""></button>
+      <button onclick="galTo(3)"><img src="img/p3.jpg" alt=""></button>
+      <button onclick="galTo(4)"><img src="img/p4.jpg" alt=""></button>
     </div>
   </div>
 
@@ -280,10 +280,10 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     <span class="eyebrow reveal">Ce que Kore change</span>
     <h2 class="h2 reveal">Des nuits qui te réparent,<br><em>des journées qui suivent.</em></h2>
     <div class="life">
-      <div class="life-card reveal"><img src="img/ben01.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
-      <div class="life-card reveal"><img src="img/ben02.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
-      <div class="life-card reveal"><img src="img/ben03.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
-      <div class="life-card reveal"><img src="img/ben04.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
+      <div class="life-card reveal"><img src="img/p1.jpg" alt=""><div class="life-cap">S'endormir sans tourner des heures.</div></div>
+      <div class="life-card reveal"><img src="img/p2.jpg" alt=""><div class="life-cap">Dormir d'une seule traite.</div></div>
+      <div class="life-card reveal"><img src="img/p3.jpg" alt=""><div class="life-cap">Se réveiller reposé·e, pas en zombie.</div></div>
+      <div class="life-card reveal"><img src="img/p4.jpg" alt=""><div class="life-cap">De l'énergie qui tient la journée.</div></div>
     </div>
   </div>
 </section>
@@ -386,7 +386,7 @@ function gid(num){return btoa('gid://shopify/Product/'+num);}
 async function initShop(){try{client=ShopifyBuy.buildClient({domain:SHOP_DOMAIN,storefrontAccessToken:SF_TOKEN});var id=localStorage.getItem('kore_checkout_id');if(id){try{checkout=await client.checkout.fetch(id);}catch(e){checkout=null;}}if(!checkout||checkout.completedAt){checkout=await client.checkout.create();localStorage.setItem('kore_checkout_id',checkout.id);}try{product=await client.product.fetch(gid(PRODUCT_ID));}catch(e){try{product=await client.product.fetch(PRODUCT_ID);}catch(e2){product=null;}}if(product&&product.variants&&product.variants.length){selVariant=product.variants[0];}sdkReady=true;renderCart();}catch(e){console.warn('initShop',e);sdkReady=false;}}
 async function addToCart(){var btn=document.getElementById('addCart');if(btn)btn.disabled=true;try{if(!sdkReady||!checkout||!selVariant){window.location=FALLBACK_CART;return;}if(window.fbq)fbq('track','AddToCart',{value:KORE_UNIT_PRICE*QTY,currency:'EUR'});checkout=await client.checkout.addLineItems(checkout.id,[{variantId:selVariant.id,quantity:QTY}]);renderCart();openCart();showToast('Ajouté au panier ✓');}catch(e){console.warn(e);window.location=FALLBACK_CART;}finally{if(btn)btn.disabled=false;}}
 async function changeLine(lineId,qty){if(qty<1){checkout=await client.checkout.removeLineItems(checkout.id,[lineId]);}else{checkout=await client.checkout.updateLineItems(checkout.id,[{id:lineId,quantity:qty}]);}renderCart();}
-function lineImg(li){try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){}return 'img/price-essentiel.jpg';}
+function lineImg(li){try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){}return 'img/p0.jpg';}
 function linePrice(li){return KORE_UNIT_PRICE;}
 function renderCart(){var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount');var items=(checkout&&checkout.lineItems)||[];var tq=items.reduce(function(s,li){return s+li.quantity;},0);if(tq>0){count.style.display='flex';count.textContent=tq;}else{count.style.display='none';}if(!items.length){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';return;}var html='',sub=0;items.forEach(function(li){var pr=linePrice(li);sub+=pr*li.quantity;html+='<div class="ci"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'</div><div class="ci-bot"><div class="ci-qty"><button onclick="changeLine(\''+li.id+'\','+(li.quantity-1)+')">−</button><span>'+li.quantity+'</span><button onclick="changeLine(\''+li.id+'\','+(li.quantity+1)+')">+</button></div><div class="ci-pr">'+eur(pr*li.quantity)+'</div></div><button class="ci-rm" onclick="changeLine(\''+li.id+'\',0)">Retirer</button></div></div>';});body.innerHTML=html;document.getElementById('cartSub').textContent=eur(sub);foot.style.display='block';}
 function goCheckout(){if(window.fbq)fbq('track','InitiateCheckout',{value:KORE_UNIT_PRICE,currency:'EUR'});if(checkout&&checkout.webUrl){window.location=checkout.webUrl;}else{window.location=FALLBACK_CART;}}
