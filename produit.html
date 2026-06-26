@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>La Kore box — Le sommeil qui répare | Kore</title>
 <meta name="description" content="Réveils à 3h, cerveau qui ne s'éteint pas, matins en zombie malgré 8h. La Kore box calme le cortisol qui dérègle tes nuits. Satisfait ou remboursé.">
-<meta property="og:image" content="https://korecare.fr/img/p0.jpg">
+<meta property="og:title" content="La Kore box — Le sommeil qui répare">
+<meta property="og:description" content="Le rituel du soir qui répare tes nuits. Gourde offerte, satisfait ou remboursé 30 nuits.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://korecare.fr/produit.html">
+<meta property="og:image" content="https://korecare.fr/img/social.jpg">
+<meta property="og:image:width" content="1122">
+<meta property="og:image:height" content="1402">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://korecare.fr/img/social.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script>
@@ -53,7 +61,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .nav-cta{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--foret);color:var(--creme);border:none;cursor:pointer}
 
 /* PRODUCT */
-.product-grid{display:grid;grid-template-columns:1fr;gap:30px;padding-top:30px}
+.product-grid{display:grid;grid-template-columns:1fr;gap:30px;padding-top:30px;padding-bottom:clamp(48px,8vw,80px)}
 @media(min-width:900px){.product-grid{grid-template-columns:1.05fr 1fr;gap:54px;align-items:start}.gallery-col{position:sticky;top:86px}}
 .gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid var(--border);scrollbar-width:none;background:var(--surface)}
 .gallery-track::-webkit-scrollbar{display:none}
@@ -280,7 +288,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     <div class="hero-rev">
       <span class="stars">★★★★★</span>
       <p>« Je me réveillais tous les jours entre 3h et 4h du matin. Là, je dors d'une seule traite — et je me lève <strong>vraiment reposée.</strong> »</p>
-      <span class="hero-rev-who"><b>Élodie, 38 ans</b> · acheteuse vérifiée</span>
+      <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
     </div>
 
     <div class="offer">
@@ -330,9 +338,9 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
     <h2 class="h2 reveal">Ce qu'en disent<br><em>les premières semaines.</em></h2>
     <div class="rev-grid">
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Nathalie, 49 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 41 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 34 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Emma, 32 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 31 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 28 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
     </div>
   </div>
 </section>
@@ -428,9 +436,9 @@ loadSDK(initShop);
 /* ── PERSONNALISATION PAR PERSONA (?p=) — les 3 variantes ── */
 (function(){
   var P={
-    "parent":{h1:'Te rendormir vite,<br><em>te réveiller humaine.</em>',lead:'Tu te relèves la nuit, tu dors en miettes, et le matin tu es déjà à cran. La Kore box t\'aide à te rendormir vite — et à ce que le peu que tu dors te répare enfin.',tag:'Pensée pour les nuits hachées des parents.',revs:[{t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je me rendors direct — et le matin je suis humaine.</strong>',i:'EL',n:'Élodie, 38 ans',m:'Maman de 2 · depuis 3 mois'},{t:'<strong>J\'ai arrêté de hurler pour un verre renversé.</strong> Ça paraît bête, mais c\'est ça qui a tout changé.',i:'So',n:'Sophie, 35 ans',m:'Maman de 2 · depuis 4 mois'},{t:'Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J\'avais oublié ce que c\'était.',i:'CA',n:'Carla, 41 ans',m:'Maman de 3 · depuis 5 mois'}]},
-    "reveil-3h":{h1:'Passer la nuit<br><em>sans le réveil de 3h.</em>',lead:'Tu t\'endors bien, mais à 3h tu es là, les yeux ouverts, à attendre un sommeil qui ne revient pas. La Kore box calme le cortisol qui te réveille — pour une nuit d\'une seule traite.',tag:'Pensée pour ceux qui se réveillent en pleine nuit.',revs:[{t:'Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu\'à mon réveil.</strong>',i:'NA',n:'Nathalie, 49 ans',m:'Bordeaux · depuis 4 mois'},{t:'Avant, réveillé = fini, je me levais. <strong>Maintenant je me rendors en quelques minutes.</strong>',i:'PH',n:'Philippe, 52 ans',m:'Toulouse · depuis 3 mois'},{t:'Je ne ressentais rien de spécial, juste impossible de me rendormir. <strong>Ça, c\'est réglé.</strong>',i:'KA',n:'Karine, 44 ans',m:'Lille · depuis 5 mois'}]},
-    "travail":{h1:'Éteindre ton cerveau,<br><em>récupérer pour de vrai.</em>',lead:'Le corps mort le soir, mais la tête qui refait la réunion de demain. La Kore box calme le système nerveux pour que tu décroches — et que tes nuits te réparent vraiment.',tag:'Pensée pour les cerveaux qui ne s\'éteignent jamais.',revs:[{t:'Je me couchais en repensant à mes mails. <strong>Maintenant je m\'endors vraiment, et je récupère.</strong>',i:'TH',n:'Thomas, 34 ans',m:'Cadre · depuis 3 mois'},{t:'<strong>Le crash de l\'après-midi a disparu.</strong> Je suis plus net en réunion qu\'avant.',i:'JU',n:'Julien, 39 ans',m:'Manager · depuis 4 mois'},{t:'Je pensais devoir dormir moins pour tenir. <strong>En fait il fallait mieux dormir.</strong>',i:'AN',n:'Anaïs, 31 ans',m:'Consultante · depuis 3 mois'}]}
+    "parent":{h1:'Te rendormir vite,<br><em>te réveiller humaine.</em>',lead:'Tu te relèves la nuit, tu dors en miettes, et le matin tu es déjà à cran. La Kore box t\'aide à te rendormir vite — et à ce que le peu que tu dors te répare enfin.',tag:'Pensée pour les nuits hachées des parents.',revs:[{t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je me rendors direct — et le matin je suis humaine.</strong>',i:'EL',n:'Élodie, 30 ans',m:'Maman de 2 · depuis 3 mois'},{t:'<strong>J\'ai arrêté de hurler pour un verre renversé.</strong> Ça paraît bête, mais c\'est ça qui a tout changé.',i:'So',n:'Sophie, 27 ans',m:'Maman de 2 · depuis 4 mois'},{t:'Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J\'avais oublié ce que c\'était.',i:'CA',n:'Carla, 31 ans',m:'Maman de 3 · depuis 5 mois'}]},
+    "reveil-3h":{h1:'Passer la nuit<br><em>sans le réveil de 3h.</em>',lead:'Tu t\'endors bien, mais à 3h tu es là, les yeux ouverts, à attendre un sommeil qui ne revient pas. La Kore box calme le cortisol qui te réveille — pour une nuit d\'une seule traite.',tag:'Pensée pour ceux qui se réveillent en pleine nuit.',revs:[{t:'Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu\'à mon réveil.</strong>',i:'NA',n:'Emma, 32 ans',m:'Bordeaux · depuis 4 mois'},{t:'Avant, réveillé = fini, je me levais. <strong>Maintenant je me rendors en quelques minutes.</strong>',i:'PH',n:'Philippe, 38 ans',m:'Toulouse · depuis 3 mois'},{t:'Je ne ressentais rien de spécial, juste impossible de me rendormir. <strong>Ça, c\'est réglé.</strong>',i:'KA',n:'Karine, 33 ans',m:'Lille · depuis 5 mois'}]},
+    "travail":{h1:'Éteindre ton cerveau,<br><em>récupérer pour de vrai.</em>',lead:'Le corps mort le soir, mais la tête qui refait la réunion de demain. La Kore box calme le système nerveux pour que tu décroches — et que tes nuits te réparent vraiment.',tag:'Pensée pour les cerveaux qui ne s\'éteignent jamais.',revs:[{t:'Je me couchais en repensant à mes mails. <strong>Maintenant je m\'endors vraiment, et je récupère.</strong>',i:'TH',n:'Thomas, 28 ans',m:'Cadre · depuis 3 mois'},{t:'<strong>Le crash de l\'après-midi a disparu.</strong> Je suis plus net en réunion qu\'avant.',i:'JU',n:'Julien, 31 ans',m:'Manager · depuis 4 mois'},{t:'Je pensais devoir dormir moins pour tenir. <strong>En fait il fallait mieux dormir.</strong>',i:'AN',n:'Anaïs, 31 ans',m:'Consultante · depuis 3 mois'}]}
   };
   var d=P[new URLSearchParams(location.search).get('p')];if(!d)return;
   var h1=document.querySelector('.p-title');if(h1)h1.innerHTML=d.h1;
