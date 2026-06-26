@@ -251,7 +251,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg"><source src="img/hero.mp4" type="video/mp4"></video>
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="img/hero-poster.jpg"><source src="img/hero.mp4" type="video/mp4"></video>
   <div class="hero-scrim"></div>
   <div class="hero-text">
     <span class="eyebrow">Le sommeil qui répare</span>
@@ -497,6 +497,8 @@ els.forEach(function(e){io.observe(e);});})();
 (function(){var s=document.getElementById('sticky');var io2=new IntersectionObserver(function(es){es.forEach(function(e){s.classList.toggle('show',!e.isIntersecting);});},{threshold:0});var hero=document.querySelector('.hero');if(hero)io2.observe(hero);})();
 /* flottement doux de la bouteille au scroll (parallaxe premium) */
 (function(){var b=document.getElementById('heroBottle');if(!b)return;var tick=false;function up(){var r=b.getBoundingClientRect();var vh=window.innerHeight||document.documentElement.clientHeight;var p=(vh-r.top)/(vh+r.height);p=Math.max(0,Math.min(1,p));var ty=(0.5-p)*46;b.style.transform='translate3d(0,'+ty.toFixed(1)+'px,0)';tick=false;}function onS(){if(!tick){requestAnimationFrame(up);tick=true;}}window.addEventListener('scroll',onS,{passive:true});window.addEventListener('resize',onS);up();})();
+/* hero video : forcer l'autoplay muet (sans bouton play) */
+(function(){var v=document.querySelector('.hero-video');if(!v)return;v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');function go(){try{var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}catch(e){}}go();v.addEventListener('loadeddata',go);v.addEventListener('canplay',go);['touchstart','click','scroll'].forEach(function(ev){document.addEventListener(ev,go,{once:true,passive:true});});document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});})();
 </script>
 </body>
 </html>

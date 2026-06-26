@@ -91,10 +91,14 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .p-res li b{color:var(--encre);font-weight:600}
 .p-res li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;display:flex;align-items:center;justify-content:center;background:var(--foret);color:#fff;border-radius:50%;font-size:11px;font-weight:700}
 .offer{background:var(--surface);border:1.5px solid var(--foret);border-radius:18px;padding:16px 18px;margin-bottom:18px;box-shadow:0 10px 30px rgba(12,84,73,.07)}
-.offer-top{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.offer .price-now{margin-bottom:-2px}
-.price-tag{font-size:12.5px;color:var(--foret);font-weight:600;background:var(--vert-pale);padding:4px 11px;border-radius:999px;margin-bottom:9px}
-.offer-inc{margin-top:10px;font-size:13.5px;color:var(--encre-2);line-height:1.5}
+.offer-per{display:flex;align-items:baseline;gap:8px}
+.per-num{font-family:var(--serif);font-size:54px;font-weight:500;color:var(--encre);line-height:1}
+.per-unit{font-size:19px;color:var(--foret);font-weight:600}
+.offer-line{display:flex;align-items:baseline;gap:10px;margin-top:9px;flex-wrap:wrap}
+.price-old2{font-size:23px;color:var(--brume);text-decoration:line-through}
+.price-now2{font-size:23px;font-weight:700;color:var(--foret)}
+.offer-lbl{font-size:13.5px;color:var(--encre-2)}
+.offer-inc{margin-top:11px;font-size:13px;color:var(--encre-2);line-height:1.5}
 .offer-inc b{color:var(--encre);font-weight:600}
 .buy-row{display:flex;gap:12px;margin-bottom:14px}
 .qty{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface)}
@@ -241,14 +245,15 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
 
     <ul class="p-res">
-      <li>Tu te <b>rendors</b> quand tu te réveilles à 3h</li>
-      <li>Un <b>sommeil profond</b>, pas juste plus long</li>
-      <li>Un <b>réveil clair</b> — sans brouillard ni coup de barre</li>
+      <li>Des nuits <b>d'une seule traite</b>, sans te réveiller</li>
+      <li>Un <b>sommeil plus profond</b>, qui répare vraiment</li>
+      <li>Un réveil <b>vraiment reposé</b>, sans coup de barre</li>
     </ul>
 
     <div class="offer">
-      <div class="offer-top"><span class="price-old">89€</span><span class="price-now">57<span>€</span></span><span class="price-tag">1,90 €/nuit</span></div>
-      <div class="offer-inc">Le <b>Pack Kore</b> — 30 nuits + ta <b>gourde en verre offerte</b></div>
+      <div class="offer-per"><span class="per-num">1,90€</span><span class="per-unit">/ nuit</span></div>
+      <div class="offer-line"><span class="price-old2">89€</span><span class="price-now2">57€</span><span class="offer-lbl">le Pack Kore · 30 nuits</span></div>
+      <div class="offer-inc">Ta <b>gourde en verre offerte</b> · livraison offerte · garantie 30 nuits</div>
     </div>
 
     <div class="buy-row">
