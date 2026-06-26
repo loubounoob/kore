@@ -100,12 +100,15 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .hero-rev p strong{font-style:normal;color:var(--foret);font-weight:600}
 .hero-rev-who{font-size:12.5px;color:var(--brume)}
 .hero-rev-who b{color:var(--encre-2);font-weight:600}
-.sec-auth{background:var(--surface);padding-top:clamp(40px,8vw,72px);padding-bottom:clamp(40px,8vw,72px)}
-.auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(min-width:760px){.auth-grid{grid-template-columns:repeat(4,1fr)}}
-.auth-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 15px;text-align:center}
-.auth-card b{display:block;font-family:var(--serif);font-size:18px;color:var(--foret);margin-bottom:5px}
-.auth-card span{font-size:12.5px;color:var(--encre-2);line-height:1.4}
+.sci-lead{text-align:center;max-width:560px;margin:14px auto 0;color:#C9D4CE;font-weight:300}
+.sci-stats{display:grid;grid-template-columns:1fr;margin-top:30px;text-align:center}
+@media(min-width:760px){.sci-stats{grid-template-columns:repeat(3,1fr)}}
+.sci-stats>div{padding:20px 14px;border-top:1px solid rgba(216,189,146,.22)}
+@media(min-width:760px){.sci-stats>div{border-top:none;border-left:1px solid rgba(216,189,146,.18)}.sci-stats>div:first-child{border-left:none}}
+.sci-stats b{display:block;font-family:var(--serif);font-size:clamp(42px,12vw,58px);color:var(--or-lt);line-height:1;margin-bottom:8px}
+.sci-stats span{font-size:13px;color:#C9D4CE;line-height:1.45}
+.sci-foot{text-align:center;font-size:11.5px;color:#8FA29A;max-width:540px;margin:26px auto 0}
+.free-tag{display:inline-block;background:var(--or);color:#fff;font-weight:600;font-size:12.5px;padding:3px 10px;border-radius:7px}
 .p-res li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;display:flex;align-items:center;justify-content:center;background:var(--foret);color:#fff;border-radius:50%;font-size:11px;font-weight:700}
 .offer{background:var(--surface);border:1.5px solid var(--foret);border-radius:18px;padding:16px 18px;margin-bottom:18px;box-shadow:0 10px 30px rgba(12,84,73,.07)}
 .offer-per{display:flex;align-items:baseline;gap:8px}
@@ -269,7 +272,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
     <div class="hero-rev">
       <span class="stars">★★★★★</span>
-      <p>« Je me réveillais 3 ou 4 fois par nuit, sans raison. Là, je dors d'une traite — et je me lève <strong>vraiment reposée.</strong> »</p>
+      <p>« Je me réveillais tous les jours entre 3h et 4h du matin. Là, je dors d'une seule traite — et je me lève <strong>vraiment reposée.</strong> »</p>
       <span class="hero-rev-who"><b>Élodie, 38 ans</b> · acheteuse vérifiée</span>
     </div>
 
@@ -277,7 +280,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <div class="offer-per"><span class="per-num">1,90€</span><span class="per-unit">/ nuit</span></div>
       <div class="per-note">Moins qu'un café par jour</div>
       <div class="offer-line"><span class="price-old2">89€</span><span class="price-now2">57€</span><span class="offer-lbl">le Pack Kore · 30 nuits</span></div>
-      <div class="offer-inc">Ta <b>gourde en verre offerte</b> · livraison offerte · garantie 30 nuits</div>
+      <div class="offer-inc"><span class="free-tag">Gourde en verre offerte</span> · livraison offerte · garantie 30 nuits</div>
     </div>
 
     <div class="buy-row">
@@ -299,18 +302,18 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 </section>
 
-<!-- AUTORITE -->
-<section class="sec sec-auth">
+<!-- SCIENCE / AUTORITE -->
+<section class="sec dark sec-sci">
   <div class="wrap">
-    <span class="eyebrow reveal" style="display:block;text-align:center">Pourquoi nous faire confiance</span>
-    <h2 class="h2 reveal" style="text-align:center;margin-bottom:8px">Une formule <em>sérieuse.</em></h2>
-    <p class="reveal" style="text-align:center;max-width:520px;margin:0 auto 26px;color:var(--encre-2);font-weight:300">Pas un effet de mode : des actifs brevetés, dosés à la hauteur des études, fabriqués en Europe.</p>
-    <div class="auth-grid reveal">
-      <div class="auth-card"><b>KSM-66®</b><span>Ashwagandha breveté, étudié cliniquement</span></div>
-      <div class="auth-card"><b>Doses des études</b><span>Pas de blend qui cache des doses trop faibles</span></div>
-      <div class="auth-card"><b>Europe · GMP</b><span>Formulé et certifié en Europe</span></div>
-      <div class="auth-card"><b>Sans accoutumance</b><span>Ni effet groggy au réveil</span></div>
+    <span class="eyebrow reveal" style="display:block;text-align:center;color:var(--or-lt)">La science, pas le marketing</span>
+    <h2 class="h2 reveal" style="text-align:center;color:#fff">Des actifs <em style="color:var(--or-lt)">prouvés par la recherche.</em></h2>
+    <p class="sci-lead reveal">Kore ne réunit que des actifs dont l'effet sur le sommeil et le stress est documenté par des études cliniques — aux doses exactes utilisées dans ces études.</p>
+    <div class="sci-stats reveal">
+      <div><b>20+</b><span>études cliniques sur le KSM-66®, l'ashwagandha le plus étudié au monde</span></div>
+      <div><b>4</b><span>actifs, chacun choisi pour son niveau de preuve scientifique</span></div>
+      <div><b>100%</b><span>dosés aux études — aucun « proprietary blend » qui cache les doses</span></div>
     </div>
+    <p class="sci-foot reveal">Les études citées portent sur les actifs pris individuellement. Kore est un complément alimentaire et ne remplace pas un avis médical.</p>
   </div>
 </section>
 

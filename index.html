@@ -66,7 +66,10 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,30,26,.86) 0%,rgba(6,30,26,.6) 42%,rgba(6,30,26,.28) 100%)}
 .hero-text{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,7vw,88px) var(--px);max-width:680px;width:100%;color:var(--creme)}
 .hero .eyebrow{color:var(--or-lt)}
-.hero h1{font-family:var(--serif);font-size:clamp(40px,8vw,76px);font-weight:500;line-height:1.02;letter-spacing:-.022em;margin-bottom:22px;color:#fff}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,8vw,76px);font-weight:500;line-height:1.02;letter-spacing:-.022em;margin-bottom:22px;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.5)}
+.hero h1 em{color:var(--or-lt)}
+.hero-quote{margin-top:14px;font-size:13.5px;font-style:italic;color:rgba(246,243,234,.94);max-width:340px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.hero-quote span{display:block;font-style:normal;font-size:12px;color:rgba(246,243,234,.62);margin-top:3px}
 .hero .lead{margin-bottom:32px;max-width:520px;color:rgba(246,243,234,.92)}
 .hero .btn{align-self:flex-start}
 .hero-trust{margin-top:22px;font-size:13px;color:rgba(246,243,234,.74);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -255,10 +258,11 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
   <div class="hero-scrim"></div>
   <div class="hero-text">
     <span class="eyebrow">Le sommeil qui répare</span>
-    <h1>Tu te réveilles à 3h.<br><em>Tu te lèves déjà vidé·e.</em></h1>
+    <h1>Tu te réveilles à 3h.<br><em>Épuisé·e au matin.</em></h1>
     <p class="lead">Réveils en pleine nuit, cerveau qui ne s'éteint pas, matins en zombie malgré 8h de sommeil. Kore calme le cortisol qui dérègle tes nuits — pour qu'elles te réparent enfin.</p>
     <a href="produit.html" class="btn btn-light">Commander ma box →</a>
     <p class="hero-trust"><span class="stars">★★★★★</span> 4,8/5 · Satisfait ou remboursé · Livraison offerte</p>
+    <p class="hero-quote">« Je me réveillais à 3h chaque nuit. Plus maintenant. »<span>Nathalie · acheteuse vérifiée</span></p>
   </div>
 </section>
 
