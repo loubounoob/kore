@@ -214,6 +214,13 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .ci-qty span{width:24px;text-align:center;font-size:13px}
 .ci-pr{font-size:14px;font-weight:500}
 .ci-rm{font-size:11.5px;color:var(--brume);background:none;border:none;cursor:pointer;text-decoration:underline;margin-top:4px}
+.ci-old{text-decoration:line-through;color:var(--brume);font-size:12px;margin-right:5px;font-weight:400}
+.ci-gift{background:linear-gradient(0deg,rgba(176,137,72,.05),rgba(176,137,72,.05))}
+.gift-tag{display:inline-block;background:var(--or);color:#fff;font-size:10px;font-weight:600;padding:1px 7px;border-radius:6px;vertical-align:middle;margin-left:5px;letter-spacing:.3px}
+.ci-gift-note{font-size:11.5px;color:var(--or);font-weight:600}
+.ci-gift .ci-pr b{color:var(--foret)}
+.cart-save{display:flex;justify-content:space-between;align-items:center;background:var(--vert-pale);color:var(--foret);font-weight:600;font-size:12.5px;padding:9px 12px;border-radius:9px;margin-bottom:12px}
+.cart-save b{font-weight:700}
 .cart-foot{border-top:1px solid var(--border);padding:18px 22px;background:var(--surface)}
 .cart-sub{display:flex;justify-content:space-between;font-size:15px;font-weight:500;margin-bottom:3px}
 .cart-note{font-size:11.5px;color:var(--brume);margin-bottom:13px}
@@ -372,6 +379,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   <div class="cart-top"><h3>Ton panier</h3><button class="cart-close" onclick="closeCart()">×</button></div>
   <div class="cart-body" id="cartBody"><p class="cart-empty">Ton panier est vide.</p></div>
   <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-save" id="cartSave" style="display:none"></div>
     <div class="cart-sub"><span>Sous-total</span><span id="cartSub">—</span></div>
     <p class="cart-note">Livraison gratuite incluse · total final confirmé au paiement sécurisé.</p>
     <button class="btn cart-checkout" onclick="goCheckout()">Commander · paiement sécurisé</button>
@@ -396,17 +404,24 @@ function eur(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €
 (function(){var s=document.getElementById('sticky'),add=document.getElementById('addCart');var io=new IntersectionObserver(function(es){es.forEach(function(e){s.classList.toggle('show',!e.isIntersecting);});});if(add)io.observe(add);})();
 /* SHOPIFY headless cart */
 var SHOP_DOMAIN='q3knru-rj.myshopify.com',SF_TOKEN='e44e2d98ee4fa8726e022eee54c195e1',PRODUCT_ID='10534418514256';
-var FALLBACK_CART='https://q3knru-rj.myshopify.com/cart/53161758261584:1';
+var FALLBACK_CART='https://q3knru-rj.myshopify.com/cart/53161758261584:1,53194086941008:1';
 var KORE_UNIT_PRICE=57;
+var PACK_OLD=89;
+var BOTTLE_VARIANT='gid://shopify/ProductVariant/53194086941008';
+var BOTTLE_OLD=35;
 var client=null,checkout=null,product=null,selVariant=null,sdkReady=false;
 function loadSDK(cb){if(window.ShopifyBuy){cb();return;}var s=document.createElement('script');s.async=true;s.src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';s.onload=cb;s.onerror=function(){console.warn('SDK fail');};document.head.appendChild(s);}
 function gid(num){return btoa('gid://shopify/Product/'+num);}
-async function initShop(){try{client=ShopifyBuy.buildClient({domain:SHOP_DOMAIN,storefrontAccessToken:SF_TOKEN});var id=localStorage.getItem('kore_checkout_id');if(id){try{checkout=await client.checkout.fetch(id);}catch(e){checkout=null;}}if(!checkout||checkout.completedAt){checkout=await client.checkout.create();localStorage.setItem('kore_checkout_id',checkout.id);}try{product=await client.product.fetch(gid(PRODUCT_ID));}catch(e){try{product=await client.product.fetch(PRODUCT_ID);}catch(e2){product=null;}}if(product&&product.variants&&product.variants.length){selVariant=product.variants[0];}sdkReady=true;renderCart();}catch(e){console.warn('initShop',e);sdkReady=false;}}
-async function addToCart(){var btn=document.getElementById('addCart');if(btn)btn.disabled=true;try{if(!sdkReady||!checkout||!selVariant){window.location=FALLBACK_CART;return;}if(window.fbq)fbq('track','AddToCart',{value:KORE_UNIT_PRICE*QTY,currency:'EUR'});checkout=await client.checkout.addLineItems(checkout.id,[{variantId:selVariant.id,quantity:QTY}]);renderCart();openCart();showToast('Ajouté au panier ✓');}catch(e){console.warn(e);window.location=FALLBACK_CART;}finally{if(btn)btn.disabled=false;}}
-async function changeLine(lineId,qty){if(qty<1){checkout=await client.checkout.removeLineItems(checkout.id,[lineId]);}else{checkout=await client.checkout.updateLineItems(checkout.id,[{id:lineId,quantity:qty}]);}renderCart();}
+async function initShop(){try{client=ShopifyBuy.buildClient({domain:SHOP_DOMAIN,storefrontAccessToken:SF_TOKEN});var id=localStorage.getItem('kore_checkout_id');if(id){try{checkout=await client.checkout.fetch(id);}catch(e){checkout=null;}}if(!checkout||checkout.completedAt){checkout=await client.checkout.create();localStorage.setItem('kore_checkout_id',checkout.id);}try{product=await client.product.fetch(gid(PRODUCT_ID));}catch(e){try{product=await client.product.fetch(PRODUCT_ID);}catch(e2){product=null;}}if(product&&product.variants&&product.variants.length){selVariant=product.variants[0];}sdkReady=true;if(packTotal()>0)await syncBottle();renderCart();}catch(e){console.warn('initShop',e);sdkReady=false;}}
+function isBottle(li){return /bouteille|gourde/i.test(li.title||'');}
+function packTotal(){var its=(checkout&&checkout.lineItems)||[];return its.filter(function(l){return !isBottle(l);}).reduce(function(s,l){return s+l.quantity;},0);}
+function bottleLine(){var its=(checkout&&checkout.lineItems)||[];return its.filter(isBottle)[0]||null;}
+async function syncBottle(){try{var want=packTotal(),bl=bottleLine();if(want>0){if(bl){if(bl.quantity!==want){checkout=await client.checkout.updateLineItems(checkout.id,[{id:bl.id,quantity:want}]);}}else{checkout=await client.checkout.addLineItems(checkout.id,[{variantId:BOTTLE_VARIANT,quantity:want}]);}}else if(bl){checkout=await client.checkout.removeLineItems(checkout.id,[bl.id]);}}catch(e){console.warn('syncBottle',e);}}
+async function addToCart(){var btn=document.getElementById('addCart');if(btn)btn.disabled=true;try{if(!sdkReady||!checkout||!selVariant){window.location=FALLBACK_CART;return;}if(window.fbq)fbq('track','AddToCart',{value:KORE_UNIT_PRICE*QTY,currency:'EUR'});checkout=await client.checkout.addLineItems(checkout.id,[{variantId:selVariant.id,quantity:QTY}]);await syncBottle();renderCart();openCart();showToast('Ajouté · gourde offerte ✓');}catch(e){console.warn(e);window.location=FALLBACK_CART;}finally{if(btn)btn.disabled=false;}}
+async function changeLine(lineId,qty){if(qty<1){checkout=await client.checkout.removeLineItems(checkout.id,[lineId]);}else{checkout=await client.checkout.updateLineItems(checkout.id,[{id:lineId,quantity:qty}]);}await syncBottle();renderCart();}
 function lineImg(li){try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){}return 'img/p0.jpg';}
-function linePrice(li){return KORE_UNIT_PRICE;}
-function renderCart(){var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount');var items=(checkout&&checkout.lineItems)||[];var tq=items.reduce(function(s,li){return s+li.quantity;},0);if(tq>0){count.style.display='flex';count.textContent=tq;}else{count.style.display='none';}if(!items.length){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';return;}var html='',sub=0;items.forEach(function(li){var pr=linePrice(li);sub+=pr*li.quantity;html+='<div class="ci"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'</div><div class="ci-bot"><div class="ci-qty"><button onclick="changeLine(\''+li.id+'\','+(li.quantity-1)+')">−</button><span>'+li.quantity+'</span><button onclick="changeLine(\''+li.id+'\','+(li.quantity+1)+')">+</button></div><div class="ci-pr">'+eur(pr*li.quantity)+'</div></div><button class="ci-rm" onclick="changeLine(\''+li.id+'\',0)">Retirer</button></div></div>';});body.innerHTML=html;document.getElementById('cartSub').textContent=eur(sub);foot.style.display='block';}
+function linePrice(li){return isBottle(li)?0:KORE_UNIT_PRICE;}
+function renderCart(){var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount');var items=(checkout&&checkout.lineItems)||[];var tq=items.reduce(function(s,li){return s+li.quantity;},0);if(tq>0){count.style.display='flex';count.textContent=tq;}else{count.style.display='none';}if(!items.length){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';return;}var html='',sub=0;items.sort(function(a,b){return (isBottle(a)?1:0)-(isBottle(b)?1:0);});items.forEach(function(li){if(isBottle(li)){html+='<div class="ci ci-gift"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau · avec ton Pack Kore</div><div class="ci-pr"><span class="ci-old">'+eur(BOTTLE_OLD)+'</span><b>0€</b></div></div></div></div>';}else{var pr=KORE_UNIT_PRICE;sub+=pr*li.quantity;html+='<div class="ci"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'</div><div class="ci-bot"><div class="ci-qty"><button onclick="changeLine(\''+li.id+'\','+(li.quantity-1)+')">−</button><span>'+li.quantity+'</span><button onclick="changeLine(\''+li.id+'\','+(li.quantity+1)+')">+</button></div><div class="ci-pr"><span class="ci-old">'+eur(PACK_OLD*li.quantity)+'</span>'+eur(pr*li.quantity)+'</div></div><button class="ci-rm" onclick="changeLine(\''+li.id+'\',0)">Retirer</button></div></div>';}});body.innerHTML=html;var pq=packTotal(),bl=bottleLine(),bq=bl?bl.quantity:0;var sav=pq*(PACK_OLD-KORE_UNIT_PRICE)+bq*BOTTLE_OLD;var saveEl=document.getElementById('cartSave');if(saveEl){if(sav>0){saveEl.style.display='flex';saveEl.innerHTML='<span>🎁 Remise + gourde offerte</span><span><b>−'+eur(sav)+'</b></span>';}else{saveEl.style.display='none';}}document.getElementById('cartSub').textContent=eur(sub);foot.style.display='block';}
 function goCheckout(){if(window.fbq)fbq('track','InitiateCheckout',{value:KORE_UNIT_PRICE,currency:'EUR'});if(checkout&&checkout.webUrl){window.location=checkout.webUrl;}else{window.location=FALLBACK_CART;}}
 loadSDK(initShop);
 
