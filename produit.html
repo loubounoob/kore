@@ -311,6 +311,25 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .fcard li b{color:var(--or-lt);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .formula-foot{text-align:center;font-size:11.5px;color:var(--brume);margin:28px auto 0;max-width:560px}
 @media(max-width:640px){.formula-stats{grid-template-columns:repeat(2,1fr);gap:18px}.formula-grid{grid-template-columns:1fr}}
+
+/* ===== KORE — SIGNATURE CONSTELLATION ===== */
+.sec.dark,.statband,.sec-formula,.sec-sci{position:relative;overflow:hidden}
+.sec.dark>.wrap,.statband>.wrap{position:relative;z-index:1}
+.kore-stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.kore-stars i{position:absolute;background:#E3C48A;border-radius:50%;opacity:.16;box-shadow:0 0 4px rgba(227,196,138,.55);animation:koreTw 4.5s ease-in-out infinite}
+@keyframes koreTw{0%,100%{opacity:.10;transform:scale(.7)}50%{opacity:.8;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.kore-stars i{animation:none;opacity:.32}}
+/* etoile signature sur chaque eyebrow */
+.eyebrow:before{content:'\2726';margin-right:9px;color:var(--or);font-size:.82em;vertical-align:1px}
+.sec.dark .eyebrow:before,.statband .eyebrow:before{color:var(--or-lt)}
+/* etoile sur le logo */
+.logo{display:inline-flex;align-items:center;gap:7px}
+.logo:before{content:'\2726';color:var(--or);font-size:.6em;transform:translateY(-1px)}
+/* separateur constellation */
+.kore-div{display:flex;align-items:center;justify-content:center;gap:14px;max-width:300px;margin:26px auto 0}
+.kore-div:before,.kore-div:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--or-lt))}
+.kore-div:after{background:linear-gradient(270deg,transparent,var(--or-lt))}
+.kore-div b{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:600;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -578,6 +597,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
 <footer>
   <div class="foot-in">
+    <div class="kore-div"><b>Le rituel du soir</b></div>
     <p class="foot-name">Kore</p>
     <p class="foot-desc">La box pensée pour ton sommeil. Formulée en Europe · Science & nature au service de ton corps.</p>
     <div class="foot-bottom"><span>© 2026 Kore</span><span class="foot-eu">Certifié en Europe · GMP</span></div>
@@ -654,6 +674,26 @@ loadSDK(initShop);
   var lead=document.querySelector('.p-lead');if(lead)lead.innerHTML=d.lead;
   var stars=document.querySelector('.p-stars');if(stars&&d.tag){var t=document.createElement('div');t.style.cssText='font-size:12.5px;color:var(--foret);font-weight:500;margin:-6px 0 16px';t.textContent=d.tag;stars.insertAdjacentElement('afterend',t);}
   var revEls=document.querySelectorAll('.rev');d.revs.forEach(function(r,idx){if(revEls[idx]){revEls[idx].innerHTML='<span class="stars">★★★★★</span><p>'+r.t+'</p><div class="rev-who"><div class="rev-av">'+r.i+'</div><div><div class="rev-nm">'+r.n+'</div><div class="rev-mt">'+r.m+'</div></div></div>';}});
+})();
+</script>
+
+<script>
+/* KORE CONSTELLATION — starfield scintillant */
+(function(){
+  function field(el,n){
+    if(el.querySelector('.kore-stars'))return;
+    var d=document.createElement('div');d.className='kore-stars';var h='';
+    for(var i=0;i<n;i++){
+      var sz=(Math.random()*1.7+0.5).toFixed(2);
+      var t=(Math.random()*100).toFixed(1);
+      var l=(Math.random()*100).toFixed(1);
+      var dl=(Math.random()*4.5).toFixed(2);
+      h+='<i style="width:'+sz+'px;height:'+sz+'px;top:'+t+'%;left:'+l+'%;animation-delay:'+dl+'s"></i>';
+    }
+    d.innerHTML=h;el.insertBefore(d,el.firstChild);
+  }
+  var secs=document.querySelectorAll('.sec.dark,.statband');
+  secs.forEach(function(s){var n=Math.min(40,Math.max(16,Math.round((s.offsetHeight||300)/26)));field(s,n);});
 })();
 </script>
 </body>
