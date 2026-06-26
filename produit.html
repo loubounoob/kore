@@ -330,6 +330,25 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .kore-div:before,.kore-div:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--or-lt))}
 .kore-div:after{background:linear-gradient(270deg,transparent,var(--or-lt))}
 .kore-div b{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:600;white-space:nowrap}
+
+/* ===== KORE IDENTITY v2 ===== */
+.kore-marquee{background:var(--sombre);overflow:hidden;white-space:nowrap;padding:13px 0;border-top:1px solid rgba(216,189,146,.18);border-bottom:1px solid rgba(216,189,146,.18)}
+.kore-marquee-in{display:inline-flex;animation:koreMarq 32s linear infinite;will-change:transform}
+.kore-marquee span{font-family:var(--serif);font-style:italic;font-size:16px;letter-spacing:.03em;color:var(--or-lt)}
+@keyframes koreMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.kore-marquee-in{animation:none}}
+.sec-manifesto{text-align:center}
+.manif-star{width:88px;height:88px;display:block;margin:0 auto 22px;filter:drop-shadow(0 0 18px rgba(227,196,138,.5));animation:koreSpin 70s linear infinite}
+@keyframes koreSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.manif-star{animation:none}}
+.manif-h2{font-family:var(--serif);font-size:clamp(30px,6.4vw,58px);font-weight:500;line-height:1.07;color:#F8F5EC;letter-spacing:-.02em}
+.manif-h2 em{font-style:italic;color:var(--or-lt)}
+/* puces etoile dans l'offre abonnement */
+.plan-perks:not(.plan-perks--muted) li:before{content:'\2726';color:var(--or);font-weight:400}
+.plan.selected .plan-perks:not(.plan-perks--muted) li:before{color:var(--foret)}
+/* logo qui pulse */
+.logo:before{animation:koreTw 4.5s ease-in-out infinite}
+.eyebrow:before{font-size:.9em;margin-right:10px}
 </style>
 </head>
 <body>
@@ -433,6 +452,12 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     </div>
   </div>
 </section>
+
+<!-- MARQUEE SIGNATURE -->
+<div class="kore-marquee" aria-hidden="true"><div class="kore-marquee-in">
+<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
+<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
+</div></div>
 
 <!-- STAT BAND -->
 <section class="statband">
@@ -554,6 +579,15 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 </section>
 
+<!-- MANIFESTO -->
+<section class="sec dark sec-manifesto">
+  <div class="wrap">
+    <svg class="manif-star" id="manifStar" viewBox="0 0 100 100" aria-hidden="true"></svg>
+    <h2 class="manif-h2">La nuit n'est pas faite<br>pour <em>lutter</em> —<br>mais pour <em>réparer.</em></h2>
+    <div class="kore-div"><b>Le rituel du soir</b></div>
+  </div>
+</section>
+
 <!-- AVIS -->
 <section class="sec" style="background:var(--surface)">
   <div class="wrap">
@@ -580,6 +614,12 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     <button class="btn btn-lt reveal" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth',block:'center'})">Commander ma box →</button>
   </div>
 </section>
+
+<!-- MARQUEE SIGNATURE -->
+<div class="kore-marquee" aria-hidden="true"><div class="kore-marquee-in">
+<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
+<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
+</div></div>
 
 <!-- FAQ -->
 <section class="sec" id="faq">
@@ -695,6 +735,9 @@ loadSDK(initShop);
   var secs=document.querySelectorAll('.sec.dark,.statband');
   secs.forEach(function(s){var n=Math.min(40,Math.max(16,Math.round((s.offsetHeight||300)/26)));field(s,n);});
 })();
+</script>
+<script>
+(function(){var s=document.getElementById('manifStar');if(!s)return;var cx=50,cy=50,N=24,h='';for(var i=0;i<N;i++){var a=(i/N)*Math.PI*2,lng=(i%2===0);var r1=lng?13:11,r2=lng?46:30;var x1=cx+Math.cos(a)*r1,y1=cy+Math.sin(a)*r1,x2=cx+Math.cos(a)*r2,y2=cy+Math.sin(a)*r2;h+='<line x1="'+x1.toFixed(2)+'" y1="'+y1.toFixed(2)+'" x2="'+x2.toFixed(2)+'" y2="'+y2.toFixed(2)+'" stroke="#E3C48A" stroke-width="'+(lng?1.5:1)+'" stroke-linecap="round"/>';}h+='<circle cx="50" cy="50" r="6.5" fill="none" stroke="#E3C48A" stroke-width="1.5"/><circle cx="50" cy="50" r="2.2" fill="#EAD3A0"/>';s.innerHTML=h;})();
 </script>
 </body>
 </html>
