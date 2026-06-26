@@ -293,6 +293,24 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .pp-unit{font-size:11px;color:var(--or);font-weight:600;margin-top:4px}
 .plan-cta{width:100%}
 @media(max-width:430px){.plan{padding-left:38px}.pp-now{font-size:25px}.plan-perks li,.plan-desc{font-size:12px}}
+
+/* FORMULE */
+.sec-formula{background:var(--sombre);color:var(--creme)}
+.formula-lead{text-align:center;max-width:600px;margin:14px auto 0;color:rgba(246,243,234,.82)}
+.formula-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:760px;margin:32px auto 6px;text-align:center}
+.formula-stats b{display:block;font-family:var(--serif);font-size:clamp(28px,6vw,46px);color:var(--or-lt);line-height:1}
+.formula-stats span{display:block;font-size:11.5px;color:rgba(246,243,234,.7);margin-top:6px}
+.formula-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:840px;margin:34px auto 0}
+.fcard{border:1px solid rgba(216,189,146,.25);border-radius:16px;padding:22px 20px;background:rgba(255,255,255,.02)}
+.fcard-n{font-family:var(--serif);font-size:13px;color:var(--or-lt);letter-spacing:.1em}
+.fcard h3{font-family:var(--serif);font-size:20px;font-weight:500;color:#fff;margin:4px 0 2px}
+.fcard-sub{font-size:11px;color:var(--or-lt);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
+.fcard ul{list-style:none;display:grid;gap:0}
+.fcard li{font-size:13.5px;color:rgba(246,243,234,.88);display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.07);padding:8px 0}
+.fcard li:last-child{border-bottom:none}
+.fcard li b{color:var(--or-lt);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.formula-foot{text-align:center;font-size:11.5px;color:var(--brume);margin:28px auto 0;max-width:560px}
+@media(max-width:640px){.formula-stats{grid-template-columns:repeat(2,1fr);gap:18px}.formula-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -422,6 +440,66 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <div><b>100%</b><span>dosés aux études — aucun « proprietary blend » qui cache les doses</span></div>
     </div>
     <p class="sci-foot reveal">Les études citées portent sur les actifs pris individuellement. Kore est un complément alimentaire et ne remplace pas un avis médical.</p>
+  </div>
+</section>
+
+<!-- FORMULE -->
+<section class="sec dark sec-formula">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="display:block;text-align:center;color:var(--or-lt)">La formule</span>
+    <h2 class="h2 reveal" style="text-align:center;color:#fff">13 actifs. <em style="color:var(--or-lt)">4 piliers.</em><br>0 mélatonine.</h2>
+    <p class="formula-lead reveal">Des mois de formulation. Chaque actif est dosé au niveau des études cliniques et choisi pour agir, en synergie, sur une étape précise de ta nuit — pas un ingrédient en solo.</p>
+    <div class="formula-stats reveal">
+      <div><b>13</b><span>actifs complémentaires</span></div>
+      <div><b>4</b><span>piliers du sommeil</span></div>
+      <div><b>~6,3&nbsp;g</b><span>d'actifs par dose</span></div>
+      <div><b>0</b><span>mélatonine de synthèse</span></div>
+    </div>
+    <div class="formula-grid reveal">
+      <div class="fcard">
+        <span class="fcard-n">01</span>
+        <h3>Couper le mental</h3>
+        <p class="fcard-sub">S'endormir vite</p>
+        <ul>
+          <li><span>L-théanine</span><b>200 mg</b></li>
+          <li><span>Mélisse</span><b>300 mg</b></li>
+          <li><span>Passiflore</span><b>200 mg</b></li>
+          <li><span>Apigénine</span><b>50 mg</b></li>
+          <li><span>GABA</span><b>100 mg</b></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <span class="fcard-n">02</span>
+        <h3>Baisser le cortisol</h3>
+        <p class="fcard-sub">Ne plus se réveiller</p>
+        <ul>
+          <li><span>Ashwagandha KSM-66®</span><b>300 mg</b></li>
+          <li><span>Magnésium bisglycinate</span><b>200 mg</b></li>
+          <li><span>Glycine</span><b>3 000 mg</b></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <span class="fcard-n">03</span>
+        <h3>Approfondir le sommeil</h3>
+        <p class="fcard-sub">Une nuit réparatrice</p>
+        <ul>
+          <li><span>L-tryptophane</span><b>500 mg</b></li>
+          <li><span>Cerise de Montmorency</span><b>200 mg</b></li>
+          <li><span>Magnésium &amp; glycine</span><b>synergie</b></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <span class="fcard-n">04</span>
+        <h3>Le réveil clair</h3>
+        <p class="fcard-sub">Sans coup de barre</p>
+        <ul>
+          <li><span>Safran (affron®)</span><b>28 mg</b></li>
+          <li><span>Zinc bisglycinate</span><b>5 mg</b></li>
+          <li><span>Vitamine B6 (P-5-P)</span><b>1,4 mg</b></li>
+        </ul>
+      </div>
+    </div>
+    <p class="formula-foot reveal">Formulé en Europe · dosé aux études · sans accoutumance. Complément alimentaire, ne remplace pas un avis médical.</p>
   </div>
 </section>
 
