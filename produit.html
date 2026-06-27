@@ -518,35 +518,18 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .plan--sub,.plan--sub.selected{background:var(--sombre);border-color:var(--sombre)}
 .plan--sub.selected{box-shadow:0 0 0 2px var(--sombre),var(--shadow-lg)}
 .plan--sub.selected .plan-check{border-color:#fff;background:radial-gradient(circle,#fff 0 4px,var(--sombre) 5px)}
-/* ==== OFFRE ABONNEMENT — mise en avant forte ==== */
-.plan--sub{flex-direction:column;align-items:stretch;gap:0;padding:0;overflow:hidden}
-.plan--sub.selected{box-shadow:0 0 0 3px var(--or),var(--shadow-lg)}
-.gift-banner{display:flex;align-items:center;justify-content:center;gap:8px;
-  background:linear-gradient(100deg,#B68A38 0%,#E7CF8E 50%,#B68A38 100%);
-  color:#3A2A06;font-weight:800;font-size:14px;letter-spacing:.01em;text-transform:uppercase;
-  padding:12px 14px;text-align:center;line-height:1.2}
-.gift-banner .gift-ic{font-size:18px}
-.gift-banner b{color:#2C2004;font-weight:900}
-.gift-banner s{color:rgba(44,32,4,.5);font-weight:700}
-.sub-pad{padding:16px 18px 18px}
-.plan--sub .plan-check{position:static;left:auto;top:auto;flex:0 0 auto;width:18px;height:18px}
-.plan--sub .plan-top{align-items:center}
-.sub-pricerow{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:13px 0 14px}
-.sub-priceblock{display:flex;flex-direction:column;line-height:1.04;min-width:0}
-.sub-priceblock .pp-old{font-size:13px;color:rgba(246,243,234,.6);text-decoration:line-through}
-.sub-priceblock .pp-now{font-family:var(--serif);font-size:52px;font-weight:600;color:#fff;display:flex;align-items:baseline;gap:4px;margin-top:2px}
-.sub-priceblock .pp-now i{font-style:normal;font-size:16px;font-weight:500;color:rgba(246,243,234,.72)}
-.sub-priceblock .pp-unit{font-size:13px;color:var(--or-lt);font-weight:700;margin-top:5px}
-.save-pill{display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:#fff;color:var(--sombre);border-radius:14px;padding:10px 15px;flex:0 0 auto;
-  box-shadow:0 8px 22px rgba(0,0,0,.28);line-height:1}
-.save-pill b{font-family:var(--serif);font-size:30px;font-weight:700;display:flex;align-items:flex-start}
-.save-pill b span{font-size:16px;margin-top:3px}
-.save-pill small{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--encre-2);margin-top:3px}
-@media(max-width:430px){
-  .sub-priceblock .pp-now{font-size:42px}
-  .save-pill b{font-size:25px}
-}
+/* === Offre de lancement (urgence sobre) === */
+.launch-strip{display:flex;align-items:center;gap:10px;background:var(--vert-pale);border:1px solid var(--or-lt);border-radius:12px;padding:10px 14px;font-size:12.5px;color:var(--encre);margin-bottom:12px;line-height:1.35}
+.launch-strip b{color:var(--foret);font-weight:700}
+.ls-dot{width:9px;height:9px;border-radius:50%;background:var(--or);flex:0 0 auto;animation:lspulse 1.8s infinite}
+@keyframes lspulse{0%{box-shadow:0 0 0 0 rgba(176,137,72,.5)}70%{box-shadow:0 0 0 8px rgba(176,137,72,0)}100%{box-shadow:0 0 0 0 rgba(176,137,72,0)}}
+/* === Coût par nuit — rendu désirable === */
+.per-night{display:flex;align-items:center;gap:16px;background:var(--vert-pale);border:1px solid var(--border);border-radius:14px;padding:13px 18px;margin:2px 0 14px}
+.pn-price{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--foret);line-height:1;white-space:nowrap}
+.pn-price span{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--encre-2);margin-left:3px}
+.pn-copy{font-size:13px;line-height:1.42;color:var(--encre-2)}
+.pn-copy b{color:var(--encre);font-weight:700}
+@media(max-width:430px){.per-night{gap:13px;padding:12px 14px}.pn-price{font-size:27px}}
 /* === Statband en vert === */
 .statband{background:var(--sombre)}
 .statband .sb-rate b{color:#fff}
@@ -598,9 +581,14 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .remade-list li .rl-moon{position:absolute;left:0;top:0}
 
 /* testimonials statband plus grands */
-.sb-photos{gap:16px;max-width:620px}
-.sb-photos img{width:170px;height:170px;border-radius:16px}
-@media(max-width:640px){.sb-photos img{width:31vw;height:31vw;max-width:140px;max-height:140px}}
+.sb-photos{gap:20px;max-width:1020px}
+.sb-photos img{width:300px;height:300px;border-radius:18px}
+.sb-photos::-webkit-scrollbar{display:none}
+@media(max-width:1000px){.sb-photos img{width:30vw;height:30vw}}
+@media(max-width:640px){
+  .sb-photos{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;gap:14px;padding:4px 18px;scrollbar-width:none;max-width:none}
+  .sb-photos img{flex:0 0 auto;width:80vw;height:80vw;max-width:340px;max-height:340px;scroll-snap-align:center}
+}
 </style>
 </head>
 <body>
@@ -657,26 +645,22 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
     </div>
 
+    <div class="launch-strip"><span class="ls-dot"></span><span><b>Offre de lancement</b> · gourde offerte + −54&nbsp;% — pour une durée limitée</span></div>
+
     <div class="plans" id="plans">
       <label class="plan plan--sub selected">
         <input type="radio" name="plan" value="sub" checked>
-        <div class="gift-banner"><span class="gift-ic">🎁</span> Ta gourde en verre <b>OFFERTE</b> <s>35€</s></div>
-        <div class="sub-pad">
-          <div class="plan-top"><span class="plan-check"></span><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
+        <span class="plan-check"></span>
+        <div class="plan-body">
+          <div class="plan-top"><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
           <div class="plan-desc">1 pack chaque mois · annulable quand tu veux</div>
-          <div class="sub-pricerow">
-            <div class="sub-priceblock">
-              <span class="pp-old">124€ la valeur réelle</span>
-              <span class="pp-now">57€<i>/mois</i></span>
-              <span class="pp-unit">soit 1,90€ la nuit</span>
-            </div>
-            <span class="save-pill"><b>−54<span>%</span></b><small>d'économie</small></span>
-          </div>
           <ul class="plan-perks">
-            <li>Livraison offerte · <b>garantie 30 nuits</b></li>
-            <li>Sans engagement · annulable en 1 clic</li>
+            <li>Ta gourde en verre <b>offerte</b> <s>35€</s></li>
+            <li><b>−54&nbsp;%</b> sur la valeur réelle</li>
+            <li>Livraison offerte · garantie 30 nuits</li>
           </ul>
         </div>
+        <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
       </label>
       <label class="plan plan--once">
         <input type="radio" name="plan" value="once">
@@ -691,6 +675,11 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
         </div>
         <div class="plan-price"><span class="pp-now pp-now--plain">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
       </label>
+    </div>
+
+    <div class="per-night">
+      <div class="pn-price">1,90&nbsp;€<span>/ nuit</span></div>
+      <div class="pn-copy"><b>Le prix d'un café.</b> Pour t'endormir vite, dormir d'un bloc et te réveiller vraiment reposé — chaque nuit.</div>
     </div>
 
     <div class="buy-row">
