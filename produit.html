@@ -708,7 +708,7 @@ var BOTTLE_VARIANT='gid://shopify/ProductVariant/53194086941008';
 var BOTTLE_OLD=35;
 /* OFFRE — redirections checkout (one-time vs abonnement) */
 var ONCE_URL='https://q3knru-rj.myshopify.com/cart/53161758261584:1';
-var SUB_URL='https://q3knru-rj.myshopify.com/cart/53195108614480:1?selling_plan=690023596368';
+var SUB_URL='https://q3knru-rj.myshopify.com/cart/clear?return_to=%2Fcart%2Fadd%3Fid%3D53195108614480%26selling_plan%3D690023596368%26quantity%3D1%26return_to%3D%2Fcheckout';
 function goPlan(){var r=document.querySelector('.plan input:checked');var sub=!r||r.value==='sub';try{if(window.fbq)fbq('track','InitiateCheckout',{value:sub?59:89,currency:'EUR'});}catch(e){}window.location.href=sub?SUB_URL:ONCE_URL;}
 var client=null,checkout=null,product=null,selVariant=null,sdkReady=false;
 function loadSDK(cb){if(window.ShopifyBuy){cb();return;}var s=document.createElement('script');s.async=true;s.src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';s.onload=cb;s.onerror=function(){console.warn('SDK fail');};document.head.appendChild(s);}
