@@ -518,18 +518,24 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .plan--sub,.plan--sub.selected{background:var(--sombre);border-color:var(--sombre)}
 .plan--sub.selected{box-shadow:0 0 0 2px var(--sombre),var(--shadow-lg)}
 .plan--sub.selected .plan-check{border-color:#fff;background:radial-gradient(circle,#fff 0 4px,var(--sombre) 5px)}
-/* === Offre de lancement (urgence sobre) === */
-.launch-strip{display:flex;align-items:center;gap:10px;background:var(--vert-pale);border:1px solid var(--or-lt);border-radius:12px;padding:10px 14px;font-size:12.5px;color:var(--encre);margin-bottom:12px;line-height:1.35}
-.launch-strip b{color:var(--foret);font-weight:700}
-.ls-dot{width:9px;height:9px;border-radius:50%;background:var(--or);flex:0 0 auto;animation:lspulse 1.8s infinite}
-@keyframes lspulse{0%{box-shadow:0 0 0 0 rgba(176,137,72,.5)}70%{box-shadow:0 0 0 8px rgba(176,137,72,0)}100%{box-shadow:0 0 0 0 rgba(176,137,72,0)}}
-/* === Coût par nuit — rendu désirable === */
-.per-night{display:flex;align-items:center;gap:16px;background:var(--vert-pale);border:1px solid var(--border);border-radius:14px;padding:13px 18px;margin:2px 0 14px}
-.pn-price{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--foret);line-height:1;white-space:nowrap}
-.pn-price span{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--encre-2);margin-left:3px}
-.pn-copy{font-size:13px;line-height:1.42;color:var(--encre-2)}
-.pn-copy b{color:var(--encre);font-weight:700}
-@media(max-width:430px){.per-night{gap:13px;padding:12px 14px}.pn-price{font-size:27px}}
+/* === Offre d'été + décompte === */
+.summer-offer{background:var(--vert-pale);border:1px solid var(--or-lt);border-radius:14px;padding:13px 16px 14px;margin-bottom:14px;text-align:center}
+.so-head{font-size:13px;color:var(--encre);line-height:1.35;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.so-head b{color:var(--foret);font-weight:700}
+.so-stock{color:var(--or);font-weight:700}
+.ls-dot{width:9px;height:9px;border-radius:50%;background:var(--or);flex:0 0 auto;animation:lspulse 1.6s infinite}
+@keyframes lspulse{0%{box-shadow:0 0 0 0 rgba(176,137,72,.55)}70%{box-shadow:0 0 0 8px rgba(176,137,72,0)}100%{box-shadow:0 0 0 0 rgba(176,137,72,0)}}
+.so-count{display:flex;align-items:flex-start;justify-content:center;gap:7px;margin:10px 0 8px}
+.so-unit{display:flex;flex-direction:column;align-items:center;background:var(--foret);color:#fff;border-radius:9px;padding:7px 0 5px;min-width:48px}
+.so-unit b{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1}
+.so-unit span{font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--or-lt);margin-top:3px}
+.so-sep{font-family:var(--serif);font-size:20px;color:var(--brume);line-height:1.6}
+.so-foot{font-size:12px;color:var(--encre-2);line-height:1.4}
+.so-foot b{color:var(--foret);font-weight:700}
+/* prix/nuit intégré dans la carte abonnement */
+.plan-cafe{margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.14);font-size:12px;line-height:1.4;color:rgba(246,243,234,.78)}
+.plan-cafe b{color:var(--or-lt);font-weight:700}
+@media(max-width:430px){.so-unit{min-width:42px;padding:6px 0 4px}.so-unit b{font-size:19px}}
 /* === Statband en vert === */
 .statband{background:var(--sombre)}
 .statband .sb-rate b{color:#fff}
@@ -645,7 +651,20 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
     </div>
 
-    <div class="launch-strip"><span class="ls-dot"></span><span><b>Offre de lancement</b> · gourde offerte + −54&nbsp;% — pour une durée limitée</span></div>
+    <div class="summer-offer">
+      <div class="so-head"><span class="ls-dot"></span><b>Offre d'été</b> · gourde offerte + −54&nbsp;% · <span class="so-stock">stock limité</span></div>
+      <div class="so-count" id="soCount" aria-label="Fin de l'offre">
+        <div class="so-unit"><b id="cdD">--</b><span>jours</span></div>
+        <div class="so-sep">:</div>
+        <div class="so-unit"><b id="cdH">--</b><span>h</span></div>
+        <div class="so-sep">:</div>
+        <div class="so-unit"><b id="cdM">--</b><span>min</span></div>
+        <div class="so-sep">:</div>
+        <div class="so-unit"><b id="cdS">--</b><span>sec</span></div>
+      </div>
+      <div class="so-foot">L'offre se termine le <b>31 juillet</b> — ne perds pas de nuits à mal dormir.</div>
+    </div>
+    <script>(function(){var end=new Date(2026,6,31,23,59,59).getTime();function p(n){return(n<10?'0':'')+n;}function t(){var d=end-Date.now();if(d<0)d=0;var e,D=Math.floor(d/864e5),H=Math.floor(d/36e5)%24,M=Math.floor(d/6e4)%60,S=Math.floor(d/1e3)%60;if(e=document.getElementById('cdD'))e.textContent=D;if(e=document.getElementById('cdH'))e.textContent=p(H);if(e=document.getElementById('cdM'))e.textContent=p(M);if(e=document.getElementById('cdS'))e.textContent=p(S);}t();setInterval(t,1000);})();</script>
 
     <div class="plans" id="plans">
       <label class="plan plan--sub selected">
@@ -659,6 +678,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
             <li><b>−54&nbsp;%</b> sur la valeur réelle</li>
             <li>Livraison offerte · garantie 30 nuits</li>
           </ul>
+          <div class="plan-cafe"><b>1,90 € la nuit</b> — le prix d'un café pour des nuits qui réparent.</div>
         </div>
         <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
       </label>
@@ -675,11 +695,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
         </div>
         <div class="plan-price"><span class="pp-now pp-now--plain">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
       </label>
-    </div>
-
-    <div class="per-night">
-      <div class="pn-price">1,90&nbsp;€<span>/ nuit</span></div>
-      <div class="pn-copy"><b>Le prix d'un café.</b> Pour t'endormir vite, dormir d'un bloc et te réveiller vraiment reposé — chaque nuit.</div>
     </div>
 
     <div class="buy-row">
