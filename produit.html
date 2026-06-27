@@ -396,6 +396,34 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .op-off{display:inline-block;background:var(--or);color:#07241F;font-weight:700;font-size:12px;padding:2px 8px;border-radius:6px;margin-left:8px}
 .op-copy{font-size:12.5px;line-height:1.45;color:rgba(246,243,234,.85);margin-top:12px;border-top:1px solid rgba(216,189,146,.2);padding-top:12px}
 .op-copy b{color:var(--or-lt)}
+
+/* OFFER DARK — pricing fusionné, fond vert foncé */
+.offer-dark{background:var(--sombre);color:var(--creme);border-radius:18px;padding:20px;margin:6px 0 16px;box-shadow:var(--shadow-lg)}
+.od-stack{display:grid;gap:6px;border-bottom:1px solid rgba(216,189,146,.25);padding-bottom:12px;margin-bottom:12px}
+.od-row{display:flex;justify-content:space-between;font-size:13px;color:rgba(246,243,234,.85)}
+.od-row b{color:#fff;font-weight:600}.od-row s{color:var(--brume)}
+.od-free{color:var(--or-lt);font-weight:700}
+.od-tot{font-weight:600;color:#fff}
+.od-deal{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.od-num{display:block;font-family:var(--serif);font-size:40px;font-weight:600;color:var(--or-lt);line-height:1}
+.od-lbl{display:block;font-size:11px;color:rgba(246,243,234,.7);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.od-pay{font-size:15px;color:#fff}
+.od-pay b{font-family:var(--serif);font-size:28px;color:#fff;font-weight:600;margin-left:5px}
+.od-off{display:inline-block;background:var(--or);color:#07241F;font-weight:700;font-size:12px;padding:2px 8px;border-radius:6px;margin-left:8px}
+.od-copy{font-size:12.5px;line-height:1.45;color:rgba(246,243,234,.85);margin:12px 0 0;border-top:1px solid rgba(216,189,146,.2);padding-top:12px}
+.od-copy b{color:var(--or-lt)}
+.od-plans{display:grid;gap:10px;margin-top:16px}
+.od-plans .plan{background:rgba(255,255,255,.04);border:1.5px solid rgba(216,189,146,.25);border-radius:13px;padding:13px 14px 13px 40px;box-shadow:none}
+.od-plans .plan-check{left:14px;top:15px;border-color:rgba(216,189,146,.5)}
+.od-plans .plan.selected{background:rgba(216,189,146,.12);border-color:var(--or-lt);box-shadow:none}
+.od-plans .plan.selected .plan-check{border-color:var(--or-lt);background:radial-gradient(circle,var(--or-lt) 0 4px,var(--sombre) 5px)}
+.od-plans .plan-name{color:#fff;font-size:14.5px}
+.od-plans .plan-desc{color:rgba(246,243,234,.65);margin:2px 0 0;font-size:12px}
+.od-plans .plan-price{text-align:right}
+.od-plans .pp-now{font-family:var(--serif);font-size:24px;font-weight:600;color:#fff}
+.od-plans .pp-cyc{display:block;font-size:11px;color:rgba(246,243,234,.6)}
+.od-plans .pp-unit{display:block;font-size:11px;color:var(--or-lt);font-weight:600;margin-top:3px}
+.od-plans .plan-flag{background:var(--or);color:#07241F}
 </style>
 </head>
 <body>
@@ -452,46 +480,37 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
     </div>
 
-    <div class="offer-punch reveal">
-      <div class="op-stack">
-        <div class="op-row"><span>Pack Kore · 30 nuits</span><b>89€</b></div>
-        <div class="op-row"><span>Ta gourde en verre Kore</span><b><s>35€</s> <span class="op-free">Offerte</span></b></div>
-        <div class="op-row op-tot"><span>Valeur réelle</span><b><s>124€</s></b></div>
+    <div class="offer-dark reveal">
+      <div class="od-stack">
+        <div class="od-row"><span>Pack Kore · 30 nuits</span><b>89€</b></div>
+        <div class="od-row"><span>Ta gourde en verre Kore</span><b><s>35€</s> <span class="od-free">Offerte</span></b></div>
+        <div class="od-row od-tot"><span>Valeur réelle</span><b><s>124€</s></b></div>
       </div>
-      <div class="op-deal">
-        <div class="op-night"><span class="op-num">1,90€</span><span class="op-lbl">la nuit réparée</span></div>
-        <div class="op-pay">Tu paies <b>57€</b><span class="op-off">−54%</span></div>
+      <div class="od-deal">
+        <div class="od-night"><span class="od-num">1,90€</span><span class="od-lbl">la nuit réparée</span></div>
+        <div class="od-pay">Tu paies <b>57€</b><span class="od-off">−54%</span></div>
       </div>
-      <p class="op-copy">124€ de valeur, gourde comprise. À <b>1,90€ la nuit</b>, la seule mauvaise décision, c'est de continuer à mal dormir.</p>
-    </div>
-    <div class="plans" id="plans">
-      <label class="plan plan--sub selected">
-        <input type="radio" name="plan" value="sub" checked>
-        <span class="plan-check"></span>
-        <div class="plan-body">
-          <div class="plan-top"><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
-          <div class="plan-desc">1 box chaque mois · annulable quand tu veux</div>
-          <ul class="plan-perks">
-            <li>Ta gourde en verre <b>offerte</b> <s>35€</s></li>
-            <li><b>−54&nbsp;%</b> sur la valeur réelle</li>
-            <li>Livraison offerte · garantie 30 nuits</li>
-          </ul>
-        </div>
-        <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
-      </label>
-      <label class="plan plan--once">
-        <input type="radio" name="plan" value="once">
-        <span class="plan-check"></span>
-        <div class="plan-body">
-          <div class="plan-top"><span class="plan-name">Achat unique</span></div>
-          <div class="plan-desc">Une seule box, sans renouvellement</div>
-          <ul class="plan-perks plan-perks--muted">
-            <li>Sans gourde offerte</li>
-            <li>Livraison offerte</li>
-          </ul>
-        </div>
-        <div class="plan-price"><span class="pp-now pp-now--plain">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
-      </label>
+      <p class="od-copy">124€ de valeur, gourde comprise. À <b>1,90€ la nuit</b>, la seule mauvaise décision, c'est de continuer à mal dormir.</p>
+      <div class="od-plans">
+        <label class="plan plan--sub selected">
+          <input type="radio" name="plan" value="sub" checked>
+          <span class="plan-check"></span>
+          <div class="plan-body">
+            <div class="plan-top"><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
+            <div class="plan-desc">1 box/mois · annulable · gourde offerte</div>
+          </div>
+          <div class="plan-price"><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
+        </label>
+        <label class="plan plan--once">
+          <input type="radio" name="plan" value="once">
+          <span class="plan-check"></span>
+          <div class="plan-body">
+            <div class="plan-top"><span class="plan-name">Achat unique</span></div>
+            <div class="plan-desc">Une seule box · sans gourde</div>
+          </div>
+          <div class="plan-price"><span class="pp-now">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
+        </label>
+      </div>
     </div>
 
     <div class="buy-row">
