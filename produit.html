@@ -513,6 +513,35 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .rb1{top:24%;right:-4%}.rb2{top:48%;right:-8%}.rb3{top:72%;right:-2%}
 @media(max-width:520px){.rb{font-size:10px;padding:6px 9px}.rb1{right:0}.rb2{right:-3%}.rb3{right:3%}}
 .remade-facts{display:inline-block;margin-top:24px;font-family:var(--serif);font-size:17px;color:var(--foret);font-weight:500;cursor:pointer}
+
+/* === Abonnement vert plus foncé === */
+.plan--sub,.plan--sub.selected{background:var(--sombre);border-color:var(--sombre)}
+.plan--sub.selected{box-shadow:0 0 0 2px var(--sombre),var(--shadow-lg)}
+.plan--sub.selected .plan-check{border-color:#fff;background:radial-gradient(circle,#fff 0 4px,var(--sombre) 5px)}
+/* === Statband en vert === */
+.statband{background:var(--sombre)}
+.statband .sb-rate b{color:#fff}
+.statband .sb-rate .stars{color:var(--or-lt)}
+.statband .sb-rate-sub{color:rgba(246,243,234,.7)}
+.statband .sb-grid b{color:var(--or-lt)}
+.statband .sb-grid span{color:rgba(246,243,234,.8)}
+.statband .sb-note{color:var(--brume)}
+.statband .sb-photos img{border-color:rgba(255,255,255,.15)}
+/* === Formule façon Remade === */
+.formula-remade{display:grid;grid-template-columns:1fr .9fr 1fr;gap:34px;align-items:center;max-width:1020px;margin:40px auto 0}
+@media(max-width:880px){.formula-remade{grid-template-columns:1fr;gap:26px;max-width:540px}}
+.fr-list{display:grid;gap:15px}
+.fr-ing{border-bottom:1px solid var(--border);padding-bottom:13px}
+.fr-ing:last-child{border-bottom:none}
+.fr-ing h4{font-size:15px;font-weight:600;color:var(--foret);margin:0}
+.fr-ing p{font-size:12.5px;color:var(--encre-2);margin:3px 0 0}
+.fr-ing p b{color:var(--encre)}
+.fr-ing span{display:block;font-size:12px;color:var(--brume);margin-top:3px}
+.fr-img{text-align:center}
+.fr-img img{width:100%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:50%;margin:0 auto;box-shadow:var(--shadow)}
+.fr-detail h3{font-family:var(--serif);font-size:24px;color:var(--foret);font-weight:500;margin-bottom:12px}
+.fr-detail p{font-size:14px;line-height:1.6;color:var(--encre);margin-bottom:12px}
+.fr-detail p b{color:var(--foret)}
 </style>
 </head>
 <body>
@@ -636,131 +665,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 </section>
 
-<!-- FORMULE -->
-<section class="sec dark sec-formula">
-  <div class="wrap">
-    <span class="eyebrow reveal" style="display:block;text-align:center;color:var(--or-lt)">La formule</span>
-    <h2 class="h2 reveal" style="text-align:center;color:#fff">13 actifs. <em style="color:var(--or-lt)">4 piliers.</em><br>0 mélatonine.</h2>
-    <p class="formula-lead reveal">Des mois de formulation. Chaque actif est dosé au niveau des études cliniques et choisi pour agir, en synergie, sur une étape précise de ta nuit — pas un ingrédient en solo.</p>
-    <div class="formula-stats reveal">
-      <div><b>13</b><span>actifs complémentaires</span></div>
-      <div><b>4</b><span>piliers du sommeil</span></div>
-      <div><b>~6,3&nbsp;g</b><span>d'actifs par dose</span></div>
-      <div><b>0</b><span>mélatonine de synthèse</span></div>
-    </div>
-    <div class="formula-grid reveal">
-      <div class="fcard">
-        <span class="fcard-n">01</span>
-        <h3>Couper le mental</h3>
-        <p class="fcard-sub">S'endormir vite</p>
-        <ul>
-          <li><span>L-théanine</span><b>200 mg</b></li>
-          <li><span>Mélisse</span><b>300 mg</b></li>
-          <li><span>Passiflore</span><b>200 mg</b></li>
-          <li><span>Apigénine</span><b>50 mg</b></li>
-          <li><span>GABA</span><b>100 mg</b></li>
-        </ul>
-      </div>
-      <div class="fcard">
-        <span class="fcard-n">02</span>
-        <h3>Baisser le cortisol</h3>
-        <p class="fcard-sub">Ne plus se réveiller</p>
-        <ul>
-          <li><span>Ashwagandha KSM-66®</span><b>300 mg</b></li>
-          <li><span>Magnésium bisglycinate</span><b>200 mg</b></li>
-          <li><span>Glycine</span><b>3 000 mg</b></li>
-        </ul>
-      </div>
-      <div class="fcard">
-        <span class="fcard-n">03</span>
-        <h3>Approfondir le sommeil</h3>
-        <p class="fcard-sub">Une nuit réparatrice</p>
-        <ul>
-          <li><span>L-tryptophane</span><b>500 mg</b></li>
-          <li><span>Cerise de Montmorency</span><b>200 mg</b></li>
-          <li><span>Magnésium &amp; glycine</span><b>synergie</b></li>
-        </ul>
-      </div>
-      <div class="fcard">
-        <span class="fcard-n">04</span>
-        <h3>Le réveil clair</h3>
-        <p class="fcard-sub">Sans coup de barre</p>
-        <ul>
-          <li><span>Safran (affron®)</span><b>28 mg</b></li>
-          <li><span>Zinc bisglycinate</span><b>5 mg</b></li>
-          <li><span>Vitamine B6 (P-5-P)</span><b>1,4 mg</b></li>
-        </ul>
-      </div>
-    </div>
-    <div class="formula-proof reveal">
-      <div class="fp-rate"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés · 94&nbsp;% recommandent Kore</div>
-      <div class="fp-quotes">
-        <blockquote>« Trois semaines, et je dors enfin d'une seule traite. »<cite>Emma, 32 ans · acheteuse vérifiée</cite></blockquote>
-        <blockquote>« J'avais tout essayé — mélatonine, tisanes. C'est la seule chose qui a tenu. »<cite>Julien, 31 ans · acheteur vérifié</cite></blockquote>
-      </div>
-    </div>
-    <p class="formula-foot reveal">Formulé en Europe · dosé aux études · sans accoutumance. Complément alimentaire, ne remplace pas un avis médical.</p>
-  </div>
-</section>
-
-<!-- VS SOMNIFERE -->
-<section class="sec sec-vs">
-  <div class="wrap">
-    <span class="eyebrow reveal" style="display:block;text-align:center">Pourquoi pas un somnifère ?</span>
-    <h2 class="h2 reveal" style="text-align:center">Dormir, <em>sans t'assommer.</em></h2>
-    <p class="vs-lead reveal">Un somnifère t'éteint. Kore t'aide à dormir. Ce n'est ni le même sommeil, ni le même réveil.</p>
-    <div class="vs-grid reveal">
-      <div class="vs-col vs-them">
-        <div class="vs-h">Somnifères &amp; mélatonine</div>
-        <ul>
-          <li>Sédatif : ils t'assomment</li>
-          <li>Risque d'accoutumance et de dépendance</li>
-          <li>Réveil dans le brouillard</li>
-          <li>Masquent le problème sans le traiter</li>
-          <li>Une seule molécule</li>
-        </ul>
-      </div>
-      <div class="vs-col vs-us">
-        <div class="vs-h">Le rituel Kore</div>
-        <ul>
-          <li>Calme le cortisol qui dérègle tes nuits</li>
-          <li>Sans accoutumance, sans dépendance</li>
-          <li>Réveil clair, sans coup de barre</li>
-          <li>Agit sur la cause, pas juste le symptôme</li>
-          <li>4 actifs dosés aux études</li>
-        </ul>
-      </div>
-    </div>
-    <p class="vs-foot reveal">Kore est un complément alimentaire, pas un médicament. En cas de trouble du sommeil persistant, parle-s-en à un professionnel de santé.</p>
-  </div>
-</section>
-
-<!-- MANIFESTO -->
-<section class="sec dark sec-manifesto">
-  <div class="wrap">
-    <svg class="manif-star" id="manifStar" viewBox="0 0 100 100" aria-hidden="true"></svg>
-    <h2 class="manif-h2">La nuit n'est pas faite<br>pour <em>lutter</em> —<br>mais pour <em>réparer.</em></h2>
-    <div class="kore-div"><b>Le rituel du soir</b></div>
-  </div>
-</section>
-
-<!-- AVIS -->
-<section class="sec" style="background:var(--surface)">
-  <div class="wrap">
-    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
-    <h2 class="h2 reveal">Des années de mauvaises nuits.<br><em>Réglées.</em></h2>
-    <div class="rev-rate reveal"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés · collectés via clients &amp; Trustpilot</div>
-    <div class="rev-grid">
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Emma, 32 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 31 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 28 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>J'avais testé mélatonine, tisanes, magnésium seul. <strong>Kore est la seule chose qui a tenu.</strong></p><div class="rev-who"><div class="rev-av">JU</div><div><div class="rev-nm">Julien, 31 ans</div><div class="rev-mt">Lyon · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me lève <strong>avant mon réveil</strong>, sans le brouillard d'avant. Une première en 10 ans.</p><div class="rev-who"><div class="rev-av">SO</div><div><div class="rev-nm">Sophie, 27 ans</div><div class="rev-mt">Nantes · depuis 6 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le goût est bon, le geste est simple. <strong>Et surtout : je dors enfin profond.</strong></p><div class="rev-who"><div class="rev-av">MA</div><div><div class="rev-nm">Maxime, 35 ans</div><div class="rev-mt">Paris · depuis 3 mois</div></div></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- REMADE-STYLE -->
 <section class="sec remade">
   <div class="wrap remade-grid">
@@ -787,6 +691,57 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
         <div class="rb rb3">Sans mélatonine<br>sans accoutumance</div>
       </div>
       <a class="remade-facts" onclick="document.querySelector('.sec-formula').scrollIntoView({behavior:'smooth'})">Voir la composition +</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULE -->
+<section class="sec dark sec-formula">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="display:block;text-align:center;color:var(--or-lt)">La formule</span>
+    <h2 class="h2 reveal" style="text-align:center;color:#fff">13 actifs. <em style="color:var(--or-lt)">4 piliers.</em><br>0 mélatonine.</h2>
+    <p class="formula-lead reveal">Des mois de formulation. Chaque actif est dosé au niveau des études cliniques et choisi pour agir, en synergie, sur une étape précise de ta nuit — pas un ingrédient en solo.</p>
+    <div class="formula-stats reveal">
+      <div><b>13</b><span>actifs complémentaires</span></div>
+      <div><b>4</b><span>piliers du sommeil</span></div>
+      <div><b>~6,3&nbsp;g</b><span>d'actifs par dose</span></div>
+      <div><b>0</b><span>mélatonine de synthèse</span></div>
+    </div>
+    <div class="formula-remade reveal">
+      <div class="fr-list">
+        <div class="fr-ing"><h4>Ashwagandha KSM-66®</h4><p>Dosé aux études · <b>300 mg</b></p><span>Fait baisser le cortisol qui te réveille la nuit.</span></div>
+        <div class="fr-ing"><h4>Magnésium bisglycinate</h4><p>Dosé aux études · <b>200 mg</b></p><span>Calme le système nerveux, sommeil plus profond.</span></div>
+        <div class="fr-ing"><h4>Glycine</h4><p>Dosé aux études · <b>3 000 mg</b></p><span>Abaisse la température centrale, nuit continue.</span></div>
+        <div class="fr-ing"><h4>L-théanine</h4><p>Dosé aux études · <b>200 mg</b></p><span>Coupe les pensées, calme sans assommer.</span></div>
+        <div class="fr-ing"><h4>L-tryptophane</h4><p>Dosé aux études · <b>500 mg</b></p><span>Précurseur de ta mélatonine naturelle.</span></div>
+        <div class="fr-ing"><h4>Safran (affron®)</h4><p>Dosé aux études · <b>28 mg</b></p><span>Meilleure qualité de sommeil et réveil plus serein.</span></div>
+        <div class="fr-ing"><h4>+ 7 autres actifs</h4><p>Mélisse, passiflore, apigénine, GABA, cerise de Montmorency, zinc, B6</p></div>
+      </div>
+      <div class="fr-img"><img src="img/poudre.png" alt="Actifs Kore"></div>
+      <div class="fr-detail">
+        <h3>Ashwagandha KSM-66®</h3>
+        <p>L'ashwagandha le plus étudié au monde. Il agit sur <b>le coupable n°1</b> de tes réveils nocturnes : le cortisol. En le faisant redescendre le soir, il aide ta nuit à tenir d'un bloc — au lieu de te réveiller à 3h.</p>
+        <p>On le dose à <b>300 mg</b>, le niveau exact des études cliniques — pas une trace symbolique cachée dans un « blend ».</p>
+        <a class="remade-facts" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth',block:'center'})">Commander le pack →</a>
+      </div>
+    </div>
+    <p class="formula-foot reveal">Formulé en Europe · dosé aux études · sans accoutumance. Complément alimentaire, ne remplace pas un avis médical.</p>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="sec" style="background:var(--surface)">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
+    <h2 class="h2 reveal">Des années de mauvaises nuits.<br><em>Réglées.</em></h2>
+    <div class="rev-rate reveal"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés · collectés via clients &amp; Trustpilot</div>
+    <div class="rev-grid">
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Emma, 32 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 31 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 28 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>J'avais testé mélatonine, tisanes, magnésium seul. <strong>Kore est la seule chose qui a tenu.</strong></p><div class="rev-who"><div class="rev-av">JU</div><div><div class="rev-nm">Julien, 31 ans</div><div class="rev-mt">Lyon · depuis 4 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me lève <strong>avant mon réveil</strong>, sans le brouillard d'avant. Une première en 10 ans.</p><div class="rev-who"><div class="rev-av">SO</div><div><div class="rev-nm">Sophie, 27 ans</div><div class="rev-mt">Nantes · depuis 6 mois</div></div></div></div>
+      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le goût est bon, le geste est simple. <strong>Et surtout : je dors enfin profond.</strong></p><div class="rev-who"><div class="rev-av">MA</div><div><div class="rev-nm">Maxime, 35 ans</div><div class="rev-mt">Paris · depuis 3 mois</div></div></div></div>
     </div>
   </div>
 </section>
