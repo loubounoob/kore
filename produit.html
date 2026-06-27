@@ -542,6 +542,27 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .fr-detail h3{font-family:var(--serif);font-size:24px;color:var(--foret);font-weight:500;margin-bottom:12px}
 .fr-detail p{font-size:14px;line-height:1.6;color:var(--encre);margin-bottom:12px}
 .fr-detail p b{color:var(--foret)}
+
+/* === Section Remade en colonne unique === */
+.remade-single{max-width:640px;margin:0 auto;text-align:center}
+.remade-single .remade-badge-top{margin-bottom:6px}
+.remade-single .remade-title{margin-top:4px}
+.remade-single .remade-stars{justify-content:center;margin:14px 0 0}
+.remade-single .remade-prod{margin:28px auto 6px;max-width:340px}
+.remade-single .remade-list{text-align:left;max-width:520px;margin:14px auto 0}
+.remade-single .remade-list li b{color:var(--foret)}
+/* === Avis façon Remade === */
+.rmrev-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:38px}
+@media(min-width:760px){.rmrev-grid{grid-template-columns:repeat(3,1fr)}}
+.rmrev{background:var(--creme);border:1px solid var(--border);border-radius:16px;padding:26px 24px;box-shadow:var(--shadow)}
+.rmrev .stars{color:var(--or);font-size:16px}
+.rmrev h4{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--encre);margin:12px 0 10px}
+.rmrev p{font-size:14px;line-height:1.6;color:var(--encre-2)}
+.rmrev-who{margin-top:18px}
+.rmrev-who b{display:block;color:var(--foret);font-size:14px}
+.rmrev-vb{font-size:12px;color:var(--brume)}
+/* === Formule : brève sur mobile === */
+@media(max-width:880px){.fr-detail{display:none}.fr-ing span{display:none}.fr-ing{padding-bottom:9px}}
 </style>
 </head>
 <body>
@@ -667,46 +688,31 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
 <!-- REMADE-STYLE -->
 <section class="sec remade">
-  <div class="wrap remade-grid">
-    <div class="remade-left reveal">
-      <h2 class="remade-title">Pack Kore<br>Rituel Sommeil Réparateur</h2>
-      <div class="remade-stars"><span class="stars">★★★★★</span> <b>4,8/5</b> <span>· 600+ avis vérifiés</span></div>
-      <ul class="remade-list">
-        <li><span class="rl-moon">☾</span> 4 actifs dosés aux études cliniques pour un sommeil profond et réparateur*</li>
-        <li><span class="rl-moon">☾</span> T'endors vite, ne te réveille plus à 3h, lève-toi clair et reposé*</li>
-        <li><span class="rl-moon">☾</span> Sans mélatonine, sans accoutumance : aucun brouillard ni dépendance au réveil*</li>
-        <li><span class="rl-moon">☾</span> Sommeil profond &amp; REM pour la récupération, le cerveau et la longévité*</li>
-        <li><span class="rl-moon">☾</span> Rituel du soir simple : une dose dans un verre d'eau, goût naturel</li>
-        <li><span class="rl-moon">☾</span> Seulement 1,90€/nuit + livraison offerte sur l'abonnement !</li>
-      </ul>
-      <button class="btn remade-cta" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth',block:'center'})">COMMANDER MAINTENANT →</button>
-      <p class="remade-guar">✓ Satisfait ou remboursé — garantie 30 nuits</p>
+  <div class="wrap remade-single reveal">
+    <div class="remade-badge-top">✦ Le rituel du soir ✦<span>Formulé en Europe · dosé aux études</span></div>
+    <h2 class="remade-title">Pack Kore<br>Rituel Sommeil Réparateur</h2>
+    <div class="remade-stars"><span class="stars">★★★★★</span> <b>4,8/5</b> <span>· 600+ avis vérifiés</span></div>
+    <div class="remade-prod">
+      <img src="img/packet.png" alt="Pack Kore">
+      <div class="rb rb1">Dosé aux<br>études cliniques</div>
+      <div class="rb rb2">Formulé en Europe<br>· GMP</div>
+      <div class="rb rb3">Sans mélatonine<br>sans accoutumance</div>
     </div>
-    <div class="remade-right reveal">
-      <div class="remade-badge-top">✦ Le rituel du soir ✦<span>Formulé en Europe · dosé aux études</span></div>
-      <div class="remade-prod">
-        <img src="img/packet.png" alt="Pack Kore">
-        <div class="rb rb1">Dosé aux<br>études cliniques</div>
-        <div class="rb rb2">Formulé en Europe<br>· GMP</div>
-        <div class="rb rb3">Sans mélatonine<br>sans accoutumance</div>
-      </div>
-      <a class="remade-facts" onclick="document.querySelector('.sec-formula').scrollIntoView({behavior:'smooth'})">Voir la composition +</a>
-    </div>
+    <ul class="remade-list">
+      <li><span class="rl-moon">☾</span> <b>4 actifs dosés aux études cliniques</b> pour un sommeil profond et réparateur*</li>
+      <li><span class="rl-moon">☾</span> <b>T'endors vite</b>, ne te réveille plus à <b>3h</b>, lève-toi <b>clair et reposé</b>*</li>
+      <li><span class="rl-moon">☾</span> <b>Sans mélatonine, sans accoutumance</b> : aucun brouillard ni dépendance au réveil*</li>
+      <li><span class="rl-moon">☾</span> Sommeil <b>profond &amp; REM</b> pour la récupération, le cerveau et la longévité*</li>
+      <li><span class="rl-moon">☾</span> <b>Rituel du soir simple</b> : une dose dans un verre d'eau, goût naturel</li>
+      <li><span class="rl-moon">☾</span> Seulement <b>1,90€/nuit</b> + livraison offerte sur l'abonnement&nbsp;!</li>
+    </ul>
+    <p class="remade-guar">✓ Satisfait ou remboursé — garantie 30 nuits</p>
   </div>
 </section>
 
 <!-- FORMULE -->
 <section class="sec dark sec-formula">
   <div class="wrap">
-    <span class="eyebrow reveal" style="display:block;text-align:center;color:var(--or-lt)">La formule</span>
-    <h2 class="h2 reveal" style="text-align:center;color:#fff">13 actifs. <em style="color:var(--or-lt)">4 piliers.</em><br>0 mélatonine.</h2>
-    <p class="formula-lead reveal">Des mois de formulation. Chaque actif est dosé au niveau des études cliniques et choisi pour agir, en synergie, sur une étape précise de ta nuit — pas un ingrédient en solo.</p>
-    <div class="formula-stats reveal">
-      <div><b>13</b><span>actifs complémentaires</span></div>
-      <div><b>4</b><span>piliers du sommeil</span></div>
-      <div><b>~6,3&nbsp;g</b><span>d'actifs par dose</span></div>
-      <div><b>0</b><span>mélatonine de synthèse</span></div>
-    </div>
     <div class="formula-remade reveal">
       <div class="fr-list">
         <div class="fr-ing"><h4>Ashwagandha KSM-66®</h4><p>Dosé aux études · <b>300 mg</b></p><span>Fait baisser le cortisol qui te réveille la nuit.</span></div>
@@ -732,17 +738,28 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 <!-- AVIS -->
 <section class="sec" style="background:var(--surface)">
   <div class="wrap">
-    <span class="eyebrow reveal">Ils ont retrouvé leurs nuits</span>
-    <h2 class="h2 reveal">Des années de mauvaises nuits.<br><em>Réglées.</em></h2>
-    <div class="rev-rate reveal"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés · collectés via clients &amp; Trustpilot</div>
-    <div class="rev-grid">
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu'à mon réveil.</strong></p><div class="rev-who"><div class="rev-av">NA</div><div><div class="rev-nm">Emma, 32 ans</div><div class="rev-mt">Bordeaux · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J'avais oublié ce que c'était.</p><div class="rev-who"><div class="rev-av">CA</div><div><div class="rev-nm">Carla, 31 ans</div><div class="rev-mt">Maman de 3 · depuis 5 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le soir, j'arrive enfin à éteindre mon cerveau. <strong>Je m'endors vraiment, et je récupère.</strong></p><div class="rev-who"><div class="rev-av">TH</div><div><div class="rev-nm">Thomas, 28 ans</div><div class="rev-mt">Cadre · depuis 3 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>J'avais testé mélatonine, tisanes, magnésium seul. <strong>Kore est la seule chose qui a tenu.</strong></p><div class="rev-who"><div class="rev-av">JU</div><div><div class="rev-nm">Julien, 31 ans</div><div class="rev-mt">Lyon · depuis 4 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Je me lève <strong>avant mon réveil</strong>, sans le brouillard d'avant. Une première en 10 ans.</p><div class="rev-who"><div class="rev-av">SO</div><div><div class="rev-nm">Sophie, 27 ans</div><div class="rev-mt">Nantes · depuis 6 mois</div></div></div></div>
-      <div class="rev reveal"><span class="stars">★★★★★</span><p>Le goût est bon, le geste est simple. <strong>Et surtout : je dors enfin profond.</strong></p><div class="rev-who"><div class="rev-av">MA</div><div><div class="rev-nm">Maxime, 35 ans</div><div class="rev-mt">Paris · depuis 3 mois</div></div></div></div>
-    </div>
+    <h2 class="h2 reveal" style="text-align:center">Ce que nos clients<br><em>disent de Kore.</em></h2>
+    <div class="rev-rate reveal"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés</div>
+    <div class="rmrev-grid reveal">
+      <div class="rmrev">
+        <span class="stars">★★★★★</span>
+        <h4>Enfin, je dors profond</h4>
+        <p>Je cherchais un truc qui augmente vraiment mon sommeil profond (je le traque sur ma montre). C'est le premier complément qui le fait, et constamment. J'étais pas sûr du goût naturel, mais il est plutôt bon.</p>
+        <div class="rmrev-who"><b>Jules N.</b><span class="rmrev-vb">✓ Acheteur vérifié</span></div>
+      </div>
+      <div class="rmrev">
+        <span class="stars">★★★★★</span>
+        <h4>Formule incroyable</h4>
+        <p>Franchement ce produit est incroyable… 10/10. Je me réveillais chaque nuit, là je dors d'une traite. Je continue sur le long terme.</p>
+        <div class="rmrev-who"><b>Ethan H.</b><span class="rmrev-vb">✓ Acheteur vérifié</span></div>
+      </div>
+      <div class="rmrev">
+        <span class="stars">★★★★★</span>
+        <h4>ça vaut largement le coup</h4>
+        <p>Ok, mon copain avait raison, on en avait besoin. Je suis moins stressée, plus d'énergie au boulot, et zéro brouillard comme avec la mélatonine. Un peu cher, mais imbattable en abonnement.</p>
+        <div class="rmrev-who"><b>Grace A.</b><span class="rmrev-vb">✓ Acheteuse vérifiée</span></div>
+      </div>
+    </div></div>
   </div>
 </section>
 
