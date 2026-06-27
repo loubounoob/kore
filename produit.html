@@ -470,6 +470,27 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .sec.dark:not(.sec-formula):not(.sec-manifesto) p{color:var(--encre-2)}
 .guar .btn-lt{background:var(--foret);color:var(--creme)}
 .guar .btn-lt:hover{background:#08423A}
+
+/* CARTE ABONNEMENT — fond vert, texte blanc */
+.plan--sub{background:var(--foret);border-color:var(--foret);color:#fff}
+.plan--sub.selected{background:var(--foret);box-shadow:0 0 0 2px var(--foret),var(--shadow-lg)}
+.plan--sub .plan-name{color:#fff}
+.plan--sub .plan-desc{color:rgba(246,243,234,.78)}
+.plan--sub .plan-perks li{color:#fff}
+.plan--sub .plan-perks li b{color:var(--or-lt)}
+.plan--sub .plan-perks li s{color:rgba(246,243,234,.5)}
+.plan--sub .plan-perks li:before{color:var(--or-lt)}
+.plan--sub .pp-old{color:rgba(246,243,234,.55)}
+.plan--sub .pp-now{color:#fff}
+.plan--sub .pp-cyc{color:rgba(246,243,234,.72)}
+.plan--sub .pp-unit{color:var(--or-lt)}
+.plan--sub .plan-flag{background:var(--or);color:#fff}
+.plan--sub .plan-check{border-color:rgba(255,255,255,.55)}
+.plan--sub.selected .plan-check{border-color:#fff;background:radial-gradient(circle,#fff 0 4px,var(--foret) 5px)}
+/* photos clients dans la statband */
+.sb-photos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:520px;margin:26px auto 0}
+.sb-photos img{width:86px;height:86px;border-radius:13px;object-fit:cover;border:1px solid var(--border)}
+@media(max-width:560px){.sb-photos img{width:66px;height:66px}}
 </style>
 </head>
 <body>
@@ -574,12 +595,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 </section>
 
-<!-- MARQUEE SIGNATURE -->
-<div class="kore-marquee" aria-hidden="true"><div class="kore-marquee-in">
-<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
-<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
-</div></div>
-
 <!-- STAT BAND -->
 <section class="statband">
   <div class="wrap statband-in">
@@ -588,6 +603,12 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <div><b>9/10</b><span>dorment d'une traite après 3 semaines*</span></div>
       <div><b>94%</b><span>se sentent plus reposés au réveil*</span></div>
       <div><b>30 nuits</b><span>satisfait ou remboursé, sans question</span></div>
+    </div>
+    <div class="sb-photos">
+      <img src="img/p1.jpg" alt="Client Kore">
+      <img src="img/p2.jpg" alt="Client Kore">
+      <img src="img/p3.jpg" alt="Client Kore">
+      <img src="img/p4.jpg" alt="Client Kore">
     </div>
     <p class="sb-note">*D'après les retours clients. Résultats individuels variables.</p>
   </div>
@@ -728,12 +749,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 </section>
 
-<!-- MARQUEE SIGNATURE -->
-<div class="kore-marquee" aria-hidden="true"><div class="kore-marquee-in">
-<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
-<span>&#10022; Le rituel du soir &#10022; Le sommeil qui répare &#10022; Sans somnifère &#10022; Sans accoutumance &#10022; Formulé en Europe &#10022; Dosé aux études&nbsp;</span>
-</div></div>
-
 <!-- FAQ -->
 <section class="sec" id="faq">
   <div class="wrap">
@@ -758,7 +773,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="sticky-price"><s>124€</s>57€<span style="font-size:11px;font-weight:400"> /mois · 1,90€/nuit</span></div>
+  <div class="sticky-price">1,90€<span style="font-size:12px;font-weight:400"> / bonne nuit</span></div>
   <button class="btn" onclick="addToCart()">Ajouter au panier</button>
 </div>
 
