@@ -526,33 +526,34 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
     </div>
 
-    <div class="offer-dark reveal">
-      <div class="od-stack">
-        <div class="od-row"><span>Pack Kore · 30 nuits</span><b>89€</b></div>
-        <div class="od-row"><span>Ta gourde en verre Kore</span><b><s>35€</s> <span class="od-free">Offerte</span></b></div>
-        <div class="od-row od-tot"><span>Valeur réelle</span><b><s>124€</s></b></div>
-      </div>
-      <p class="od-copy">124€ de valeur, gourde comprise. À <b>1,90€ la nuit</b>, la seule mauvaise décision, c'est de continuer à mal dormir.</p>
-      <div class="od-plans">
-        <label class="plan plan--sub selected">
-          <input type="radio" name="plan" value="sub" checked>
-          <span class="plan-check"></span>
-          <div class="plan-body">
-            <div class="plan-top"><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
-            <div class="plan-desc">1 box chaque mois · sans engagement</div>
-          </div>
-          <div class="plan-price"><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit · −54%</span></div>
-        </label>
-        <label class="plan plan--once">
-          <input type="radio" name="plan" value="once">
-          <span class="plan-check"></span>
-          <div class="plan-body">
-            <div class="plan-top"><span class="plan-name">Achat unique</span></div>
-            <div class="plan-desc">Une seule box · sans gourde</div>
-          </div>
-          <div class="plan-price"><span class="pp-now">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
-        </label>
-      </div>
+    <div class="plans" id="plans">
+      <label class="plan plan--sub selected">
+        <input type="radio" name="plan" value="sub" checked>
+        <span class="plan-check"></span>
+        <div class="plan-body">
+          <div class="plan-top"><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
+          <div class="plan-desc">1 box chaque mois · annulable quand tu veux</div>
+          <ul class="plan-perks">
+            <li>Ta gourde en verre <b>offerte</b> <s>35€</s></li>
+            <li><b>−54&nbsp;%</b> sur la valeur réelle</li>
+            <li>Livraison offerte · garantie 30 nuits</li>
+          </ul>
+        </div>
+        <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
+      </label>
+      <label class="plan plan--once">
+        <input type="radio" name="plan" value="once">
+        <span class="plan-check"></span>
+        <div class="plan-body">
+          <div class="plan-top"><span class="plan-name">Achat unique</span></div>
+          <div class="plan-desc">Une seule box, sans renouvellement</div>
+          <ul class="plan-perks plan-perks--muted">
+            <li>Sans gourde offerte</li>
+            <li>Livraison offerte</li>
+          </ul>
+        </div>
+        <div class="plan-price"><span class="pp-now pp-now--plain">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
+      </label>
     </div>
 
     <div class="buy-row">
