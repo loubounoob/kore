@@ -835,7 +835,7 @@ function eur(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €
 (function(){var s=document.getElementById('sticky'),add=document.getElementById('addCart');var io=new IntersectionObserver(function(es){es.forEach(function(e){s.classList.toggle('show',!e.isIntersecting);});});if(add)io.observe(add);})();
 /* CART — tiroir client + redirection checkout */
 var ONCE_URL='https://q3knru-rj.myshopify.com/cart/53161758261584:1';
-var SUB_URL='https://q3knru-rj.myshopify.com/cart/clear?return_to=%2Fcart%2Fadd%3Fid%3D53195108614480%26selling_plan%3D690023596368%26quantity%3D1%26return_to%3D%2Fcheckout';
+var SUB_URL='https://q3knru-rj.myshopify.com/cart/clear?return_to=%2Fcart%2Fadd%3Fid%3D53195108614480%26selling_plan%3D690023596368%26quantity%3D1%26return_to%3D%252Fcart%252Fadd%253Fid%253D53194086941008%2526quantity%253D1%2526return_to%253D%252Fcheckout';
 var CART_MODE=null;
 function selPlan(){var r=document.querySelector('.plan input:checked');return (!r||r.value==='sub')?'sub':'once';}
 function addToCart(){CART_MODE=selPlan();renderCart();openCart();try{showToast(CART_MODE==='sub'?'Ajouté · gourde offerte ✓':'Ajouté au panier ✓');}catch(e){}try{if(window.fbq)fbq('track','AddToCart',{value:CART_MODE==='sub'?57:89,currency:'EUR'});}catch(e){}}
