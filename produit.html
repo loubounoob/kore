@@ -495,7 +495,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     </div>
 
     <div class="buy-row">
-      <button class="btn add-cart plan-cta" id="addCart" onclick="goPlan()">
+      <button class="btn add-cart plan-cta" id="addCart" onclick="addToCart()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
         Ajouter au panier
       </button>
@@ -697,7 +697,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
 <div class="sticky" id="sticky">
   <div class="sticky-price"><s>124€</s>57€<span style="font-size:11px;font-weight:400"> /mois · 1,90€/nuit</span></div>
-  <button class="btn" onclick="goPlan()">Ajouter au panier</button>
+  <button class="btn" onclick="addToCart()">Ajouter au panier</button>
 </div>
 
 <div class="cart-ov" id="cartOv" onclick="closeCart()"></div>
@@ -728,32 +728,31 @@ function closeCart(){document.getElementById('cartEl').classList.remove('open');
 function showToast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2200);}
 function eur(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €';}
 (function(){var s=document.getElementById('sticky'),add=document.getElementById('addCart');var io=new IntersectionObserver(function(es){es.forEach(function(e){s.classList.toggle('show',!e.isIntersecting);});});if(add)io.observe(add);})();
-/* SHOPIFY headless cart */
-var SHOP_DOMAIN='q3knru-rj.myshopify.com',SF_TOKEN='e44e2d98ee4fa8726e022eee54c195e1',PRODUCT_ID='10534418514256';
-var FALLBACK_CART='https://q3knru-rj.myshopify.com/cart/53161758261584:1,53194086941008:1';
-var KORE_UNIT_PRICE=57;
-var PACK_OLD=89;
-var BOTTLE_VARIANT='gid://shopify/ProductVariant/53194086941008';
-var BOTTLE_OLD=35;
-/* OFFRE — redirections checkout (one-time vs abonnement) */
+/* CART — tiroir client + redirection checkout */
 var ONCE_URL='https://q3knru-rj.myshopify.com/cart/53161758261584:1';
 var SUB_URL='https://q3knru-rj.myshopify.com/cart/clear?return_to=%2Fcart%2Fadd%3Fid%3D53195108614480%26selling_plan%3D690023596368%26quantity%3D1%26return_to%3D%2Fcheckout';
-function goPlan(){var r=document.querySelector('.plan input:checked');var sub=!r||r.value==='sub';try{if(window.fbq)fbq('track','InitiateCheckout',{value:sub?59:89,currency:'EUR'});}catch(e){}window.location.href=sub?SUB_URL:ONCE_URL;}
-var client=null,checkout=null,product=null,selVariant=null,sdkReady=false;
-function loadSDK(cb){if(window.ShopifyBuy){cb();return;}var s=document.createElement('script');s.async=true;s.src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';s.onload=cb;s.onerror=function(){console.warn('SDK fail');};document.head.appendChild(s);}
-function gid(num){return btoa('gid://shopify/Product/'+num);}
-async function initShop(){try{client=ShopifyBuy.buildClient({domain:SHOP_DOMAIN,storefrontAccessToken:SF_TOKEN});var id=localStorage.getItem('kore_checkout_id');if(id){try{checkout=await client.checkout.fetch(id);}catch(e){checkout=null;}}if(!checkout||checkout.completedAt){checkout=await client.checkout.create();localStorage.setItem('kore_checkout_id',checkout.id);}try{product=await client.product.fetch(gid(PRODUCT_ID));}catch(e){try{product=await client.product.fetch(PRODUCT_ID);}catch(e2){product=null;}}if(product&&product.variants&&product.variants.length){selVariant=product.variants[0];}sdkReady=true;if(packTotal()>0)await syncBottle();renderCart();}catch(e){console.warn('initShop',e);sdkReady=false;}}
-function isBottle(li){return /bouteille|gourde/i.test(li.title||'');}
-function packTotal(){var its=(checkout&&checkout.lineItems)||[];return its.filter(function(l){return !isBottle(l);}).reduce(function(s,l){return s+l.quantity;},0);}
-function bottleLine(){var its=(checkout&&checkout.lineItems)||[];return its.filter(isBottle)[0]||null;}
-async function syncBottle(){try{var want=packTotal(),bl=bottleLine();if(want>0){if(bl){if(bl.quantity!==want){checkout=await client.checkout.updateLineItems(checkout.id,[{id:bl.id,quantity:want}]);}}else{checkout=await client.checkout.addLineItems(checkout.id,[{variantId:BOTTLE_VARIANT,quantity:want}]);}}else if(bl){checkout=await client.checkout.removeLineItems(checkout.id,[bl.id]);}}catch(e){console.warn('syncBottle',e);}}
-async function addToCart(){var btn=document.getElementById('addCart');if(btn)btn.disabled=true;try{if(!sdkReady||!checkout||!selVariant){window.location=FALLBACK_CART;return;}if(window.fbq)fbq('track','AddToCart',{value:KORE_UNIT_PRICE*QTY,currency:'EUR'});checkout=await client.checkout.addLineItems(checkout.id,[{variantId:selVariant.id,quantity:QTY}]);await syncBottle();renderCart();openCart();showToast('Ajouté · gourde offerte ✓');}catch(e){console.warn(e);window.location=FALLBACK_CART;}finally{if(btn)btn.disabled=false;}}
-async function changeLine(lineId,qty){if(qty<1){checkout=await client.checkout.removeLineItems(checkout.id,[lineId]);}else{checkout=await client.checkout.updateLineItems(checkout.id,[{id:lineId,quantity:qty}]);}await syncBottle();renderCart();}
-function lineImg(li){try{if(li.variant&&li.variant.image&&li.variant.image.src)return li.variant.image.src;}catch(e){}return 'img/p0.jpg';}
-function linePrice(li){return isBottle(li)?0:KORE_UNIT_PRICE;}
-function renderCart(){var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount');var items=(checkout&&checkout.lineItems)||[];var tq=items.reduce(function(s,li){return s+li.quantity;},0);if(tq>0){count.style.display='flex';count.textContent=tq;}else{count.style.display='none';}if(!items.length){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';return;}var html='',sub=0;items.sort(function(a,b){return (isBottle(a)?1:0)-(isBottle(b)?1:0);});items.forEach(function(li){if(isBottle(li)){html+='<div class="ci ci-gift"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau · avec ton Pack Kore</div><div class="ci-pr"><span class="ci-old">'+eur(BOTTLE_OLD)+'</span><b>0€</b></div></div></div></div>';}else{var pr=KORE_UNIT_PRICE;sub+=pr*li.quantity;html+='<div class="ci"><img src="'+lineImg(li)+'" alt=""><div class="ci-info"><div class="ci-nm">'+li.title+'</div><div class="ci-bot"><div class="ci-qty"><button onclick="changeLine(\''+li.id+'\','+(li.quantity-1)+')">−</button><span>'+li.quantity+'</span><button onclick="changeLine(\''+li.id+'\','+(li.quantity+1)+')">+</button></div><div class="ci-pr"><span class="ci-old">'+eur(PACK_OLD*li.quantity)+'</span>'+eur(pr*li.quantity)+'</div></div><button class="ci-rm" onclick="changeLine(\''+li.id+'\',0)">Retirer</button></div></div>';}});body.innerHTML=html;var pq=packTotal(),bl=bottleLine(),bq=bl?bl.quantity:0;var sav=pq*(PACK_OLD-KORE_UNIT_PRICE)+bq*BOTTLE_OLD;var saveEl=document.getElementById('cartSave');if(saveEl){if(sav>0){saveEl.style.display='flex';saveEl.innerHTML='<span>🎁 Remise + gourde offerte</span><span><b>−'+eur(sav)+'</b></span>';}else{saveEl.style.display='none';}}document.getElementById('cartSub').textContent=eur(sub);foot.style.display='block';}
-function goCheckout(){if(window.fbq)fbq('track','InitiateCheckout',{value:KORE_UNIT_PRICE,currency:'EUR'});if(checkout&&checkout.webUrl){window.location=checkout.webUrl;}else{window.location=FALLBACK_CART;}}
-loadSDK(initShop);
+var CART_MODE=null;
+function selPlan(){var r=document.querySelector('.plan input:checked');return (!r||r.value==='sub')?'sub':'once';}
+function addToCart(){CART_MODE=selPlan();renderCart();openCart();try{showToast(CART_MODE==='sub'?'Ajouté · gourde offerte ✓':'Ajouté au panier ✓');}catch(e){}try{if(window.fbq)fbq('track','AddToCart',{value:CART_MODE==='sub'?57:89,currency:'EUR'});}catch(e){}}
+function changeLine(){CART_MODE=null;renderCart();}
+function renderCart(){
+  var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount'),saveEl=document.getElementById('cartSave'),subEl=document.getElementById('cartSub');
+  if(!CART_MODE){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';if(count)count.style.display='none';return;}
+  if(count){count.style.display='flex';count.textContent='1';}
+  var html='';
+  if(CART_MODE==='sub'){
+    html+='<div class="ci"><img src="img/social.jpg" alt=""><div class="ci-info"><div class="ci-nm">Abonnement Kore</div><div class="ci-bot"><div class="ci-gift-note">1 box / mois &middot; annulable</div><div class="ci-pr"><span class="ci-old">124&euro;</span>57&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
+    html+='<div class="ci ci-gift"><img src="img/verre.png" alt=""><div class="ci-info"><div class="ci-nm">Gourde en verre Kore<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau &middot; avec ton abonnement</div><div class="ci-pr"><span class="ci-old">35&euro;</span><b>0&euro;</b></div></div></div></div>';
+    if(saveEl){saveEl.style.display='flex';saveEl.innerHTML='<span>&#127881; Gourde + remise</span><span><b>&minus;67&euro;</b></span>';}
+    if(subEl)subEl.textContent='57,00 \u20ac / mois';
+  } else {
+    html+='<div class="ci"><img src="img/social.jpg" alt=""><div class="ci-info"><div class="ci-nm">Pack Kore</div><div class="ci-bot"><div class="ci-gift-note">Une seule box &middot; sans gourde</div><div class="ci-pr">89&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
+    if(saveEl)saveEl.style.display='none';
+    if(subEl)subEl.textContent='89,00 \u20ac';
+  }
+  body.innerHTML=html;foot.style.display='block';
+}
+function goCheckout(){if(!CART_MODE){return;}try{if(window.fbq)fbq('track','InitiateCheckout',{value:CART_MODE==='sub'?57:89,currency:'EUR'});}catch(e){}window.location.href=(CART_MODE==='sub'?SUB_URL:ONCE_URL);}
 /* PLAN SELECTOR (visuel) */
 (function(){var ps=document.querySelectorAll('.plan input');if(!ps.length)return;function upd(){document.querySelectorAll('.plan').forEach(function(l){l.classList.toggle('selected',l.querySelector('input').checked);});}ps.forEach(function(i){i.addEventListener('change',upd);});upd();})();
 
