@@ -424,6 +424,52 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .od-plans .pp-cyc{display:block;font-size:11px;color:rgba(246,243,234,.6)}
 .od-plans .pp-unit{display:block;font-size:11px;color:var(--or-lt);font-weight:600;margin-top:3px}
 .od-plans .plan-flag{background:var(--or);color:#07241F}
+
+/* ============ SITE EN CLAIR — vert = highlight pricing uniquement ============ */
+.kore-stars{display:none!important}
+/* marquee clair */
+.kore-marquee{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.kore-marquee span{color:var(--foret)}
+/* statband clair */
+.statband{background:var(--vert-pale)}
+.statband .sb-rate b{color:var(--encre)}
+.statband .sb-rate .stars{color:var(--or)}
+.statband .sb-rate-sub{color:var(--encre-2)}
+.statband .sb-grid b{color:var(--foret)}
+.statband .sb-grid span{color:var(--encre-2)}
+.statband .sb-note{color:var(--brume)}
+/* formule claire */
+.sec-formula{background:var(--creme)}
+.sec-formula .eyebrow{color:var(--foret)!important}
+.sec-formula .h2{color:var(--encre)!important}
+.sec-formula .h2 em{color:var(--foret)!important}
+.formula-lead{color:var(--encre-2)}
+.formula-stats b{color:var(--foret)}
+.formula-stats span{color:var(--encre-2)}
+.fcard{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--or)}
+.fcard-n{color:var(--or)}
+.fcard h3{color:var(--encre)}
+.fcard h3:after{background:var(--or)}
+.fcard-sub{color:var(--or)}
+.fcard li{color:var(--encre);border-bottom:1px solid var(--border)}
+.fcard li b{color:var(--foret)}
+.formula-foot{color:var(--brume)}
+.formula-proof{border-top:1px solid var(--border)}
+.fp-rate{color:var(--encre-2)}.fp-rate b{color:var(--encre)}.fp-rate .stars{color:var(--or)}
+.fp-quotes blockquote{color:var(--encre)}
+.fp-quotes cite{color:var(--or)}
+/* manifeste clair */
+.sec-manifesto{background:var(--creme)}
+.manif-h2{color:var(--encre)}
+.manif-h2 em{color:var(--foret)}
+/* garantie claire (sec.dark generique) */
+.sec.dark:not(.sec-formula):not(.sec-manifesto){background:var(--vert-pale)}
+.sec.dark:not(.sec-formula):not(.sec-manifesto) .eyebrow{color:var(--foret)!important}
+.sec.dark:not(.sec-formula):not(.sec-manifesto) .h2{color:var(--encre)!important}
+.sec.dark:not(.sec-formula):not(.sec-manifesto) .h2 em{color:var(--foret)!important}
+.sec.dark:not(.sec-formula):not(.sec-manifesto) p{color:var(--encre-2)}
+.guar .btn-lt{background:var(--foret);color:var(--creme)}
+.guar .btn-lt:hover{background:#08423A}
 </style>
 </head>
 <body>
@@ -455,7 +501,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     </div>
     <div class="gallery-dots" id="galDots"></div>
     <div class="gallery-thumbs" id="galThumbs">
-      <button class="active" onclick="galTo(0)"><img src="img/social.jpg" alt=""></button>
+      <button class="active" onclick="galTo(0)"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""></button>
       <button onclick="galTo(1)"><img src="img/p1.jpg" alt=""></button>
       <button onclick="galTo(2)"><img src="img/p2.jpg" alt=""></button>
       <button onclick="galTo(3)"><img src="img/p3.jpg" alt=""></button>
@@ -486,10 +532,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
         <div class="od-row"><span>Ta gourde en verre Kore</span><b><s>35€</s> <span class="od-free">Offerte</span></b></div>
         <div class="od-row od-tot"><span>Valeur réelle</span><b><s>124€</s></b></div>
       </div>
-      <div class="od-deal">
-        <div class="od-night"><span class="od-num">1,90€</span><span class="od-lbl">la nuit réparée</span></div>
-        <div class="od-pay">Tu paies <b>57€</b><span class="od-off">−54%</span></div>
-      </div>
       <p class="od-copy">124€ de valeur, gourde comprise. À <b>1,90€ la nuit</b>, la seule mauvaise décision, c'est de continuer à mal dormir.</p>
       <div class="od-plans">
         <label class="plan plan--sub selected">
@@ -497,9 +539,9 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
           <span class="plan-check"></span>
           <div class="plan-body">
             <div class="plan-top"><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
-            <div class="plan-desc">1 box/mois · annulable · gourde offerte</div>
+            <div class="plan-desc">1 box chaque mois · sans engagement</div>
           </div>
-          <div class="plan-price"><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
+          <div class="plan-price"><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit · −54%</span></div>
         </label>
         <label class="plan plan--once">
           <input type="radio" name="plan" value="once">
@@ -760,12 +802,12 @@ function renderCart(){
   if(count){count.style.display='flex';count.textContent='1';}
   var html='';
   if(CART_MODE==='sub'){
-    html+='<div class="ci"><img src="img/social.jpg" alt=""><div class="ci-info"><div class="ci-nm">Abonnement Kore</div><div class="ci-bot"><div class="ci-gift-note">1 box / mois &middot; annulable</div><div class="ci-pr"><span class="ci-old">124&euro;</span>57&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
-    html+='<div class="ci ci-gift"><img src="img/verre.png" alt=""><div class="ci-info"><div class="ci-nm">Gourde en verre Kore<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau &middot; avec ton abonnement</div><div class="ci-pr"><span class="ci-old">35&euro;</span><b>0&euro;</b></div></div></div></div>';
+    html+='<div class="ci"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""><div class="ci-info"><div class="ci-nm">Abonnement Kore</div><div class="ci-bot"><div class="ci-gift-note">1 box / mois &middot; annulable</div><div class="ci-pr"><span class="ci-old">124&euro;</span>57&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
+    html+='<div class="ci ci-gift"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/ChatGPT_Image_26_juin_2026_a_15_16_59.png?v=1782480141" alt=""><div class="ci-info"><div class="ci-nm">Gourde en verre Kore<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau &middot; avec ton abonnement</div><div class="ci-pr"><span class="ci-old">35&euro;</span><b>0&euro;</b></div></div></div></div>';
     if(saveEl){saveEl.style.display='flex';saveEl.innerHTML='<span>&#127881; Gourde + remise</span><span><b>&minus;67&euro;</b></span>';}
     if(subEl)subEl.textContent='57,00 \u20ac / mois';
   } else {
-    html+='<div class="ci"><img src="img/social.jpg" alt=""><div class="ci-info"><div class="ci-nm">Pack Kore</div><div class="ci-bot"><div class="ci-gift-note">Une seule box &middot; sans gourde</div><div class="ci-pr">89&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
+    html+='<div class="ci"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""><div class="ci-info"><div class="ci-nm">Pack Kore</div><div class="ci-bot"><div class="ci-gift-note">Une seule box &middot; sans gourde</div><div class="ci-pr">89&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
     if(saveEl)saveEl.style.display='none';
     if(subEl)subEl.textContent='89,00 \u20ac';
   }
