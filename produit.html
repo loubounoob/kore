@@ -379,6 +379,23 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 /* avis : cartes propres, relief, palette de marque */
 .rev{box-shadow:var(--shadow);border-radius:16px;border:1px solid var(--border);background:var(--surface)}
 .rev .rev-av{background:var(--foret);color:#fff}
+
+/* OFFER PUNCH */
+.offer-punch{background:var(--sombre);color:var(--creme);border-radius:16px;padding:18px;margin:6px 0 16px;box-shadow:var(--shadow-lg)}
+.op-stack{display:grid;gap:6px;border-bottom:1px solid rgba(216,189,146,.25);padding-bottom:12px;margin-bottom:12px}
+.op-row{display:flex;justify-content:space-between;font-size:13px;color:rgba(246,243,234,.85)}
+.op-row b{color:#fff;font-weight:600}
+.op-row s{color:var(--brume)}
+.op-free{color:var(--or-lt);font-weight:700}
+.op-tot{font-weight:600;color:#fff}
+.op-deal{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.op-num{display:block;font-family:var(--serif);font-size:38px;font-weight:600;color:var(--or-lt);line-height:1}
+.op-lbl{display:block;font-size:11px;color:rgba(246,243,234,.7);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.op-pay{font-size:15px;color:#fff}
+.op-pay b{font-family:var(--serif);font-size:27px;color:#fff;font-weight:600;margin-left:5px}
+.op-off{display:inline-block;background:var(--or);color:#07241F;font-weight:700;font-size:12px;padding:2px 8px;border-radius:6px;margin-left:8px}
+.op-copy{font-size:12.5px;line-height:1.45;color:rgba(246,243,234,.85);margin-top:12px;border-top:1px solid rgba(216,189,146,.2);padding-top:12px}
+.op-copy b{color:var(--or-lt)}
 </style>
 </head>
 <body>
@@ -419,7 +436,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 
   <div class="buy-col">
-    <span class="badge">Gourde offerte · −34 %</span>
+    <span class="badge">Gourde offerte · −54 %</span>
     <h1 class="p-title">Le sommeil <em>qui répare.</em></h1>
     <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
 
@@ -435,6 +452,18 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
     </div>
 
+    <div class="offer-punch reveal">
+      <div class="op-stack">
+        <div class="op-row"><span>Pack Kore · 30 nuits</span><b>89€</b></div>
+        <div class="op-row"><span>Ta gourde en verre Kore</span><b><s>35€</s> <span class="op-free">Offerte</span></b></div>
+        <div class="op-row op-tot"><span>Valeur réelle</span><b><s>124€</s></b></div>
+      </div>
+      <div class="op-deal">
+        <div class="op-night"><span class="op-num">1,90€</span><span class="op-lbl">la nuit réparée</span></div>
+        <div class="op-pay">Tu paies <b>57€</b><span class="op-off">−54%</span></div>
+      </div>
+      <p class="op-copy">124€ de valeur, gourde comprise. À <b>1,90€ la nuit</b>, la seule mauvaise décision, c'est de continuer à mal dormir.</p>
+    </div>
     <div class="plans" id="plans">
       <label class="plan plan--sub selected">
         <input type="radio" name="plan" value="sub" checked>
@@ -444,11 +473,11 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
           <div class="plan-desc">1 box chaque mois · annulable quand tu veux</div>
           <ul class="plan-perks">
             <li>Ta gourde en verre <b>offerte</b> <s>35€</s></li>
-            <li><b>−34&nbsp;%</b> vs achat unique</li>
+            <li><b>−54&nbsp;%</b> sur la valeur réelle</li>
             <li>Livraison offerte · garantie 30 nuits</li>
           </ul>
         </div>
-        <div class="plan-price"><span class="pp-old">89€</span><span class="pp-now">59€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,97€ / nuit</span></div>
+        <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
       </label>
       <label class="plan plan--once">
         <input type="radio" name="plan" value="once">
@@ -667,7 +696,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="sticky-price"><s>89€</s>59€<span style="font-size:11px;font-weight:400"> /mois</span></div>
+  <div class="sticky-price"><s>124€</s>57€<span style="font-size:11px;font-weight:400"> /mois · 1,90€/nuit</span></div>
   <button class="btn" onclick="goPlan()">Ajouter au panier</button>
 </div>
 
