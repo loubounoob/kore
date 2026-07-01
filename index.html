@@ -260,6 +260,24 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 .kore-div:before,.kore-div:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--or-lt))}
 .kore-div:after{background:linear-gradient(270deg,transparent,var(--or-lt))}
 .kore-div b{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:600;white-space:nowrap}
+/* === PROBLEME / TU TE RECONNAIS === */
+.probz{background:var(--creme);text-align:center}
+.probz-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:13px}
+.probz-h2{font-family:var(--serif);font-size:clamp(30px,5.4vw,48px);font-weight:500;line-height:1.05;color:var(--encre);letter-spacing:-.02em}
+.probz-sub{max-width:620px;margin:15px auto 38px;font-size:16px;line-height:1.6;color:var(--encre-2)}
+.probz-sub em{font-style:italic;color:var(--foret);font-weight:500}
+.probz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1120px;margin:0 auto;text-align:left}
+@media(max-width:900px){.probz-grid{grid-template-columns:repeat(2,1fr);max-width:640px}}
+@media(max-width:520px){.probz-grid{grid-template-columns:1fr;max-width:400px}}
+.probz-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.probz-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+.probz-img img{width:100%;height:100%;object-fit:cover;display:block}
+.probz-tag{position:absolute;left:10px;bottom:10px;background:rgba(7,36,31,.82);color:#fff;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.probz-card h3{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--encre);line-height:1.15;margin:15px 16px 8px}
+.probz-card p{font-size:13px;line-height:1.5;color:var(--encre-2);margin:0 16px 18px}
+.probz-card p b{color:var(--encre);font-weight:600}
+.probz-foot{max-width:620px;margin:36px auto 0;font-size:16px;color:var(--encre)}
+.probz-foot b{color:var(--foret);font-weight:700}
 </style>
 </head>
 <body>
@@ -313,24 +331,35 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
   </div>
 </section>
 
-<!-- PROBLEME -->
-<section class="sec dark" id="probleme">
-  <div class="wrap split">
-    <div class="split-text"><div class="split-head">
-      <span class="eyebrow reveal">Tu te reconnais ?</span>
-      <h2 class="h2 reveal">Si une seule de ces nuits<br><em style="color:var(--or-lt)">est la tienne.</em></h2>
-      <p class="prob-sub reveal">Kore est pensé pour ça — pas pour « mieux dormir » en général.</p>
+<!-- PROBLEME / TU TE RECONNAIS -->
+<section class="sec probz" id="probleme">
+  <div class="wrap">
+    <span class="probz-eyebrow reveal">Le vrai problème</span>
+    <h2 class="probz-h2 reveal">Tu te reconnais&nbsp;?</h2>
+    <p class="probz-sub reveal">On ne dort pas mal par hasard. Regarde lequel de ces soirs est le tien — Kore est pensé pour <em>celui-là</em>.</p>
+    <div class="probz-grid reveal">
+      <article class="probz-card">
+        <div class="probz-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ff09Z8d2iQvocfauvrqljqEKK9/hf_20260701_204727_db733ffb-1e1f-40bf-906d-014c87082a63_min.webp" alt="Se réveiller à 3h du matin" loading="lazy"><span class="probz-tag">Réveils nocturnes</span></div>
+        <h3>Il est 3h47. Encore.</h3>
+        <p>Tu dors, puis d'un coup les yeux s'ouvrent — impossible de te rendormir avant l'aube. Ce n'est pas le hasard&nbsp;: c'est ton cortisol qui remonte trop tôt.</p>
+      </article>
+      <article class="probz-card">
+        <div class="probz-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ff09Z8d2iQvocfauvrqljqEKK9/hf_20260701_204729_c85e6736-7870-4212-a3e9-0c756d9db842_min.webp" alt="Fatigué après 8h de sommeil" loading="lazy"><span class="probz-tag">Sommeil non réparateur</span></div>
+        <h3>8&nbsp;heures au lit. Zéro récup.</h3>
+        <p>Tu fais tes nuits complètes et tu te lèves quand même vidé, comme si tu n'avais pas fermé l'œil. Ton sommeil manque de <b>profondeur</b>, pas de durée.</p>
+      </article>
+      <article class="probz-card">
+        <div class="probz-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ff09Z8d2iQvocfauvrqljqEKK9/hf_20260701_204730_ca0b2b70-96fb-4cfe-baf4-6a9c9a33454a_min.webp" alt="Pensées qui tournent le soir" loading="lazy"><span class="probz-tag">Mental en boucle</span></div>
+        <h3>La tête sur l'oreiller, le cerveau s'allume.</h3>
+        <p>La journée repasse, la to-do de demain débarque. Plus tu veux dormir, plus ça tourne. Ton mental ne trouve pas l'interrupteur.</p>
+      </article>
+      <article class="probz-card">
+        <div class="probz-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ff09Z8d2iQvocfauvrqljqEKK9/hf_20260701_205226_64ca0497-6aa7-4c8d-97ce-aaceebf3747c_min.webp" alt="Facilement réveillé la nuit" loading="lazy"><span class="probz-tag">Sommeil léger</span></div>
+        <h3>Un mouvement, et c'est fini.</h3>
+        <p>Le partenaire qui bouge, un enfant, une porte. Ton sommeil est si léger que la moindre chose te sort de la nuit — et tu ne te rendors pas.</p>
+      </article>
     </div>
-    <div class="split-body">
-      <div class="prob-list">
-        <div class="prob-item lead-prob reveal"><span class="prob-n">01</span>Tu te réveilles plusieurs fois dans la nuit — ton sommeil reste léger, jamais vraiment profond.</div>
-        <div class="prob-item reveal"><span class="prob-n">02</span>Tu dors tes heures, mais tu te réveilles déjà vidé·e, comme si tu n'avais pas dormi.</div>
-        <div class="prob-item reveal"><span class="prob-n">03</span>Le soir, ton corps est mort mais ton cerveau continue de tourner : demain, les mails, la to-do.</div>
-        <div class="prob-item reveal"><span class="prob-n">04</span>Tes nuits hachées te rendent à cran, irritable dès le réveil.</div>
-      </div>
-    </div>
-    </div>
-    <div class="shot dark has-img shot-bottle"><img id="heroBottle" src="img/bottle.png" alt="La gourde Kore"><span class="annot a-left a1">Magnésium</span><span class="annot a-right a2">Ashwagandha</span><span class="annot a-left a3">L-théanine</span><span class="annot a-right a4">Glycine</span></div>
+    <p class="probz-foot reveal">Un seul de ces soirs te parle&nbsp;? <b>Kore agit sur la cause, pas sur le symptôme.</b></p>
   </div>
 </section>
 
