@@ -549,6 +549,46 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .subv-perks{list-style:none;margin:13px 0 0;display:grid;gap:8px}
 .subv-perks li{font-size:12.5px;color:rgba(246,243,234,.9);padding-left:21px;position:relative;line-height:1.35}
 .subv-perks li:before{content:'✓';position:absolute;left:0;color:var(--or-lt);font-weight:700}
+/* === Cartes offre cohérentes (sub + once) === */
+.planx{display:block;padding:0;overflow:hidden;border-radius:16px}
+.planx .px{padding:16px 17px 17px}
+.planx .plan-check{position:static;left:auto;top:auto;flex:0 0 auto;width:18px;height:18px}
+.px-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.px-name{font-weight:600;font-size:16px}
+.px-flag{background:var(--or);color:#1a1205;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+.px-pricerow{display:flex;align-items:baseline;gap:8px;margin:11px 0 0;flex-wrap:wrap}
+.px-old{font-size:15px;text-decoration:line-through;opacity:.55}
+.px-now{font-family:var(--serif);font-size:32px;font-weight:600;line-height:1}
+.px-cyc{font-size:13px;opacity:.72}
+.px-save{margin-left:auto;align-self:center;background:var(--or);color:#1a1205;font-weight:800;font-size:12.5px;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.px-night{font-size:12.5px;margin:8px 0 13px;opacity:.85}
+.px-night b{font-weight:700}
+.px-get{list-style:none;display:grid;gap:9px;border-top:1px solid;padding-top:13px;margin:0}
+.px-get li{font-size:13px;line-height:1.35;padding-left:22px;position:relative}
+.px-get li:before{content:'✓';position:absolute;left:0;font-weight:700}
+.px-get .px-no:before{content:'·';opacity:.5}
+.px-gift{display:flex;align-items:center;gap:8px;background:rgba(216,189,146,.15);border:1px solid rgba(216,189,146,.42);border-radius:10px;padding:9px 11px;padding-left:11px}
+.px-gift:before{display:none}
+.px-gift .px-ic{font-size:16px;flex:0 0 auto}
+.px-gift s{margin-left:auto;flex:0 0 auto;opacity:.55;font-size:12px}
+.planx--sub{background:var(--sombre);border-color:var(--sombre);color:#fff}
+.planx--sub .px-old,.planx--sub .px-cyc,.planx--sub .px-night{color:rgba(246,243,234,.75)}
+.planx--sub .px-now,.planx--sub .px-name{color:#fff}
+.planx--sub .px-get{border-color:rgba(255,255,255,.15)}
+.planx--sub .px-get li:before{color:var(--or-lt)}
+.planx--sub .px-get b,.planx--sub .px-gift b{color:var(--or-lt)}
+.planx--sub .plan-check{border-color:rgba(255,255,255,.55)}
+.planx--sub.selected{border-color:var(--or);box-shadow:0 0 0 2px var(--or),var(--shadow-lg)}
+.planx--sub.selected .plan-check{border-color:#fff;background:radial-gradient(circle,#fff 0 4px,var(--sombre) 5px)}
+.planx--once{background:var(--surface);border-color:var(--border);color:var(--encre)}
+.planx--once .px-old,.planx--once .px-cyc,.planx--once .px-night{color:var(--encre-2)}
+.planx--once .px-now,.planx--once .px-name{color:var(--encre)}
+.planx--once .px-get{border-color:var(--border)}
+.planx--once .px-get li:before{color:var(--foret)}
+.planx--once .px-get b{color:var(--encre)}
+.planx--once.selected{border-color:var(--foret);box-shadow:0 0 0 2px var(--foret),var(--shadow-lg)}
+.planx--once.selected .plan-check{border-color:var(--foret);background:radial-gradient(circle,var(--foret) 0 4px,#fff 5px)}
+@media(max-width:430px){.px-now{font-size:29px}}
 /* === Carrousel témoignages (auto + drag) === */
 .sb-marquee{overflow-x:auto;overflow-y:hidden;max-width:1080px;margin:28px auto 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
 .sb-marquee::-webkit-scrollbar{display:none}
@@ -723,35 +763,32 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     <script>(function(){var end=new Date(2026,6,31,23,59,59).getTime();function p(n){return(n<10?'0':'')+n;}function t(){var d=end-Date.now();if(d<0)d=0;var e,D=Math.floor(d/864e5),H=Math.floor(d/36e5)%24,M=Math.floor(d/6e4)%60,S=Math.floor(d/1e3)%60;if(e=document.getElementById('cdD'))e.textContent=D;if(e=document.getElementById('cdH'))e.textContent=p(H);if(e=document.getElementById('cdM'))e.textContent=p(M);if(e=document.getElementById('cdS'))e.textContent=p(S);}t();setInterval(t,1000);})();</script>
 
     <div class="plans" id="plans">
-      <label class="plan plan--sub selected">
+      <label class="plan planx planx--sub selected">
         <input type="radio" name="plan" value="sub" checked>
-        <div class="subv">
-          <div class="subv-top"><span class="plan-check"></span><span class="plan-name">Abonnement</span><span class="plan-flag">LE PLUS CHOISI</span></div>
-          <div class="subv-desc">1 pack chaque mois · annulable quand tu veux</div>
-          <div class="subv-price">
-            <span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/mois</span>
-            <span class="subv-save">−54&nbsp;%</span>
-          </div>
-          <div class="subv-night"><b>1,90 € la nuit</b> — le prix d'un café.</div>
-          <div class="subv-gift"><span class="gift-ic">🎁</span><span><b>Gourde en verre offerte</b> dès ta 1ʳᵉ commande</span><s>35€</s></div>
-          <ul class="subv-perks">
-            <li>Livraison offerte sous 4 jours</li>
-            <li>Garantie 30 nuits · annulable en 1 clic</li>
+        <div class="px">
+          <div class="px-head"><span class="plan-check"></span><span class="px-name">Abonnement</span><span class="px-flag">LE PLUS CHOISI</span></div>
+          <div class="px-pricerow"><span class="px-old">124€</span><span class="px-now">57€</span><span class="px-cyc">/mois</span><span class="px-save">−54&nbsp;%</span></div>
+          <div class="px-night">Soit <b>1,90 € la bonne nuit</b> — le prix d'un café.</div>
+          <ul class="px-get">
+            <li class="px-gift"><span class="px-ic">🎁</span><span>Une <b>gourde en verre offerte</b></span><s>35€</s></li>
+            <li>Le <b>pack Kore</b> — 30 nuits de sommeil</li>
+            <li>Livraison gratuite sous 4 jours</li>
+            <li>Annulable ou retardable en 1 clic</li>
           </ul>
         </div>
       </label>
-      <label class="plan plan--once">
+      <label class="plan planx planx--once">
         <input type="radio" name="plan" value="once">
-        <span class="plan-check"></span>
-        <div class="plan-body">
-          <div class="plan-top"><span class="plan-name">Achat unique</span></div>
-          <div class="plan-desc">Un seul pack, sans renouvellement</div>
-          <ul class="plan-perks plan-perks--muted">
-            <li>Sans gourde offerte</li>
-            <li>Livraison offerte sous 4 jours</li>
+        <div class="px">
+          <div class="px-head"><span class="plan-check"></span><span class="px-name">Achat unique</span></div>
+          <div class="px-pricerow"><span class="px-now">89€</span><span class="px-cyc">une seule fois</span></div>
+          <div class="px-night">Soit <b>2,97 € la nuit</b>.</div>
+          <ul class="px-get">
+            <li>Le <b>pack Kore</b> — 30 nuits de sommeil</li>
+            <li class="px-no">Sans gourde offerte</li>
+            <li>Livraison gratuite sous 4 jours</li>
           </ul>
         </div>
-        <div class="plan-price"><span class="pp-now pp-now--plain">89€</span><span class="pp-unit">2,97€ / nuit</span></div>
       </label>
     </div>
 
