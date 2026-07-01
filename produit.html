@@ -529,6 +529,13 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 .ingr-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--or);color:#1a1205;font-weight:600;font-size:15px;border:none;padding:15px 32px;border-radius:999px;cursor:pointer;transition:background .15s,transform .15s}
 .ingr-cta:hover{background:var(--or-lt);transform:translateY(-2px)}
 .ingr-foot{margin:20px auto 0;font-size:11.5px;color:rgba(246,243,234,.45)}
+/* === Carrousel témoignages (auto + drag) === */
+.sb-marquee{overflow-x:auto;overflow-y:hidden;max-width:1080px;margin:28px auto 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.sb-marquee::-webkit-scrollbar{display:none}
+.sb-marquee:active{cursor:grabbing}
+.sb-track{display:inline-flex;gap:20px;padding:4px 0}
+.sb-track img{width:300px;height:300px;flex:0 0 auto;border-radius:18px;object-fit:cover;border:1px solid rgba(255,255,255,.15);pointer-events:none;user-select:none;-webkit-user-drag:none}
+@media(max-width:640px){.sb-track{gap:14px}.sb-track img{width:76vw;height:76vw;max-width:340px;max-height:340px}}
 /* === MÉCANISME === */
 .mecanisme{background:var(--creme);text-align:center}
 .mec-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
@@ -672,20 +679,13 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   <div class="buy-col">
     <span class="badge">Ni tisane, ni somnifère</span>
     <h1 class="p-title">Le sommeil <em>qui répare.</em></h1>
-    <p class="p-cat">Pas une tisane, pas des gélules d'herbes. Un <b>protocole du soir dosé comme dans les études</b> qui agit sur la <b>cause</b> de tes réveils — le cortisol.</p>
     <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
 
     <ul class="p-res">
       <li>Tu t'endors <b>sans tourner une heure</b>, le cerveau qui ne s'éteint pas</li>
-      <li>Fini le <b>réveil de 3h</b> les yeux ouverts — cortisol calmé, nuit d'un bloc</li>
-      <li>Tu te lèves <b>clair</b>, sans brouillard ni 3ᵉ café pour tenir jusqu'à midi</li>
+      <li>Fini le <b>réveil de 3h</b> — cortisol calmé, nuit d'un bloc</li>
+      <li>Tu te lèves <b>clair</b>, sans brouillard ni 3ᵉ café</li>
     </ul>
-
-    <div class="hero-rev">
-      <span class="stars">★★★★★</span>
-      <p>« Je me réveillais tous les jours entre 3h et 4h du matin. Là, je dors d'une seule traite — et je me lève <strong>vraiment reposée.</strong> »</p>
-      <span class="hero-rev-who"><b>Élodie, 30 ans</b> · acheteuse vérifiée</span>
-    </div>
 
     <div class="summer-offer">
       <div class="so-head"><span class="ls-dot"></span><b>Offre d'été</b> · gourde offerte + −54&nbsp;% · <span class="so-stock">stock limité</span></div>
@@ -716,7 +716,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
           </ul>
           <div class="plan-cafe"><b>1,90 € la nuit</b> — le prix d'un café pour des nuits qui réparent.</div>
         </div>
-        <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span><span class="pp-unit">1,90€ / nuit</span></div>
+        <div class="plan-price"><span class="pp-old">124€</span><span class="pp-now">57€</span><span class="pp-cyc">/ mois</span></div>
       </label>
       <label class="plan plan--once">
         <input type="radio" name="plan" value="once">
@@ -741,12 +741,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     </div>
     <div class="guarantee">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-      <span><b>Garantie 30 nuits</b> — remboursé si tu ne dors pas mieux.</span>
-    </div>
-    <div class="buy-trust">
-      <span><span class="dot"></span>Satisfait ou remboursé · 30 j</span>
-      <span><span class="dot"></span>Livraison sous 4 jours</span>
-      <span><span class="dot"></span>Paiement sécurisé</span>
+      <span><b>Garantie 30 nuits</b> — remboursé si tu ne dors pas mieux · paiement sécurisé.</span>
     </div>
   </div>
 </section>
@@ -760,14 +755,39 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <div><b>94%</b><span>se sentent plus reposés au réveil*</span></div>
       <div><b>30 nuits</b><span>satisfait ou remboursé, sans question</span></div>
     </div>
-    <div class="sb-photos">
-      <img src="img/testi1.jpg" alt="Avis client Kore">
-      <img src="img/testi2.jpg" alt="Avis client Kore">
-      <img src="img/testi3.jpg" alt="Avis client Kore">
+    <div class="sb-marquee" id="sbMarquee">
+      <div class="sb-track" id="sbTrack">
+        <img src="img/testi1.jpg" alt="Avis client Kore" draggable="false">
+        <img src="img/testi2.jpg" alt="Avis client Kore" draggable="false">
+        <img src="img/testi3.jpg" alt="Avis client Kore" draggable="false">
+        <img src="img/testi4.jpg" alt="Avis client Kore" draggable="false">
+      </div>
     </div>
     <p class="sb-note">*D'après les retours clients. Résultats individuels variables.</p>
   </div>
 </section>
+<script>
+(function(){
+  var m=document.getElementById('sbMarquee'),t=document.getElementById('sbTrack');
+  if(!m||!t)return;
+  var orig=[].slice.call(t.children);
+  for(var c=0;c<2;c++){orig.forEach(function(n){t.appendChild(n.cloneNode(true));});}
+  var seg=0,paused=false,idle;
+  function measure(){seg=t.scrollWidth/3;}
+  function recenter(){if(!seg)return;if(m.scrollLeft<seg*0.5)m.scrollLeft+=seg;else if(m.scrollLeft>seg*1.5)m.scrollLeft-=seg;}
+  function loop(){if(!paused&&seg){m.scrollLeft-=0.35;recenter();}requestAnimationFrame(loop);}
+  function start(){measure();m.scrollLeft=seg;loop();}
+  function pause(){paused=true;}
+  function resume(){clearTimeout(idle);idle=setTimeout(function(){paused=false;},1200);}
+  ['pointerdown','touchstart','mousedown','wheel'].forEach(function(e){m.addEventListener(e,pause,{passive:true});});
+  ['pointerup','touchend','mouseup','touchcancel'].forEach(function(e){window.addEventListener(e,resume,{passive:true});});
+  m.addEventListener('mouseenter',pause);
+  m.addEventListener('mouseleave',function(){paused=false;});
+  m.addEventListener('scroll',recenter,{passive:true});
+  window.addEventListener('resize',measure);
+  if(document.readyState==='complete')start();else window.addEventListener('load',start);
+})();
+</script>
 
 <!-- MÉCANISME -->
 <section class="sec mecanisme">
