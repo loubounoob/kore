@@ -328,7 +328,20 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 .hp-story-body{margin-top:22px;text-align:left}
 .hp-story-body p{font-size:16px;line-height:1.7;color:rgba(246,243,234,.8);margin-bottom:16px}
 .hp-story-body b{color:#fff;font-weight:600}
-.hp-story-punch{font-family:var(--serif);font-size:20px!important;font-style:italic;color:var(--or-lt)!important;text-align:center;margin:8px 0 0!important}
+.hp-story-punch{font-family:var(--serif);font-size:20px!important;font-style:italic;color:var(--or-lt)!important;margin:8px 0 0!important}
+.hp-story-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+.hp-story-img img{width:100%;height:auto;display:block;border-radius:16px}
+@media(min-width:820px){.hp-story-grid{grid-template-columns:.9fr 1.1fr;gap:44px}}
+.hp-manif-img{max-width:1000px;margin:36px auto 0;padding:0 20px}
+.hp-manif-img img{width:100%;max-height:420px;object-fit:cover;display:block;border-radius:16px}
+.hp-prod-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center}
+.hp-prod-img img{width:100%;height:auto;display:block;border-radius:16px}
+@media(min-width:820px){.hp-prod-grid{grid-template-columns:1fr 1fr;gap:44px}}
+.hp-prod-list{list-style:none;display:grid;gap:9px;margin:0}
+.hp-prod-list li{font-size:14px;color:var(--encre);padding-left:24px;position:relative}
+.hp-prod-list li:before{content:'✓';position:absolute;left:0;color:var(--foret);font-weight:700}
+.hp-prod-ingr{max-width:820px;margin:34px auto 0;padding:0 20px}
+.hp-prod-ingr img{width:100%;height:auto;display:block;border-radius:16px}
 /* === PROBLEME / TU TE RECONNAIS === */
 .probz{background:var(--creme);text-align:center}
 .probz-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:13px}
@@ -388,6 +401,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
     <p class="hp-manif-p reveal">On nous a vendu deux options : s'assommer avec des somnifères, ou se rassurer avec des tisanes qui font surtout du bien au marketing. <b>On refuse ce choix.</b></p>
     <p class="hp-manif-p reveal">Kore ne t'endort pas de force — il répare la mécanique qui casse tes nuits. Des actifs dosés comme dans les études, la cause visée, pas le symptôme. <b>Rien à cacher.</b></p>
   </div>
+  <div class="hp-manif-img reveal"><img src="img/ben02.jpg" alt="Un sommeil profond et réparateur" loading="lazy"></div>
 </section>
 
 <!-- PROBLEME / TU TE RECONNAIS -->
@@ -439,41 +453,36 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 
 <!-- HISTOIRE -->
 <section class="sec hp-story">
-  <div class="wrap hp-story-in">
-    <span class="hp-eyebrow reveal" style="color:var(--or-lt)">D'où vient Kore</span>
-    <h2 class="hp-story-h2 reveal">Né d'un <em>ras-le-bol.</em></h2>
-    <div class="hp-story-body reveal">
-      <p>Kore n'est pas sorti d'un labo qui cherchait un marché. Il est parti d'une colère simple : pourquoi, aujourd'hui, la seule réponse à des nuits en miettes se résume à <b>s'assommer chimiquement</b> ou à boire de l'eau chaude parfumée&nbsp;?</p>
-      <p>On a réuni les actifs que la recherche documente vraiment, <b>aux doses des études</b> — pas des traces symboliques. Et on a refusé les raccourcis : pas de mélatonine, pas de sédation, pas de « blend » qui cache des sous-dosages.</p>
-      <p class="hp-story-punch">Kore, c'est le sommeil pris au sérieux. Honnête, dosé, sans dépendance.</p>
+  <div class="wrap hp-story-grid">
+    <div class="hp-story-img reveal"><img src="img/poudre.png" alt="Les actifs Kore, dosés comme dans les études" loading="lazy"></div>
+    <div class="hp-story-txt">
+      <span class="hp-eyebrow reveal" style="color:var(--or-lt);text-align:left">D'où vient Kore</span>
+      <h2 class="hp-story-h2 reveal" style="text-align:left">Né d'un <em>ras-le-bol.</em></h2>
+      <div class="hp-story-body reveal" style="text-align:left;margin-top:16px">
+        <p>Kore n'est pas sorti d'un labo qui cherchait un marché. Il est parti d'une colère simple : pourquoi, aujourd'hui, la seule réponse à des nuits en miettes se résume à <b>s'assommer chimiquement</b> ou à boire de l'eau chaude parfumée&nbsp;?</p>
+        <p>On a réuni les actifs que la recherche documente vraiment, <b>aux doses des études</b> — pas des traces symboliques. Et on a refusé les raccourcis : pas de mélatonine, pas de sédation, pas de « blend » qui cache des sous-dosages.</p>
+        <p class="hp-story-punch" style="text-align:left">Kore, c'est le sommeil pris au sérieux. Honnête, dosé, sans dépendance.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- LE PRODUIT · MECANISME -->
-<section class="sec hp-mec">
-  <div class="wrap">
-    <span class="hp-eyebrow reveal">Le mécanisme</span>
-    <h2 class="hp-h2 reveal">Pourquoi tu te réveilles <em>à 3h.</em></h2>
-    <p class="hp-lead reveal">Ce n'est pas « dans ta tête ». Vers 3–4h, ton <b>cortisol</b> — l'hormone du stress — remonte trop tôt et fragmente ta nuit. Une tisane n'y touche pas. Kore agit sur les <b>4 moments</b> de la nuit, pas seulement l'endormissement.</p>
-    <div class="mec4 reveal">
-      <div class="mec4-c"><span class="mec4-n">01</span><h3>Couper le mental</h3><p>On calme l'agitation du soir — sans t'assommer.</p></div>
-      <div class="mec4-c mec4-key"><span class="mec4-n">02</span><h3>Faire baisser le cortisol</h3><p>Le cœur de Kore : faire redescendre l'hormone qui te réveille à 3h, pour que la nuit tienne d'un bloc.</p></div>
-      <div class="mec4-c"><span class="mec4-n">03</span><h3>Approfondir le sommeil</h3><p>Le sommeil profond et réparateur — celui qui recharge vraiment le corps et le cerveau.</p></div>
-      <div class="mec4-c"><span class="mec4-n">04</span><h3>Le réveil clair</h3><p>Aucun effet groggy : tu te lèves net, pas dans le brouillard d'un somnifère.</p></div>
+<!-- LE PRODUIT -->
+<section class="sec hp-prod" style="background:var(--creme)">
+  <div class="wrap hp-prod-grid">
+    <div class="hp-prod-img reveal"><img src="img/p1.jpg" alt="Le rituel Kore — une dose dans un verre d'eau, le soir" loading="lazy"></div>
+    <div class="hp-prod-txt">
+      <span class="hp-eyebrow reveal" style="text-align:left">Le produit</span>
+      <h2 class="hp-h2 reveal" style="text-align:left">Un rituel, <em>pas un cachet.</em></h2>
+      <p class="hp-lead reveal" style="text-align:left;margin:14px 0 18px">Une dose dans un verre d'eau, le soir. Pas de gélule, pas de mélatonine, pas de sédation — juste une <b>douzaine d'actifs dosés comme dans les études</b> (glycine, magnésium, L-théanine, mélisse, safran…) qui calment le cortisol et rendent tes nuits pleines.</p>
+      <ul class="hp-prod-list reveal">
+        <li>Formulé en Europe · certifié GMP</li>
+        <li>Sans mélatonine · sans accoutumance</li>
+        <li>Goût naturel · prêt en 30 secondes</li>
+      </ul>
     </div>
-    <p class="hp-foot reveal">Une douzaine d'actifs dosés comme dans les études, orchestrés sur toute la nuit. <b>Ni tisane, ni somnifère.</b></p>
   </div>
-</section>
-
-<!-- FORMULE VISUELLE -->
-<section class="sec hp-formula">
-  <div class="hp-formula-in">
-    <!-- IMAGE À REMPLACER (ton style ChatGPT) — voir prompt "Formule / ingrédients" -->
-    <img class="hp-formula-img reveal" src="img/ingredients.jpg" alt="Les ingrédients Kore : passiflore, mélisse, safran, L-théanine, glycine, magnésium, fibres prébiotiques">
-    <p class="hp-formula-doses reveal">3 g glycine · 200 mg magnésium bisglycinate · 200 mg L-théanine · 300 mg mélisse · 200 mg passiflore · 28 mg safran + vitamine B6 — <b>dosé comme dans les études</b>, sans mélatonine ni accoutumance.</p>
-    <a href="produit.html" class="hp-formula-cta reveal">Voir la formule complète →</a>
-  </div>
+  <div class="hp-prod-ingr reveal"><img src="img/ingredients.jpg" alt="Les ingrédients Kore, dosés comme dans les études" loading="lazy"></div>
 </section>
 
 <!-- PREUVE SOCIALE -->
@@ -483,7 +492,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
     <div class="hp-stats reveal">
       <div><b>9/10</b><span>dorment d'une traite après 3 semaines*</span></div>
       <div><b>94%</b><span>se sentent plus reposés au réveil*</span></div>
-      <div><b>30 nuits</b><span>satisfait ou remboursé</span></div>
+      <div><b>Europe</b><span>formulé · dosé aux études · GMP</span></div>
     </div>
     <div class="sb-marquee" id="hpMarquee"><div class="sb-track" id="hpTrack">
       <img src="img/testi1.jpg" alt="Avis client Kore" draggable="false">
