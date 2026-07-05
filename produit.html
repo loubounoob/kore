@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pack Kore — Le sommeil qui répare | Kore</title>
-<meta name="description" content="Réveils à 3h, cerveau qui ne s'éteint pas, matins en zombie malgré 8h. Le Pack Kore calme le cortisol qui dérègle tes nuits. Satisfait ou remboursé.">
+<meta name="description" content="Réveils à 3h, cerveau qui ne s'éteint pas, matins en zombie malgré 8h. Le Pack Kore calme le cortisol qui dérègle vos nuits. Satisfait ou remboursé.">
 <meta property="og:title" content="Pack Kore — Le sommeil qui répare">
-<meta property="og:description" content="Le rituel du soir qui répare tes nuits. Gourde offerte, satisfait ou remboursé 30 nuits.">
+<meta property="og:description" content="Le rituel du soir qui répare vos nuits. Gourde offerte, satisfait ou remboursé 30 nuits.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://korecare.fr/produit.html">
 <meta property="og:image" content="https://korecare.fr/img/social.jpg">
@@ -80,7 +80,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .gallery-thumbs img{width:100%;height:100%;object-fit:cover}
 
 .badge{display:inline-flex;align-items:center;gap:6px;background:var(--vert-pale);color:var(--foret);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px}
-.p-title{font-family:var(--serif);font-size:clamp(26px,5.7vw,48px);line-height:1.05;font-weight:500;margin:14px 0 10px;letter-spacing:-.02em;white-space:nowrap}
+.p-title{font-family:var(--serif);font-size:clamp(26px,5.7vw,48px);line-height:1.05;font-weight:500;margin:14px 0 10px;letter-spacing:-.02em;white-space:normal}
 @media(max-width:430px){.p-title{font-size:24px}}
 .p-cat{font-size:14px;line-height:1.5;color:var(--encre-2);margin:0 0 4px;max-width:46ch}
 .p-cat b{color:var(--encre);font-weight:600}
@@ -274,6 +274,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
 /* PLAN SELECTOR */
 .plans{display:grid;gap:12px;margin:18px 0 16px}
+.plan-cd{display:flex;align-items:center;justify-content:center;gap:5px;margin:0 0 12px;font-size:11px;font-weight:700;color:var(--or-lt);letter-spacing:.03em;font-variant-numeric:tabular-nums}.plan-cd span{color:rgba(246,243,234,.7);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
 .plan{position:relative;display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--border);border-radius:16px;padding:16px 16px 16px 42px;cursor:pointer;background:var(--surface);transition:border-color .15s,box-shadow .15s,background .15s}
 .plan input{position:absolute;opacity:0;pointer-events:none}
 .plan-check{position:absolute;left:16px;top:18px;width:18px;height:18px;border-radius:50%;border:2px solid var(--border);transition:.15s}
@@ -701,7 +702,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 </head>
 <body>
 
-<div class="announce">Livraison offerte sous 4 jours · <b>Satisfait ou remboursé 30 jours</b> · Formulé en Europe</div>
+<div class="announce">Livraison offerte sous 4 jours · <b>30 nuits pour tester Kore</b> · Sans mélatonine</div>
 
 <nav>
   <div class="nav-in">
@@ -737,41 +738,30 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   </div>
 
   <div class="buy-col">
-    <span class="badge">Ni tisane, ni somnifère</span>
-    <h1 class="p-title">Le sommeil <em>qui répare.</em></h1>
+    <span class="badge">Sans mélatonine</span>
+    <h1 class="p-title">Retrouvez des nuits <em>complètes.</em></h1>
     <div class="p-stars"><span class="stars">★★★★★</span> <strong>4,8/5</strong> · acheteurs vérifiés</div>
 
     <ul class="p-res">
-      <li>Tu t'endors <b>sans tourner une heure</b>, le cerveau qui ne s'éteint pas</li>
-      <li>Fini le <b>réveil de 3h</b> — cortisol calmé, nuit d'un bloc</li>
-      <li>Tu te lèves <b>clair</b>, sans brouillard ni 3ᵉ café</li>
+      <li>Endormissement plus rapide.</li>
+      <li>Moins de réveils nocturnes.</li>
+      <li>Réveil reposé, sans brouillard.</li>
     </ul>
 
-    <div class="summer-offer">
-      <div class="so-head"><span class="ls-dot"></span><b>Offre d'été</b> · gourde offerte + −54&nbsp;% · <span class="so-stock">stock limité</span></div>
-      <div class="so-count" id="soCount" aria-label="Fin de l'offre">
-        <div class="so-unit"><b id="cdD">--</b><span>jours</span></div>
-        <div class="so-sep">:</div>
-        <div class="so-unit"><b id="cdH">--</b><span>h</span></div>
-        <div class="so-sep">:</div>
-        <div class="so-unit"><b id="cdM">--</b><span>min</span></div>
-        <div class="so-sep">:</div>
-        <div class="so-unit"><b id="cdS">--</b><span>sec</span></div>
-      </div>
-      <div class="so-foot">L'offre se termine le <b>31 juillet</b> — ne perds pas de nuits à mal dormir.</div>
-    </div>
     <script>(function(){var end=new Date(2026,6,31,23,59,59).getTime();function p(n){return(n<10?'0':'')+n;}function t(){var d=end-Date.now();if(d<0)d=0;var e,D=Math.floor(d/864e5),H=Math.floor(d/36e5)%24,M=Math.floor(d/6e4)%60,S=Math.floor(d/1e3)%60;if(e=document.getElementById('cdD'))e.textContent=D;if(e=document.getElementById('cdH'))e.textContent=p(H);if(e=document.getElementById('cdM'))e.textContent=p(M);if(e=document.getElementById('cdS'))e.textContent=p(S);}t();setInterval(t,1000);})();</script>
 
     <div class="plans" id="plans">
       <label class="plan planx planx--sub selected">
         <input type="radio" name="plan" value="sub" checked>
         <div class="px">
+          <div class="plan-cd"><span>Offre limitée</span> · <b id="cdD">--</b>j <b id="cdH">--</b>h <b id="cdM">--</b>m <b id="cdS">--</b>s</div>
           <div class="px-head"><span class="plan-check"></span><span class="px-name">Abonnement</span><span class="px-flag">LE PLUS CHOISI</span></div>
           <div class="px-pricerow"><span class="px-old">124€</span><span class="px-now">57€</span><span class="px-cyc">/mois</span><span class="px-save">−54&nbsp;%</span></div>
-          <div class="px-night">Soit <b>1,90 € la bonne nuit</b> — le prix d'un café.</div>
+          <div class="px-night">Soit <b>1,90 € la nuit</b>.</div>
+          
           <ul class="px-get">
-            <li class="px-gift"><span class="px-ic">🎁</span><span>Une <b>gourde en verre offerte</b></span><s>35€</s></li>
-            <li>Le <b>pack Kore</b> — 30 nuits de sommeil</li>
+            <li class="px-gift"><span class="px-ic">🎁</span><span><b>Gourde Kore offerte</b></span><s>35€</s></li>
+            <li>30 nuits de <b>formule Kore</b></li>
             <li>Livraison gratuite sous 4 jours</li>
             <li>Annulable ou retardable en 1 clic</li>
           </ul>
@@ -784,7 +774,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
           <div class="px-pricerow"><span class="px-now">89€</span><span class="px-cyc">une seule fois</span></div>
           <div class="px-night">Soit <b>2,97 € la nuit</b>.</div>
           <ul class="px-get">
-            <li>Le <b>pack Kore</b> — 30 nuits de sommeil</li>
+            <li>30 nuits de <b>formule Kore</b></li>
             <li class="px-no">Sans gourde offerte</li>
             <li>Livraison gratuite sous 4 jours</li>
           </ul>
@@ -800,7 +790,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
     </div>
     <div class="guarantee">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-      <span><b>Garantie 30 nuits</b> — remboursé si tu ne dors pas mieux · paiement sécurisé.</span>
+      <span><b>Garantie 30 nuits</b> — remboursé si vous ne dormez pas mieux · paiement sécurisé.</span>
     </div>
   </div>
 </section>
@@ -848,66 +838,12 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 })();
 </script>
 
-<!-- MÉCANISME -->
-<section class="sec mecanisme">
-  <div class="wrap">
-    <span class="mec-eyebrow reveal">Le mécanisme</span>
-    <h2 class="mec-h2 reveal">Pourquoi tu te réveilles <em>à 3h.</em></h2>
-    <p class="mec-lead reveal">Ce n'est pas « dans ta tête ». Vers 3–4h, ton <b>cortisol</b> — l'hormone du stress — remonte trop tôt et fragmente ta nuit. Une tisane n'y touche pas. Kore agit sur les <b>4 moments</b> de la nuit, pas seulement l'endormissement.</p>
-    <div class="mec-grid reveal">
-      <div class="mec-card"><span class="mec-n">01</span><h3>Couper le mental</h3><p>Le cerveau qui ne s'éteint pas. On calme l'agitation du soir — sans t'assommer.</p></div>
-      <div class="mec-card mec-key"><span class="mec-n">02</span><h3>Faire baisser le cortisol</h3><p>Le cœur de Kore. On fait redescendre l'hormone qui te réveille à 3h, pour que la nuit tienne d'un bloc.</p></div>
-      <div class="mec-card"><span class="mec-n">03</span><h3>Approfondir le sommeil</h3><p>On soutient le sommeil profond et réparateur — celui qui recharge vraiment le corps et le cerveau.</p></div>
-      <div class="mec-card"><span class="mec-n">04</span><h3>Le réveil clair</h3><p>Aucun effet groggy : tu te lèves net, pas dans le brouillard d'un somnifère.</p></div>
-    </div>
-    <p class="mec-foot reveal">Une douzaine d'actifs dosés comme dans les études, orchestrés sur toute la nuit. <b>Ni tisane, ni somnifère.</b></p>
-  </div>
-</section>
-
-<!-- INGRÉDIENTS (visuel) -->
-<section class="sec ingredients-vis">
-  <div class="wrap-ingr">
-    <img class="ingr-img reveal" src="img/ingredients.jpg" alt="Les ingrédients Kore : passiflore, mélisse, safran, L-théanine, glycine, magnésium bisglycinate, fibres prébiotiques">
-    <p class="ingr-doses reveal">3 g glycine · 200 mg magnésium bisglycinate · 200 mg L-théanine · 300 mg mélisse · 200 mg passiflore · 28 mg safran + vitamine B6 — <b>dosé comme dans les études</b>, sans mélatonine ni accoutumance.</p>
-    <a class="ingr-cta reveal" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth',block:'center'})">Commander le pack →</a>
-    <p class="ingr-foot reveal">Formulé en Europe · Complément alimentaire, ne remplace pas un avis médical.</p>
-  </div>
-</section>
-
-<!-- AVIS -->
-<section class="sec" style="background:var(--surface)">
-  <div class="wrap">
-    <h2 class="h2 reveal" style="text-align:center">Ce que nos clients<br><em>disent de Kore.</em></h2>
-    <div class="rev-rate reveal"><span class="stars">★★★★★</span> <b>4,8/5</b> · 600+ avis vérifiés</div>
-    <div class="rmrev-grid reveal">
-      <div class="rmrev">
-        <span class="stars">★★★★★</span>
-        <h4>Enfin, je dors profond</h4>
-        <p>Je cherchais un truc qui augmente vraiment mon sommeil profond (je le traque sur ma montre). C'est le premier complément qui le fait, et constamment. J'étais pas sûr du goût naturel, mais il est plutôt bon.</p>
-        <div class="rmrev-who"><b>Jules N.</b><span class="rmrev-vb">✓ Acheteur vérifié</span></div>
-      </div>
-      <div class="rmrev">
-        <span class="stars">★★★★★</span>
-        <h4>Formule incroyable</h4>
-        <p>Franchement ce produit est incroyable… 10/10. Je me réveillais chaque nuit, là je dors d'une traite. Je continue sur le long terme.</p>
-        <div class="rmrev-who"><b>Ethan H.</b><span class="rmrev-vb">✓ Acheteur vérifié</span></div>
-      </div>
-      <div class="rmrev">
-        <span class="stars">★★★★★</span>
-        <h4>ça vaut largement le coup</h4>
-        <p>Ok, mon copain avait raison, on en avait besoin. Je suis moins stressée, plus d'énergie au boulot, et zéro brouillard comme avec la mélatonine. Un peu cher, mais imbattable en abonnement.</p>
-        <div class="rmrev-who"><b>Grace A.</b><span class="rmrev-vb">✓ Acheteuse vérifiée</span></div>
-      </div>
-    </div></div>
-  </div>
-</section>
-
 <!-- GUARANTEE -->
 <section class="sec dark">
   <div class="wrap guar">
     <span class="eyebrow reveal" style="color:var(--or-lt)">Sans risque</span>
-    <h2 class="h2 reveal">Teste 30 nuits.<br>Pas mieux ? <em style="color:var(--or-lt)">Remboursé.</em></h2>
-    <p class="reveal">Pas de petites lignes, pas de « sous conditions ». Tu nous écris, on te rembourse — même le paquet entamé. Le risque, c'est nous qui le prenons, pas toi.</p>
+    <h2 class="h2 reveal">Testez 30 nuits.<br>Pas mieux ? <em style="color:var(--or-lt)">Remboursé.</em></h2>
+    <p class="reveal">Pas de petites lignes, pas de « sous conditions ». Vous nous écrivez, nous vous remboursons — même le paquet entamé. Le risque, c'est nous qui le prenons, pas vous.</p>
     <button class="btn btn-lt reveal" onclick="document.getElementById('addCart').scrollIntoView({behavior:'smooth',block:'center'})">Commander →</button>
   </div>
 </section>
@@ -916,12 +852,12 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 <section class="sec" id="faq">
   <div class="wrap">
     <span class="eyebrow reveal" style="display:block;text-align:center">Questions fréquentes</span>
-    <h2 class="h2 reveal" style="text-align:center">On répond <em>à tout.</em></h2>
+    <h2 class="h2 reveal" style="text-align:center">Tout ce que vous <em>devez savoir.</em></h2>
     <div class="faq">
-      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">Pourquoi je me réveille à 3h ?<span>+</span></button><div class="faq-a"><p>Souvent, ton cortisol remonte en seconde partie de nuit et te réveille. Le magnésium, l'ashwagandha et la L-théanine de Kore aident à le calmer, pour une nuit continue.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">En combien de temps je vois une différence ?<span>+</span></button><div class="faq-a"><p>L'endormissement s'améliore souvent dès les premières nuits. Les réveils nocturnes s'espacent et l'énergie au réveil s'installe généralement sur 2 à 3 semaines.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">Est-ce que ça crée une accoutumance ?<span>+</span></button><div class="faq-a"><p>Non. Kore n'est pas un somnifère. Il aide ton système nerveux à se reposer naturellement — sans dépendance ni effet groggy le lendemain.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">Et si ça ne marche pas pour moi ?<span>+</span></button><div class="faq-a"><p>Tu es couvert·e par la garantie satisfait ou remboursé de 30 jours. Tu testes sans aucun risque.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">Pourquoi je me réveille à 3h ?<span>+</span></button><div class="faq-a"><p>Les réveils nocturnes peuvent avoir plusieurs causes. Kore a été formulé pour accompagner les mécanismes impliqués dans un sommeil plus stable, sans mélatonine ni effet sédatif.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">En combien de temps je vois une différence ?<span>+</span></button><div class="faq-a"><p>Chaque organisme réagit différemment. Certaines personnes constatent une évolution dès les premiers jours, tandis que d'autres observent des changements plus progressivement.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">Est-ce que ça crée une accoutumance ?<span>+</span></button><div class="faq-a"><p>Non. Kore ne contient ni mélatonine ni substance destinée à provoquer le sommeil. Sa formule est conçue pour accompagner naturellement la qualité du sommeil.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="tFaq(this)">Et si ça ne marche pas pour moi ?<span>+</span></button><div class="faq-a"><p>Si Kore ne vous convient pas, vous bénéficiez de notre garantie satisfait ou remboursé pendant 30 jours.</p></div></div>
     </div>
   </div>
 </section>
@@ -930,7 +866,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   <div class="foot-in">
     <div class="kore-div"><b>Le rituel du soir</b></div>
     <p class="foot-name">Kore</p>
-    <p class="foot-desc">Le pack pensé pour ton sommeil. Formulée en Europe · Science & nature au service de ton corps.</p>
+    <p class="foot-desc">Une formule développée pour accompagner des nuits plus sereines. Formulée en Europe. Sans mélatonine.</p>
     <div class="foot-bottom"><span>© 2026 Kore</span><span class="foot-eu">Certifié en Europe · GMP</span></div>
   </div>
 </footer>
@@ -942,8 +878,8 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 
 <div class="cart-ov" id="cartOv" onclick="closeCart()"></div>
 <aside class="cart" id="cartEl">
-  <div class="cart-top"><h3>Ton panier</h3><button class="cart-close" onclick="closeCart()">×</button></div>
-  <div class="cart-body" id="cartBody"><p class="cart-empty">Ton panier est vide.</p></div>
+  <div class="cart-top"><h3>Votre panier</h3><button class="cart-close" onclick="closeCart()">×</button></div>
+  <div class="cart-body" id="cartBody"><p class="cart-empty">Votre panier est vide.</p></div>
   <div class="cart-foot" id="cartFoot" style="display:none">
     <div class="cart-save" id="cartSave" style="display:none"></div>
     <div class="cart-sub"><span>Sous-total</span><span id="cartSub">—</span></div>
@@ -977,12 +913,12 @@ function addToCart(){CART_MODE=selPlan();renderCart();openCart();try{showToast(C
 function changeLine(){CART_MODE=null;renderCart();}
 function renderCart(){
   var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount'),saveEl=document.getElementById('cartSave'),subEl=document.getElementById('cartSub');
-  if(!CART_MODE){body.innerHTML='<p class="cart-empty">Ton panier est vide.</p>';foot.style.display='none';if(count)count.style.display='none';return;}
+  if(!CART_MODE){body.innerHTML='<p class="cart-empty">Votre panier est vide.</p>';foot.style.display='none';if(count)count.style.display='none';return;}
   if(count){count.style.display='flex';count.textContent='1';}
   var html='';
   if(CART_MODE==='sub'){
     html+='<div class="ci"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""><div class="ci-info"><div class="ci-nm">Abonnement Kore</div><div class="ci-bot"><div class="ci-gift-note">1 pack / mois &middot; annulable</div><div class="ci-pr"><span class="ci-old">124&euro;</span>57&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
-    html+='<div class="ci ci-gift"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/ChatGPT_Image_26_juin_2026_a_15_16_59.png?v=1782480141" alt=""><div class="ci-info"><div class="ci-nm">Gourde en verre Kore<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau &middot; avec ton abonnement</div><div class="ci-pr"><span class="ci-old">35&euro;</span><b>0&euro;</b></div></div></div></div>';
+    html+='<div class="ci ci-gift"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/ChatGPT_Image_26_juin_2026_a_15_16_59.png?v=1782480141" alt=""><div class="ci-info"><div class="ci-nm">Gourde en verre Kore<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau &middot; avec votre abonnement</div><div class="ci-pr"><span class="ci-old">35&euro;</span><b>0&euro;</b></div></div></div></div>';
     if(saveEl){saveEl.style.display='flex';saveEl.innerHTML='<span>&#127881; Gourde + remise</span><span><b>&minus;67&euro;</b></span>';}
     if(subEl)subEl.textContent='57,00 \u20ac / mois';
   } else {
@@ -999,9 +935,9 @@ function goCheckout(){if(!CART_MODE){return;}try{if(window.fbq)fbq('track','Init
 /* ── PERSONNALISATION PAR PERSONA (?p=) — les 3 variantes ── */
 (function(){
   var P={
-    "parent":{h1:'Te rendormir vite,<br><em>te réveiller humaine.</em>',lead:'Tu te relèves la nuit, tu dors en miettes, et le matin tu es déjà à cran. Le Pack Kore t\'aide à te rendormir vite — et à ce que le peu que tu dors te répare enfin.',tag:'Pensée pour les nuits hachées des parents.',revs:[{t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je me rendors direct — et le matin je suis humaine.</strong>',i:'EL',n:'Élodie, 30 ans',m:'Maman de 2 · depuis 3 mois'},{t:'<strong>J\'ai arrêté de hurler pour un verre renversé.</strong> Ça paraît bête, mais c\'est ça qui a tout changé.',i:'So',n:'Sophie, 27 ans',m:'Maman de 2 · depuis 4 mois'},{t:'Mes nuits sont toujours courtes, mais <strong>elles me reposent vraiment.</strong> J\'avais oublié ce que c\'était.',i:'CA',n:'Carla, 31 ans',m:'Maman de 3 · depuis 5 mois'}]},
-    "reveil-3h":{h1:'Passer la nuit<br><em>sans le réveil de 3h.</em>',lead:'Tu t\'endors bien, mais à 3h tu es là, les yeux ouverts, à attendre un sommeil qui ne revient pas. Le Pack Kore calme le cortisol qui te réveille — pour une nuit d\'une seule traite.',tag:'Pensée pour ceux qui se réveillent en pleine nuit.',revs:[{t:'Je me réveillais à 4h pile, chaque nuit, depuis des années. <strong>Là, je dors jusqu\'à mon réveil.</strong>',i:'NA',n:'Emma, 32 ans',m:'Bordeaux · depuis 4 mois'},{t:'Avant, réveillé = fini, je me levais. <strong>Maintenant je me rendors en quelques minutes.</strong>',i:'PH',n:'Philippe, 38 ans',m:'Toulouse · depuis 3 mois'},{t:'Je ne ressentais rien de spécial, juste impossible de me rendormir. <strong>Ça, c\'est réglé.</strong>',i:'KA',n:'Karine, 33 ans',m:'Lille · depuis 5 mois'}]},
-    "travail":{h1:'Éteindre ton cerveau,<br><em>récupérer pour de vrai.</em>',lead:'Le corps mort le soir, mais la tête qui refait la réunion de demain. Le Pack Kore calme le système nerveux pour que tu décroches — et que tes nuits te réparent vraiment.',tag:'Pensée pour les cerveaux qui ne s\'éteignent jamais.',revs:[{t:'Je me couchais en repensant à mes mails. <strong>Maintenant je m\'endors vraiment, et je récupère.</strong>',i:'TH',n:'Thomas, 28 ans',m:'Cadre · depuis 3 mois'},{t:'<strong>Le crash de l\'après-midi a disparu.</strong> Je suis plus net en réunion qu\'avant.',i:'JU',n:'Julien, 31 ans',m:'Manager · depuis 4 mois'},{t:'Je pensais devoir dormir moins pour tenir. <strong>En fait il fallait mieux dormir.</strong>',i:'AN',n:'Anaïs, 31 ans',m:'Consultante · depuis 3 mois'}]}
+    "parent":{h1:'Même réveillé la nuit,<br><em>récupérez mieux.</em>',lead:'Quand un enfant coupe votre nuit, le vrai problème commence après : impossible de replonger, tension au réveil, patience déjà épuisée. Kore aide votre corps à redescendre plus vite pour tirer plus de récupération des heures disponibles.',tag:'Pensé pour les parents dont les nuits ne sont jamais parfaitement continues.',revs:[{t:'Mon fils me réveille encore une fois par nuit. La différence, c\'est que <strong>je replonge plus vite, et je commence la journée moins à vif.</strong>',i:'EL',n:'Élodie, 30 ans',m:'Maman de 2 · depuis 3 mois'},{t:'<strong>Je démarre les journées avec beaucoup moins de tension.</strong> Ça se voit surtout dans ma patience le matin.',i:'So',n:'Sophie, 27 ans',m:'Maman de 2 · depuis 4 mois'},{t:'Mes nuits sont toujours courtes, mais <strong>elles me récupèrent davantage.</strong> C\'est exactement ce qu\'il me fallait.',i:'CA',n:'Carla, 31 ans',m:'Maman de 3 · depuis 5 mois'}]},
+    "reveil-3h":{h1:'Le réveil de 3h<br><em>ne doit pas décider de votre journée.</em>',lead:'Vous vous endormez, puis vous ouvrez les yeux en pleine nuit avec le cerveau déjà reparti. Kore cible cette seconde partie de nuit pour vous aider à retrouver plus de continuité.',tag:'Pensé pour celles et ceux qui se réveillent sans réussir à replonger.',revs:[{t:'Je me réveillais à 4h pile depuis des années. <strong>Maintenant, je passe beaucoup plus souvent la nuit sans coupure.</strong>',i:'NA',n:'Emma, 32 ans',m:'Bordeaux · depuis 4 mois'},{t:'Avant, réveillé voulait dire fini. <strong>Aujourd\'hui, je replonge beaucoup plus facilement.</strong>',i:'PH',n:'Philippe, 38 ans',m:'Toulouse · depuis 3 mois'},{t:'Je n\'avais pas spécialement d\'angoisse, juste impossible de me rendormir. <strong>C\'est devenu beaucoup plus rare.</strong>',i:'KA',n:'Karine, 33 ans',m:'Lille · depuis 5 mois'}]},
+    "travail":{h1:'Éteignez le mode travail.<br><em>Gardez l\'énergie pour demain.</em>',lead:'Le corps est fatigué, mais la tête relance les mails, les réunions et la liste du lendemain. Kore aide votre système nerveux à redescendre le soir pour une nuit plus stable.',tag:'Pensé pour les esprits qui restent en réunion après le coucher.',revs:[{t:'Je me couchais en refaisant ma journée. <strong>Maintenant je décroche plus vite, et je récupère mieux.</strong>',i:'TH',n:'Thomas, 28 ans',m:'Cadre · depuis 3 mois'},{t:'<strong>Le creux de l\'après-midi est beaucoup moins violent.</strong> Je suis plus net en réunion qu\'avant.',i:'JU',n:'Julien, 31 ans',m:'Manager · depuis 4 mois'},{t:'Je pensais devoir serrer les dents. <strong>En fait, il fallait surtout mieux dormir.</strong>',i:'AN',n:'Anaïs, 31 ans',m:'Consultante · depuis 3 mois'}]}
   };
   var d=P[new URLSearchParams(location.search).get('p')];if(!d)return;
   var h1=document.querySelector('.p-title');if(h1)h1.innerHTML=d.h1;
