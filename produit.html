@@ -969,5 +969,189 @@ function goCheckout(){if(!CART_MODE){return;}try{if(window.fbq)fbq('track','Init
 <script>
 (function(){var s=document.getElementById('manifStar');if(!s)return;var cx=50,cy=50,N=24,h='';for(var i=0;i<N;i++){var a=(i/N)*Math.PI*2,lng=(i%2===0);var r1=lng?13:11,r2=lng?46:30;var x1=cx+Math.cos(a)*r1,y1=cy+Math.sin(a)*r1,x2=cx+Math.cos(a)*r2,y2=cy+Math.sin(a)*r2;h+='<line x1="'+x1.toFixed(2)+'" y1="'+y1.toFixed(2)+'" x2="'+x2.toFixed(2)+'" y2="'+y2.toFixed(2)+'" stroke="#E3C48A" stroke-width="'+(lng?1.5:1)+'" stroke-linecap="round"/>';}h+='<circle cx="50" cy="50" r="6.5" fill="none" stroke="#E3C48A" stroke-width="1.5"/><circle cx="50" cy="50" r="2.2" fill="#EAD3A0"/>';s.innerHTML=h;})();
 </script>
+<!-- ===== QUIZ POPUP — 3 questions → code -10€ ===== -->
+<style>
+.btn-or{background:var(--or)!important;color:#1a1205!important}
+.qz-ov{position:fixed;inset:0;background:rgba(7,36,31,.55);backdrop-filter:blur(3px);z-index:120;opacity:0;visibility:hidden;transition:.3s}
+.qz-ov.open{opacity:1;visibility:visible}
+.qz{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);width:min(430px,92vw);background:var(--creme);border-radius:22px;z-index:125;opacity:0;visibility:hidden;transition:.3s;box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden}
+.qz.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.qz-head{background:var(--sombre);color:#fff;padding:22px 24px 18px;position:relative}
+.qz-close{position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1;padding:6px}
+.qz-tag{display:inline-block;background:var(--or);color:#1a1205;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.qz-title{font-family:var(--serif);font-size:21px;font-weight:500;line-height:1.2}
+.qz-title em{color:var(--or-lt);font-style:italic}
+.qz-dots{display:flex;gap:6px;margin-top:14px}
+.qz-dots i{height:4px;flex:1;border-radius:4px;background:rgba(255,255,255,.18);transition:.3s}
+.qz-dots i.on{background:var(--or-lt)}
+.qz-body{padding:22px 24px 24px}
+.qz-q{font-size:15.5px;font-weight:700;margin-bottom:14px;line-height:1.4}
+.qz-opts{display:grid;gap:9px}
+.qz-opt{text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;font-family:var(--sans);font-size:14px;color:var(--encre);cursor:pointer;transition:.15s;line-height:1.35}
+.qz-opt:hover{border-color:var(--foret);background:var(--vert-pale)}
+.qz-fb{display:none;background:var(--vert-pale);border:1px solid var(--border);border-radius:12px;padding:13px 15px;font-size:13.5px;line-height:1.55;color:var(--encre);margin-top:13px}
+.qz-fb.show{display:block;animation:qzIn .35s both}
+.qz-fb b{color:var(--foret)}
+@keyframes qzIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.qz-next{width:100%;margin-top:13px;display:none}
+.qz-next.show{display:inline-flex;animation:qzIn .35s both}
+.qz-end{text-align:center;display:none}
+.qz-end.show{display:block}
+.qz-end h3{font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.15;margin-bottom:8px}
+.qz-end h3 em{color:var(--foret)}
+.qz-end p{font-size:13.5px;color:var(--encre-2);line-height:1.55;margin-bottom:16px}
+.qz-code{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--sombre);color:#fff;border:1.5px dashed var(--or-lt);border-radius:13px;padding:14px 16px;margin-bottom:14px}
+.qz-code b{font-family:var(--serif);font-size:23px;letter-spacing:.06em;color:var(--or-lt)}
+.qz-copy{background:rgba(216,189,146,.18);border:1px solid rgba(216,189,146,.5);color:var(--or-lt);font-size:12px;font-weight:700;border-radius:999px;padding:8px 15px;cursor:pointer;font-family:var(--sans)}
+.qz-note{font-size:11px;color:var(--brume);margin-top:10px}
+.qz-wh{text-align:center}
+.qz-wh-t{font-family:var(--serif);font-size:21px;font-weight:500;line-height:1.2;margin-bottom:20px}
+.qz-wh-t em{color:var(--foret);font-style:italic}
+.qz-wz{position:relative;width:238px;height:238px;margin:0 auto 22px}
+.qz-ptr{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:17px solid var(--or);z-index:2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.qz-wheel{width:100%;height:100%;border-radius:50%;border:6px solid var(--sombre);box-shadow:0 10px 26px rgba(7,36,31,.28),inset 0 0 0 2px rgba(255,255,255,.25);position:relative;transition:transform 4.2s cubic-bezier(.12,.8,.16,1);background:conic-gradient(var(--foret) 0 60deg,#fff 60deg 120deg,var(--or-lt) 120deg 180deg,var(--foret) 180deg 240deg,#fff 240deg 300deg,var(--or-lt) 300deg 360deg)}
+.qz-wheel span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(var(--a)) translateY(-80px);font-family:var(--serif);font-size:19px;font-weight:600;color:var(--encre)}
+.qz-wheel:after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--sombre);border:3px solid var(--or-lt)}
+#kPill{position:fixed;left:14px;bottom:82px;z-index:60;background:var(--sombre);color:#fff;border:1px solid var(--or-lt);border-radius:999px;padding:10px 17px;display:flex;gap:10px;align-items:center;font-family:var(--sans);font-size:13px;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.3);animation:qzIn .4s both}
+#kPill b{color:var(--or-lt);font-weight:800;letter-spacing:.05em}
+#kPill span{font-variant-numeric:tabular-nums;font-weight:600}
+@media(min-width:900px){#kPill{bottom:20px}}
+</style>
+<div class="qz-ov" id="qzOv" onclick="qzClose()"></div>
+<div class="qz" id="qz" role="dialog" aria-modal="true">
+  <div class="qz-head">
+    <button class="qz-close" onclick="qzClose()" aria-label="Fermer">×</button>
+    <span class="qz-tag">30 secondes · un cadeau à la clé</span>
+    <div class="qz-title">3 questions pour comprendre <em>votre sommeil.</em></div>
+    <div class="qz-dots"><i class="on"></i><i></i><i></i></div>
+  </div>
+  <div class="qz-body">
+    <div id="qzStep"></div>
+    <div class="qz-wh" id="qzWh" style="display:none">
+      <h3 class="qz-wh-t">Un dernier geste :<br><em>faites tourner la roue.</em></h3>
+      <div class="qz-wz">
+        <div class="qz-ptr"></div>
+        <div class="qz-wheel" id="qzWheel">
+          <span style="--a:30deg;color:#fff">10€</span><span style="--a:90deg">2€</span><span style="--a:150deg">5€</span><span style="--a:210deg;color:#fff">10€</span><span style="--a:270deg">2€</span><span style="--a:330deg">5€</span>
+        </div>
+      </div>
+      <button class="btn btn-or" style="width:100%" id="qzSpinBtn" onclick="qzSpin()">Lancer la roue 🎁</button>
+    </div>
+    <div class="qz-end" id="qzEnd">
+      <h3>Vous savez qu'un meilleur sommeil<br><em>changerait votre vie.</em></h3>
+      <p>−10€ sur votre première commande · expire dans <b id="qzCd" style="color:#B4452F;font-variant-numeric:tabular-nums">30:00</b></p>
+      <div class="qz-code"><b id="qzCodeTxt">NUIT10</b><button class="qz-copy" id="qzCopy" onclick="qzCopy()">Copier</button></div>
+      <button class="btn btn-or" style="width:100%" id="qzUseBtn" onclick="qzUse()">Utiliser mon code →</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var QS=[
+    {q:"Qu'est-ce qui décrit le mieux vos nuits ?",o:["Je me réveille entre 2h et 4h","Je mets plus de 30 min à m'endormir","Je dors, mais je me réveille épuisé·e","Un peu tout ça à la fois"],
+     fb:["<b>C'est le cas n°1 chez nos clients.</b> Kore a été formulé précisément pour la seconde partie de nuit — là où la mélatonine ne fait rien.","<b>L'esprit qui ne s'éteint pas :</b> c'est exactement ce que ciblent la L-théanine et la passiflore de la formule.","<b>Dormir sans récupérer</b> vient souvent d'un manque de sommeil profond. C'est le rôle de la glycine, dosée à 3g comme dans les études.","<b>Bonne nouvelle :</b> la formule Kore agit sur les 3 fronts — endormissement, continuité, récupération."]},
+    {q:"Depuis combien de temps ça dure ?",o:["Quelques semaines","Plusieurs mois","Plus d'un an"],
+     fb:["<b>Le bon moment pour agir</b> — avant que le cerveau n'automatise ce réveil nocturne.","<b>Comme 64% de nos clients</b> au moment de leur première commande. La plupart voient la différence en 2-3 semaines.","<b>Vous n'êtes pas seul·e :</b> beaucoup de nos meilleurs avis viennent de personnes qui traînaient ça depuis des années. Il n'est pas trop tard."]},
+    {q:"Qu'avez-vous déjà essayé ?",o:["Mélatonine","Somnifères","Tisanes / magnésium","Rien pour l'instant"],
+     fb:["<b>Logique qu'elle n'ait pas suffi :</b> la mélatonine aide à s'endormir, pas à rester endormi. Kore agit justement sur la suite de la nuit.","<b>Kore est l'inverse d'un somnifère :</b> pas de sédation, pas d'accoutumance, pas de brouillard au réveil — et on peut arrêter quand on veut.","<b>Bonne base, doses trop faibles.</b> Kore reprend ces actifs aux doses réelles des études (3g de glycine, 200mg de bisglycinate…).","<b>Vous commencez au bon endroit :</b> une formule complète plutôt que des essais un par un."]}
+  ];
+  var CODE='NUIT10',step=0,answers=[],KEY='koreQuiz';
+  function el(id){return document.getElementById(id)}
+  function render(){
+    document.querySelectorAll('.qz-dots i').forEach(function(d,i){d.classList.toggle('on',i<=step)});
+    var s=QS[step],multi=(step===2);
+    var h='<div class="qz-q">'+(step+1)+'/3 — '+s.q+(multi?' <span style="font-weight:400;font-size:12px;color:var(--brume)">(plusieurs choix possibles)</span>':'')+'</div><div class="qz-opts">';
+    s.o.forEach(function(o,i){h+='<button class="qz-opt" data-i="'+i+'">'+o+'</button>'});
+    h+='</div><div class="qz-fb" id="qzFb"></div><button class="btn qz-next" id="qzNext">'+(step<2?'Question suivante →':'Découvrir mon cadeau 🎁')+'</button>';
+    el('qzStep').innerHTML=h;
+    var sel=[];
+    el('qzStep').querySelectorAll('.qz-opt').forEach(function(b){b.addEventListener('click',function(){
+      var i=+b.dataset.i,fb=el('qzFb');
+      if(multi){
+        var k=sel.indexOf(i);
+        if(k>-1){sel.splice(k,1);b.style.borderColor='';b.style.background='';b.style.fontWeight='';}
+        else{sel.push(i);b.style.borderColor='var(--foret)';b.style.background='var(--vert-pale)';b.style.fontWeight='600';fb.innerHTML=QS[step].fb[i];fb.classList.add('show');}
+        answers[step]=sel.map(function(x){return QS[step].o[x]}).join(' + ');
+        el('qzNext').classList.toggle('show',sel.length>0);
+        if(!sel.length)fb.classList.remove('show');
+      }else{
+        answers[step]=QS[step].o[i];
+        el('qzStep').querySelectorAll('.qz-opt').forEach(function(x){x.style.opacity=.45;x.style.pointerEvents='none'});
+        b.style.opacity=1;b.style.borderColor='var(--foret)';b.style.background='var(--vert-pale)';
+        fb.innerHTML=QS[step].fb[i];fb.classList.add('show');
+        el('qzNext').classList.add('show');
+      }
+      try{if(window.fbq)fbq('trackCustom','QuizAnswer',{step:step+1,answer:QS[step].o[i]})}catch(e){}
+    })});
+    el('qzNext').addEventListener('click',function(){
+      if(step<2){step++;render()}else{wheelShow()}
+    });
+  }
+  /* Roue des récompenses — atterrit toujours sur un segment 10€ */
+  function wheelShow(){
+    el('qzStep').style.display='none';el('qzWh').style.display='block';
+    document.querySelectorAll('.qz-dots i').forEach(function(d){d.classList.add('on')});
+  }
+  window.qzSpin=function(){
+    var w=el('qzWheel'),b=el('qzSpinBtn');
+    b.style.opacity=.5;b.style.pointerEvents='none';b.textContent='Bonne chance…';
+    var win=Math.random()<.5?0:3;               /* segments 0 et 3 = 10€ */
+    var jit=Math.random()*36-18;                 /* flottement dans le segment */
+    var deg=5*360+(360-(win*60+30))+jit;
+    w.style.transform='rotate('+deg+'deg)';
+    setTimeout(finish,4600);
+  };
+  function finish(){
+    el('qzWh').style.display='none';
+    el('qzStep').style.display='none';el('qzEnd').classList.add('show');
+    var exp=Date.now()+18e5;
+    try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');d.done=1;d.a=answers;d.exp=exp;localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}
+    try{if(window.fbq)fbq('trackCustom','QuizComplete',{a1:answers[0],a2:answers[1],a3:answers[2]});if(window.fbq)fbq('track','Lead')}catch(e){}
+    var iv=setInterval(function(){
+      var r=exp-Date.now(),cd=el('qzCd');
+      if(r<=0){clearInterval(iv);if(cd)cd.textContent='expiré';var u=el('qzUseBtn');if(u){u.style.opacity=.5;u.style.pointerEvents='none';u.textContent='Code expiré'}return}
+      var m=Math.floor(r/6e4),s=Math.floor(r/1e3)%60;
+      if(cd)cd.textContent=m+':'+(s<10?'0':'')+s;
+    },500);
+    pill(exp);
+  }
+  /* Pastille flottante : le code + le chrono suivent le client sur la page et entre les pages */
+  function pill(exp){
+    if(document.getElementById('kPill'))return;
+    var p=document.createElement('div');p.id='kPill';
+    p.innerHTML='<b>NUIT10</b><span id="kPillT">30:00</span>';
+    p.onclick=function(){var o=document.getElementById('offre')||document.getElementById('addCart');if(o)o.scrollIntoView({behavior:'smooth',block:'center'})};
+    document.body.appendChild(p);
+    var iv=setInterval(function(){
+      var r=exp-Date.now();
+      if(r<=0){clearInterval(iv);p.remove();return}
+      var m=Math.floor(r/6e4),s=Math.floor(r/1e3)%60;
+      var t=document.getElementById('kPillT');if(t)t.textContent=m+':'+(s<10?'0':'')+s;
+    },500);
+  }
+  /* Si un code est encore actif (autre page, retour, refresh) : réafficher la pastille */
+  try{var d0=JSON.parse(localStorage.getItem(KEY)||'{}');if(d0.exp&&d0.exp>Date.now())pill(d0.exp)}catch(e){}
+  window.qzClose=function(){el('qz').classList.remove('open');el('qzOv').classList.remove('open');try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');if(!d.done){d.dismissed=(d.dismissed||0)+1;d.t=Date.now();localStorage.setItem(KEY,JSON.stringify(d))}}catch(e){}};
+  window.qzCopy=function(){try{navigator.clipboard.writeText(CODE)}catch(e){}var b=el('qzCopy');b.textContent='Copié ✓';setTimeout(function(){b.textContent='Copier'},1800)};
+  window.qzUse=function(){qzClose();var o=document.getElementById('offre')||document.getElementById('addCart');if(o)o.scrollIntoView({behavior:'smooth',block:'center'});else location.href='produit.html'};
+  function open(){
+    /* Une seule apparition par personne, à vie — marquée dès l'ouverture */
+    try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');if(d.seen)return;d.seen=1;d.t=Date.now();localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}
+    if(el('qz').classList.contains('open'))return;
+    el('qz').classList.add('open');el('qzOv').classList.add('open');render();
+    try{if(window.fbq)fbq('trackCustom','QuizOpen')}catch(e){}
+  }
+  /* Déclencheurs d'intérêt : 90s sur la page, OU 80% de scroll, OU exit-intent desktop — jamais avant 30s */
+  var armed=false;
+  setTimeout(function(){armed=true},30000);
+  setTimeout(open,90000);
+  window.addEventListener('scroll',function(){
+    if(!armed)return;
+    var p=(window.scrollY+innerHeight)/document.body.scrollHeight;
+    if(p>.8)open();
+  },{passive:true});
+  document.addEventListener('mouseout',function(e){if(armed&&!e.relatedTarget&&e.clientY<=0)open()});
+})();
+</script>
 </body>
 </html>
