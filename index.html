@@ -85,10 +85,9 @@ nav{position:sticky;top:0;z-index:50;background:rgba(246,243,234,.85);backdrop-f
 .btn-light{background:var(--creme);color:var(--sombre)}.btn-light:hover{background:#fff}
 @media(max-width:899px){.hero{min-height:78vh}.hero-scrim{background:linear-gradient(180deg,rgba(6,30,26,.5) 0%,rgba(6,30,26,.42) 35%,rgba(6,30,26,.84) 100%)}.hero-text{justify-content:flex-end;padding:0 var(--px) 40px}.hero h1{font-size:clamp(29px,8vw,44px);margin-bottom:12px}.hero .lead{margin-bottom:16px;font-size:14.5px;line-height:1.5}.hero .eyebrow{margin-bottom:11px}.hero .btn{padding:13px 26px}.hero-trust{margin-top:12px;font-size:12px}}
 
-/* HERO — image a droite (desktop) */
-.hero-side{display:none}
+/* HERO — vidéo à droite (desktop), identique au mobile */
 @media(min-width:900px){
-  .hero-side{display:block;position:absolute;top:0;right:0;bottom:0;width:58%;height:100%;object-fit:cover;object-position:center;z-index:0}
+  .hero-video{display:block;left:auto;right:0;width:58%;height:100%}
   .hero-scrim{background:linear-gradient(90deg,#07241F 0%,#07241F 34%,rgba(6,30,26,.72) 52%,rgba(6,30,26,.12) 78%,rgba(6,30,26,0) 100%)}
 }
 /* PROBLEME (sombre) */
@@ -417,7 +416,6 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 <!-- HERO -->
 <section class="hero">
   <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="img/hero-poster.jpg"><source src="img/hero.mp4" type="video/mp4"></video>
-  <img class="hero-side" src="img/hero.webp" alt="Le rituel du soir Kore" fetchpriority="high">
   <div class="hero-scrim"></div>
   <div class="hero-text">
     <span class="eyebrow">Le sommeil qui répare</span>
@@ -586,7 +584,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:48px v
 
 <!-- STICKY MOBILE -->
 <div class="sticky" id="sticky">
-  <div class="sticky-price"><s>89€</s>57€ <span style="font-size:12px;color:var(--brume);font-family:var(--sans)">· 1,90€/nuit</span></div>
+  <div class="sticky-price"><s>89€</s>49€ <span style="font-size:12px;color:var(--brume);font-family:var(--sans)">· 1,60€/nuit</span></div>
   <a href="produit.html" class="btn">Commander</a>
 </div>
 

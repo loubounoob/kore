@@ -699,6 +699,29 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
   .sb-photos img{flex:0 0 auto;width:80vw;height:80vw;max-width:340px;max-height:340px;scroll-snap-align:center}
 }
 </style>
+<style>
+/* ===== Offre minimaliste ===== */
+.plans{display:grid;gap:14px;margin:0 0 14px;padding-top:8px}
+.mp{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;border:1.5px solid var(--border);border-radius:14px;background:var(--surface);padding:17px 19px;cursor:pointer;transition:.15s}
+.mp input{position:absolute;opacity:0}
+.mp-l b{display:block;font-size:15px;font-weight:700}
+.mp-d{display:block;font-size:12.5px;color:var(--encre-2);margin-top:2px}
+.mp-p{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--encre);white-space:nowrap}
+.mp-p s{font-size:14px;color:var(--brume);font-family:var(--sans);font-weight:400;margin-right:4px}
+.mp-p small{font-size:13px;color:var(--encre-2);font-family:var(--sans);font-weight:400}
+.mp-tag{position:absolute;top:-11px;left:16px;background:var(--or);color:#1a1205;font-size:10.5px;font-weight:800;letter-spacing:.04em;padding:4px 11px;border-radius:999px}
+.mp.selected{border-color:var(--foret);box-shadow:0 0 0 1.5px var(--foret),0 8px 28px rgba(12,84,73,.09)}
+.mp.selected .mp-p{color:var(--foret)}
+.mp-foot{font-size:12.5px;color:var(--encre-2);margin-top:12px;text-align:center}
+.mp.big{display:block}
+.mp-row1{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.mp-inc{list-style:none;margin:13px 0 0;border-top:1px solid var(--border);padding:5px 0 0}
+.mp-inc li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 0;font-size:13px;color:var(--encre)}
+.mi-p{white-space:nowrap;font-variant-numeric:tabular-nums}
+.mi-p s{color:var(--brume);margin-right:8px}
+.mi-p b{color:var(--foret);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.05em}
+.mp .add-cart{width:100%}
+</style>
 </head>
 <body>
 
@@ -748,50 +771,28 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
       <li>Réveil reposé, sans brouillard.</li>
     </ul>
 
-    <script>(function(){var end=new Date(2026,6,31,23,59,59).getTime();function p(n){return(n<10?'0':'')+n;}function t(){var d=end-Date.now();if(d<0)d=0;var e,D=Math.floor(d/864e5),H=Math.floor(d/36e5)%24,M=Math.floor(d/6e4)%60,S=Math.floor(d/1e3)%60;if(e=document.getElementById('cdD'))e.textContent=D;if(e=document.getElementById('cdH'))e.textContent=p(H);if(e=document.getElementById('cdM'))e.textContent=p(M);if(e=document.getElementById('cdS'))e.textContent=p(S);}t();setInterval(t,1000);})();</script>
-
     <div class="plans" id="plans">
-      <label class="plan planx planx--sub selected">
+      <label class="mp big selected">
         <input type="radio" name="plan" value="sub" checked>
-        <div class="px">
-          <div class="plan-cd"><span>Offre limitée</span> · <b id="cdD">--</b>j <b id="cdH">--</b>h <b id="cdM">--</b>m <b id="cdS">--</b>s</div>
-          <div class="px-head"><span class="plan-check"></span><span class="px-name">Abonnement</span><span class="px-flag">LE PLUS CHOISI</span></div>
-          <div class="px-pricerow"><span class="px-old">124€</span><span class="px-now">57€</span><span class="px-cyc">/mois</span><span class="px-save">−54&nbsp;%</span></div>
-          <div class="px-night">Soit <b>1,90 € la nuit</b>.</div>
-          
-          <ul class="px-get">
-            <li class="px-gift"><span class="px-ic">🎁</span><span><b>Gourde Kore offerte</b></span><s>35€</s></li>
-            <li>30 nuits de <b>formule Kore</b></li>
-            <li>Livraison gratuite sous 4 jours</li>
-            <li>Annulable ou retardable en 1 clic</li>
-          </ul>
+        <span class="mp-tag">Offre de juillet · −45%</span>
+        <div class="mp-row1">
+          <div class="mp-l"><b>Abonnement mensuel</b><span class="mp-d">Annulable en 1 clic</span></div>
+          <div class="mp-p"><s>89€</s> 49€<small>/mois</small></div>
         </div>
+        <ul class="mp-inc">
+          <li><span>Gourde en verre Kore</span><span class="mi-p"><s>35€</s><b>Offerte</b></span></li>
+          <li><span>Livraison en 4 jours</span><span class="mi-p"><s>7€</s><b>Offerte</b></span></li>
+        </ul>
       </label>
-      <label class="plan planx planx--once">
+      <label class="mp">
         <input type="radio" name="plan" value="once">
-        <div class="px">
-          <div class="px-head"><span class="plan-check"></span><span class="px-name">Achat unique</span></div>
-          <div class="px-pricerow"><span class="px-now">89€</span><span class="px-cyc">une seule fois</span></div>
-          <div class="px-night">Soit <b>2,97 € la nuit</b>.</div>
-          <ul class="px-get">
-            <li>30 nuits de <b>formule Kore</b></li>
-            <li class="px-no">Sans gourde offerte</li>
-            <li>Livraison gratuite sous 4 jours</li>
-          </ul>
-        </div>
+        <div class="mp-l"><b>Achat unique</b><span class="mp-d">30 nuits · sans les cadeaux</span></div>
+        <div class="mp-p">89€</div>
       </label>
     </div>
 
-    <div class="buy-row">
-      <button class="btn add-cart plan-cta" id="addCart" onclick="addToCart()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
-        Ajouter au panier
-      </button>
-    </div>
-    <div class="guarantee">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-      <span><b>Garantie 30 nuits</b> — remboursé si vous ne dormez pas mieux · paiement sécurisé.</span>
-    </div>
+    <button class="btn add-cart" id="addCart" onclick="addToCart()">Commencer — 49€/mois</button>
+    <p class="mp-foot">Satisfait ou remboursé 30 nuits · Paiement sécurisé</p>
   </div>
 </section>
 
@@ -872,7 +873,7 @@ footer{background:var(--creme);border-top:1px solid var(--border);padding:44px v
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="sticky-price">1,90€<span style="font-size:12px;font-weight:400"> / bonne nuit</span></div>
+  <div class="sticky-price">1,60€<span style="font-size:12px;font-weight:400"> / bonne nuit</span></div>
   <button class="btn" onclick="addToCart()">Ajouter au panier</button>
 </div>
 
@@ -908,8 +909,8 @@ function eur(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €
 var ONCE_URL='https://q3knru-rj.myshopify.com/cart/53161758261584:1';
 var SUB_URL='https://q3knru-rj.myshopify.com/cart/clear?return_to=%2Fcart%2Fadd%3Fid%3D53195108614480%26selling_plan%3D690023596368%26quantity%3D1%26return_to%3D%252Fcart%252Fadd%253Fid%253D53194086941008%2526quantity%253D1%2526return_to%253D%252Fcheckout';
 var CART_MODE=null;
-function selPlan(){var r=document.querySelector('.plan input:checked');return (!r||r.value==='sub')?'sub':'once';}
-function addToCart(){CART_MODE=selPlan();renderCart();openCart();try{showToast(CART_MODE==='sub'?'Ajouté · gourde offerte ✓':'Ajouté au panier ✓');}catch(e){}try{if(window.fbq)fbq('track','AddToCart',{value:CART_MODE==='sub'?57:89,currency:'EUR'});}catch(e){}}
+function selPlan(){var r=document.querySelector('.mp input:checked');return (!r||r.value==='sub')?'sub':'once';}
+function addToCart(){CART_MODE=selPlan();renderCart();openCart();try{showToast(CART_MODE==='sub'?'Ajouté · gourde offerte ✓':'Ajouté au panier ✓');}catch(e){}try{if(window.fbq)fbq('track','AddToCart',{value:CART_MODE==='sub'?49:89,currency:'EUR'});}catch(e){}}
 function changeLine(){CART_MODE=null;renderCart();}
 function renderCart(){
   var body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot'),count=document.getElementById('cartCount'),saveEl=document.getElementById('cartSave'),subEl=document.getElementById('cartSub');
@@ -917,10 +918,10 @@ function renderCart(){
   if(count){count.style.display='flex';count.textContent='1';}
   var html='';
   if(CART_MODE==='sub'){
-    html+='<div class="ci"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""><div class="ci-info"><div class="ci-nm">Abonnement Kore</div><div class="ci-bot"><div class="ci-gift-note">1 pack / mois &middot; annulable</div><div class="ci-pr"><span class="ci-old">124&euro;</span>57&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
+    html+='<div class="ci"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""><div class="ci-info"><div class="ci-nm">Abonnement Kore</div><div class="ci-bot"><div class="ci-gift-note">1 pack / mois &middot; annulable</div><div class="ci-pr"><span class="ci-old">89&euro;</span>49&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
     html+='<div class="ci ci-gift"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/ChatGPT_Image_26_juin_2026_a_15_16_59.png?v=1782480141" alt=""><div class="ci-info"><div class="ci-nm">Gourde en verre Kore<span class="gift-tag">OFFERTE</span></div><div class="ci-bot"><div class="ci-gift-note">Cadeau &middot; avec votre abonnement</div><div class="ci-pr"><span class="ci-old">35&euro;</span><b>0&euro;</b></div></div></div></div>';
-    if(saveEl){saveEl.style.display='flex';saveEl.innerHTML='<span>&#127881; Gourde + remise</span><span><b>&minus;67&euro;</b></span>';}
-    if(subEl)subEl.textContent='57,00 \u20ac / mois';
+    if(saveEl){saveEl.style.display='flex';saveEl.innerHTML='<span>&#127881; Gourde + remise</span><span><b>&minus;75&euro;</b></span>';}
+    if(subEl)subEl.textContent='49,00 \u20ac / mois';
   } else {
     html+='<div class="ci"><img src="https://cdn.shopify.com/s/files/1/0941/1857/6464/files/9626acbc-392e-4d1c-a9e5-b9a2d22b07bf.png?v=1782480039" alt=""><div class="ci-info"><div class="ci-nm">Pack Kore</div><div class="ci-bot"><div class="ci-gift-note">Un seul pack &middot; sans gourde</div><div class="ci-pr">89&euro;</div></div><button class="ci-rm" onclick="changeLine()">Retirer</button></div></div>';
     if(saveEl)saveEl.style.display='none';
@@ -928,9 +929,9 @@ function renderCart(){
   }
   body.innerHTML=html;foot.style.display='block';
 }
-function goCheckout(){if(!CART_MODE){return;}try{if(window.fbq)fbq('track','InitiateCheckout',{value:CART_MODE==='sub'?57:89,currency:'EUR'});}catch(e){}window.location.href=(CART_MODE==='sub'?SUB_URL:ONCE_URL);}
+function goCheckout(){if(!CART_MODE){return;}try{if(window.fbq)fbq('track','InitiateCheckout',{value:CART_MODE==='sub'?49:89,currency:'EUR'});}catch(e){}window.location.href=(CART_MODE==='sub'?SUB_URL:ONCE_URL);}
 /* PLAN SELECTOR (visuel) */
-(function(){var ps=document.querySelectorAll('.plan input');if(!ps.length)return;function upd(){document.querySelectorAll('.plan').forEach(function(l){l.classList.toggle('selected',l.querySelector('input').checked);});}ps.forEach(function(i){i.addEventListener('change',upd);});upd();})();
+(function(){var ps=document.querySelectorAll('.mp input');if(!ps.length)return;function upd(){var sub=true;document.querySelectorAll('.mp').forEach(function(l){var c=l.querySelector('input').checked;l.classList.toggle('selected',c);if(c)sub=l.querySelector('input').value==='sub';});var b=document.getElementById('addCart');if(b)b.textContent=sub?'Commencer — 49€/mois':'Commencer — 89€';}ps.forEach(function(i){i.addEventListener('change',upd);});upd();})();
 
 /* ── PERSONNALISATION PAR PERSONA (?p=) — les 3 variantes ── */
 (function(){
